@@ -1,0 +1,56 @@
+﻿
+<link href="~/css/login.css" rel="stylesheet" />
+<link href="~/formvalidationio/css/formvalidation.min.css" rel="stylesheet" />
+
+  <div class="wrapper">
+      <div class="title-text">
+        <div class="title login">Login Form</div>
+        <div class="title signup">Signup Form</div>
+      </div>
+      <div class="form-container">
+        <div class="slide-controls">
+          <input type="radio" name="slide" id="login" checked>
+          <input type="radio" name="slide" id="signup">
+          <label for="login" class="slide login">Login</label>
+          <label for="signup" class="slide signup">Signup</label>
+          <div class="slider-tab"></div>
+        </div>
+        <div class="form-inner">
+          <form id="loginwithCred" class="login">
+                <div class="field form-group">
+              <input type="text" name="UserName" id="UserName" placeholder="Email Address">
+            </div>
+                <div class="field form-group">
+              <input type="password" name="Password" id="Password" placeholder="Password">
+            </div>
+            <div class="pass-link"><a href="#">Forgot password?</a></div>
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">Not a member? <a href="">Signup now</a></div>
+          </form>
+
+          <form id="signupCred" class="signup">
+                <div class="field form-group">
+                    <input type="text" name="signupUserName" id="signupUserName" placeholder="Email Address" required>
+            </div>
+            <div class="field form-group">
+                    <input type="password" name="signupPassowrd" id="signupPassowrd" placeholder="Password" required>
+            </div>
+                <div class="field form-group">
+                    <input name="SignupConfirmPassword" id="SignupConfirmPassword" placeholder="Confirm password" required>
+            </div>
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Signup">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+<script src="~/formvalidationio/js/formvalidation.min.js"></script>
+<script src="~/formvalidationio/js/plugins/bootstrap3.js"></script>
+
+<script src="~/js/login.js"></script>
