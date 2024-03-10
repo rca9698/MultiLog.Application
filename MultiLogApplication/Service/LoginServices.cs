@@ -2,26 +2,23 @@
 using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models.Common;
 using MultiLogApplication.Models.Common.LoginSignup;
+using MultiLogApplication.Models.User;
 using System.ComponentModel;
 
 namespace MultiLogApplication.Service
 {
-    public class LoginServices : ILoginServices
+    public class LoginServices : BaseService, ILoginServices
     {
         private readonly ILogger<LoginServices> _logger;
-        private readonly IConfiguration _configuration;
-        private readonly HttpClient _client;
-        public LoginServices(HttpClient client, IConfiguration configuration, ILogger<LoginServices> logger)
+        public LoginServices(HttpClient client, IConfiguration configuration, ILogger<LoginServices> logger, ITokenService tokenService) : base(client, configuration,tokenService)
         {
-            _client = client;
-            _configuration = configuration;
             _logger = logger;
         }
 
-        public async Task<ReturnType<bool>> LoginCred(LoginDetails details)
+        public async Task<ReturnType<UserDetail>> LoginCred(LoginDetails details)
         {
             var response = await _client.PostAsJsonAsync($"api/LoginSignup/Login", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<UserDetail>>();
         }
 
         public async Task<ReturnType<bool>> SignupCred(SignUpDetails details)

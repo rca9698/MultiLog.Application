@@ -5,15 +5,11 @@ using MultiLogApplication.Models.SiteDetails;
 
 namespace MultiLogApplication.Service
 {
-    public class SiteService : ISiteService
+    public class SiteService : BaseService, ISiteService
     {
         private readonly ILogger<SiteService> _logger;
-        private readonly IConfiguration _configuration;
-        private readonly HttpClient _client;
-        public SiteService(HttpClient client, IConfiguration configuration, ILogger<SiteService> logger)
+        public SiteService(HttpClient client, IConfiguration configuration, ILogger<SiteService> logger, ITokenService tokenService) : base(client, configuration,tokenService)
         {
-            _client = client;
-            _configuration = configuration;
             _logger = logger;
         }
 

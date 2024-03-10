@@ -6,16 +6,15 @@ using MultiLogApplication.Models.Coin;
 
 namespace MultiLogApplication.Service
 {
-    public class CoinService : ICoinService
+    public class CoinService : BaseService, ICoinService
     {
         private readonly ILogger<LoginServices> _logger;
-        private readonly IConfiguration _configuration;
-        private readonly HttpClient _client;
-        public CoinService(HttpClient client, IConfiguration configuration)
+        public CoinService(HttpClient client, IConfiguration configuration, ILogger<LoginServices> logger, ITokenService tokenService)
+            : base(client, configuration, tokenService)
         {
-            _client = client;
-            _configuration = configuration;
+            _logger = logger;
         }
+
         public async Task<ReturnType<CoinDetails>> GetTransaction(ListCoinModel details)
         {
             var response = await _client.PostAsJsonAsync($"api/Coin/GetTransaction", details);
@@ -33,7 +32,6 @@ namespace MultiLogApplication.Service
             var response = await _client.PostAsJsonAsync($"api/Coin/DeleteCoins", details);
             return await response.ReadContentAs<ReturnType<bool>>();
         }
-
 
     }
 }

@@ -5,15 +5,11 @@ using MultiLogApplication.Models.NotificationDetails;
 
 namespace MultiLogApplication.Service
 {
-    public class NotificationService : INotificationService
+    public class NotificationService : BaseService, INotificationService
     {
         private readonly ILogger<NotificationService> _logger;
-        private readonly IConfiguration _configuration;
-        private readonly HttpClient _client;
-        public NotificationService(HttpClient client, IConfiguration configuration, ILogger<NotificationService> logger)
+        public NotificationService(HttpClient client, IConfiguration configuration, ILogger<NotificationService> logger, ITokenService tokenService) : base(client, configuration,tokenService)
         {
-            _client = client;
-            _configuration = configuration;
             _logger = logger;
         }
 

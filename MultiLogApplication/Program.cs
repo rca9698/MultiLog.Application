@@ -1,8 +1,15 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using MultiLogApplication;
+
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(x => x.LoginPath = "/Home/Index");
 
+builder.Services.AddHttpServices(config);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,6 +25,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

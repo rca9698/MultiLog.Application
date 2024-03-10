@@ -8,7 +8,7 @@ namespace MultiLogApplication
         public static void AddHttpServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+            services.AddTransient<ITokenService, TokenService>();
             services.AddHttpClient<ILoginServices, LoginServices>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));
             services.AddHttpClient<IAccountService, AccountService>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));
             services.AddHttpClient<IBankAccountService, BankAccountService>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));

@@ -17,10 +17,25 @@ namespace MultiLogApplication.Controllers
             _logger = logger;
         }
 
-
         public IActionResult Index()
         {
             return View();
+        }
+
+        public async Task<IActionResult> ViewPanel()
+        {
+            ReturnType<UserDetail> res = new ReturnType<UserDetail>();
+            try
+            {
+                GetUsers obj = new GetUsers();
+                obj.SessionUser = _sessionUser;
+                res = await _userService.GetUsers(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at UserController > Getsites");
+            }
+            return View(res.ReturnList);
         }
 
         public async Task<IActionResult> GetUsers(GetUsers obj)
@@ -28,6 +43,8 @@ namespace MultiLogApplication.Controllers
             ReturnType<UserDetail> res = new ReturnType<UserDetail>();
             try
             {
+
+
                 obj.SessionUser = _sessionUser;
                 res = await _userService.GetUsers(obj);
             }

@@ -5,15 +5,11 @@ using MultiLogApplication.Models.DropDown;
 
 namespace MultiLogApplication.Service
 {
-    public class DropDownService : IDropDownService
+    public class DropDownService : BaseService, IDropDownService
     {
         private readonly ILogger<DropDownService> _logger;
-        private readonly IConfiguration _configuration;
-        private readonly HttpClient _client;
-        public DropDownService(HttpClient client, IConfiguration configuration, ILogger<DropDownService> logger)
+        public DropDownService(HttpClient client, IConfiguration configuration, ILogger<DropDownService> logger, ITokenService tokenService) : base(client, configuration,tokenService)
         {
-            _client = client;
-            _configuration = configuration;
             _logger = logger;
         }
 

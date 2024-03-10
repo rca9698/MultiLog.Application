@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MultiLogApplication.Models.User.UserDetail>
+
+<div class="notopboder main_div col-12">
+    <div class="table-div" style="width: 100%!important;">
+        <table id="userTable" data-scroll-x="true" class="authorizedSignatory table table-striped col-12">
+            <thead class="col-12">
+                <tr>
+                    <th class="request_no">
+                        Name
+                        <i class="fas fa-long-arrow-alt-up arrange" aria-hidden="true"></i>
+                    </th>
+                    <th>
+                        Mobile Number
+                        <i class="fas fa-long-arrow-alt-up arrange" aria-hidden="true"></i>
+                    </th>
+                    <th>
+                        Email Id
+                        <i class="fas fa-long-arrow-alt-up arrange" aria-hidden="true"></i>
+                    </th>
+                    <th>
+                        Password
+                        <i class="fas fa-long-arrow-alt-up arrange" aria-hidden="true"></i>
+                    </th>
+                    <th>
+                        Role
+                        <i class="fas fa-long-arrow-alt-up arrange" aria-hidden="true"></i>
+                    </th>
+                    <th>
+                        Actions
+                        <i class="fas fa-long-arrow-alt-up arrange" aria-hidden="true"></i>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a class="searchbeneficiaryname" style="color:#337ab7;font-weight:600;">@item.FirstName</a>
+                            </td>
+                            <td>
+                                @item.MobileNumber
+                            </td>
+                            <td>
+                                @item.EmailId
+                            </td>
+                            <td>
+                                @item.Password
+                            </td>
+                            <td>
+                                @item.Role
+                            </td>
+                            <td class=" text-center">
+                                <div class="btn-group">
+                                    <button type="button" title="User mapping" class="btn btn-default btn-actions btnusermapping" data-userId="@item.UserId">
+                                        <a href="#"><i class="fa fa-link"></i></a>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+<script src="~/datatable/jquery.datatables.min.js"></script>
+<script src="~/js/userlisting.js"></script>
+

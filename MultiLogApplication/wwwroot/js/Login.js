@@ -7,6 +7,7 @@ signupBtn.onclick = (() => {
     loginForm.style.marginLeft = "-50%";
     loginText.style.marginLeft = "-50%";
 });
+
 loginBtn.onclick = (() => {
     loginForm.style.marginLeft = "0%";
     loginText.style.marginLeft = "0%";
@@ -16,7 +17,6 @@ $(document).ready(function () {
     LoginFormValidationSingleton.getInstance();
     signupFormValidationSingleton.getInstance();
 })
-
 
 var LoginFormfv;
 var fv1;
@@ -53,6 +53,7 @@ var LoginFormValidationSingleton = (function () {
             }
         }).on('core.form.valid', function () {
             debugger;
+            window.location.href = "/User/ViewPanel";
 
         });
         return fv1;
@@ -144,8 +145,6 @@ var signupFormValidationSingleton = (function () {
     };
 })();
 
-
-
 function Login() {
     var login = {}
     login.UserName = $('#UserName');
@@ -155,7 +154,7 @@ function Login() {
         url: "/LoginSignup/Signup",
         data: login,
         success: function(){
-            Location.
+            
         },
         error: function(){
 

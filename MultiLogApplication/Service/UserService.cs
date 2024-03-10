@@ -6,17 +6,14 @@ using MultiLogApplication.Models.User;
 
 namespace MultiLogApplication.Service
 {
-    public class UserService : IUserService
+    public class UserService : BaseService, IUserService
     {
         private readonly ILogger<UserService> _logger;
-        private readonly IConfiguration _configuration;
-        private readonly HttpClient _client;
-        public UserService(HttpClient client, IConfiguration configuration, ILogger<UserService> logger)
+        public UserService(HttpClient client, IConfiguration configuration, ILogger<UserService> logger, ITokenService tokenService) : base(client, configuration,tokenService)
         {
-            _client = client;
-            _configuration = configuration;
             _logger = logger;
         }
+
         public async Task<ReturnType<bool>> AddUser(AddUser details)
         {
             var response = await _client.PostAsJsonAsync($"api/User/AddUser", details);

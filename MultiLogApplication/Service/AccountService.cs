@@ -5,15 +5,11 @@ using MultiLogApplication.Models.Common;
 
 namespace MultiLogApplication.Service
 {
-    public class AccountService : IAccountService
+    public class AccountService : BaseService, IAccountService
     {
         private readonly ILogger<BankAccountService> _logger;
-        private readonly IConfiguration _configuration;
-        private readonly HttpClient _client;
-        public AccountService(HttpClient client, IConfiguration configuration, ILogger<BankAccountService> logger)
+        public AccountService(HttpClient client, IConfiguration configuration, ILogger<BankAccountService> logger, ITokenService tokenService) : base(client, configuration,tokenService)
         {
-            _client = client;
-            _configuration = configuration;
             _logger = logger;
         }
 
