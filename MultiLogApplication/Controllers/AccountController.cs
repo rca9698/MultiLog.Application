@@ -5,12 +5,11 @@ using MultiLogApplication.Models.Common;
 
 namespace MultiLogApplication.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
-        private readonly long _sessionUser;
         private readonly IAccountService _accountService;
         private readonly ILogger<AccountController> _logger;
-        public AccountController(IAccountService accountService,ILogger<AccountController> logger)
+        public AccountController(IAccountService accountService,ILogger<AccountController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
             _accountService = accountService;
             _logger = logger;

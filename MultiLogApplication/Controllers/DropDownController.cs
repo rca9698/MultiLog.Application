@@ -6,12 +6,11 @@ using MultiLogApplication.Models.DropDown;
 
 namespace MultiLogApplication.Controllers
 {
-    public class DropDownController : Controller
+    public class DropDownController : BaseController
     {
         private readonly IDropDownService _dropDownService;
         private readonly ILogger<DropDownController> _logger;
-        private readonly long _sessionUser;
-        public DropDownController(IDropDownService coinService, ILogger<DropDownController> logger)
+        public DropDownController(IDropDownService coinService, ILogger<DropDownController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
             _dropDownService = coinService;
             _logger = logger;

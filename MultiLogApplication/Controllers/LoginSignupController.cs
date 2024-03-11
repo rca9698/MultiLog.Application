@@ -8,14 +8,15 @@ using System.Security.Claims;
 
 namespace MultiLogApplication.Controllers
 {
-    public class LoginSignupController : Controller
+    public class LoginSignupController : BaseController
     {
         private readonly ILoginServices _loginServices;
         private readonly ILogger<ILoginServices> _logger;
-        public LoginSignupController(ILoginServices loginServices, ILogger<ILoginServices> logger)
+        public LoginSignupController(ILoginServices loginServices, ILogger<ILoginServices> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
             _loginServices = loginServices;
             _logger = logger;
+
         }
 
         public async Task<ReturnType<bool>> Login(LoginDetails details)

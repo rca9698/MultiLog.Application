@@ -1,6 +1,9 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
+using MultiLogApplication.Extensions;
 using MultiLogApplication.Interfaces;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace MultiLogApplication.Service
@@ -8,23 +11,28 @@ namespace MultiLogApplication.Service
     public class TokenService : ITokenService
     {
         private readonly IConfiguration _configuration;
-        public TokenService(IConfiguration configuration)
+        private readonly long _userId;
+        public TokenService(IConfiguration configuration,IHttpContextAccessor httpContextAccessor)
         {
             _configuration = configuration;
+            _userId = httpContextAccessor.HttpContext.Session.Get<long>("UserId");
         }
 
         public string GenerateJSONWebToken()
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:key"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[] { new Claim("UserId", _userId.ToString()) }),
+                Expires = DateTime.UtcNow.AddHours(1),
+                Issuer = _configuration["Jwt:Issuer"],
+                Audience = _configuration["Jwt:Audience"],
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            var token = new JwtSecurityToken(_configuration["Jwt:Issuer"],
-              _configuration["Jwt:Issuer"],
-              null,
-              expires: DateTime.Now.AddMinutes(120),
-              signingCredentials: credentials);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            return tokenHandler.WriteToken(token);
         }
 
         public void SetToken(HttpClient client)

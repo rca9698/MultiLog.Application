@@ -7,12 +7,11 @@ using MultiLogApplication.Service;
 
 namespace MultiLogApplication.Controllers
 {
-    public class CoinController : Controller
+    public class CoinController : BaseController
     {
         private readonly ICoinService _coinService;
         private readonly ILogger<CoinController> _logger;
-        private readonly long _sessionUser;
-        public CoinController(ICoinService coinService, ILogger<CoinController> logger)
+        public CoinController(ICoinService coinService, ILogger<CoinController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
             _coinService = coinService;
             _logger = logger;

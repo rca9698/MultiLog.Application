@@ -6,12 +6,11 @@ using MultiLogApplication.Models.SiteDetails;
 
 namespace MultiLogApplication.Controllers
 {
-    public class SiteController : Controller
+    public class SiteController : BaseController
     {
         private readonly ISiteService _siteService;
         private readonly ILogger<SiteController> _logger;
-        private readonly long _sessionUser;
-        public SiteController(ISiteService siteService, ILogger<SiteController> logger)
+        public SiteController(ISiteService siteService, ILogger<SiteController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
             _siteService = siteService;
             _logger = logger;

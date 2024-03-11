@@ -6,13 +6,12 @@ using MultiLogApplication.Models.NotificationDetails;
 
 namespace MultiLogApplication.Controllers
 {
-    public class NotificationController : Controller
+    public class NotificationController : BaseController
     {
 
         private readonly INotificationService _notificationService;
         private readonly ILogger<NotificationController> _logger;
-        private readonly long _sessionUser;
-        public NotificationController(INotificationService notificationService, ILogger<NotificationController> logger)
+        public NotificationController(INotificationService notificationService, ILogger<NotificationController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
             _notificationService = notificationService;
             _logger = logger;

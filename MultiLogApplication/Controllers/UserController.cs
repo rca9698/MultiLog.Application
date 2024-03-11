@@ -6,12 +6,11 @@ using MultiLogApplication.Models.User;
 
 namespace MultiLogApplication.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly IUserService _userService;
         private readonly ILogger<UserController> _logger;
-        private readonly long _sessionUser;
-        public UserController(IUserService userService, ILogger<UserController> logger)
+        public UserController(IUserService userService, ILogger<UserController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
             _userService = userService;
             _logger = logger;

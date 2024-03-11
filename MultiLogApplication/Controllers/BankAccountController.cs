@@ -6,12 +6,11 @@ using MultiLogApplication.Models.Common;
 
 namespace MultiLogApplication.Controllers
 {
-    public class BankAccountController : Controller
+    public class BankAccountController : BaseController
     {
         private readonly IBankAccountService _bankAccountService;
         private readonly ILogger<BankAccountController> _logger;
-        private readonly long _sessionUser;
-        public BankAccountController(IBankAccountService bankAccountService, ILogger<BankAccountController> logger)
+        public BankAccountController(IBankAccountService bankAccountService, ILogger<BankAccountController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
             _bankAccountService = bankAccountService;
             _logger = logger;
