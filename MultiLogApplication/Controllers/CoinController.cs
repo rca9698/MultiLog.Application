@@ -11,15 +11,59 @@ namespace MultiLogApplication.Controllers
     {
         private readonly ICoinService _coinService;
         private readonly ILogger<CoinController> _logger;
-        public CoinController(ICoinService coinService, ILogger<CoinController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+        private readonly IConfiguration _configuration;
+        public CoinController(ICoinService coinService, ILogger<CoinController> logger, IHttpContextAccessor httpContextAccessor, IConfiguration configuration) : base(httpContextAccessor)
         {
             _coinService = coinService;
             _logger = logger;
+            _configuration = configuration;
         }
 
         public IActionResult Index()
         {
             return View();
+        }
+
+        public async Task<IActionResult> AddCoinsRequest(InsertCoinRequest obj)
+        {
+            ReturnType<bool> res = new ReturnType<bool>();
+            try
+            {
+                string wwwPath = _configuration["StoragePath:BasePath:Path"];
+                string contentPath = _configuration["StoragePath:BasePath:Path"];
+
+                if (!Directory.Exists(contentPath))
+                {
+                    Directory.CreateDirectory(contentPath);
+                }
+                string photoName = Path.GetFileName(obj.File.FileName);
+                using (FileStream stream = new FileStream(Path.Combine(contentPath, photoName), FileMode.Create))
+                {
+                    obj.File.CopyTo(stream);
+                }
+
+                return Json(res);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > AddCoinsRequest");
+            }
+            return Json(res);
+        }
+
+        public async Task<IActionResult> DeleteCoinsRequest(DeleteCoinRequest obj)
+        {
+            ReturnType<bool> res = new ReturnType<bool>();
+            try
+            {
+                obj.SessionUser = _sessionUser;
+                res = await _coinService.DeleteCoinsRequest(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > DeleteCoinsRequest");
+            }
+            return Json(res);
         }
 
         public async Task<IActionResult> AddCoins(InsertCoinDetails obj)

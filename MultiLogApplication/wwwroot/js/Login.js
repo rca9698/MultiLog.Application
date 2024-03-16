@@ -53,7 +53,10 @@ var LoginFormValidationSingleton = (function () {
             }
         }).on('core.form.valid', function () {
             debugger;
-            window.location.href = "/User/ViewPanel";
+
+            Login();
+
+           
 
         });
         return fv1;
@@ -147,11 +150,11 @@ var signupFormValidationSingleton = (function () {
 
 function Login() {
     var login = {}
-    login.UserName = $('#UserName');
-    login.Password = $('#Password');
+    login.UserNumber = $('#UserName').val();
+    login.Password = $('#Password').val();
     $.ajax({
         type: "Post",
-        url: "/LoginSignup/Signup",
+        url: "/LoginSignup/Login",
         data: login,
         success: function(){
             

@@ -7,12 +7,16 @@ using System.ComponentModel;
 
 namespace MultiLogApplication.Service
 {
-    public class LoginServices : BaseService, ILoginServices
+    public class LoginServices : ILoginServices
     {
         private readonly ILogger<LoginServices> _logger;
-        public LoginServices(HttpClient client, IConfiguration configuration, ILogger<LoginServices> logger, ITokenService tokenService) : base(client, configuration,tokenService)
+        private readonly HttpClient _client;
+        private readonly IConfiguration _configuration;
+        public LoginServices(HttpClient client, IConfiguration configuration, ILogger<LoginServices> logger, ITokenService tokenService)
         {
             _logger = logger;
+            _client = client;
+            _configuration = configuration;
         }
 
         public async Task<ReturnType<UserDetail>> LoginCred(LoginDetails details)

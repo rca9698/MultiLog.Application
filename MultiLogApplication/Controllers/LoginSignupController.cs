@@ -5,14 +5,18 @@ using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models.Common;
 using MultiLogApplication.Models.Common.LoginSignup;
 using System.Security.Claims;
+using System.Net;
+using System.Text;
+using System.Collections.Specialized;
+using System.Web;
 
 namespace MultiLogApplication.Controllers
 {
-    public class LoginSignupController : BaseController
+    public class LoginSignupController : Controller
     {
         private readonly ILoginServices _loginServices;
         private readonly ILogger<ILoginServices> _logger;
-        public LoginSignupController(ILoginServices loginServices, ILogger<ILoginServices> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+        public LoginSignupController(ILoginServices loginServices, ILogger<ILoginServices> logger, IHttpContextAccessor httpContextAccessor)
         {
             _loginServices = loginServices;
             _logger = logger;
@@ -21,6 +25,56 @@ namespace MultiLogApplication.Controllers
 
         public async Task<ReturnType<bool>> Login(LoginDetails details)
         {
+
+            Random rand = new Random();
+            string apikey = "NmM0NDc0Njc2YTU1NzQ0ZjU3NzA3NTY5NmEzNzQ2NjY=";
+            string numbers = "+919740859698";
+            var sentOtp = rand.Next(1000, 9999);
+            string senders = "KAPunter";
+
+
+
+            string message = "Your OTP is " + sentOtp + " Send by KAPunter team Kalburgi ";
+            string message1 = HttpUtility.UrlEncode(message);
+            using (var wb = new WebClient())
+            {
+                byte[] response = wb.UploadValues("https://api.textlocal.in/send/", new NameValueCollection() {
+            {
+                "apikey",
+                apikey
+            }, {
+                "numbers",
+                numbers
+            }, {
+                "message",
+                message1
+            }, {
+                "sender",
+                "TXTLCL"
+            }
+                });
+                string result = System.Text.Encoding.UTF8.GetString(response);
+
+            }
+
+           
+
+            String url = "https://api.textlocal.in/send/?apikey=" + apikey + "&numbers=" + numbers + "&message=" + sentOtp + "&sender=" + senders;
+
+            StreamWriter mywriter = null;
+            HttpWebRequest objrequest = (HttpWebRequest)WebRequest.Create(url);
+
+            objrequest.Method = "POST";
+            objrequest.ContentLength = Encoding.UTF8.GetByteCount(url);
+            objrequest.ContentType = "application/x-www-form-urlencoded";
+
+            mywriter = new StreamWriter(objrequest.GetRequestStream());
+            mywriter.Write(url);
+            mywriter.Close();
+
+
+
+
             ReturnType<bool> returnType = new ReturnType<bool>();
             try
             {
@@ -53,8 +107,8 @@ namespace MultiLogApplication.Controllers
                             IsPersistent = false //objLoginModel.RememberLogin
                         });
 
-                        HttpContext.Session.SetString("UserId",user.ReturnValue.UserId.ToString());
-                        HttpContext.Session.SetString("UserNumber",user.ReturnValue.MobileNumber);
+                        HttpContext.Session.SetString("UserId", user.ReturnValue.UserId.ToString());
+                        HttpContext.Session.SetString("UserNumber", user.ReturnValue.MobileNumber);
 
                         return returnType;
                     }
