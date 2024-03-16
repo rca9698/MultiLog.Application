@@ -33,7 +33,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at SiteController > Getsites");
             }
-            return Json(res);
+            return View(res);
         }
 
         public async Task<IActionResult> AddSite(AddSite obj)

@@ -1,0 +1,84 @@
+﻿@using MultiLogApplication.Models.Common
+@model ReturnType<MultiLogApplication.Models.Account.AccountDetail>
+
+
+
+<div class='dashboard-app'>
+    <header class='dashboard-toolbar'><a href="#!" class="menu-toggle"><i class="bi bi-list"></i></a></header>
+    <div class='dashboard-content'>
+        <div class="row mt-4">
+            <div class="col-6">
+                <h6 class="text-white">Account Request Listing</h6>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Account Requests</h5>
+                <!-- Table with hoverable rows -->
+                <table class="table table-hover" id="userList">
+                    <thead>
+                        <tr>
+                            <th scope="col">User Number</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Application</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach(var account in Model?.ReturnList){
+                            <tr>
+                                <th scope="row">@account.UserName</th>
+                                <td>@account.UserName</td>
+                                <td>@account.AppName @account.AppIcon</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" data-toggle="modal" data-target="#AddAccountDetails"> <i class="bi bi-person-fill-add"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#AddAccountDetails"> <i class="bi bi-person-fill-slash"></i> </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <!-- End Table with hoverable rows -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="AddAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Confirm Add Account</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>User Name</label>
+                        <input type="text" class="form-control" placeholder="User Name">
+                        <label>Password</label>
+                        <input type="password" class="form-control" placeholder="password">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="DesitCoins">Add Account Details</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+
+
+
+
+
+

@@ -19,6 +19,37 @@ namespace MultiLogApplication.Controllers
             return View();
         }
 
+        public async Task<IActionResult> AccountRequestList(GetAccounts obj)
+        {
+            ReturnType<AccountDetail> res = new ReturnType<AccountDetail>();
+            try
+            {
+                obj.SessionUser = _sessionUser;
+                obj.UserId = _sessionUser;
+                res = await _accountService.AccountRequestList(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at AccountController > AccountRequestList");
+            }
+            return View(res);
+        }
+
+        public async Task<IActionResult> AccountList(GetAccounts account)
+        {
+            ReturnType<AccountDetail> res = new ReturnType<AccountDetail>();
+            try
+            {
+                account.SessionUser = _sessionUser;
+                res = await _accountService.GetAccounts(account);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at AccountController > AccountList");
+            }
+            return View(res);
+        }
+
         public async Task<IActionResult> AddAccount(AddAccount account)
         {
             ReturnType<bool> res = new ReturnType<bool>();
@@ -64,19 +95,6 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-        public async Task<IActionResult> GetAccounts(GetAccounts account)
-        {
-            ReturnType<AccountDetail> res = new ReturnType<AccountDetail>();
-            try
-            {
-                account.SessionUser = _sessionUser;
-                res = await _accountService.GetAccounts(account);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Exception Occured at AccountController > GetAccounts");
-            }
-            return Json(res);
-        }
+        
     }
 }

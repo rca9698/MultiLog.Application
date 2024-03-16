@@ -92,10 +92,10 @@ namespace MultiLogApplication.Controllers
                         //A claim is a statement about a subject by an issuer and    
                         //represent attributes of the subject that are useful in the context of authentication and authorization operations.    
                         var claims = new List<Claim>() {
-                    new Claim(ClaimTypes.NameIdentifier, Convert.ToString(user.ReturnValue.UserId)),
-                        new Claim(ClaimTypes.Name, user.ReturnValue.FirstName + user.ReturnValue.LastName),
-                        new Claim(ClaimTypes.Role, user.ReturnValue.Role),
-                        new Claim("ContactNumber", user.ReturnValue.MobileNumber)
+                    new Claim(ClaimTypes.NameIdentifier, Convert.ToString(user.ReturnVal.UserId)),
+                        new Claim(ClaimTypes.Name, user.ReturnVal.FirstName + user.ReturnVal.LastName),
+                        new Claim(ClaimTypes.Role, user.ReturnVal.Role),
+                        new Claim("ContactNumber", user.ReturnVal.MobileNumber)
                 };
                         //Initialize a new instance of the ClaimsIdentity with the claims and authentication scheme    
                         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -107,8 +107,8 @@ namespace MultiLogApplication.Controllers
                             IsPersistent = false //objLoginModel.RememberLogin
                         });
 
-                        HttpContext.Session.SetString("UserId", user.ReturnValue.UserId.ToString());
-                        HttpContext.Session.SetString("UserNumber", user.ReturnValue.MobileNumber);
+                        HttpContext.Session.SetString("UserId", user.ReturnVal.UserId.ToString());
+                        HttpContext.Session.SetString("UserNumber", user.ReturnVal.MobileNumber);
 
                         return returnType;
                     }

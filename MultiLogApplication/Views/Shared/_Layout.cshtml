@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Sidebar 03</title>
@@ -18,7 +21,68 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <div class="main">
+                <div class='dashboard'>
+                    <div class="dashboard-nav">
+                        <header>
+                            <a href="" class="menu-toggle"><i class="bi bi-list"></i></a><a href="@Configuration["ApiConfigs:MultilogApp:Uri"]"
+                                                                                              class="brand-logo">
+                                <i class="fas fa-anchor"></i> <span>BRAND</span>
+                            </a>
+                        </header>
+                        <nav class="dashboard-nav-list">
+                            <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]" class="dashboard-nav-item active">
+                                <i class="bi bi-house"></i> dashboard
+                            </a>
+                            
+                            <div class='dashboard-nav-dropdown'>
+                                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                    <i class="bi bi-person"></i> Accounts
+                                </a>
+                                <div class='dashboard-nav-dropdown-menu'>
+                                    <a href="/Account/AccountRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-people"></i> Account Requests</a>
+                                    <a href="#" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
+                                       <a href="#" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
+                                </div>
+                            </div>
+
+                            <div class='dashboard-nav-dropdown'>
+                                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                    <i class="bi bi-cart"></i> Sites
+                                </a>
+                                <div class='dashboard-nav-dropdown-menu'>
+                                    <a href="/Site/Getsites" class="dashboard-nav-dropdown-item"><i class="bi bi-cart4"></i>Sites</a>
+                                    <a href="#" class="dashboard-nav-dropdown-item"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
+                                </div>
+                            </div>
+
+                            <div class='dashboard-nav-dropdown'>
+                                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                    <i class="bi bi-cash-coin"></i> Coin Requests
+                                </a>
+                                <div class='dashboard-nav-dropdown-menu'>
+                                    <a href="/Coin/GetDepositCoinsRequest" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Desposit Request</a>
+                                    <a href="/Coin/GetWithdrawCoinsRequest" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Withdraw Request</a>
+                                </div>
+                            </div>
+
+                            <div class='dashboard-nav-dropdown'>
+                                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                    <i class="bi bi-people"></i> Users
+                                </a>
+                                <div class='dashboard-nav-dropdown-menu'>
+                                    <a href="/User/GetUsers" class="dashboard-nav-dropdown-item"><i class="bi bi-people"> </i>List User</a>
+                                    <a href="#" class="dashboard-nav-dropdown-item"><i class="bi bi-person-add"></i>Add Users</a>
+                                </div>
+                            </div>                             
+                            <a href="#" class="dashboard-nav-item"><i class="bi bi-person"></i> Profile </a>
+                            <div class="nav-item-divider"></div>
+                            <a href="#" class="dashboard-nav-item"><i class="bi bi-person-fill-x"></i> Logout </a>
+                        </nav>
+                    </div>
             @RenderBody()
+                </div>
+            </div>
         </main>
     </div>
 
