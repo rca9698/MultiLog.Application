@@ -34,7 +34,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at UserController > Getsites");
             }
-            return View(res);
+            return View("~/Views/User/ViewPanel.cshtml", res);
         }
 
         public async Task<IActionResult> AddUser(AddUser obj)

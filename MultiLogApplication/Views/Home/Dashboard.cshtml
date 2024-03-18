@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card" data-toggle="modal" data-target="#DepositCoins">
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card" data-toggle="modal" data-target="#DepositCoinsRequestModal">
                 <div class="card" style="background: #222222;">
                     <div class="card-body">
                         <div class="row">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card" data-toggle="modal" data-target="#WithdrawCoins">
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card" data-toggle="modal" data-target="#WithdrawCoinsRequestModal">
                 <div class="card" style="background: #222222;">
                     <div class="card-body">
                         <div class="row">
@@ -222,67 +222,3 @@
         </div>
     </div>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="DepositCoins" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Deposit</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label>uname</label>
-                        <input type="text" class="form-control" placeholder="User Name">
-                        <label>upwd</label>
-                        <input type="password" class="form-control" placeholder="password">
-                    </div>
-                </form>
-                <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
-                    <div class="form-group">
-                        <div class="col-md-10">
-                            <input type="file" name="files" multiple />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="DesitCoins">Deposit</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="WithdrawCoins" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Withdraw</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label>uname</label>
-                        <input type="text" class="form-control" placeholder="User Name">
-                        <label>upwd</label>
-                        <input type="password" class="form-control" placeholder="password">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success">Login</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal-->

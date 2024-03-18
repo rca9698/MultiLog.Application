@@ -94,7 +94,6 @@ namespace MultiLogApplication.Controllers
                         var claims = new List<Claim>() {
                     new Claim(ClaimTypes.NameIdentifier, Convert.ToString(user.ReturnVal.UserId)),
                         new Claim(ClaimTypes.Name, user.ReturnVal.FirstName + user.ReturnVal.LastName),
-                        new Claim(ClaimTypes.Role, user.ReturnVal.Role),
                         new Claim("ContactNumber", user.ReturnVal.MobileNumber)
                 };
                         //Initialize a new instance of the ClaimsIdentity with the claims and authentication scheme    

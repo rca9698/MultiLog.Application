@@ -6,114 +6,39 @@
     <div class='dashboard-content'>
         <div class="row mt-4">
             <div class="col-6">
-                <h6 class="text-white">Approved Account Listing</h6>
+                <h6 class="text-white">Account Request Listing</h6>
             </div>
         </div>
 
         <div class="card mt-4">
             <div class="card-body">
-                <h5 class="card-title">Cricket</h5>
+                <h5 class="card-title">Account Requests</h5>
                 <!-- Table with hoverable rows -->
                 <table class="table table-hover" id="userList">
                     <thead>
                         <tr>
-                            <th scope="col">Timing</th>
-                            <th scope="col">Back</th>
-                            <th scope="col">Back</th>
-                            <th scope="col">Lay</th>
+                            <th scope="col">User Number</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Application</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Designer</td>
-                            <td>28</td>
-                            <td>2016-05-25</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Developer</td>
-                            <td>35</td>
-                            <td>2014-12-05</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Finance</td>
-                            <td>45</td>
-                            <td>2011-08-12</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>HR</td>
-                            <td>34</td>
-                            <td>2012-06-11</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Dynamic Division Officer Dynamic Division Officer</td>
-                            <td>47</td>
-                            <td>2011-04-19</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Designer</td>
-                            <td>28</td>
-                            <td>2016-05-25</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Developer</td>
-                            <td>35</td>
-                            <td>2014-12-05</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Finance</td>
-                            <td>45</td>
-                            <td>2011-08-12</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>HR</td>
-                            <td>34</td>
-                            <td>2012-06-11</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Dynamic Division Officer Dynamic Division Officer</td>
-                            <td>47</td>
-                            <td>2011-04-19</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Designer</td>
-                            <td>28</td>
-                            <td>2016-05-25</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Developer</td>
-                            <td>35</td>
-                            <td>2014-12-05</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Finance</td>
-                            <td>45</td>
-                            <td>2011-08-12</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>HR</td>
-                            <td>34</td>
-                            <td>2012-06-11</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Dynamic Division Officer Dynamic Division Officer</td>
-                            <td>47</td>
-                            <td>2011-04-19</td>
-                        </tr>
+
+                        @foreach (var account in Model?.ReturnList)
+                        {
+                            <tr>
+                                <th scope="row">@account.UserNumber</th>
+                                <td>@account.UserName</td>
+                                <td>@account.SiteName @account.SiteIcon</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" data-toggle="modal" data-target="#AddAccountDetails" data-userNumber=@account.UserNumber> <i class="bi bi-pencil-square"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#DeleteAccountRequest" data-userNumber=@account.UserNumber> <i class="bi bi-pencil-square"></i> </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
                 <!-- End Table with hoverable rows -->
@@ -122,8 +47,57 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="AddAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Confirm Add Coins</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
+                    <div class="form-group">
+                        <label>User Number and Name</label>
+                        <input type="text" class="form-control" id="userNumber" placeholder="User Name">
+                        <label>Password</label>
+                        <input type="password" class="form-control" placeholder="password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="AddAccountRequest">Add Coins</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
 
+<!-- Modal -->
+<div class="modal fade" id="AddAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Delete Account</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Are you sure, want to delete Account?</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="DeleteAccountRequest">Delete Account Request</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
 
 
 

@@ -37,7 +37,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at CoinController > GetDepositCoinsRequest");
             }
-            return View(res);
+            return View("~/Views/Coin/DepositCoinsRequests.cshtml", res);
         }
 
         public async Task<IActionResult> GetWithdrawCoinsRequest(ListCoinModel obj)
@@ -53,7 +53,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at CoinController > GetWithdrawCoinsRequest");
             }
-            return View(res);
+            return View("~/Views/Coin/WithdrawCoinsRequests.cshtml", res);
         }
 
         public async Task<IActionResult> GetTransaction(ListCoinModel obj)
@@ -68,7 +68,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at CoinController > GetTransaction");
             }
-            return Json(res);
+            return View(res);
         }
 
         public async Task<IActionResult> AddCoinsRequest(InsertCoinRequest obj)
@@ -142,8 +142,5 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
-        
-
     }
 }

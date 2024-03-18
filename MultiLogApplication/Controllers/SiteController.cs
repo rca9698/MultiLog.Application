@@ -10,10 +10,12 @@ namespace MultiLogApplication.Controllers
     {
         private readonly ISiteService _siteService;
         private readonly ILogger<SiteController> _logger;
-        public SiteController(ISiteService siteService, ILogger<SiteController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+        private readonly IConfiguration _configuration;
+        public SiteController(ISiteService siteService, ILogger<SiteController> logger, IHttpContextAccessor httpContextAccessor, IConfiguration configuration) : base(httpContextAccessor)
         {
             _siteService = siteService;
             _logger = logger;
+            _configuration = configuration;
         }
 
         public IActionResult Index()
@@ -33,7 +35,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at SiteController > Getsites");
             }
-            return View(res);
+            return View("~/Views/Site/ListSites.cshtml", res);
         }
 
         public async Task<IActionResult> AddSite(AddSite obj)
@@ -41,12 +43,30 @@ namespace MultiLogApplication.Controllers
             ReturnType<bool> res = new ReturnType<bool>();
             try
             {
+                string wwwPath = _configuration["StoragePath:BasePath:Path"];
+                string contentPath = _configuration["StoragePath:SiteIcon:Path"];
+                string fileName = Guid.NewGuid().ToString();
+                if (!Directory.Exists(wwwPath + contentPath))
+                {
+                    Directory.CreateDirectory(wwwPath+contentPath);
+                }
+                var extenstion = obj.File.FileName.Split(".").LastOrDefault();
+                string docName = wwwPath + contentPath + "\\" + Path.GetFileName(fileName + "." + extenstion);
+                using (FileStream stream = new FileStream(Path.Combine(wwwPath,contentPath, docName), FileMode.Create))
+                {
+                    obj.File.CopyTo(stream);
+                }
+
                 obj.SessionUser = _sessionUser;
+                obj.ImageName = obj.File.FileName;
+                obj.DocumentDetailId = fileName;
+                obj.FileExtenstion = extenstion;
+                obj.ImageSize = obj.File.Length.ToString();
                 res = await _siteService.AddSite(obj);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Exception Occured at SiteController > AddSite");
+                _logger.LogError(ex, "Exception Occured at CoinController > AddCoinsRequest");
             }
             return Json(res);
         }

@@ -12,12 +12,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+
     <link href="~/css/style.css" rel="stylesheet" />
 </head>
 <body>
     <header>
-        
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -26,7 +25,7 @@
                     <div class="dashboard-nav">
                         <header>
                             <a href="" class="menu-toggle"><i class="bi bi-list"></i></a><a href="@Configuration["ApiConfigs:MultilogApp:Uri"]"
-                                                                                              class="brand-logo">
+                                                                                            class="brand-logo">
                                 <i class="fas fa-anchor"></i> <span>BRAND</span>
                             </a>
                         </header>
@@ -34,15 +33,15 @@
                             <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]" class="dashboard-nav-item active">
                                 <i class="bi bi-house"></i> dashboard
                             </a>
-                            
+
                             <div class='dashboard-nav-dropdown'>
-                                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                                     <i class="bi bi-person"></i> Accounts
                                 </a>
                                 <div class='dashboard-nav-dropdown-menu'>
                                     <a href="/Account/AccountRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-people"></i> Account Requests</a>
-                                    <a href="#" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
-                                       <a href="#" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
+                                    <a href="/Account/AccountList" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
+                                    <a href="/Account/RejectedRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
                                 </div>
                             </div>
 
@@ -52,7 +51,7 @@
                                 </a>
                                 <div class='dashboard-nav-dropdown-menu'>
                                     <a href="/Site/Getsites" class="dashboard-nav-dropdown-item"><i class="bi bi-cart4"></i>Sites</a>
-                                    <a href="#" class="dashboard-nav-dropdown-item"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
+                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddSitesModal"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
                                 </div>
                             </div>
 
@@ -61,8 +60,10 @@
                                     <i class="bi bi-cash-coin"></i> Coin Requests
                                 </a>
                                 <div class='dashboard-nav-dropdown-menu'>
-                                    <a href="/Coin/GetDepositCoinsRequest" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Desposit Request</a>
-                                    <a href="/Coin/GetWithdrawCoinsRequest" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Withdraw Request</a>
+                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#DepositCoinsRequestModal"><i class="bi bi-cash-coin"></i>Desposit Request</a>
+                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#WithdrawCoinsRequestModal"><i class="bi bi-cash-coin"></i>Withdraw Request</a>
+                                    <a href="/Coin/GetDepositCoinsRequest" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Desposit Requests</a>
+                                    <a href="/Coin/GetWithdrawCoinsRequest" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Withdraw Requests</a>
                                 </div>
                             </div>
 
@@ -74,13 +75,112 @@
                                     <a href="/User/GetUsers" class="dashboard-nav-dropdown-item"><i class="bi bi-people"> </i>List User</a>
                                     <a href="#" class="dashboard-nav-dropdown-item"><i class="bi bi-person-add"></i>Add Users</a>
                                 </div>
-                            </div>                             
+                            </div>
                             <a href="#" class="dashboard-nav-item"><i class="bi bi-person"></i> Profile </a>
                             <div class="nav-item-divider"></div>
                             <a href="#" class="dashboard-nav-item"><i class="bi bi-person-fill-x"></i> Logout </a>
                         </nav>
                     </div>
-            @RenderBody()
+                    @RenderBody()
+
+                    <!-- Deposit Coins Request Modal -->
+                    <div class="modal fade" id="DepositCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Deposit</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>uname</label>
+                                            <input type="text" class="form-control" placeholder="User Name">
+                                            <label>upwd</label>
+                                            <input type="password" class="form-control" placeholder="password">
+                                        </div>
+                                        <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
+                                            <div class="form-group">
+                                                <div class="col-md-10">
+                                                    <input type="file" name="files" multiple />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" id="DesitCoins">Deposit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Deposit Coins Request Modal -->
+                    <!-- Withdraw Coins Request Modal -->
+                    <div class="modal fade" id="WithdrawCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Withdraw</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>uname</label>
+                                            <input type="text" class="form-control" placeholder="User Name">
+                                            <label>upwd</label>
+                                            <input type="password" class="form-control" placeholder="password">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success">Login</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Withdraw Coins Request Modal-->
+                    <!-- Add sites Modal -->
+                    <div class="modal fade" id="AddSitesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="AddSiteModal">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Site</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Site Name</label>
+                                            <input id="siteName" name="siteName" type="text" class="form-control" placeholder="Site Name">
+                                            <label>Site URL</label>
+                                            <input id="siteURL" name="siteURL" type="text" class="form-control" placeholder="Site URL">
+                                            <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <input type="file" name="files" id="files" />  @*multiple*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Add Site</button>
+                                        <button type="reset" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Withdraw Coins Modal-->
+
                 </div>
             </div>
         </main>
@@ -91,14 +191,18 @@
             &copy; 2024 - MultiLogApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    
+
     <script src="~/js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="~/formvalidationio/js/formvalidation.min.js"></script>
     <script src="~/formvalidationio/js/plugins/bootstrap3.js"></script>
     <script src="~/js/popper.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/main.js"></script>
-    <script src="~/js/login.js"></script>
+    <script src="~/js/userlisting.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/js/accounts/accountlist.js"></script>
+    <script src="~/js/accounts/accountrequestlist.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

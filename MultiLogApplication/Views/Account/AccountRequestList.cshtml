@@ -27,15 +27,16 @@
                     </thead>
                     <tbody>
 
-                        @foreach(var account in Model?.ReturnList){
+                        @foreach (var account in Model?.ReturnList)
+                        {
                             <tr>
                                 <th scope="row">@account.UserName</th>
                                 <td>@account.UserName</td>
-                                <td>@account.AppName @account.AppIcon</td>
+                                <td>@account.SiteName @account.SiteIcon</td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" data-toggle="modal" data-target="#AddAccountDetails"> <i class="bi bi-person-fill-add"></i> </button>
-                                        <button type="button" data-toggle="modal" data-target="#AddAccountDetails"> <i class="bi bi-person-fill-slash"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#AddAccountDetails" data-userId="@account.UserId" data-siteId="@account.SiteId" id="AddAccontRequest"> <i class="bi bi-pencil-square"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#DeleteAccountRequest" data-userId="@account.UserId" data-siteId="@account.SiteId" id="DeleteAccountRequestList"> <i class="bi bi-trash-fill"></i> </button>
                                     </div>
                                 </td>
                             </tr>
@@ -52,33 +53,53 @@
 <div class="modal fade" id="AddAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Confirm Add Account</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Confirm Add Account</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
                     <div class="form-group">
                         <label>User Name</label>
-                        <input type="text" class="form-control" placeholder="User Name">
+                        <input id="UserName" type="text" class="form-control" placeholder="User Name">
                         <label>Password</label>
-                        <input type="password" class="form-control" placeholder="password">
+                        <input id="Password" type="password" class="form-control" placeholder="password">
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="DesitCoins">Add Account Details</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="AddAccountRequest">Add Account Details</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 <!-- Modal -->
 
-
-
-
+<!-- Modal -->
+<div class="modal fade" id="DeleteAccountRequest" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Delete Account Request</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Are you sure, want to delete Account Request?</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="DeleteAccountRequest">Delete Account Request</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
 
 
 

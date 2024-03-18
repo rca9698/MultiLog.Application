@@ -41,6 +41,7 @@ namespace MultiLogApplication.Controllers
             try
             {
                 account.SessionUser = _sessionUser;
+                account.UserId = _sessionUser;
                 res = await _accountService.GetAccounts(account);
             }
             catch (Exception ex)
