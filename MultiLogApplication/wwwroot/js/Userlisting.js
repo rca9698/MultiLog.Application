@@ -1,19 +1,23 @@
-﻿$(document).on('click', '#depositeCoinsBtn', function () {
-    AddCoinsFormValidationSingleton.getInstance();
+﻿$(document).on('click', '#deleteUserBtn', function () {
+    $('#DeleteUserNumber').html($(this).attr('data-Number'));
+    $('#DeleteUserNumber').attr('UserId', ($(this).attr('data-Number')));
 });
 
-$(document).on('click', '#withdrawCoinsBtn', function () {
-    $('withdrawUserId').val($(this).attr('data-Number'));
-    WithdrawCoinsFormValidationSingleton.getInstance();
+$(document).on('click', '#DeleteUserButton', function () {
+    DeleteUser($('#DeleteUserNumber').attr('userid'));
 });
 
-var AddCoinsFormfv;
-var fv1;
-var AddCoinsFormValidationSingleton = (function () {
+$(document).on('click', '#LayoutAddUserBtn', function () {
+    UserCreationFormValidationSingleton.getInstance();
+});
+
+var UserCreationFormfv;
+var fv3;
+var UserCreationFormValidationSingleton = (function () {
     function createInstance() {
 
-        let form = document.getElementById('DepositCoinsForm');
-        fv1 = FormValidation.formValidation(form, {
+        let form = document.getElementById('AddUserModalForm');
+        fv3 = FormValidation.formValidation(form, {
             fields: {
                 userNumber: {
                     validators: {
@@ -41,29 +45,32 @@ var AddCoinsFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
-            DepositCoins();
+            AddUser();
         });
-        return fv1;
+        return fv3;
     }
     return {
         getInstance: function () {
-            if (AddCoinsFormfv) {
-                AddCoinsFormfv.destroy();
+            if (UserCreationFormfv) {
+                UserCreationFormfv.destroy();
             }
-            AddCoinsFormfv = createInstance();
-            return AddCoinsFormfv;
+            UserCreationFormfv = createInstance();
+            return UserCreationFormfv;
         }
     };
 })();
 
-function DepositCoins() {
+function AddUser() {
     var obj = {
-        UserId: $('#DepositUserId').val(),
-        Coins: $('#DepositCoins').val()
+        FirstName: $('#AddUserModalForm #FName').val(),
+        LastName: $('#AddUserModalForm #LName').val(),
+        MobileNumber: $('#AddUserModalForm #MNumber').val(),
+        Password: $('#AddUserModalForm #UPassword').val(),
+        EmailId: ""
     }
 
     $.ajax({
-        url: '/Coin/AddCoins',
+        url: '/User/AddUser',
         type: 'POST',
         data: obj,
         success: function (result) {
@@ -74,63 +81,13 @@ function DepositCoins() {
     });
 }
 
-var WithdrawCoinsFormfv;
-var fv2;
-var WithdrawCoinsFormValidationSingleton = (function () {
-    function createInstance() {
-
-        let form = document.getElementById('WithdrawCoinsForm');
-        fv2 = FormValidation.formValidation(form, {
-            fields: {
-                    userNumber: {
-                        validators: {
-                            notEmpty: {
-                                message: 'User Number is required'
-                            }
-                        }
-                    },
-                    coins: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Coins Details are required'
-                            }
-                        }
-                    }
-            },
-            plugins: {
-                trigger: new FormValidation.plugins.Trigger(),
-                bootstrap3: new FormValidation.plugins.Bootstrap3(),
-                submitButton: new FormValidation.plugins.SubmitButton(),
-                icon: new FormValidation.plugins.Icon({
-                    valid: 'fas fa-check',
-                    invalid: 'fa fa-times',
-                    validating: 'fa fa-refresh'
-                }),
-            }
-        }).on('core.form.valid', function () {
-            WithdrawCoins();
-        });
-        return fv2;
-    }
-    return {
-        getInstance: function () {
-            if (WithdrawCoinsFormfv) {
-                WithdrawCoinsFormfv.destroy();
-            }
-            WithdrawCoinsFormfv = createInstance();
-            return WithdrawCoinsFormfv;
-        }
-    };
-})();
-
-function WithdrawCoins() {
+function DeleteUser(id) {
     var obj = {
-        UserId: $('#DepositUserId').val(),
-        Coins: $('#DepositCoins').val()
+        UserId: id
     }
 
     $.ajax({
-        url: '/Coin/DeleteCoins',
+        url: '/User/DeleteUser',
         type: 'POST',
         data: obj,
         success: function (result) {
@@ -140,4 +97,3 @@ function WithdrawCoins() {
         }
     });
 }
-

@@ -11,7 +11,7 @@
         </div>
 
         <div class="card mt-4">
-            <div class="card-body">
+            <div class="card-body customtable">
                 <h5 class="card-title">Web Sites</h5>
                 <!-- Table with hoverable rows -->
                 <table class="table table-hover" id="userList">
@@ -27,14 +27,14 @@
 
                         @foreach (var account in Model?.ReturnList)
                         {
-                            <tr>
-                                <th scope="row">@account.SiteName</th>
+                            <tr id="site_@account.SiteId">
+                                <td scope="row">@account.SiteName</td>
                                 <td>@account.SiteURL</td>
                                 <td>@account.SiteImg </td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" data-toggle="modal" data-target="#UpdateSiteDetails"> <i class="bi bi-pencil-square"></i> </button>
-                                        <button type="button" data-toggle="modal" data-target="#DeleteSiteDetails"> <i class="bi bi-trash-fill"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#UpdateSiteModal" id="updateSite" data-siteId="@account.SiteId"> <i class="bi bi-pencil-square"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#DeleteSiteModal" id="deleteSite" data-siteId="@account.SiteId"> <i class="bi bi-trash-fill"></i> </button>
                                     </div>
                                 </td>
                             </tr>
@@ -47,36 +47,43 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="UpdateSiteDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Update sites Modal -->
+<div class="modal fade" id="UpdateSiteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Confirm Add Account</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
+            <form id="UpdateSiteModalForm">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Update Site</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
                     <div class="form-group">
-                        <label>User Name</label>
-                        <input type="text" class="form-control" placeholder="User Name">
-                        <label>Password</label>
-                        <input type="password" class="form-control" placeholder="password">
+                        <label>Site Name</label>
+                        <input id="siteName" name="siteName" type="text" class="form-control" placeholder="Site Name">
+                        <label>Site URL</label>
+                        <input id="siteURL" name="siteURL" type="text" class="form-control" placeholder="Site URL">
+                        <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input type="file" name="files" id="files" />  @*multiple*@
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="DesitCoins">Add Account Details</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Add Site</button>
+                    <button type="reset" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-<!-- Modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="DeleteSiteDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Update sites Modal-->
+<!-- Delete sites Modal -->
+<div class="modal fade" id="DeleteSiteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -93,9 +100,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="DesitCoins">Delete Site</button>
+                <button type="button" class="btn btn-success" id="DeleteSitebtn">Delete Site</button>
             </div>
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!-- Delete sites Modal -->

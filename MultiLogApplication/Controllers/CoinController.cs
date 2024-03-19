@@ -24,9 +24,9 @@ namespace MultiLogApplication.Controllers
             return View();
         }
 
-        public async Task<IActionResult> GetDepositCoinsRequest(ListCoinModel obj)
+        public async Task<IActionResult> GetDepositCoinsRequest(DepositWithdrawCoinsRequest obj)
         {
-            ReturnType<CoinDetails> res = new ReturnType<CoinDetails>();
+            ReturnType<CoinsRequestModel> res = new ReturnType<CoinsRequestModel>();
             try
             {
                 obj.SessionUser = _sessionUser;
@@ -40,9 +40,9 @@ namespace MultiLogApplication.Controllers
             return View("~/Views/Coin/DepositCoinsRequests.cshtml", res);
         }
 
-        public async Task<IActionResult> GetWithdrawCoinsRequest(ListCoinModel obj)
+        public async Task<IActionResult> GetWithdrawCoinsRequest(DepositWithdrawCoinsRequest obj)
         {
-            ReturnType<CoinDetails> res = new ReturnType<CoinDetails>();
+            ReturnType<CoinsRequestModel> res = new ReturnType<CoinsRequestModel>();
             try
             {
                 obj.SessionUser = _sessionUser;

@@ -51,7 +51,7 @@
                                 </a>
                                 <div class='dashboard-nav-dropdown-menu'>
                                     <a href="/Site/Getsites" class="dashboard-nav-dropdown-item"><i class="bi bi-cart4"></i>Sites</a>
-                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddSitesModal"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
+                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddSitesModal" id="AddSitesModalbtn"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
                                 </div>
                             </div>
 
@@ -73,7 +73,7 @@
                                 </a>
                                 <div class='dashboard-nav-dropdown-menu'>
                                     <a href="/User/GetUsers" class="dashboard-nav-dropdown-item"><i class="bi bi-people"> </i>List User</a>
-                                    <a href="#" class="dashboard-nav-dropdown-item"><i class="bi bi-person-add"></i>Add Users</a>
+                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddUserModal" id="LayoutAddUserBtn"><i class="bi bi-person-add"></i>Add Users</a>
                                 </div>
                             </div>
                             <a href="#" class="dashboard-nav-item"><i class="bi bi-person"></i> Profile </a>
@@ -87,7 +87,7 @@
                     <div class="modal fade" id="DepositCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form>
+                                <form id="DepositCoinsRequestModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Deposit</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -117,11 +117,12 @@
                         </div>
                     </div>
                     <!-- Deposit Coins Request Modal -->
+
                     <!-- Withdraw Coins Request Modal -->
                     <div class="modal fade" id="WithdrawCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form>
+                                <form id="WithdrawCoinsRequestModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Withdraw</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -145,11 +146,12 @@
                         </div>
                     </div>
                     <!-- Withdraw Coins Request Modal-->
+
                     <!-- Add sites Modal -->
                     <div class="modal fade" id="AddSitesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form id="AddSiteModal">
+                                <form id="AddSiteModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Site</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -179,7 +181,97 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Add sites Modal-->
+
+                    <!-- Add user Modal -->
+                    <div class="modal fade" id="AddUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="AddUserModalForm">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Add User</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>First Name</label>
+                                            <input id="FName" name="FName" type="text" class="form-control" placeholder="First Name">
+                                            <label>Last Name</label>
+                                            <input id="LName" name="LName" type="text" class="form-control" placeholder="Last Name">
+                                            <label>Mobile Number</label>
+                                            <input id="MNumber" name="MNumber" type="text" class="form-control" placeholder="Mobile Number">
+                                            <label>Password</label>
+                                            <input id="UPassword" name="UPassword" type="text" class="form-control" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Add User</button>
+                                        <button type="reset" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add user Modal-->
+                   
+                    <!-- Deposit Coins Modal -->
+                    <div class="modal fade" id="DepositCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="DepositCoinsForm">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Deposit</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>User Number</label>
+                                            <input type="text" id="UserId" name="userNumber" class="form-control" placeholder="User Number">
+                                            <label>Coins</label>
+                                            <input type="text" id="Coins" name="coins" class="form-control" placeholder="Coins">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Deposit Coins</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Deposit Coins Modal -->
+
+                    <!-- Withdraw Coins Modal -->
+                    <div class="modal fade" id="WithdrawCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="WithdrawCoinsForm">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Withdraw</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>User Number</label>
+                                            <input type="text" id="UserId" name="userNumber" class="form-control" placeholder="User Number">
+                                            <label>Coins</label>
+                                            <input type="text" id="Coins" name="coins" class="form-control" placeholder="Coins">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Withdraw Coins</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Withdraw Coins Modal-->
+
 
                 </div>
             </div>
@@ -200,6 +292,7 @@
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/main.js"></script>
     <script src="~/js/userlisting.js"></script>
+    <script src="~/js/coins/coins.js"></script>
     <script src="~/js/site.js"></script>
     <script src="~/js/accounts/accountlist.js"></script>
     <script src="~/js/accounts/accountrequestlist.js"></script>
