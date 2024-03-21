@@ -1,39 +1,43 @@
-﻿const loginText = document.querySelector(".title-text .login");
-const loginForm = document.querySelector("form.login");
-const loginBtn = document.querySelector("label.login");
-const signupBtn = document.querySelector("label.signup");
-const signupLink = document.querySelector("form .signup-link a");
-signupBtn.onclick = (() => {
-    loginForm.style.marginLeft = "-50%";
-    loginText.style.marginLeft = "-50%";
-});
+﻿//const loginText = document.querySelector(".title-text .login");
+//const loginForm = document.querySelector("form.login");
+//const loginBtn = document.querySelector("label.login");
+//const signupBtn = document.querySelector("label.signup");
+//const signupLink = document.querySelector("form .signup-link a");
+//signupBtn.onclick = (() => {
+//    loginForm.style.marginLeft = "-50%";
+//    loginText.style.marginLeft = "-50%";
+//});
 
-loginBtn.onclick = (() => {
-    loginForm.style.marginLeft = "0%";
-    loginText.style.marginLeft = "0%";
-});
+//loginBtn.onclick = (() => {
+//    loginForm.style.marginLeft = "0%";
+//    loginText.style.marginLeft = "0%";
+//});
 
-$(document).ready(function () {
+//$(document).ready(function () {
+//    LoginFormValidationSingleton.getInstance();
+//    signupFormValidationSingleton.getInstance();
+//})
+
+$(document).on('click', '#loginbtn', function () {
     LoginFormValidationSingleton.getInstance();
-    signupFormValidationSingleton.getInstance();
-})
+});
 
 var LoginFormfv;
 var fv1;
 var LoginFormValidationSingleton = (function () {
     function createInstance() {
 
-        let form = document.getElementById('loginwithCred');
+        let form = document.getElementById('LoginModalForm');
         fv1 = FormValidation.formValidation(form, {
             fields: {
-                UserName: {
+                userNumber: {
                     validators: {
                         notEmpty: {
-                            message: 'User Name required'
+                            message: 'User Number required'
                         }
                     }
                 },
-                Password: {
+                password: {
                     validators: {
                         notEmpty: {
                             message: 'Password is required'
@@ -52,12 +56,7 @@ var LoginFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
-            debugger;
-
             Login();
-
-           
-
         });
         return fv1;
     }
@@ -150,16 +149,16 @@ var signupFormValidationSingleton = (function () {
 
 function Login() {
     var login = {}
-    login.UserNumber = $('#UserName').val();
-    login.Password = $('#Password').val();
+    login.UserNumber = $('#LoginModalForm #userNumber').val();
+    login.Password = $('#LoginModalForm #password').val();
     $.ajax({
         type: "Post",
         url: "/LoginSignup/Login",
         data: login,
-        success: function(){
+        success: function () {
             
         },
-        error: function(){
+        error: function () {
 
         }
     });

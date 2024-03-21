@@ -26,7 +26,7 @@
                         <header>
                             <a href="" class="menu-toggle"><i class="bi bi-list"></i></a><a href="@Configuration["ApiConfigs:MultilogApp:Uri"]"
                                                                                             class="brand-logo">
-                                <i class="fas fa-anchor"></i> <span>BRAND</span>
+                                <i class="fas fa-anchor"></i> <span>KA Puntetrs</span>
                             </a>
                         </header>
                         <nav class="dashboard-nav-list">
@@ -34,17 +34,20 @@
                             <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]" class="dashboard-nav-item active">
                                 <i class="bi bi-house"></i> dashboard
                             </a>
-
-                            <div class='dashboard-nav-dropdown'>
-                                <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                    <i class="bi bi-person"></i> Accounts
-                                </a>
-                                <div class='dashboard-nav-dropdown-menu'>
-                                    <a href="/Account/AccountRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-people"></i> Account Requests</a>
-                                    <a href="/Account/AccountList" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
-                                    <a href="/Account/RejectedRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
+                            @if (User.Claims.Any(x => x.Type.Equals("Admin")))
+                            {
+                                <div class='dashboard-nav-dropdown'>
+                                    <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                        <i class="bi bi-person"></i> Accounts
+                                    </a>
+                                    <div class='dashboard-nav-dropdown-menu'>
+                                        <a href="/Account/AccountRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-people"></i> Account Requests</a>
+                                        <a href="/Account/AccountList" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
+                                        <a href="/Account/RejectedRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
+                                    </div>
                                 </div>
-                            </div>
+
+                            }
 
                             <div class='dashboard-nav-dropdown'>
                                 <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
@@ -110,7 +113,7 @@
                                         <a href="#">Demo ID</a>
                                     </li>
                                     <li>
-                                        <button _ngcontent-serverapp-c49="" data-cy="guidesNavLink" routerlink="/auth/login" class="btn btn-primary mb-3 mb-lg-0" tabindex="0">Log In</button>
+                                        <button data-toggle="modal" data-target="#LoginModal" class="btn btn-primary mb-3 mb-lg-0" tabindex="0" id="loginbtn">Log In</button>
                                     </li>
                                 </ul>
                             </div>
@@ -119,6 +122,69 @@
                         @RenderBody()
 
                     </div>
+
+                    <!-- Login Modal -->
+                    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content container">
+                                <div class="row justify-content-center">
+                                    <div class="">
+                                        <div class="card">
+
+                                            <div class="card-header py-4 text-center bg-primary">
+                                                <a href="index.html">
+                                                    <span><img src="assets/images/logo.png" alt="logo" height="22"></span>
+                                                </a>
+                                            </div>
+                                            <form id="LoginModalForm">
+                                                <div class="card-body p-4 form-group">
+
+                                                    <div class="text-center w-75 m-auto">
+                                                        <h4 class="text-dark-50 text-center pb-0 fw-bold">Sign In</h4>
+                                                        <p class="text-muted mb-4">Enter your Credentials!</p>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="userNumber" class="form-label">User Number</label>
+                                                        <input class="form-control" type="number" id="userNumber" name="userNumber" required="" placeholder="User Number">
+                                                    </div>
+
+                                                    <div class="mb-3">
+
+                                                        <label for="password" class="form-label">Password</label>
+                                                        <div class="input-group input-group-merge">
+                                                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
+                                                            <div class="input-group-text" data-password="false">
+                                                                <span class="password-eye"></span>
+                                                            </div>
+                                                        </div>
+                                                        <a href="#" class="text-muted float-end"><small>Forgot your password?</small></a>
+                                                    </div>
+
+                                                    <div class="mb-3 mb-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" checked="">
+                                                            <label class="form-check-label" for="checkbox-signin">Remember me</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-3 mb-0 text-center">
+                                                        <button class="btn btn-primary" type="submit"> Log In </button>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-12 text-center">
+                                                <p class="text-muted">Don't have an account? <a href="#" class="text-muted ms-1"><b>Sign Up</b></a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Login Modal -->
                     <!-- Deposit Coins Request Modal -->
                     <div class="modal fade" id="DepositCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -322,6 +388,7 @@
     <script src="~/js/popper.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/main.js"></script>
+    <script src="~/js/login.js"></script>
     <script src="~/js/userlisting.js"></script>
     <script src="~/js/coins/coins.js"></script>
     <script src="~/js/site.js"></script>

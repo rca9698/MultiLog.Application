@@ -26,51 +26,47 @@ namespace MultiLogApplication.Controllers
         public async Task<ReturnType<bool>> Login(LoginDetails details)
         {
 
-            Random rand = new Random();
-            string apikey = "NmM0NDc0Njc2YTU1NzQ0ZjU3NzA3NTY5NmEzNzQ2NjY=";
-            string numbers = "+919740859698";
-            var sentOtp = rand.Next(1000, 9999);
-            string senders = "KAPunter";
+            //Random rand = new Random();
+            //string apikey = "NmM0NDc0Njc2YTU1NzQ0ZjU3NzA3NTY5NmEzNzQ2NjY=";
+            //string numbers = "+919740859698";
+            //var sentOtp = rand.Next(1000, 9999);
+            //string senders = "KAPunter";
 
+            //string message = "Your OTP is " + sentOtp + " Send by KAPunter team Kalburgi ";
+            //string message1 = HttpUtility.UrlEncode(message);
+            //using (var wb = new WebClient())
+            //{
+            //    byte[] response = wb.UploadValues("https://api.textlocal.in/send/", new NameValueCollection() {
+            //{
+            //    "apikey",
+            //    apikey
+            //}, {
+            //    "numbers",
+            //    numbers
+            //}, {
+            //    "message",
+            //    message1
+            //}, {
+            //    "sender",
+            //    "TXTLCL"
+            //}
+            //    });
+            //    string result = System.Text.Encoding.UTF8.GetString(response);
 
+            //}
 
-            string message = "Your OTP is " + sentOtp + " Send by KAPunter team Kalburgi ";
-            string message1 = HttpUtility.UrlEncode(message);
-            using (var wb = new WebClient())
-            {
-                byte[] response = wb.UploadValues("https://api.textlocal.in/send/", new NameValueCollection() {
-            {
-                "apikey",
-                apikey
-            }, {
-                "numbers",
-                numbers
-            }, {
-                "message",
-                message1
-            }, {
-                "sender",
-                "TXTLCL"
-            }
-                });
-                string result = System.Text.Encoding.UTF8.GetString(response);
+            //String url = "https://api.textlocal.in/send/?apikey=" + apikey + "&numbers=" + numbers + "&message=" + sentOtp + "&sender=" + senders;
 
-            }
+            //StreamWriter mywriter = null;
+            //HttpWebRequest objrequest = (HttpWebRequest)WebRequest.Create(url);
 
-           
+            //objrequest.Method = "POST";
+            //objrequest.ContentLength = Encoding.UTF8.GetByteCount(url);
+            //objrequest.ContentType = "application/x-www-form-urlencoded";
 
-            String url = "https://api.textlocal.in/send/?apikey=" + apikey + "&numbers=" + numbers + "&message=" + sentOtp + "&sender=" + senders;
-
-            StreamWriter mywriter = null;
-            HttpWebRequest objrequest = (HttpWebRequest)WebRequest.Create(url);
-
-            objrequest.Method = "POST";
-            objrequest.ContentLength = Encoding.UTF8.GetByteCount(url);
-            objrequest.ContentType = "application/x-www-form-urlencoded";
-
-            mywriter = new StreamWriter(objrequest.GetRequestStream());
-            mywriter.Write(url);
-            mywriter.Close();
+            //mywriter = new StreamWriter(objrequest.GetRequestStream());
+            //mywriter.Write(url);
+            //mywriter.Close();
 
 
 
@@ -94,7 +90,8 @@ namespace MultiLogApplication.Controllers
                         var claims = new List<Claim>() {
                     new Claim(ClaimTypes.NameIdentifier, Convert.ToString(user.ReturnVal.UserId)),
                         new Claim(ClaimTypes.Name, user.ReturnVal.FirstName + user.ReturnVal.LastName),
-                        new Claim("ContactNumber", user.ReturnVal.MobileNumber)
+                        new Claim("ContactNumber", user.ReturnVal.MobileNumber),
+                        new Claim("Admin", user.ReturnVal.MobileNumber)
                 };
                         //Initialize a new instance of the ClaimsIdentity with the claims and authentication scheme    
                         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -113,6 +110,7 @@ namespace MultiLogApplication.Controllers
                     }
                 }
             }
+            
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Exception Occured at LoginSignupController > Login");
