@@ -22,6 +22,11 @@ namespace MultiLogApplication.Controllers
             return View();
         }
 
+        public async Task<IActionResult> ViewPanel()
+        {
+            return View("~/Views/Notification/ViewPanel.cshtml");
+        }
+
         public async Task<IActionResult> InsertNotification(InsertNotification obj)
         {
             ReturnType<bool> res = new ReturnType<bool>();

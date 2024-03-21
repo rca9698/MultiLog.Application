@@ -30,6 +30,7 @@
                             </a>
                         </header>
                         <nav class="dashboard-nav-list">
+                            <a href="#" class="dashboard-nav-item"><i class="bi bi-person"></i> Profile </a>
                             <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]" class="dashboard-nav-item active">
                                 <i class="bi bi-house"></i> dashboard
                             </a>
@@ -76,13 +77,48 @@
                                     <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddUserModal" id="LayoutAddUserBtn"><i class="bi bi-person-add"></i>Add Users</a>
                                 </div>
                             </div>
-                            <a href="#" class="dashboard-nav-item"><i class="bi bi-person"></i> Profile </a>
+                            <a href="#" class="dashboard-nav-item"><i class="bi bi-gear-fill"></i> Settings </a>
                             <div class="nav-item-divider"></div>
-                            <a href="#" class="dashboard-nav-item"><i class="bi bi-person-fill-x"></i> Logout </a>
+                            <a href="#" class="dashboard-nav-item"><i class="bi bi-box-arrow-right"></i> Logout </a>
+                            <a href="#" class="dashboard-nav-item"><i class="bi bi-box-arrow-right"></i> Login with Demo ID </a>
                         </nav>
-                    </div>
-                    @RenderBody()
 
+                        <div class="nav-item-divider"></div>
+                        <a href="#" class="dashboard-nav-item"><i class="bi bi-cloud-arrow-down-fill"></i> Download App </a>
+                        <div class="social-icons-btn ms-5">
+                            <a class="icons twitter" href="#">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                            <a class="icons facebook" href="#">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                            <a class="icons instagram" href="#">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a class="icons linkedin" href="#">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class='dashboard-app'>
+                        <header class='dashboard-toolbar'>
+                            <a href="#!" class="menu-toggle"><i class="bi bi-list"></i></a>
+                            <div class="cricket-navigation">
+                                <ul class="nav navbar-right">
+                                    <li style="padding-top: 14px; padding-right: 30px;">
+                                        <a href="#">Demo ID</a>
+                                    </li>
+                                    <li>
+                                        <button _ngcontent-serverapp-c49="" data-cy="guidesNavLink" routerlink="/auth/login" class="btn btn-primary mb-3 mb-lg-0" tabindex="0">Log In</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </header>
+
+                        @RenderBody()
+
+                    </div>
                     <!-- Deposit Coins Request Modal -->
                     <div class="modal fade" id="DepositCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -117,7 +153,6 @@
                         </div>
                     </div>
                     <!-- Deposit Coins Request Modal -->
-
                     <!-- Withdraw Coins Request Modal -->
                     <div class="modal fade" id="WithdrawCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -146,7 +181,6 @@
                         </div>
                     </div>
                     <!-- Withdraw Coins Request Modal-->
-
                     <!-- Add sites Modal -->
                     <div class="modal fade" id="AddSitesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -182,7 +216,6 @@
                         </div>
                     </div>
                     <!-- Add sites Modal-->
-
                     <!-- Add user Modal -->
                     <div class="modal fade" id="AddUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -215,7 +248,6 @@
                         </div>
                     </div>
                     <!-- Add user Modal-->
-                   
                     <!-- Deposit Coins Modal -->
                     <div class="modal fade" id="DepositCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -243,7 +275,6 @@
                         </div>
                     </div>
                     <!-- Deposit Coins Modal -->
-
                     <!-- Withdraw Coins Modal -->
                     <div class="modal fade" id="WithdrawCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">

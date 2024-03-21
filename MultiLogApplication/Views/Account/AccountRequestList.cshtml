@@ -1,10 +1,6 @@
 ﻿@using MultiLogApplication.Models.Common
 @model ReturnType<MultiLogApplication.Models.Account.AccountDetail>
 
-
-
-<div class='dashboard-app'>
-    <header class='dashboard-toolbar'><a href="#!" class="menu-toggle"><i class="bi bi-list"></i></a></header>
     <div class='dashboard-content'>
         <div class="row mt-4">
             <div class="col-6">
@@ -26,28 +22,29 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        @foreach (var account in Model?.ReturnList)
-                        {
-                            <tr>
-                                <th scope="row">@account.UserName</th>
-                                <td>@account.UserName</td>
-                                <td>@account.SiteName @account.SiteIcon</td>
-                                <td>
-                                    <div class="btn-group">
-                                        <button type="button" data-toggle="modal" data-target="#AddAccountDetails" data-userId="@account.UserId" data-siteId="@account.SiteId" id="AddAccontRequest"> <i class="bi bi-pencil-square"></i> </button>
-                                        <button type="button" data-toggle="modal" data-target="#DeleteAccountRequest" data-userId="@account.UserId" data-siteId="@account.SiteId" id="DeleteAccountRequestList"> <i class="bi bi-trash-fill"></i> </button>
-                                    </div>
-                                </td>
-                            </tr>
+                        @if (Model !=null && Model.ReturnList!=null){
+                            @foreach (var account in Model.ReturnList)
+                            {
+                                <tr>
+                                    <th scope="row">@account.UserName</th>
+                                    <td>@account.UserName</td>
+                                    <td>@account.SiteName @account.SiteIcon</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" data-toggle="modal" data-target="#AddAccountDetails" data-userId="@account.UserId" data-siteId="@account.SiteId" id="AddAccontRequest"> <i class="bi bi-pencil-square"></i> </button>
+                                            <button type="button" data-toggle="modal" data-target="#DeleteAccountRequest" data-userId="@account.UserId" data-siteId="@account.SiteId" id="DeleteAccountRequestList"> <i class="bi bi-trash-fill"></i> </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
                         }
+                        
                     </tbody>
                 </table>
                 <!-- End Table with hoverable rows -->
             </div>
         </div>
     </div>
-</div>
 
 <!-- Modal -->
 <div class="modal fade" id="AddAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,18 +1,17 @@
 ﻿@using MultiLogApplication.Models.Common
 @model ReturnType<MultiLogApplication.Models.Account.AccountDetail>
 
-<div class='dashboard-app'>
-    <header class='dashboard-toolbar'><a href="#!" class="menu-toggle"><i class="bi bi-list"></i></a></header>
+
     <div class='dashboard-content'>
         <div class="row mt-4">
             <div class="col-6">
-                <h6 class="text-white">Account Request Listing</h6>
+                <h6 class="text-white">Account Listing</h6>
             </div>
         </div>
 
         <div class="card mt-4">
             <div class="card-body customtable">
-                <h5 class="card-title">Account Requests</h5>
+                <h5 class="card-title">Accounts</h5>
                 <!-- Table with hoverable rows -->
                 <table class="table table-hover" id="userList">
                     <thead>
@@ -24,8 +23,8 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        @foreach (var account in Model?.ReturnList)
+                        @if (Model !=null && Model.ReturnList!=null){
+                        @foreach (var account in Model.ReturnList)
                         {
                             <tr>
                                 <th scope="row">@account.UserNumber</th>
@@ -39,13 +38,14 @@
                                 </td>
                             </tr>
                         }
+                        }
                     </tbody>
                 </table>
                 <!-- End Table with hoverable rows -->
             </div>
         </div>
     </div>
-</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="AddAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

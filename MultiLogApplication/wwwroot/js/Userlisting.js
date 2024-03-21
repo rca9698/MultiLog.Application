@@ -19,17 +19,31 @@ var UserCreationFormValidationSingleton = (function () {
         let form = document.getElementById('AddUserModalForm');
         fv3 = FormValidation.formValidation(form, {
             fields: {
-                userNumber: {
+                FName: {
                     validators: {
                         notEmpty: {
-                            message: 'User Number is required'
+                            message: 'First Name is required'
                         }
                     }
                 },
-                coins: {
+                LName: {
                     validators: {
                         notEmpty: {
-                            message: 'Coins Details are required'
+                            message: 'Last Name is required'
+                        }
+                    }
+                },
+                MNumber: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Mobile Number is required'
+                        }
+                    }
+                },
+                UPassword: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Password is required'
                         }
                     }
                 }
@@ -75,6 +89,7 @@ function AddUser() {
         data: obj,
         success: function (result) {
             if (result.returnStatus == 1) {
+                $('#AddUserModal').modal('hide');
                 alert(result.returnMessage);
             }
         }
