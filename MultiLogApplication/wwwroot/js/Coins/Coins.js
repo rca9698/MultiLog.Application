@@ -1,13 +1,36 @@
-﻿$(document).on('click', '#depositeCoinsBtn', function () {
-    $('#DepositUserId').val($(this).attr('data-Number'));
-    $('#DepositUserId').attr('UserId', ($(this).attr('data-Number')));
+﻿$(document).ready(function () {
+    if ($('#ListCoinsDetail').length) {
+        if ($('#ListCoinsDetail').attr('ViewType') == 'Deposite') {
+            GetDepositCoinsRequest();
+        }
+        else if ($('#ListCoinsDetail').attr('ViewType') == 'Withdraw') {
+            GetWithdrawCoinsRequest();
+        }
+        else {
+            LoadCoinsHistory();
+        }
+    }
+});
+
+$(document).on('click', '.PaymentModeTypes', function () {
+    var id = $(this).data('id');
+    $(id + 'Detail').show();
+});
+
+$(document).on('click', '#depositeCoinsBtn', function () {
+    $('#DepositCoinsForm #userNumber').val($(this).attr('data-Number'));
+    $('#DepositCoinsForm').attr('UserId', ($(this).attr('data-UserId')));
     AddCoinsFormValidationSingleton.getInstance();
 });
 
 $(document).on('click', '#withdrawCoinsBtn', function () {
-    $('#withdrawUserId').val($(this).attr('data-Number'));
-    $('#withdrawUserId').attr('UserId', ($(this).attr('data-Number')));
+    $('#WithdrawCoinsForm #userNumber').val($(this).attr('data-Number'));
+    $('#WithdrawCoinsForm').attr('UserId', ($(this).attr('data-UserId')));
     WithdrawCoinsFormValidationSingleton.getInstance();
+});
+
+$(document).on('click', '#DepositCoinsRequestModalBtn', function () {
+    AddCoinsRequestFormValidationSingleton.getInstance();
 });
 
 var AddCoinsFormfv;
@@ -61,7 +84,7 @@ var AddCoinsFormValidationSingleton = (function () {
 
 function DepositCoins() {
     var obj = {
-        UserId: $('#DepositCoinsForm #UserId').attr('userid'),
+        UserId: $('#DepositCoinsForm').attr('userId'),
         Coins: $('#DepositCoinsForm #Coins').val()
     }
 
@@ -71,7 +94,8 @@ function DepositCoins() {
         data: obj,
         success: function (result) {
             if (result.returnStatus == 1) {
-                alert(result.returnMessage);
+                toastr.success(result.returnMessage);
+                $('#DepositCoinsModal .close').trigger('click');
             }
         }
     });
@@ -129,7 +153,7 @@ var WithdrawCoinsFormValidationSingleton = (function () {
 
 function WithdrawCoins() {
     var obj = {
-        UserId: $('#WithdrawCoinsForm #UserId').attr('userid'),
+        UserId: $('#WithdrawCoinsForm').attr('userId'),
         Coins: $('#WithdrawCoinsForm #Coins').val()
     }
 
@@ -139,11 +163,77 @@ function WithdrawCoins() {
         data: obj,
         success: function (result) {
             if (result.returnStatus == 1) {
-                alert(result.returnMessage);
+                toastr.success(result.returnMessage);
+                $('#WithdrawCoinsModal .close').trigger('click');
             }
         }
     });
 }
+
+function GetDepositCoinsRequest() {
+    $.ajax({
+        url: '/Coin/GetDepositCoinsRequest',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#ListCoinsDetail').html(result);
+        }
+    });
+}
+
+function GetWithdrawCoinsRequest() {
+    $.ajax({
+        url: '/Coin/GetWithdrawCoinsRequest',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#ListCoinsDetail').html(result);
+        }
+    });
+}
+
+var AddCoinsRequestFormfv;
+var fv3;
+var AddCoinsRequestFormValidationSingleton = (function () {
+    function createInstance() {
+
+        let form = document.getElementById('DepositCoinsRequestModalForm');
+        fv1 = FormValidation.formValidation(form, {
+            fields: {
+                coins: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Coins Details are required'
+                        }
+                    }
+                }
+            },
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                bootstrap3: new FormValidation.plugins.Bootstrap3(),
+                submitButton: new FormValidation.plugins.SubmitButton(),
+                icon: new FormValidation.plugins.Icon({
+                    valid: 'fas fa-check',
+                    invalid: 'fa fa-times',
+                    validating: 'fa fa-refresh'
+                }),
+            }
+        }).on('core.form.valid', function () {
+            $('#PaymentModesModal').modal('show');
+        });
+        return fv3;
+    }
+    return {
+        getInstance: function () {
+            if (AddCoinsRequestFormfv) {
+                AddCoinsRequestFormfv.destroy();
+            }
+            AddCoinsRequestFormfv = createInstance();
+            return AddCoinsRequestFormfv;
+        }
+    };
+})();
+
 
 
 

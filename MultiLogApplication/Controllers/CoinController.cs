@@ -19,9 +19,9 @@ namespace MultiLogApplication.Controllers
             _configuration = configuration;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string viewType)
         {
-            return View();
+            return View("/Views/Coin/Index.cshtml", viewType);
         }
 
         public async Task<IActionResult> GetDepositCoinsRequest(DepositWithdrawCoinsRequest obj)
@@ -37,7 +37,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at CoinController > GetDepositCoinsRequest");
             }
-            return View("~/Views/Coin/DepositCoinsRequests.cshtml", res);
+            return PartialView("~/Views/Coin/DepositCoinsRequests.cshtml", res);
         }
 
         public async Task<IActionResult> GetWithdrawCoinsRequest(DepositWithdrawCoinsRequest obj)
@@ -53,12 +53,12 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at CoinController > GetWithdrawCoinsRequest");
             }
-            return View("~/Views/Coin/WithdrawCoinsRequests.cshtml", res);
+            return PartialView("~/Views/Coin/WithdrawCoinsRequests.cshtml", res);
         }
 
         public async Task<IActionResult> GetTransaction(ListCoinModel obj)
         {
-            ReturnType<CoinDetails> res = new ReturnType<CoinDetails>();
+            ReturnType<CoinsRequestModel> res = new ReturnType<CoinsRequestModel>();
             try
             {
                 obj.SessionUser = _sessionUser;
@@ -68,7 +68,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at CoinController > GetTransaction");
             }
-            return View(res);
+            return PartialView("~/Views/Coin/CoinsHistory.cshtml", res);
         }
 
         public async Task<IActionResult> AddCoinsRequest(InsertCoinRequest obj)

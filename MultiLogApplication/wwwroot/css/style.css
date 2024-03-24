@@ -647,3 +647,32 @@ body {
 	color: #351b90 !important;
 	font-weight: bold;
 }
+
+.DepositeCoinClass{
+	background-color:green;
+}
+
+.WithdrawCoinClass {
+	background-color: red;
+}
+
+.tableHeaderClass {
+	background-color: #01010a;
+	color: white;
+}
+
+.modal .close {
+	width: 30px;
+	border: none;
+	background: transparent;
+	font-size: 25px;
+}
+
+#BankTrDetail, #PhonePeDetail {
+	background-color: #04040c;
+}
+
+	#BankTrDetail div, #PhonePeDetail div {
+		color: white;
+	}
+

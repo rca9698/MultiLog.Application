@@ -5,6 +5,7 @@
         public long CoinsRequestId { get; set; }
         public int UserId { get; set; }
         public long Coins { get; set; }
+        public long TotalCoins { get; set; }
         public int CoinType { get; set; }
         public string UserNumber { get; set; }
         public string UserName { get; set; }

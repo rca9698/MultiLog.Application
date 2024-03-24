@@ -35,7 +35,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at SiteController > Getsites");
             }
-            return View("~/Views/Site/ListSites.cshtml", res);
+            return PartialView("~/Views/Site/ListSites.cshtml", res);
         }
 
         public async Task<IActionResult> AddSite(AddSite obj)

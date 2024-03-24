@@ -1,14 +1,29 @@
-﻿$(document).on('click', '#AddSitesModalbtn', function () {
+﻿
+
+$(document).ready(function () {
+    if ($('#listSites').length)
+    {
+        LoadSites();
+    }
+});
+
+$(document).on('click', '#AddSitesModalbtn', function () {
     AddSiteFormValidationSingleton.getInstance();
 });
 
 $(document).on('click', '#updateSite', function () {
-    $('#UpdateSiteModal').attr('data-siteId', $(this).attr('data-siteId'));
+    let siteId = $(this).attr('data-siteId');
+    let Name = $('#site_' + siteId + ' .siteName').html();
+    let URL = $('#site_' + siteId + ' .siteURL').html();
+    $('#UpdateSiteModal').attr('data-siteId', siteId);
+    $('#UpdateSiteModalForm #siteName').val(Name);
+    $('#UpdateSiteModalForm #siteURL').val(URL);
     UpdateSiteFormValidationSingleton.getInstance();
 });
 
 $(document).on('click', '#deleteSite', function () {
-    $('#DeleteSiteModal').attr('data-siteId', $(this).attr('data-siteId'));
+    let siteId = $(this).attr('data-siteId');
+    $('#DeleteSitebtn').attr('data-siteId', siteId);
 });
 
 $(document).on('click', '#DeleteSitebtn', function () {
@@ -70,7 +85,7 @@ var fv2;
 var UpdateSiteFormValidationSingleton = (function () {
     function createInstance() {
 
-        let form = document.getElementById('AddSiteModalForm');
+        let form = document.getElementById('UpdateSiteModalForm');
         fv2 = FormValidation.formValidation(form, {
             fields: {
                 siteName: {
@@ -114,7 +129,6 @@ var UpdateSiteFormValidationSingleton = (function () {
     };
 })();
 
-
 function AddSite() {
 
     var formData = new FormData();
@@ -130,7 +144,8 @@ function AddSite() {
         processData: false, // Not to process data
         success: function (result) {
             if (result.returnStatus == 1) {
-                alert(result.returnMessage);
+                toastr.success(result.returnMessage);
+                $('#AddSitesModal .close').trigger('click');
             }
         }
     });
@@ -152,7 +167,8 @@ function UpdateSite() {
         processData: false, // Not to process data
         success: function (result) {
             if (result.returnStatus == 1) {
-                alert(result.returnMessage);
+                toastr.success(result.returnMessage);
+                $('#UpdateSiteModal .close').trigger('click');
             }
         }
     });
@@ -168,11 +184,20 @@ function DeleteSite(id) {
         data: obj,
         success: function (result) {
             if (result.returnStatus == 1) {
-                alert(result.returnMessage);
+                toastr.success(result.returnMessage);
+                $('#DeleteSiteModal .close').trigger('click');
             }
         }
     });
 }
 
-
-
+function LoadSites() {
+    $.ajax({
+        url: '/Site/Getsites',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#listSites').html(result);
+        }
+    });
+}

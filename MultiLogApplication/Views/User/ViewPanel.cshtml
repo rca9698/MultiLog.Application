@@ -2,7 +2,6 @@
 @model ReturnType<MultiLogApplication.Models.User.UserDetail>
 
 
-<div class='dashboard-content'>
     <div class="row mt-4">
         <div class="col-6">
             <h6 class="text-white">User Listing</h6>
@@ -15,7 +14,7 @@
             <!-- Table with hoverable rows -->
             <table class="table table-hover" id="userList">
                 <thead>
-                    <tr>
+                <tr class="tableHeaderClass">
                         <th scope="col">User Number</th>
                         <th scope="col">User Name</th>
                         <th scope="col">UpdatedBy</th>
@@ -36,6 +35,7 @@
                                         <button type="button" data-toggle="modal" data-target="#DeleteUserModal" data-userId=@user.UserId data-Number="@user.MobileNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
                                         <button type="button" data-toggle="modal" data-target="#DepositCoinsModal" data-userId=@user.UserId data-Number="@user.MobileNumber" id="depositeCoinsBtn"> <i class="bi bi-person-fill-up"></i></button>
                                         <button type="button" data-toggle="modal" data-target="#WithdrawCoinsModal" data-userId=@user.UserId data-Number="@user.MobileNumber" id="withdrawCoinsBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                    <button type="button" data-userId=@user.UserId data-Number="@user.MobileNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
                                     </div>
                                 </td>
                             </tr>
@@ -46,27 +46,4 @@
             <!-- End Table with hoverable rows -->
         </div>
     </div>
-</div>
 
-<!-- Delete Coins Modal -->
-<div class="modal fade" id="DeleteUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Delete</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Are you sure you want to delete User (<span id="DeleteUserNumber"></span>)!</label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success" id="DeleteUserButton">Delete User</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Delete Coins Modal -->

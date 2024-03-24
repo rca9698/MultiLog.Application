@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sidebar 03</title>
+    <title>KA Punter</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -54,7 +54,7 @@
                                     <i class="bi bi-cart"></i> Sites
                                 </a>
                                 <div class='dashboard-nav-dropdown-menu'>
-                                    <a href="/Site/Getsites" class="dashboard-nav-dropdown-item"><i class="bi bi-cart4"></i>Sites</a>
+                                    <a href="/Site/Index" class="dashboard-nav-dropdown-item"><i class="bi bi-cart4"></i>Sites</a>
                                     <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddSitesModal" id="AddSitesModalbtn"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
                                 </div>
                             </div>
@@ -64,10 +64,10 @@
                                     <i class="bi bi-cash-coin"></i> Coin Requests
                                 </a>
                                 <div class='dashboard-nav-dropdown-menu'>
-                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#DepositCoinsRequestModal"><i class="bi bi-cash-coin"></i>Desposit Request</a>
+                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn"><i class="bi bi-cash-coin"></i>Desposit Request</a>
                                     <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#WithdrawCoinsRequestModal"><i class="bi bi-cash-coin"></i>Withdraw Request</a>
-                                    <a href="/Coin/GetDepositCoinsRequest" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Desposit Requests</a>
-                                    <a href="/Coin/GetWithdrawCoinsRequest" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Withdraw Requests</a>
+                                    <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Desposit Requests</a>
+                                    <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Withdraw Requests</a>
                                 </div>
                             </div>
 
@@ -76,7 +76,7 @@
                                     <i class="bi bi-people"></i> Users
                                 </a>
                                 <div class='dashboard-nav-dropdown-menu'>
-                                    <a href="/User/GetUsers" class="dashboard-nav-dropdown-item"><i class="bi bi-people"> </i>List User</a>
+                                    <a href="/User/Index" class="dashboard-nav-dropdown-item"><i class="bi bi-people"> </i>List User</a>
                                     <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddUserModal" id="LayoutAddUserBtn"><i class="bi bi-person-add"></i>Add Users</a>
                                 </div>
                             </div>
@@ -190,30 +190,110 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <form id="DepositCoinsRequestModalForm">
-                                    <div class="modal-header">
+                                    <div class="modal-header text-center col-12">
                                         <h4 class="modal-title" id="exampleModalLabel">Deposit</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <button type="button" class="close col-4" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="form-group">
-                                            <label>uname</label>
-                                            <input type="text" class="form-control" placeholder="User Name">
-                                            <label>upwd</label>
-                                            <input type="password" class="form-control" placeholder="password">
-                                        </div>
-                                        <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
-                                            <div class="form-group">
-                                                <div class="col-md-10">
-                                                    <input type="file" name="files" multiple />
-                                                </div>
+                                        <div class="form-group col-12">
+                                            <div class="d-flex flex-column text-center col-12">
+                                                <span class="business">WALLET BALANCE</span>
+                                                <span class="plan"><i class="bi bi-currency-rupee"></i>32</span>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Deposite Coins*</label>
+                                            <input type="text" name="coins" id="coins" class="form-control" placeholder="Enter Coins">
+                                            <span>*Minimum deposite amount is 100 coins</span>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="modal-footer col-12">
+                                        <button type="submit" class="btn btn-success col-12" id="DesitCoins">Deposit Coins</button>
                                     </div>
                                 </form>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-success" id="DesitCoins">Deposit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="PaymentModesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div id="PaymentModeList">
+                                    <div class="nav-item-divider"></div>
+                                    <div class="col-12" style="background-color: #191928;">
+                                        <button type="button" class="btn col-12 PaymentModeTypes" id="QRCode" style="color: white;">QR Code</button>
+                                    </div>
+                                    <div class="nav-item-divider"></div>
+                                    <div class="col-12" style="background-color: #191928;">
+                                        <button type="button" class="btn col-12 PaymentModeTypes" id="BankTr" style="color: white;">Bank Transfer</button>
+                                    </div>
+                                    <div class="nav-item-divider"></div>
+                                    <div class="col-12" style="background-color: #191928;">
+                                        <button type="button" class="btn col-12 PaymentModeTypes" id="PhonePe" style="color: white;">Phone Pe</button>
+                                    </div>
+                                    <div class="nav-item-divider"></div>
+                                </div>
+                                <div class="nav-item-divider"></div>
+                                <div class="PaymentModeTypes" id="QRCodeDetail">
+                                    <div class="d-flex flex-column text-center col-12">
+                                        <img src="~/images/banner_ipl.png"/>
+                                    </div>
+                                </div>
+                                <div class="nav-item-divider"></div>
+                                <div class="PaymentModeTypes" id="BankTrDetail">
+                                    <div class="d-flex flex-column col-12">
+                                        <div class="row col-12">
+                                            <div class="col-5"> Bank Name </div>
+                                            <div class="col-5"> Sate Bankn of India </div>
+                                            <div class="col-2"> <i class="bi bi-copy"></i>Copy </div>
+                                        </div>
+                                        <div class="row col-12">
+                                            <div class="col-5"> Account Holder Name </div>
+                                            <div class="col-5"> Vikas </div>
+                                            <div class="col-2"> <i class="bi bi-copy"></i>Copy </div>
+                                        </div>
+                                        <div class="row col-12">
+                                            <div class="col-5"> Account Number </div>
+                                            <div class="col-5"> 98765432 </div>
+                                            <div class="col-2"> <i class="bi bi-copy"></i>Copy </div>
+                                        </div>
+                                        <div class="row col-12">
+                                            <div class="col-5"> IFSC Code </div>
+                                            <div class="col-5"> SBIN2934587 </div>
+                                            <div class="col-2"> <i class="bi bi-copy"></i>Copy </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-item-divider"></div>
+                                <div class="PaymentModeTypes" id="PhonePeDetail">
+                                     <div class="d-flex flex-column col-12">
+                                        <div class="row col-12">
+                                            <div class="col-5"> Display Name </div>
+                                            <div class="col-5"> UPI Details </div>
+                                            <div class="col-2"> <i class="bi bi-copy"></i>Copy </div>
+                                        </div>
+                                        <div class="row col-12">
+                                            <div class="col-5"> Name </div>
+                                            <div class="col-5"> asfs@axl </div>
+                                            <div class="col-2"> <i class="bi bi-copy"></i>Copy </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-item-divider"></div>
+                                <div class="PaymentModeTypes" method="post" enctype="multipart/form-data" style="margin-top: 10px">
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            <input type="file" name="files" multiple />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-item-divider"></div>
+                                <div class="modal-footer col-12">
+                                    <button type="button" class="btn btn-success col-12" id="DesitCoins">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -328,7 +408,7 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>User Number</label>
-                                            <input type="text" id="UserId" name="userNumber" class="form-control" placeholder="User Number">
+                                            <input type="text" id="userNumber" name="userNumber" class="form-control" placeholder="User Number">
                                             <label>Coins</label>
                                             <input type="text" id="Coins" name="coins" class="form-control" placeholder="Coins">
                                         </div>
@@ -355,7 +435,7 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>User Number</label>
-                                            <input type="text" id="UserId" name="userNumber" class="form-control" placeholder="User Number">
+                                            <input type="text" id="userNumber" name="userNumber" class="form-control" placeholder="User Number">
                                             <label>Coins</label>
                                             <input type="text" id="Coins" name="coins" class="form-control" placeholder="Coins">
                                         </div>
@@ -383,6 +463,8 @@
 
     <script src="~/js/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     <script src="~/formvalidationio/js/formvalidation.min.js"></script>
     <script src="~/formvalidationio/js/plugins/bootstrap3.js"></script>
     <script src="~/js/popper.js"></script>

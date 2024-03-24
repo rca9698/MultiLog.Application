@@ -15,10 +15,10 @@ namespace MultiLogApplication.Service
             _logger = logger;
         }
 
-        public async Task<ReturnType<CoinDetails>> GetTransaction(ListCoinModel details)
+        public async Task<ReturnType<CoinsRequestModel>> GetTransaction(ListCoinModel details)
         {
             var response = await _client.PostAsJsonAsync($"api/Coin/GetTransaction", details);
-            return await response.ReadContentAs<ReturnType<CoinDetails>>();
+            return await response.ReadContentAs<ReturnType<CoinsRequestModel>>();
         }
 
         public async Task<ReturnType<CoinsRequestModel>> GetCoinsRequest(DepositWithdrawCoinsRequest details)

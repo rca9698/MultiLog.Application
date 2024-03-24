@@ -34,7 +34,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at UserController > Getsites");
             }
-            return View("~/Views/User/ViewPanel.cshtml", res);
+            return PartialView("~/Views/User/ViewPanel.cshtml", res);
         }
 
         public async Task<IActionResult> AddUser(AddUser obj)
@@ -43,6 +43,7 @@ namespace MultiLogApplication.Controllers
             try
             {
                 obj.SessionUser = _sessionUser;
+                obj.EmailId = string.IsNullOrEmpty(obj.EmailId) ? "" : obj.EmailId;
                 res = await _userService.AddUser(obj);
             }
             catch (Exception ex)

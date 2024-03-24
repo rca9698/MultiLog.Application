@@ -1,6 +1,13 @@
-﻿$(document).on('click', '#deleteUserBtn', function () {
+﻿
+$(document).ready(function () {
+    if ($('#listUsers').length) {
+        LoadUsers();
+    }
+});
+ 
+$(document).on('click', '#deleteUserBtn', function () {
     $('#DeleteUserNumber').html($(this).attr('data-Number'));
-    $('#DeleteUserNumber').attr('UserId', ($(this).attr('data-Number')));
+    $('#DeleteUserNumber').attr('UserId', ($(this).attr('data-UserId')));
 });
 
 $(document).on('click', '#DeleteUserButton', function () {
@@ -9,6 +16,14 @@ $(document).on('click', '#DeleteUserButton', function () {
 
 $(document).on('click', '#LayoutAddUserBtn', function () {
     UserCreationFormValidationSingleton.getInstance();
+});
+
+$(document).on('click', '#ListCoinsBtn', function () {
+    var obj = {
+        UserId: $(this).attr('data-userId'),
+        UserNumber: $(this).attr('data-Number')
+    }
+    LoadCoinsHistory(obj);
 });
 
 var UserCreationFormfv;
@@ -89,8 +104,8 @@ function AddUser() {
         data: obj,
         success: function (result) {
             if (result.returnStatus == 1) {
-                $('#AddUserModal').modal('hide');
-                alert(result.returnMessage);
+                toastr.success(result.returnMessage);
+                $('#AddUserModal .close').trigger('click');
             }
         }
     });
@@ -107,8 +122,33 @@ function DeleteUser(id) {
         data: obj,
         success: function (result) {
             if (result.returnStatus == 1) {
-                alert(result.returnMessage);
+                toastr.success(result.returnMessage);
+                $('#AddUserModal .close').trigger('click');
             }
+        }
+    });
+}
+
+function LoadUsers() {
+    $.ajax({
+        url: '/User/GetUsers',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#listUsers').html(result);
+        }
+    });
+}
+
+function LoadCoinsHistory(obj) {
+
+    $.ajax({
+        url: '/Coin/GetTransaction',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            $('#listUsers').html(result);
+            $('#listUsers #coinHistoryUserid').html(obj.UserNumber)
         }
     });
 }

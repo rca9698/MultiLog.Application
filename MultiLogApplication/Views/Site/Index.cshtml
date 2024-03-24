@@ -1,5 +1,61 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
+<div class='dashboard-content' id="listSites">
+</div>
+
+<!-- Update sites Modal -->
+<div class="modal fade" id="UpdateSiteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="UpdateSiteModalForm">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Update Site</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Site Name</label>
+                        <input id="siteName" name="siteName" type="text" class="form-control" placeholder="Site Name">
+                        <label>Site URL</label>
+                        <input id="siteURL" name="siteURL" type="text" class="form-control" placeholder="Site URL">
+                        <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input type="file" name="files" id="files" />  @*multiple*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Update Site</button>
+                    <button type="reset" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Update sites Modal-->
+<!-- Delete sites Modal -->
+<div class="modal fade" id="DeleteSiteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Confirm Delete Site!</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <h5>Are you sure you want Delete Site Name?</h5>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="DeleteSitebtn">Delete Site</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Delete sites Modal -->
