@@ -39,3 +39,13 @@ $(document).ready(function () {
         }
     });
 });
+
+$(document).on('click', '.CopyToClipboard', function () {
+    var copyText = $(this).attr('data-value');
+
+    var tempTextarea = $('<textarea>');
+    $('body').append(tempTextarea);
+    tempTextarea.val(copyText).select();
+    document.execCommand('copy');
+    tempTextarea.remove();
+});

@@ -676,3 +676,13 @@ body {
 		color: white;
 	}
 
+.nav-item-divider-small {
+	height: 1px;
+	overflow: hidden;
+	background-color: rgba(236, 238, 239, 0.3);
+}
+
+
+.CopyToClipboard {
+	cursor: pointer;
+}

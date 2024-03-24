@@ -13,8 +13,16 @@
 });
 
 $(document).on('click', '.PaymentModeTypes', function () {
-    var id = $(this).data('id');
-    $(id + 'Detail').show();
+    $('#PaymentModeList').hide();
+    $('.PaymentModeTypesDetail').hide();
+    $('.PaymentModeTypesDetailList').show();
+    $('#proofUpload').show();
+    var id = $(this).attr('id');
+    $('#' + id + 'Detail').show();
+});
+
+$(document).on('click', '#closePaymentModesModal', function () {
+    $('#PaymentModesModal').modal('hide');
 });
 
 $(document).on('click', '#depositeCoinsBtn', function () {
@@ -31,6 +39,27 @@ $(document).on('click', '#withdrawCoinsBtn', function () {
 
 $(document).on('click', '#DepositCoinsRequestModalBtn', function () {
     AddCoinsRequestFormValidationSingleton.getInstance();
+});
+
+$(document).on('click', '#DesitCoins', function () {
+
+    var formData = new FormData();
+    formData.append("Coins", $('#DepositCoinsRequestModal #coins').val());
+    formData.append("File", $("#PaymentModesModal #files")[0].files[0]);
+
+    $.ajax({
+        url: '/Coin/AddCoinsRequest',
+        type: 'POST',
+        data: formData,
+        contentType: false, // Not to set any content header  
+        processData: false, // Not to process data
+        success: function (result) {
+            if (result.returnStatus == 1) {
+                toastr.success(result.returnMessage);
+                $('#closePaymentModesModal').trigger('click');
+            }
+        }
+    });
 });
 
 var AddCoinsFormfv;
@@ -198,7 +227,7 @@ var AddCoinsRequestFormValidationSingleton = (function () {
     function createInstance() {
 
         let form = document.getElementById('DepositCoinsRequestModalForm');
-        fv1 = FormValidation.formValidation(form, {
+        fv3 = FormValidation.formValidation(form, {
             fields: {
                 coins: {
                     validators: {
@@ -219,7 +248,11 @@ var AddCoinsRequestFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            $('#depositAmount').html($('#DepositCoinsRequestModalForm #coins').val());
+            $('#PaymentModeList').show()
             $('#PaymentModesModal').modal('show');
+            $('.PaymentModeTypesDetailList').hide();
+            $('#DepositCoinsRequestModal .close').trigger('click');
         });
         return fv3;
     }

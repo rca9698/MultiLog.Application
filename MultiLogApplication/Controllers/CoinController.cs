@@ -77,19 +77,26 @@ namespace MultiLogApplication.Controllers
             try
             {
                 string wwwPath = _configuration["StoragePath:BasePath:Path"];
-                string contentPath = _configuration["StoragePath:BasePath:Path"];
-
-                if (!Directory.Exists(contentPath))
+                string contentPath = _configuration["StoragePath:paymentProof:Path"];
+                string fileName = Guid.NewGuid().ToString();
+                if (!Directory.Exists(wwwPath + contentPath))
                 {
-                    Directory.CreateDirectory(contentPath);
+                    Directory.CreateDirectory(wwwPath + contentPath);
                 }
-                string photoName = Path.GetFileName(obj.File.FileName);
-                using (FileStream stream = new FileStream(Path.Combine(contentPath, photoName), FileMode.Create))
+                var extenstion = obj.File.FileName.Split(".").LastOrDefault();
+                string docName = wwwPath + contentPath + "\\" + Path.GetFileName(fileName + "." + extenstion);
+                using (FileStream stream = new FileStream(Path.Combine(wwwPath, contentPath, docName), FileMode.Create))
                 {
                     obj.File.CopyTo(stream);
                 }
 
-                return Json(res);
+                obj.UserId = _sessionUser;
+                obj.SessionUser = _sessionUser;
+                obj.ImageName = obj.File.FileName;
+                obj.DocumentDetailId = fileName;
+                obj.FileExtenstion = extenstion;
+                obj.ImageSize = obj.File.Length.ToString();
+                res = await _coinService.AddCoinsRequest(obj);
             }
             catch (Exception ex)
             {

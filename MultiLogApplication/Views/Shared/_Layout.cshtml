@@ -208,11 +208,11 @@
                                             <input type="text" name="coins" id="coins" class="form-control" placeholder="Enter Coins">
                                             <span>*Minimum deposite amount is 100 coins</span>
                                         </div>
-                                        
+
                                     </div>
 
                                     <div class="modal-footer col-12">
-                                        <button type="submit" class="btn btn-success col-12" id="DesitCoins">Deposit Coins</button>
+                                        <button type="submit" class="btn btn-success col-12">Deposit Coins</button>
                                     </div>
                                 </form>
                             </div>
@@ -222,78 +222,95 @@
                     <div class="modal fade" id="PaymentModesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <div id="PaymentModeList">
+                                <div class="modal-header text-center col-12">
+                                    <h4 class="modal-title" id="exampleModalLabel">Deposit (<span id="depositAmount"></span>)</h4>
+                                    <button type="button" class="close col-4" data-dismiss="modal" aria-label="Close" id="closePaymentModesModal">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="PaymentModeList">
+                                        <div class="nav-item-divider"></div>
+                                        <div class="col-12" style="background-color: #191928;">
+                                            <button type="button" class="btn col-12 PaymentModeTypes" id="QRCode" style="color: white;">QR Code</button>
+                                        </div>
+                                        <div class="nav-item-divider"></div>
+                                        <div class="col-12" style="background-color: #191928;">
+                                            <button type="button" class="btn col-12 PaymentModeTypes" id="BankTr" style="color: white;">Bank Transfer</button>
+                                        </div>
+                                        <div class="nav-item-divider"></div>
+                                        <div class="col-12" style="background-color: #191928;">
+                                            <button type="button" class="btn col-12 PaymentModeTypes" id="PhonePe" style="color: white;">Phone Pe</button>
+                                        </div>
+                                        <div class="nav-item-divider"></div>
+                                    </div>
                                     <div class="nav-item-divider"></div>
-                                    <div class="col-12" style="background-color: #191928;">
-                                        <button type="button" class="btn col-12 PaymentModeTypes" id="QRCode" style="color: white;">QR Code</button>
-                                    </div>
                                     <div class="nav-item-divider"></div>
-                                    <div class="col-12" style="background-color: #191928;">
-                                        <button type="button" class="btn col-12 PaymentModeTypes" id="BankTr" style="color: white;">Bank Transfer</button>
-                                    </div>
                                     <div class="nav-item-divider"></div>
-                                    <div class="col-12" style="background-color: #191928;">
-                                        <button type="button" class="btn col-12 PaymentModeTypes" id="PhonePe" style="color: white;">Phone Pe</button>
+                                    <div class="PaymentModeTypesDetailList">
+                                        <div class="PaymentModeTypesDetail" id="QRCodeDetail">
+                                            <div class="d-flex flex-column text-center col-12">
+                                                <img src="~/images/banner_ipl.png" />
+                                            </div>
+                                        </div>
+                                        <div class="nav-item-divider"></div>
+                                        <div class="PaymentModeTypesDetail" id="BankTrDetail">
+                                            <div class="d-flex flex-column col-12">
+                                                <div class="row col-12">
+                                                    <div class="col-5"> Bank Name </div>
+                                                    <div class="col-5"> Sate Bankn of India </div>
+                                                    <div class="col-2 CopyToClipboard" data-value="Sate Bankn of India"> <i class="bi bi-copy"></i>Copy </div>
+                                                </div>
+                                                <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
+                                                <div class="row col-12">
+                                                    <div class="col-5"> Account Holder Name </div>
+                                                    <div class="col-5"> Vikas </div>
+                                                    <div class="col-2 CopyToClipboard" data-value="Vikas"> <i class="bi bi-copy"></i>Copy </div>
+                                                </div>
+                                                <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
+                                                <div class="row col-12">
+                                                    <div class="col-5"> Account Number </div>
+                                                    <div class="col-5"> 98765432 </div>
+                                                    <div class="col-2 CopyToClipboard" data-value="98765432"> <i class="bi bi-copy"></i>Copy </div>
+                                                </div>
+                                                <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
+                                                <div class="row col-12">
+                                                    <div class="col-5"> IFSC Code </div>
+                                                    <div class="col-5"> SBIN2934587 </div>
+                                                    <div class="col-2 CopyToClipboard" data-value="SBIN2934587"> <i class="bi bi-copy"></i>Copy </div>
+                                                </div>
+                                                <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="nav-item-divider"></div>
+                                        <div class="PaymentModeTypesDetail" id="PhonePeDetail">
+                                            <div class="d-flex flex-column col-12">
+                                                <div class="row col-12">
+                                                    <div class="col-5"> Display Name </div>
+                                                    <div class="col-5"> UPI Details </div>
+                                                    <div class="col-2"> Action </div>
+                                                </div>
+                                                <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
+                                                <div class="row col-12">
+                                                    <div class="col-5"> Name </div>
+                                                    <div class="col-5"> asfs@axl </div>
+                                                    <div class="col-2 CopyToClipboard" data-value="asfs@axl"> <i class="bi bi-copy"></i>Copy </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="nav-item-divider"></div>
+                                        <div class="PaymentModeTypesDetail" method="post" enctype="multipart/form-data" style="margin-top: 10px" id="proofUpload">
+                                            <div class="form-group">
+                                                <div class="col-md-10">
+                                                    <input type="file" name="files" id="files" multiple />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="nav-item-divider"></div>
+                                        <div class="modal-footer col-12">
+                                            <button type="button" class="btn btn-success col-12" id="DesitCoins">Submit</button>
+                                        </div>
                                     </div>
-                                    <div class="nav-item-divider"></div>
-                                </div>
-                                <div class="nav-item-divider"></div>
-                                <div class="PaymentModeTypes" id="QRCodeDetail">
-                                    <div class="d-flex flex-column text-center col-12">
-                                        <img src="~/images/banner_ipl.png"/>
-                                    </div>
-                                </div>
-                                <div class="nav-item-divider"></div>
-                                <div class="PaymentModeTypes" id="BankTrDetail">
-                                    <div class="d-flex flex-column col-12">
-                                        <div class="row col-12">
-                                            <div class="col-5"> Bank Name </div>
-                                            <div class="col-5"> Sate Bankn of India </div>
-                                            <div class="col-2"> <i class="bi bi-copy"></i>Copy </div>
-                                        </div>
-                                        <div class="row col-12">
-                                            <div class="col-5"> Account Holder Name </div>
-                                            <div class="col-5"> Vikas </div>
-                                            <div class="col-2"> <i class="bi bi-copy"></i>Copy </div>
-                                        </div>
-                                        <div class="row col-12">
-                                            <div class="col-5"> Account Number </div>
-                                            <div class="col-5"> 98765432 </div>
-                                            <div class="col-2"> <i class="bi bi-copy"></i>Copy </div>
-                                        </div>
-                                        <div class="row col-12">
-                                            <div class="col-5"> IFSC Code </div>
-                                            <div class="col-5"> SBIN2934587 </div>
-                                            <div class="col-2"> <i class="bi bi-copy"></i>Copy </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="nav-item-divider"></div>
-                                <div class="PaymentModeTypes" id="PhonePeDetail">
-                                     <div class="d-flex flex-column col-12">
-                                        <div class="row col-12">
-                                            <div class="col-5"> Display Name </div>
-                                            <div class="col-5"> UPI Details </div>
-                                            <div class="col-2"> <i class="bi bi-copy"></i>Copy </div>
-                                        </div>
-                                        <div class="row col-12">
-                                            <div class="col-5"> Name </div>
-                                            <div class="col-5"> asfs@axl </div>
-                                            <div class="col-2"> <i class="bi bi-copy"></i>Copy </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="nav-item-divider"></div>
-                                <div class="PaymentModeTypes" method="post" enctype="multipart/form-data" style="margin-top: 10px">
-                                    <div class="form-group">
-                                        <div class="col-md-10">
-                                            <input type="file" name="files" multiple />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="nav-item-divider"></div>
-                                <div class="modal-footer col-12">
-                                    <button type="button" class="btn btn-success col-12" id="DesitCoins">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -448,7 +465,6 @@
                         </div>
                     </div>
                     <!-- Withdraw Coins Modal-->
-
 
                 </div>
             </div>
