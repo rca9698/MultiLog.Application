@@ -1,50 +1,54 @@
 ﻿@using MultiLogApplication.Models.Common
 @model ReturnType<MultiLogApplication.Models.Account.AccountDetail>
 
-    <div class='dashboard-content'>
-        <div class="row mt-4">
-            <div class="col-6">
-                <h6 class="text-white">Account Request Listing</h6>
-            </div>
-        </div>
-
-        <div class="card mt-4">
-            <div class="card-body customtable">
-                <h5 class="card-title">Account Requests</h5>
-                <!-- Table with hoverable rows -->
-                <table class="table table-hover" id="userList">
-                    <thead>
-                    <tr class="tableHeaderClass">
-                            <th scope="col">User Number</th>
-                            <th scope="col">User Name</th>
-                            <th scope="col">Application</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (Model !=null && Model.ReturnList!=null){
-                            @foreach (var account in Model.ReturnList)
-                            {
-                                <tr>
-                                    <th scope="row">@account.UserName</th>
-                                    <td>@account.UserName</td>
-                                    <td>@account.SiteName @account.SiteIcon</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button type="button" data-toggle="modal" data-target="#AddAccountDetails" data-userId="@account.UserId" data-siteId="@account.SiteId" id="AddAccontRequest"> <i class="bi bi-pencil-square"></i> </button>
-                                            <button type="button" data-toggle="modal" data-target="#DeleteAccountRequest" data-userId="@account.UserId" data-siteId="@account.SiteId" id="DeleteAccountRequestList"> <i class="bi bi-trash-fill"></i> </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            }
-                        }
-                        
-                    </tbody>
-                </table>
-                <!-- End Table with hoverable rows -->
-            </div>
+<div class='dashboard-content'>
+    <div class="row mt-4">
+        <div class="col-6">
+            <h6 class="text-white">Account Request Listing</h6>
         </div>
     </div>
+
+    <div class="card mt-4">
+        <div class="card-body customtable">
+            <h5 class="card-title">Account Requests</h5>
+            <!-- Table with hoverable rows -->
+            <table class="table table-hover" id="userList">
+                <thead>
+                    <tr class="tableHeaderClass">
+                        <th scope="col">User Number</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">Application</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
+                    {
+                        @foreach (var account in Model.ReturnList)
+                        {
+                            <tr>
+                                <td scope="row">@account.UserName</td>
+                                <td>@account.UserName</td>
+                                <td>@account.SiteName @account.SiteIcon</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" data-toggle="modal" data-target="#AddAccountDetails" userId="@account.UserId" siteId="@account.SiteId" id="AddAccontRequest"> <i class="bi bi-pencil-square"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#DeleteAccountRequest" userId="@account.UserId" siteId="@account.SiteId" id="DeleteAccountRequestList"> <i class="bi bi-trash-fill"></i> </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="4">No Data Found!!</td></tr>
+                    }
+                </tbody>
+            </table>
+            <!-- End Table with hoverable rows -->
+        </div>
+    </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="AddAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -74,7 +78,6 @@
     </div>
 </div>
 <!-- Modal -->
-
 <!-- Modal -->
 <div class="modal fade" id="DeleteAccountRequest" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -97,6 +100,3 @@
     </div>
 </div>
 <!-- Modal -->
-
-
-

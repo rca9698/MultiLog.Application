@@ -6,8 +6,8 @@ $(document).ready(function () {
 });
  
 $(document).on('click', '#deleteUserBtn', function () {
-    $('#DeleteUserNumber').html($(this).attr('data-Number'));
-    $('#DeleteUserNumber').attr('UserId', ($(this).attr('data-UserId')));
+    $('#DeleteUserNumber').html($(this).attr('UserNumber'));
+    $('#DeleteUserNumber').attr('UserId', ($(this).attr('userId')));
 });
 
 $(document).on('click', '#DeleteUserButton', function () {
@@ -20,8 +20,8 @@ $(document).on('click', '#LayoutAddUserBtn', function () {
 
 $(document).on('click', '#ListCoinsBtn', function () {
     var obj = {
-        UserId: $(this).attr('data-userId'),
-        UserNumber: $(this).attr('data-Number')
+        UserId: $(this).attr('userId'),
+        UserNumber: $(this).attr('UserNumber')
     }
     LoadCoinsHistory(obj);
 });

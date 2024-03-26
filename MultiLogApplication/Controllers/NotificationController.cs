@@ -3,6 +3,7 @@ using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models.BankAccount;
 using MultiLogApplication.Models.Common;
 using MultiLogApplication.Models.NotificationDetails;
+using MultiLogApplication.Service;
 
 namespace MultiLogApplication.Controllers
 {
@@ -21,11 +22,20 @@ namespace MultiLogApplication.Controllers
         {
             return View();
         }
-
-        public async Task<IActionResult> ViewPanel()
-        {
-            return View("~/Views/Notification/ViewPanel.cshtml");
-        }
+		public async Task<IActionResult> ViewPanel()
+		{
+            GetNotification obj = new GetNotification();
+			ReturnType<NotificationDetail> res = new ReturnType<NotificationDetail>();
+			try
+			{
+				res = await _notificationService.GetNotifications(obj);
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Exception Occured at NotificationController > ViewPanel");
+			}
+			return PartialView("~/Views/Notification/ViewPanel.cshtml");
+		}
 
         public async Task<IActionResult> InsertNotification(InsertNotification obj)
         {

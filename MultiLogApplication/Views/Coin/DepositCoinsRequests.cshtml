@@ -22,23 +22,27 @@
                 </tr>
             </thead>
             <tbody>
-                @if (Model != null && Model.ReturnList != null)
+                @if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
                 {
                     @foreach (var user in Model.ReturnList)
                     {
                         <tr>
-                            <th scope="row">@user.UserName</th>
+                            <td scope="row">@user.UserName</td>
                             <td>@user.UserNumber</td>
                             <td>@user.Coins</td>
                             <td>@user.UpdatedDate</td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" data-toggle="modal" data-target="#DeleteCoinRequest" data-userId=@user.UserId data-Number="@user.UserNumber" data-CoinRequestId="@user.CoinsRequestId" id="deleteCoinRequestBtn"> <i class="bi bi-person-fill-slash"></i></button>
-                                    <button type="button" data-toggle="modal" data-target="#DepositCoinsModal" data-userId=@user.UserId data-Number="@user.UserNumber" id="depositeCoinsBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#DeleteCoinRequest" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" id="deleteCoinRequestBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#DepositCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestID ="@user.CoinsRequestId" id="depositeCoinsBtn"> <i class="bi bi-person-fill-up"></i></button>
                                 </div>
                             </td>
                         </tr>
                     }
+                }
+                else
+                {
+                    <tr><td colspan="5">No Data Found!!</td></tr>
                 }
             </tbody>
         </table>

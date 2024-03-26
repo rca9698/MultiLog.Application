@@ -23,7 +23,24 @@ namespace MultiLogApplication.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AddBankAccount(AddBankAccount bankAccount)
+		public async Task<IActionResult> ViewPanel()
+		{
+			GetBankAccount bankAccount = new GetBankAccount();
+            bankAccount.UserId = _sessionUser;
+            bankAccount.SessionUser = _sessionUser;
+			ReturnType<BankDetails> res = new ReturnType<BankDetails>();
+			try
+			{
+				res = await _bankAccountService.GetBankAccounts(bankAccount);
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Exception Occured at BankAccountController > ViewPanel");
+			}
+			return PartialView(res);
+		}
+
+		public async Task<IActionResult> AddBankAccount(AddBankAccount bankAccount)
         {
             ReturnType<bool> res = new ReturnType<bool>();
             try

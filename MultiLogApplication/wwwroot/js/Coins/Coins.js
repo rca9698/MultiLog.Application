@@ -26,14 +26,16 @@ $(document).on('click', '#closePaymentModesModal', function () {
 });
 
 $(document).on('click', '#depositeCoinsBtn', function () {
-    $('#DepositCoinsForm #userNumber').val($(this).attr('data-Number'));
-    $('#DepositCoinsForm').attr('UserId', ($(this).attr('data-UserId')));
+    $('#DepositCoinsForm #userNumber').val($(this).attr('UserNumber'));
+    $('#DepositCoinsForm').attr('UserId', ($(this).attr('userId')));
+    $('#DepositCoinsForm').attr('coinRequestID', ($(this).attr('coinRequestId')));
     AddCoinsFormValidationSingleton.getInstance();
 });
 
 $(document).on('click', '#withdrawCoinsBtn', function () {
-    $('#WithdrawCoinsForm #userNumber').val($(this).attr('data-Number'));
-    $('#WithdrawCoinsForm').attr('UserId', ($(this).attr('data-UserId')));
+    $('#WithdrawCoinsForm #userNumber').val($(this).attr('UserNumber'));
+    $('#WithdrawCoinsForm').attr('UserId', ($(this).attr('userId')));
+    $('#WithdrawCoinsForm').attr('coinRequestID', ($(this).attr('coinRequestId')));
     WithdrawCoinsFormValidationSingleton.getInstance();
 });
 
@@ -42,6 +44,11 @@ $(document).on('click', '#DepositCoinsRequestModalBtn', function () {
 });
 
 $(document).on('click', '#DesitCoins', function () {
+
+    if ($("#PaymentModesModal #files")[0].files[0] == undefined) {
+        toastr.warning('Please upload payment proof!!!');
+        return;
+    }
 
     var formData = new FormData();
     formData.append("Coins", $('#DepositCoinsRequestModal #coins').val());
@@ -114,7 +121,8 @@ var AddCoinsFormValidationSingleton = (function () {
 function DepositCoins() {
     var obj = {
         UserId: $('#DepositCoinsForm').attr('userId'),
-        Coins: $('#DepositCoinsForm #Coins').val()
+        Coins: $('#DepositCoinsForm #Coins').val(),
+        CoinRequestID: $('#DepositCoinsForm').attr('coinRequestID')
     }
 
     $.ajax({
@@ -183,7 +191,8 @@ var WithdrawCoinsFormValidationSingleton = (function () {
 function WithdrawCoins() {
     var obj = {
         UserId: $('#WithdrawCoinsForm').attr('userId'),
-        Coins: $('#WithdrawCoinsForm #Coins').val()
+        Coins: $('#WithdrawCoinsForm #Coins').val(),
+        CoinRequestID: $('#WithdrawCoinsForm').attr('coinRequestID')
     }
 
     $.ajax({

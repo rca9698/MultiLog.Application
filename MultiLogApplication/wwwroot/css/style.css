@@ -686,3 +686,9 @@ body {
 .CopyToClipboard {
 	cursor: pointer;
 }
+
+
+.dropdown a {
+	text-decoration: none;
+}
+

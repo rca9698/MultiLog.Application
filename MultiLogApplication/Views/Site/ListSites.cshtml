@@ -2,47 +2,51 @@
 @model ReturnType<MultiLogApplication.Models.SiteDetails.SiteDetail>
 
 
- 
-    <div class="row mt-4">
-        <div class="col-6">
-            <h6 class="text-white">Web Site Listing</h6>
-        </div>
-    </div>
 
-    <div class="card mt-4">
-        <div class="card-body customtable">
-            <h5 class="card-title">Web Sites</h5>
-            <!-- Table with hoverable rows -->
-            <table class="table table-hover" id="userList">
-                <thead>
-                <tr class="tableHeaderClass">
-                        <th scope="col">Site Name</th>
-                        <th scope="col">Site URL</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model != null && Model.ReturnList != null)
-                    {
-                        @foreach (var account in Model.ReturnList)
-                        {
-                            <tr id="site_@account.SiteId">
-                                <td scope="row" class="siteName">@account.SiteName</td>
-                                <td class="siteURL">@account.SiteURL</td>
-                                <td>@account.SiteImg </td>
-                                <td>
-                                    <div class="btn-group">
-                                        <button type="button" data-toggle="modal" data-target="#UpdateSiteModal" id="updateSite" data-siteId="@account.SiteId"> <i class="bi bi-pencil-square"></i> </button>
-                                        <button type="button" data-toggle="modal" data-target="#DeleteSiteModal" id="deleteSite" data-siteId="@account.SiteId"> <i class="bi bi-trash-fill"></i> </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    }
-                </tbody>
-            </table>
-            <!-- End Table with hoverable rows -->
-        </div>
+<div class="row mt-4">
+    <div class="col-6">
+        <h6 class="text-white">Web Site Listing</h6>
     </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-body customtable">
+        <h5 class="card-title">Web Sites</h5>
+        <!-- Table with hoverable rows -->
+        <table class="table table-hover" id="userList">
+            <thead>
+                <tr class="tableHeaderClass">
+                    <th scope="col">Site Name</th>
+                    <th scope="col">Site URL</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
+                {
+                    @foreach (var account in Model.ReturnList)
+                    {
+                        <tr id="site_@account.SiteId">
+                            <td scope="row" class="siteName">@account.SiteName</td>
+                            <td class="siteURL">@account.SiteURL</td>
+                            <td>@account.SiteImg </td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" data-toggle="modal" data-target="#UpdateSiteModal" id="updateSite" data-siteId="@account.SiteId"> <i class="bi bi-pencil-square"></i> </button>
+                                    <button type="button" data-toggle="modal" data-target="#DeleteSiteModal" id="deleteSite" data-siteId="@account.SiteId"> <i class="bi bi-trash-fill"></i> </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td colspan="4">No Data Found!!</td></tr>
+                }
+            </tbody>
+        </table>
+        <!-- End Table with hoverable rows -->
+    </div>
+</div>
 

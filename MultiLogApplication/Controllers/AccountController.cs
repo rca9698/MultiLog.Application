@@ -32,7 +32,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at AccountController > AccountRequestList");
             }
-            return View(res);
+            return PartialView(res);
         }
 
         public async Task<IActionResult> AccountList(GetAccounts account)
@@ -48,7 +48,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at AccountController > AccountList");
             }
-            return View(res);
+            return PartialView(res);
         }
 
         public async Task<IActionResult> AddAccount(AddAccount account)

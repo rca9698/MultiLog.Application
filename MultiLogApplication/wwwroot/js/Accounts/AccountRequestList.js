@@ -1,21 +1,21 @@
 ﻿
 $(document).on('click', '#DeleteAccountRequestList', function () {
-    var userId = $(this).attr('data-userId');
-    var siteId = $(this).attr('data-siteId');
-    $('#DeleteAccountRequest').attr('data-userId', userId);
-    $('#DeleteAccountRequest').attr('data-siteId', siteId);
+    var userId = $(this).attr('userId');
+    var siteId = $(this).attr('siteId');
+    $('#DeleteAccountRequest').attr('userId', userId);
+    $('#DeleteAccountRequest').attr('siteId', siteId);
 });
 
 $(document).on('click', '#AddAccontRequest', function () {
-    var userId = $(this).attr('data-userId');
-    var siteId = $(this).attr('data-siteId');
-    $('#AddAccountRequest').attr('data-userId', userId);
-    $('#AddAccountRequest').attr('data-siteId', siteId);
+    var userId = $(this).attr('userId');
+    var siteId = $(this).attr('siteId');
+    $('#AddAccountRequest').attr('userId', userId);
+    $('#AddAccountRequest').attr('siteId', siteId);
 });
 
 $(document).on('click', '#AddAccountRequest', function () {
-    var userId = $(this).attr('data-userId');
-    var siteId = $(this).attr('data-siteId');
+    var userId = $(this).attr('userId');
+    var siteId = $(this).attr('siteId');
     var account = {
         SiteID: siteId,
         UserId: userId,
@@ -41,8 +41,8 @@ $(document).on('click', '#AddAccountRequest', function () {
 });
 
 $(document).on('click', '#DeleteAccountRequest', function () {
-    var userId = $(this).attr('data-userId');
-    var siteId = $(this).attr('data-siteId');
+    var userId = $(this).attr('userId');
+    var siteId = $(this).attr('siteId');
     var account = {
         SiteID: siteId,
         UserId: userId

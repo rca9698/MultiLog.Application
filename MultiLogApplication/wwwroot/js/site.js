@@ -12,22 +12,22 @@ $(document).on('click', '#AddSitesModalbtn', function () {
 });
 
 $(document).on('click', '#updateSite', function () {
-    let siteId = $(this).attr('data-siteId');
+    let siteId = $(this).attr('siteId');
     let Name = $('#site_' + siteId + ' .siteName').html();
     let URL = $('#site_' + siteId + ' .siteURL').html();
-    $('#UpdateSiteModal').attr('data-siteId', siteId);
+    $('#UpdateSiteModal').attr('siteId', siteId);
     $('#UpdateSiteModalForm #siteName').val(Name);
     $('#UpdateSiteModalForm #siteURL').val(URL);
     UpdateSiteFormValidationSingleton.getInstance();
 });
 
 $(document).on('click', '#deleteSite', function () {
-    let siteId = $(this).attr('data-siteId');
-    $('#DeleteSitebtn').attr('data-siteId', siteId);
+    let siteId = $(this).attr('siteId');
+    $('#DeleteSitebtn').attr('siteId', siteId);
 });
 
 $(document).on('click', '#DeleteSitebtn', function () {
-    DeleteSite($(this).attr('data-siteId'));
+    DeleteSite($(this).attr('siteId'));
 });
 
 var AddSiteFormfv;

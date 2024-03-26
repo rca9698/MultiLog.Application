@@ -3,7 +3,7 @@
 
 <div class="row mt-4">
     <div class="col-6">
-        <h6 class="text-white" >Coins History (<span id="coinHistoryUserid"></span>)</h6>
+        <h6 class="text-white">Coins History (<span id="coinHistoryUserid"></span>)</h6>
     </div>
 </div>
 
@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                @if (Model != null && Model.ReturnList != null)
+                @if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
                 {
                     @foreach (var user in Model.ReturnList)
                     {
@@ -32,6 +32,10 @@
                             <td>@user.UpdatedDate</td>
                         </tr>
                     }
+                }
+                else
+                {
+                    <tr><td colspan="5">No Data Found!!</td></tr>
                 }
             </tbody>
         </table>

@@ -32,10 +32,10 @@
                                 <td>@user.UpdatedBy</td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" data-toggle="modal" data-target="#DeleteUserModal" data-userId=@user.UserId data-Number="@user.MobileNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
-                                        <button type="button" data-toggle="modal" data-target="#DepositCoinsModal" data-userId=@user.UserId data-Number="@user.MobileNumber" id="depositeCoinsBtn"> <i class="bi bi-person-fill-up"></i></button>
-                                        <button type="button" data-toggle="modal" data-target="#WithdrawCoinsModal" data-userId=@user.UserId data-Number="@user.MobileNumber" id="withdrawCoinsBtn"> <i class="bi bi-person-fill-down"></i> </button>
-                                    <button type="button" data-userId=@user.UserId data-Number="@user.MobileNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                    <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.MobileNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#DepositCoinsModal" userId=@user.UserId UserNumber="@user.MobileNumber" id="depositeCoinsBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#WithdrawCoinsModal" userId=@user.UserId UserNumber="@user.MobileNumber" id="withdrawCoinsBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                    <button type="button" userId=@user.UserId UserNumber="@user.MobileNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
                                     </div>
                                 </td>
                             </tr>
