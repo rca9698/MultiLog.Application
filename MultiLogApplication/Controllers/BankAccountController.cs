@@ -46,6 +46,7 @@ namespace MultiLogApplication.Controllers
             try
             {
                 bankAccount.SessionUser = _sessionUser;
+                bankAccount.UserId = _sessionUser;
                 res = await _bankAccountService.AddBankAccount(bankAccount);
             }
             catch (Exception ex)

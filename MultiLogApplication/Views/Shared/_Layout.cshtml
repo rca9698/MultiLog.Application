@@ -54,7 +54,7 @@
                                     <i class="bi bi-person"></i> Bank Details
                                 </a>
                                 <div class='dashboard-nav-dropdown-menu'>
-                                    <a href="/BankAccount/AddBankDetail" class="dashboard-nav-dropdown-item"> <i class="bi bi-people"></i> Add Bank Detail</a>
+                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddBankDetailModal" id="AddBankDetailModalBtn"> <i class="bi bi-people"></i> Add Bank Detail</a>
                                     <a href="/BankAccount/Index" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> List Banks</a>
                                 </div>
                             </div>
@@ -550,6 +550,38 @@
                         </div>
                     </div>
                     <!-- Withdraw Coins Modal-->
+                    <!-- Add Bank Details Modal -->
+                    <div class="modal fade" id="AddBankDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="AddBankDetailForm">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Add Bank Detail</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Bank Name</label>
+                                            <input id="BName" name="BName" type="text" class="form-control" placeholder="Bank Name">
+                                            <label>Account Holder Name</label>
+                                            <input id="AHName" name="AHName" type="text" class="form-control" placeholder="Account Holder Name">
+                                            <label>Account Number</label>
+                                            <input id="ANumber" name="ANumber" type="text" class="form-control" placeholder="Account Number">
+                                            <label>IFSC Code</label>
+                                            <input id="IFSCCode" name="IFSCCode" type="text" class="form-control" placeholder="IFSC Code">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Add Bank Account</button>
+                                        <button type="reset" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Bank Details Modal-->
 
                 </div>
             </div>
@@ -558,7 +590,7 @@
 
     <div class="card mt-4 footer-nav" style="background: #000000;padding: 20px;">
         <div class="row">
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-sm-3 grid-margin stretch-card">
                 <div class="card" style="background: black;">
                     <div class="card-body text-center">
                         <div class="row">
@@ -570,7 +602,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-sm-3 grid-margin stretch-card">
                 <div class="card" style="background: black;">
                     <div class="card-body text-center">
                         <div class="row">
@@ -582,7 +614,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-sm-3 grid-margin stretch-card">
                 <div class="card" style="background: black;">
                     <div class="card-body text-center">
                         <div class="row">
@@ -594,7 +626,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-sm-3 grid-margin stretch-card" id="IDsList">
                 <div class="card" style="background: black;">
                     <div class="card-body text-center">
                         <div class="row">

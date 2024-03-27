@@ -1,14 +1,21 @@
-﻿
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
     if ($('#listSites').length)
     {
-        LoadSites();
+        LoadUserSites();
     }
 });
 
 $(document).on('click', '#AddSitesModalbtn', function () {
     AddSiteFormValidationSingleton.getInstance();
+});
+
+$(document).on('click', '#IDsList', function () {
+    location.href = '/Site/Index';
+});
+
+$(document).on('click', '#listSites .tabSelection', function () {
+    $('#listSites .tabSelection').removeClass('active');
+    $(this).addClass('active');
 });
 
 $(document).on('click', '#updateSite', function () {
@@ -194,6 +201,18 @@ function DeleteSite(id) {
 function LoadSites() {
     $.ajax({
         url: '/Site/Getsites',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#listSites').html(result);
+        }
+    });
+}
+
+
+function LoadUserSites() {
+    $.ajax({
+        url: '/Site/GetUserListSites',
         type: 'POST',
         data: '',
         success: function (result) {

@@ -100,5 +100,36 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
+
+
+        //User SIte Sites
+        public async Task<IActionResult> GetUserListSites()
+        {
+            ReturnType<SiteDetail> res = new ReturnType<SiteDetail>();
+            try
+            {
+                res = await _siteService.GetUserListSites();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at SiteController > GetUserListSites");
+            }
+            return PartialView("~/Views/Site/UserListSites.cshtml", res);
+        }
+
+        public async Task<IActionResult> GetUserListSiteById(long UserId)
+        {
+            ReturnType<SiteDetail> res = new ReturnType<SiteDetail>();
+            try
+            {
+                res = await _siteService.GetUserListSiteById(UserId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at SiteController > GetUserListSiteById");
+            }
+            return PartialView("~/Views/Site/UserListSites.cshtml", res);
+        }
+
     }
 }

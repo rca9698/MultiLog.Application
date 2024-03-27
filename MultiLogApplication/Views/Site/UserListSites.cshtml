@@ -1,0 +1,56 @@
+﻿@using MultiLogApplication.Models.Common
+@model ReturnType<MultiLogApplication.Models.SiteDetails.SiteDetail>
+<style>
+    #listSites .card {
+        border-radius: 15px;
+        margin-top: 15px;
+    }
+
+    #listSites .active {
+        background-color: black;
+        color: white;
+    }
+
+    #listSites .tabSelection {
+        height: 35px;
+    }
+</style>
+
+<div class="row col-12" style="">
+    <div class="col-6 tabSelection active">
+        My IDs
+    </div>
+
+    <div class="col-6 tabSelection">
+        Create ID
+    </div>
+</div>
+
+@if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
+{
+    @foreach (var bankDetail in Model.ReturnList)
+    {
+        <div class="card">
+            <div class="card-body">
+                <div class="row Col-12">
+                    <div class="col-6">
+                        <div class="row col-12">
+                            <div class="col-4">
+                                <img src="~/images/banner_ipl.png" style="height:100%;width:100%;border-radius: 50%;margin-top: 4%;
+    margin-right: 10%" />
+                            </div>
+                            <div class="col-8">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-title">Card title</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6">
+                        <button style="float: right;border-radius: 5px;">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

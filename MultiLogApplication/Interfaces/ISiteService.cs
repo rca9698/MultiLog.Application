@@ -9,5 +9,7 @@ namespace MultiLogApplication.Interfaces
         Task<ReturnType<bool>> AddSite(AddSite details);
         Task<ReturnType<bool>> DeleteSite(DeleteSite details);
         Task<ReturnType<bool>> UpdateSite(UpdateSite details);
+        Task<ReturnType<SiteDetail>> GetUserListSites();
+        Task<ReturnType<SiteDetail>> GetUserListSiteById(long userId);
     }
 }

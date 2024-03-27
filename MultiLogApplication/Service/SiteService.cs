@@ -37,6 +37,16 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<bool>>();
         }
 
+        public async Task<ReturnType<SiteDetail>> GetUserListSiteById(long userId)
+        {
+            var response = await _client.GetAsync($"api/Site/GetUserListSiteById/{userId}");
+            return await response.ReadContentAs<ReturnType<SiteDetail>>();
+        }
 
+        public async Task<ReturnType<SiteDetail>> GetUserListSites()
+        {
+            var response = await _client.GetAsync($"api/Site/GetUserListSites");
+            return await response.ReadContentAs<ReturnType<SiteDetail>>();
+        }
     }
 }
