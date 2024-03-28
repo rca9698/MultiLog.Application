@@ -338,6 +338,11 @@
                     <!-- Withdraw Coins Request Modal -->
                     <div class="modal fade" id="WithdrawCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
+                            <style>
+                                .nav-item-divider {
+                                    background-color: rgb(20 24 25 / 30%);
+                                }
+                            </style>
                             <div class="modal-content">
                                 <form id="WithdrawCoinsRequestModalForm">
                                     <div class="modal-header">
@@ -363,54 +368,22 @@
 
                                         <div class="container">
                                             <div class="row col-12">
-                                                <div class="col col-8">
+                                                <div class="col col-6">
+                                                    Preffered Bank
                                                 </div>
-                                                <div class="col col-4">
-                                                    <div class="dropdown">
-                                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            Bank Accounts
-                                                        </a>
-
-                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                            <li><a class="dropdown-item" href="#">SBI</a></li>
-                                                            <li><a class="dropdown-item" href="#">AXIS</a></li>
-                                                            <li><a class="dropdown-item" href="#">HDFC</a></li>
-                                                        </ul>
-                                                    </div>
+                                                <div class="col col-6 bankListDropdown">
+                                                    <select class="form-select form-select-md mb-3" onchange="ChangeWithDrawBank()" aria-label="">
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="PaymentModeTypesDetail" id="BankTrDetail">
-                                            <div class="d-flex flex-column col-12">
-                                                <div class="row col-12">
-                                                    <div class="col-5"> Bank Name </div>
-                                                    <div class="col-5"> Sate Bankn of India </div>
-                                                    <div class="col-2 CopyToClipboard" data-value="Sate Bankn of India"> <i class="bi bi-copy"></i>Copy </div>
-                                                </div>
-                                                <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
-                                                <div class="row col-12">
-                                                    <div class="col-5"> Account Holder Name </div>
-                                                    <div class="col-5"> Vikas </div>
-                                                    <div class="col-2 CopyToClipboard" data-value="Vikas"> <i class="bi bi-copy"></i>Copy </div>
-                                                </div>
-                                                <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
-                                                <div class="row col-12">
-                                                    <div class="col-5"> Account Number </div>
-                                                    <div class="col-5"> 98765432 </div>
-                                                    <div class="col-2 CopyToClipboard" data-value="98765432"> <i class="bi bi-copy"></i>Copy </div>
-                                                </div>
-                                                <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
-                                                <div class="row col-12">
-                                                    <div class="col-5"> IFSC Code </div>
-                                                    <div class="col-5"> SBIN2934587 </div>
-                                                    <div class="col-2 CopyToClipboard" data-value="SBIN2934587"> <i class="bi bi-copy"></i>Copy </div>
-                                                </div>
-                                                <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
-                                            </div>
+                                        <div class="nav-item-divider"></div>
+                                        <div class="WithDrawCoinsBankDetail" id="WithDrawCoinsBankDetail">
+                                            
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-success col-12">Withdraw Coins</button>
+                                        <button type="submit" class="btn btn-success col-12">Withdraw Coins</button>
                                     </div>
                                 </form>
                             </div>
@@ -588,7 +561,7 @@
         </main>
     </div>
 
-    <div class="card mt-4 footer-nav" style="background: #000000;padding: 20px;">
+    <div class="card mt-4 footer-nav footernavbar" style="position: fixed;">
         <div class="row">
             <div class="col-xl-3 col-sm-3 grid-margin stretch-card">
                 <div class="card" style="background: black;">

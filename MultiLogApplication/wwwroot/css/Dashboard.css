@@ -1,0 +1,182 @@
+﻿
+
+.leftCard {
+    background: #222222;
+    border-radius: 15px;
+    height: 85%;
+    margin-top: 35px;
+    margin-right: -50%;
+    margin-left: 50%;
+}
+
+
+.middleCard {
+    background: #222222;
+    border-radius: 15px;
+    height: 125%;
+    z-index: 999;
+}
+
+
+.rightCard {
+    background: #222222;
+    border-radius: 15px;
+    height: 85%;
+    margin-top: 35px;
+    margin-right: 50%;
+    margin-left: -50%;
+}
+
+
+
+@media (min-width: 992px) {
+
+    .leftCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 100%;
+        margin-top: 20px;
+        margin-right: -50%;
+        margin-left: 50%;
+    }
+
+
+    .middleCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 125%;
+        z-index: 999;
+    }
+
+
+    .rightCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 100%;
+        margin-top: 20px;
+        margin-right: 50%;
+        margin-left: -50%;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .leftCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 100%;
+        margin-top: 20px;
+        margin-right: -50%;
+        margin-left: 50%;
+    }
+
+
+    .middleCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 125%;
+        z-index: 999;
+    }
+
+
+    .rightCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 100%;
+        margin-top: 20px;
+        margin-right: 50%;
+        margin-left: -50%;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .leftCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 100%;
+        margin-top: 20px;
+        margin-right: -50%;
+        margin-left: 50%;
+    }
+
+
+    .middleCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 125%;
+        z-index: 999;
+    }
+
+
+    .rightCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 100%;
+        margin-top: 20px;
+        margin-right: 50%;
+        margin-left: -50%;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .leftCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 100%;
+        margin-top: 20px;
+        margin-right: -50%;
+        margin-left: 50%;
+    }
+
+
+    .middleCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 125%;
+        z-index: 999;
+    }
+
+
+    .rightCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 100%;
+        margin-top: 20px;
+        margin-right: 50%;
+        margin-left: -50%;
+    }
+}
+
+@media (min-width: 992px) {
+    .
+    .leftCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 100%;
+        margin-top: 20px;
+        margin-right: -50%;
+        margin-left: 50%;
+    }
+
+
+    .middleCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 125%;
+        z-index: 999;
+    }
+
+
+    .rightCard {
+        background: #222222;
+        border-radius: 15px;
+        height: 100%;
+        margin-top: 20px;
+        margin-right: 50%;
+        margin-left: -50%;
+    }
+}
+

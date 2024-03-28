@@ -11,7 +11,6 @@
         }
     }
 });
-
 $(document).on('click', '.PaymentModeTypes', function () {
     $('#PaymentModeList').hide();
     $('.PaymentModeTypesDetail').hide();
@@ -20,29 +19,42 @@ $(document).on('click', '.PaymentModeTypes', function () {
     var id = $(this).attr('id');
     $('#' + id + 'Detail').show();
 });
-
 $(document).on('click', '#closePaymentModesModal', function () {
     $('#PaymentModesModal').modal('hide');
 });
-
 $(document).on('click', '#depositeCoinsBtn', function () {
     $('#DepositCoinsForm #userNumber').val($(this).attr('UserNumber'));
     $('#DepositCoinsForm').attr('UserId', ($(this).attr('userId')));
     $('#DepositCoinsForm').attr('coinRequestID', ($(this).attr('coinRequestId')));
     AddCoinsFormValidationSingleton.getInstance();
 });
-
 $(document).on('click', '#withdrawCoinsBtn', function () {
     $('#WithdrawCoinsForm #userNumber').val($(this).attr('UserNumber'));
     $('#WithdrawCoinsForm').attr('UserId', ($(this).attr('userId')));
     $('#WithdrawCoinsForm').attr('coinRequestID', ($(this).attr('coinRequestId')));
     WithdrawCoinsFormValidationSingleton.getInstance();
 });
-
 $(document).on('click', '#DepositCoinsRequestModalBtn', function () {
     AddCoinsRequestFormValidationSingleton.getInstance();
 });
+$(document).on('click', '#WithdrawCoinsRequestModalBtn', function () {
 
+    var obj = {
+        UserId: $(this).attr('userId'),
+    }
+
+    $.ajax({
+        url: '/BankAccount/GetBankAccounts',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            bankDropDown(result);
+            SetBankdetails(result);
+        }
+    });
+
+    WithDrawCoinsRequestFormValidationSingleton.getInstance();
+});
 $(document).on('click', '#DesitCoins', function () {
 
     if ($("#PaymentModesModal #files")[0].files[0] == undefined) {
@@ -276,7 +288,117 @@ var AddCoinsRequestFormValidationSingleton = (function () {
     };
 })();
 
+var WithDrawCoinsRequestFormfv;
+var fv4;
+var WithDrawCoinsRequestFormValidationSingleton = (function () {
+    function createInstance() {
+
+        let form = document.getElementById('WithdrawCoinsRequestModalForm');
+        fv4 = FormValidation.formValidation(form, {
+            fields: {
+                coins: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Coins Details are required'
+                        }
+                    }
+                }
+            },
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                bootstrap3: new FormValidation.plugins.Bootstrap3(),
+                submitButton: new FormValidation.plugins.SubmitButton(),
+                icon: new FormValidation.plugins.Icon({
+                    valid: 'fas fa-check',
+                    invalid: 'fa fa-times',
+                    validating: 'fa fa-refresh'
+                }),
+            }
+        }).on('core.form.valid', function () {
+
+        });
+        return fv4;
+    }
+    return {
+        getInstance: function () {
+            if (WithDrawCoinsRequestFormfv) {
+                WithDrawCoinsRequestFormfv.destroy();
+            }
+            WithDrawCoinsRequestFormfv = createInstance();
+            return WithDrawCoinsRequestFormfv;
+        }
+    };
+})();
 
 
+function bankDropDown(result) {
+    $('.bankListDropdown select').empty();
+    var dropDownData = `<option disabled="" selected=""> CHANGE BANK </option>`;
+    if (result.returnList) {
+        result.returnList.forEach(function (item) {
+            dropDownData += `<option value="${item.bankAccountDetailID}">${item.bankName}</option>`
+        });
+    }
+
+    if (result.returnVal) {
+        $('.bankListDropdown option').attr('selected', false);
+        $('.bankListDropdown option[value=' + result.returnVal.bankAccountDetailID + ']').attr('selected', true);
+    }
+
+    $('.bankListDropdown select').append(dropDownData);
+}
+
+function SetBankdetails(result) {
+    $('#BankTrDetail').empty();
+    if (result.returnVal) {
+        $('#WithDrawCoinsBankDetail').html(
+            `<div class="d-flex flex-column col-12">
+          <div class="row col-12">
+              <div class="col-6"> Bank Name </div>
+              <div class="col-6" style="text-align: end;"> ${ result.returnVal.bankName } </div>
+          </div>
+          <div class="nav-item-divider-small"></div>
+          <div class="row col-12">
+              <div class="col-6"> Account Holder Name </div>
+              <div class="col-6" style="text-align: end;"> ${result.returnVal.accountHolderName } </div>
+          </div>
+          <div class="nav-item-divider-small"></div>
+          <div class="row col-12">
+              <div class="col-6"> Account Number </div>
+              <div class="col-6" style="text-align: end;"> ${ result.returnVal.accountNumber } </div>
+          </div>
+          <div class="nav-item-divider-small"></div>
+          <div class="row col-12">
+              <div class="col-6"> IFSC Code </div>
+              <div class="col-6" style="text-align: end;"> ${ result.returnVal.ifscCode }  </div>
+          </div>
+          <div class="nav-item-divider-small"></div>
+      </div>`)
+    }
+}
+
+function ChangeWithDrawBank() {
+
+}
+
+function WithDrawCoinsRequest() {
+    var obj = {
+        UserId: $('#WithdrawCoinsRequestModalForm').attr('userId'),
+        Coins: $('#WithdrawCoinsRequestModalForm #Coins').val(),
+        CoinRequestID: $('#WithdrawCoinsRequestModalForm').attr('coinRequestID')
+    }
+
+    $.ajax({
+        url: '/Coin/DeleteCoins',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            if (result.returnStatus == 1) {
+                toastr.success(result.returnMessage);
+                $('#WithdrawCoinsModal .close').trigger('click');
+            }
+        }
+    });
+}
 
 

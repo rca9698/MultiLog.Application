@@ -33,9 +33,9 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<bool>>();
         }
 
-        public async Task<ReturnType<bool>> DeleteCoinsRequest(DeleteCoinRequest details)
+        public async Task<ReturnType<bool>> WithDrawCoinsRequest(DeleteCoinRequest details)
         {
-            var response = await _client.PostAsJsonAsync($"api/Coin/DeleteCoinsRequest", details);
+            var response = await _client.PostAsJsonAsync($"api/Coin/WithDrawCoinsRequest", details);
             return await response.ReadContentAs<ReturnType<bool>>();
         }
 

@@ -1,172 +1,74 @@
-﻿ 
-    <div class='dashboard-content'>
-        <div class="row" style="    padding-bottom: 50px;">
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                <div class="card" style="background: #222222;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-9 mb-2">
-                                <div class="d-flex align-items-center align-self-start">
-                                    <h3 class="mb-0">$12.34</h3>
-                                </div>
-                            </div>
+﻿<link href="~/css/dashboard.css" rel="stylesheet" />
 
-                        </div>
-                        <h6 class="text-muted font-weight-normal">WALLET BALANCE</h6>
+<div class='dashboard-content'>
+    <div class="row" style="padding-bottom: 50px;">
+
+
+        <div class="row col-12 ">
+            <div class="col-4 inline">
+                <div class="card leftCard" data-toggle="modal" data-target="#WithdrawCoinsRequestModal" id="WithdrawCoinsRequestModalBtn" userId="1" userNumber="1">
+                    <div class="container">
+                        <h6 style="margin-left: 10%;margin-top: 30%">
+                            <b>DEPOSIT</b>
+                        </h6>
+                        <h1 style="margin-left: 20%;">
+                            <i class="bi bi-chevron-double-up"></i>
+                        </h1>
+
                     </div>
                 </div>
             </div>
-        <div class="col-xl-3 col-sm-6 grid-margin stretch-card" data-toggle="modal" data-target="#WithdrawCoinsRequestModal" id="WithdrawCoinsRequestModalBtn">
-                <div class="card" style="background: #222222;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-9 mb-2">
-                                <div class="d-flex align-items-center align-self-start">
-                                    <h3 class="mb-0">$12.34</h3>
 
-                                </div>
-                            </div>
-
-                        </div>
-                        <h6 class="text-muted font-weight-normal">WITHDRAW</h6>
+            <div class="col-4 inline">
+                <div class="card middleCard">
+                    <div class="container">
+                        <img src="~/images/banner_ipl.png" alt="cricket ipl" width="100%" height="auto">
+                        <h6 class="text-muted font-weight-normal" style="text-align: center;margin-top: 10%;">WALLET BALANCE</h6>
+                        <h3 class="text-muted font-weight-normal" style="text-align: center;">5</h3>
                     </div>
                 </div>
             </div>
-        <div class="col-xl-3 col-sm-6 grid-margin stretch-card" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn">
-                <div class="card" style="background: #222222;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-9 mb-2">
-                                <div class="d-flex align-items-center align-self-start">
-                                    <h3 class="mb-0">$12.34</h3>
 
-                                </div>
-                            </div>
-
-                        </div>
-                        <h6 class="text-muted font-weight-normal">DEPOSIT</h6>
+            <div class="col-4 inline">
+                <div class="card rightCard" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn">
+                    <div class="container">
+                        <h6 style="margin-left:43%;margin-top:28%;"><b>WITHDRAW</b></h6>
+                        <h1 style="margin-left:50%"><i class="bi bi-chevron-double-down"></i></h1>
                     </div>
                 </div>
             </div>
+
         </div>
-        <img src="~/images/banner_ipl.png" alt="cricket ipl" width="100%" height="auto">
+       
+    </div>
+    <img src="~/images/banner_ipl.png" alt="cricket ipl" width="100%" height="auto">
 
-        <div class="row mt-4">
-            <div class="col-6">
-                <h6 class="text-white">My IDs</h6>
-            </div>
-            <div class="col-6 d-flex justify-content-end">
-                <a href="#" class="text-muted" style="padding-right: 30px;">
-                    <i class="bi bi-plus-circle-fill"></i> Create ID
-                </a>
-                <a href="#" class="text-primary">View All</a>
-            </div>
+    <div class="row mt-4">
+        <div class="col-6">
+            <h6 class="text-white">My IDs</h6>
         </div>
+        <div class="col-6 d-flex justify-content-end">
+            <a href="#" class="text-muted" style="padding-right: 30px;">
+                <i class="bi bi-plus-circle-fill"></i> Create ID
+            </a>
+            <a href="#" class="text-primary">View All</a>
+        </div>
+    </div>
 
-        <div class="card" style="background: #222; padding: 30px;">
-            <div class="row">
-                <a class="nav-link collapsed" href="pages-faq.html">
-                    <i class="bi bi-question-circle"></i>
-                    <span>CBTF</span>
-                </a>
-                <a class="nav-link collapsed" href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>Jayaraj Jogi</span>
-                </a>
-            </div>
-            <div class="card" style="
+    <div class="card" style="background: #222; padding: 30px;">
+        <div class="row">
+            <a class="nav-link collapsed" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>CBTF</span>
+            </a>
+            <a class="nav-link collapsed" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>Jayaraj Jogi</span>
+            </a>
+        </div>
+        <div class="card" style="
 									background: #3e3e3e;
 									padding: 20px;">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                        <div class="card" style="background: black;">
-                            <div class="card-body text-center">
-                                <div class="row">
-                                    <i class="bi bi-arrow-up text-success"></i>
-                                </div>
-                                <h6 class="text-muted font-weight-normal">Deposit</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                        <div class="card" style="background: black;">
-                            <div class="card-body text-center">
-                                <i class="bi bi-arrow-down text-danger"></i>
-                                <h6 class="text-muted font-weight-normal">Withdraw</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                        <div class="card" style="background: black;">
-                            <div class="card-body text-center">
-                                <i class="bi bi-key-fill"></i>
-                                <h6 class="text-muted font-weight-normal">Password</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                        <div class="card" style="background: black;">
-                            <div class="card-body text-center">
-                                <i class="bi bi-ui-checks-grid"></i>
-                                <h6 class="text-muted font-weight-normal">View Detail</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card mt-4">
-            <div class="card-body">
-                <h5 class="card-title">Cricket</h5>
-                <!-- Table with hoverable rows -->
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Timing</th>
-                            <th scope="col">Back</th>
-                            <th scope="col">Back</th>
-                            <th scope="col">Lay</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Designer</td>
-                            <td>28</td>
-                            <td>2016-05-25</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Developer</td>
-                            <td>35</td>
-                            <td>2014-12-05</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Finance</td>
-                            <td>45</td>
-                            <td>2011-08-12</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>HR</td>
-                            <td>34</td>
-                            <td>2012-06-11</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Dynamic Division Officer Dynamic Division Officer</td>
-                            <td>47</td>
-                            <td>2011-04-19</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- End Table with hoverable rows -->
-            </div>
-        </div>
-        <div class="card mt-4" style="background: #3e3e3e;padding: 20px;">
             <div class="row">
                 <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                     <div class="card" style="background: black;">
@@ -174,49 +76,138 @@
                             <div class="row">
                                 <i class="bi bi-arrow-up text-success"></i>
                             </div>
-                            <h6 class="text-muted font-weight-normal">
-                                <a href="#"> Home </a>
-                            </h6>
+                            <h6 class="text-muted font-weight-normal">Deposit</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                     <div class="card" style="background: black;">
                         <div class="card-body text-center">
-                            <div class="row">
-                                <i class="bi bi-arrow-up text-success"></i>
-                            </div>
-                            <h6 class="text-muted font-weight-normal">
-                                <a href="#"> Cricket </a>
-                            </h6>
+                            <i class="bi bi-arrow-down text-danger"></i>
+                            <h6 class="text-muted font-weight-normal">Withdraw</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                     <div class="card" style="background: black;">
                         <div class="card-body text-center">
-                            <div class="row">
-                                <i class="bi bi-arrow-up text-success"></i>
-                            </div>
-                            <h6 class="text-muted font-weight-normal">
-                                <a href="#"> Passbook </a>
-                            </h6>
+                            <i class="bi bi-key-fill"></i>
+                            <h6 class="text-muted font-weight-normal">Password</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                     <div class="card" style="background: black;">
                         <div class="card-body text-center">
-                            <div class="row">
-                                <i class="bi bi-arrow-up text-success"></i>
-                            </div>
-                            <h6 class="text-muted font-weight-normal">
-                                <a href="#"> IDs </a>
-                            </h6>
+                            <i class="bi bi-ui-checks-grid"></i>
+                            <h6 class="text-muted font-weight-normal">View Detail</h6>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
- 
+
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Cricket</h5>
+            <!-- Table with hoverable rows -->
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Timing</th>
+                        <th scope="col">Back</th>
+                        <th scope="col">Back</th>
+                        <th scope="col">Lay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Designer</td>
+                        <td>28</td>
+                        <td>2016-05-25</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Developer</td>
+                        <td>35</td>
+                        <td>2014-12-05</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Finance</td>
+                        <td>45</td>
+                        <td>2011-08-12</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>HR</td>
+                        <td>34</td>
+                        <td>2012-06-11</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Dynamic Division Officer Dynamic Division Officer</td>
+                        <td>47</td>
+                        <td>2011-04-19</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- End Table with hoverable rows -->
+        </div>
+    </div>
+    <div class="card mt-4" style="background: #3e3e3e;padding: 20px;">
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card" style="background: black;">
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <i class="bi bi-arrow-up text-success"></i>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">
+                            <a href="#"> Home </a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card" style="background: black;">
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <i class="bi bi-arrow-up text-success"></i>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">
+                            <a href="#"> Cricket </a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card" style="background: black;">
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <i class="bi bi-arrow-up text-success"></i>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">
+                            <a href="#"> Passbook </a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card" style="background: black;">
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <i class="bi bi-arrow-up text-success"></i>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">
+                            <a href="#"> IDs </a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

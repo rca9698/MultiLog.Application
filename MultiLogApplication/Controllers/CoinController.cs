@@ -105,17 +105,17 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-        public async Task<IActionResult> DeleteCoinsRequest(DeleteCoinRequest obj)
+        public async Task<IActionResult> WithDrawCoinsRequest(DeleteCoinRequest obj)
         {
             ReturnType<bool> res = new ReturnType<bool>();
             try
             {
                 obj.SessionUser = _sessionUser;
-                res = await _coinService.DeleteCoinsRequest(obj);
+                res = await _coinService.WithDrawCoinsRequest(obj);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Exception Occured at CoinController > DeleteCoinsRequest");
+                _logger.LogError(ex, "Exception Occured at CoinController > WithDrawCoinsRequest");
             }
             return Json(res);
         }
