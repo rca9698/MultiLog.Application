@@ -71,6 +71,7 @@ namespace MultiLogApplication.Controllers
             ReturnType<bool> res = new ReturnType<bool>();
             try
             {
+                account.UserId = _sessionUser;
                 account.SessionUser = _sessionUser;
                 res = await _accountService.AddAccountRequest(account);
             }

@@ -315,7 +315,7 @@ var WithDrawCoinsRequestFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
-
+            WithDrawCoinsRequest();
         });
         return fv4;
     }
@@ -379,23 +379,35 @@ function SetBankdetails(result) {
 
 function ChangeWithDrawBank() {
 
+    let selectedValue = $('.bankListDropdown').find(":selected").val()
+    SetDefaultBank(selectedValue);
+}
+
+function SetDefaultBank(selectedValue) {
+    $.ajax({
+        url: '/BankAccount/SetDefaultBankAccount',
+        type: 'POST',
+        data: { BankDetailID: selectedValue },
+        success: function (result) {
+            SetBankdetails(result);
+        }
+    });
 }
 
 function WithDrawCoinsRequest() {
     var obj = {
         UserId: $('#WithdrawCoinsRequestModalForm').attr('userId'),
-        Coins: $('#WithdrawCoinsRequestModalForm #Coins').val(),
-        CoinRequestID: $('#WithdrawCoinsRequestModalForm').attr('coinRequestID')
+        Coins: $('#WithdrawCoinsRequestModalForm #coins').val()
     }
 
     $.ajax({
-        url: '/Coin/DeleteCoins',
+        url: '/Coin/WithDrawCoinsRequest',
         type: 'POST',
         data: obj,
         success: function (result) {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);
-                $('#WithdrawCoinsModal .close').trigger('click');
+                $('#WithdrawCoinsRequestModal .close').trigger('click');
             }
         }
     });

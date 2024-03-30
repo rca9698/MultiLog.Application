@@ -1,0 +1,43 @@
+﻿@using MultiLogApplication.Models.Common
+@inject IConfiguration Configuration
+@model ReturnType<MultiLogApplication.Models.SiteDetails.SiteDetail>
+<style>
+    
+</style>
+@if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
+{
+    @foreach (var siteDetail in Model.ReturnList)
+    {
+        <div class="card">
+            <div class="card-body">
+                <div class="row Col-12">
+                    <div class="col-6">
+                        <div class="row col-12">
+                            <div class="col-4">
+                                <img src="@Configuration["StoragePath:BasePath:Path"]@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" style="height:100%;width:100%;border-radius: 50%;margin-top: 4%;
+    margin-right: 10%" />
+                            </div>
+                            <div class="col-8">
+                                <h5 class="card-title">@siteDetail.SiteName</h5>
+                                <p class="card-title">@siteDetail.SiteURL</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6">
+                        <button class="rounded-circle" style="width:5vw;height: 5vw; border-radius: 50%;background-color:green">
+                            D
+                        </button>
+                        <button class="rounded-circle" style="width:5vw;height: 5vw; border-radius: 50%;background-color:red">
+                            W
+                        </button>
+                        <button class="rounded-circle" style="width:5vw;height: 5vw; border-radius: 50%;">
+                        ...
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+

@@ -56,6 +56,20 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
+        public async Task<IActionResult> SetDefaultBankAccount(long BankDetailID)
+        {
+            ReturnType<BankDetails> res = new ReturnType<BankDetails>();
+            try
+            {
+                res = await _bankAccountService.SetDefaultBankAccount(_sessionUser, BankDetailID);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > AddAccount");
+            }
+            return Json(res);
+        }
+
         public async Task<IActionResult> GetBankAccounts(GetBankAccount bankAccount)
         {
             ReturnType<BankDetails> res = new ReturnType<BankDetails>();

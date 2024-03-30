@@ -117,18 +117,18 @@ namespace MultiLogApplication.Controllers
             return PartialView("~/Views/Site/UserListSites.cshtml", res);
         }
 
-        public async Task<IActionResult> GetUserListSiteById(long UserId)
+        public async Task<IActionResult> GetUserListSiteById()
         {
             ReturnType<SiteDetail> res = new ReturnType<SiteDetail>();
             try
             {
-                res = await _siteService.GetUserListSiteById(UserId);
+                res = await _siteService.GetUserListSiteById(_sessionUser);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Exception Occured at SiteController > GetUserListSiteById");
             }
-            return PartialView("~/Views/Site/UserListSites.cshtml", res);
+            return PartialView("~/Views/Site/GetUserListSiteById.cshtml", res);
         }
 
     }

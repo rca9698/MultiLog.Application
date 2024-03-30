@@ -13,9 +13,22 @@ $(document).on('click', '#IDsList', function () {
     location.href = '/Site/Index';
 });
 
-$(document).on('click', '#listSites .tabSelection', function () {
-    $('#listSites .tabSelection').removeClass('active');
+$(document).on('click', '.idSwitch .tabSelection', function () {
+    $('.idSwitch .tabSelection').removeClass('active');
     $(this).addClass('active');
+    let url = $(this).attr('idType') == 'myIds'
+        ? '/Site/GetUserListSiteById'
+        : '/Site/GetUserListSites';
+
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: {},
+        success: function (result) {
+            $('#listSites').html(result);
+        }
+    });
+
 });
 
 $(document).on('click', '#updateSite', function () {
@@ -209,7 +222,6 @@ function LoadSites() {
     });
 }
 
-
 function LoadUserSites() {
     $.ajax({
         url: '/Site/GetUserListSites',
@@ -220,3 +232,5 @@ function LoadUserSites() {
         }
     });
 }
+
+

@@ -9,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Collections.Specialized;
 using System.Web;
+using System.Runtime.InteropServices;
 
 namespace MultiLogApplication.Controllers
 {
@@ -16,11 +17,12 @@ namespace MultiLogApplication.Controllers
     {
         private readonly ILoginServices _loginServices;
         private readonly ILogger<ILoginServices> _logger;
-        public LoginSignupController(ILoginServices loginServices, ILogger<ILoginServices> logger, IHttpContextAccessor httpContextAccessor)
+        private readonly IConfiguration _config;
+        public LoginSignupController(ILoginServices loginServices, ILogger<ILoginServices> logger, IHttpContextAccessor httpContextAccessor, IConfiguration config)
         {
             _loginServices = loginServices;
             _logger = logger;
-
+            _config = config;
         }
 
         public async Task<ReturnType<bool>> Login(LoginDetails details)
@@ -68,9 +70,6 @@ namespace MultiLogApplication.Controllers
             //mywriter.Write(url);
             //mywriter.Close();
 
-
-
-
             ReturnType<bool> returnType = new ReturnType<bool>();
             try
             {
@@ -87,12 +86,14 @@ namespace MultiLogApplication.Controllers
                     {
                         //A claim is a statement about a subject by an issuer and    
                         //represent attributes of the subject that are useful in the context of authentication and authorization operations.    
-                        var claims = new List<Claim>() {
-                    new Claim(ClaimTypes.NameIdentifier, Convert.ToString(user.ReturnVal.UserId)),
-                        new Claim(ClaimTypes.Name, user.ReturnVal.FirstName + user.ReturnVal.LastName),
-                        new Claim("ContactNumber", user.ReturnVal.MobileNumber),
-                        new Claim("Admin", user.ReturnVal.MobileNumber)
-                };
+                        var claims = new List<Claim>();
+                        claims.Add(new Claim(ClaimTypes.NameIdentifier, Convert.ToString(user.ReturnVal.UserId)));
+                        claims.Add(new Claim(ClaimTypes.Name, user.ReturnVal.FirstName + user.ReturnVal.LastName));
+                        claims.Add(new Claim("UserNumber", user.ReturnVal.UserNumber));
+
+                        foreach (string claim in user.ReturnVal.Claims.Split(","))
+                            claims.Add(new Claim(claim, Convert.ToString(user.ReturnVal.UserId)));
+
                         //Initialize a new instance of the ClaimsIdentity with the claims and authentication scheme    
                         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         //Initialize a new instance of the ClaimsPrincipal with ClaimsIdentity    
@@ -104,13 +105,14 @@ namespace MultiLogApplication.Controllers
                         });
 
                         HttpContext.Session.SetString("UserId", user.ReturnVal.UserId.ToString());
-                        HttpContext.Session.SetString("UserNumber", user.ReturnVal.MobileNumber);
+                        HttpContext.Session.SetString("UserNumber", user.ReturnVal.UserNumber);
+                        HttpContext.Session.SetString("Coins", user.ReturnVal.Coins);
 
                         return returnType;
                     }
                 }
             }
-            
+
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Exception Occured at LoginSignupController > Login");
@@ -130,6 +132,14 @@ namespace MultiLogApplication.Controllers
                 _logger.LogError(ex, "Exception Occured at LoginSignupController > Signup");
             }
             return returnType;
+        }
+
+
+        public async Task<IActionResult> SignOut()
+        {
+            await HttpContext.SignOutAsync();
+            HttpContext.Session.Clear();
+            return Redirect(_config["ApiConfigs:MultilogApp:Uri"]);
         }
 
     }

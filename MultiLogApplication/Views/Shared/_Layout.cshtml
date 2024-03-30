@@ -1,5 +1,9 @@
 ﻿@using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
+@inject IHttpContextAccessor Accessor;
+@{
+    var coins = Accessor.HttpContext.Session.GetString("Coins");
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,12 +11,14 @@
     <title>KA Punter</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    @* <link href="~/css/fonts.css" rel="stylesheet" /> *@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    @* <script src="~/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"></script> *@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    @* <link href="~/css/bootstrap-icons.css" rel="stylesheet" /> *@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    @* <link href="~/css/bootstrap.min.css" rel="stylesheet"/> *@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
     <link href="~/css/style.css" rel="stylesheet" />
 </head>
 <body>
@@ -29,82 +35,84 @@
                                 <i class="fas fa-anchor"></i> <span>KA Puntetrs</span>
                             </a>
                         </header>
-                        <nav class="dashboard-nav-list">
-                            <a href="#" class="dashboard-nav-item"><i class="bi bi-person"></i> Profile </a>
-                            <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]" class="dashboard-nav-item active">
-                                <i class="bi bi-house"></i> dashboard
-                            </a>
-                            @*  @if (User.Claims.Any(x => x.Type.Equals("Admin")))
-                            { *@
-                            <div class='dashboard-nav-dropdown'>
-                                <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                    <i class="bi bi-person"></i> Accounts
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <nav class="dashboard-nav-list">
+                                <a href="#" class="dashboard-nav-item"><i class="bi bi-person"></i> Profile </a>
+                                <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]" class="dashboard-nav-item active">
+                                    <i class="bi bi-house"></i> dashboard
                                 </a>
-                                <div class='dashboard-nav-dropdown-menu'>
-                                    <a href="/Account/AccountRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-people"></i> Account Requests</a>
-                                    <a href="/Account/AccountList" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
-                                    <a href="/Account/RejectedRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
+                                @if (User.Claims.Any(x => x.Type.Equals("Admin")))
+                                {
+                                    <div class='dashboard-nav-dropdown'>
+                                        <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                            <i class="bi bi-person"></i> Accounts
+                                        </a>
+                                        <div class='dashboard-nav-dropdown-menu'>
+                                            <a href="/Account/AccountRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-people"></i> Account Requests</a>
+                                            <a href="/Account/AccountList" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
+                                            <a href="/Account/RejectedRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
+                                        </div>
+                                    </div>
+
+                                }
+
+                                <div class='dashboard-nav-dropdown'>
+                                    <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                        <i class="bi bi-person"></i> Bank Details
+                                    </a>
+                                    <div class='dashboard-nav-dropdown-menu'>
+                                        <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddBankDetailModal" id="AddBankDetailModalBtn"> <i class="bi bi-people"></i> Add Bank Detail</a>
+                                        <a href="/BankAccount/Index" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> List Banks</a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            @* } *@
-
-                            <div class='dashboard-nav-dropdown'>
-                                <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                    <i class="bi bi-person"></i> Bank Details
-                                </a>
-                                <div class='dashboard-nav-dropdown-menu'>
-                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddBankDetailModal" id="AddBankDetailModalBtn"> <i class="bi bi-people"></i> Add Bank Detail</a>
-                                    <a href="/BankAccount/Index" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> List Banks</a>
+                                <div class='dashboard-nav-dropdown'>
+                                    <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                        <i class="bi bi-person"></i> Notifications
+                                    </a>
+                                    <div class='dashboard-nav-dropdown-menu'>
+                                        <a href="/Notification/Index" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> List Banks</a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class='dashboard-nav-dropdown'>
-                                <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                    <i class="bi bi-person"></i> Notifications
-                                </a>
-                                <div class='dashboard-nav-dropdown-menu'>
-                                    <a href="/Notification/Index" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> List Banks</a>
+                                <div class='dashboard-nav-dropdown'>
+                                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                        <i class="bi bi-cart"></i> Sites
+                                    </a>
+                                    <div class='dashboard-nav-dropdown-menu'>
+                                        <a href="/Site/Index" class="dashboard-nav-dropdown-item"><i class="bi bi-cart4"></i>Sites</a>
+                                        <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddSitesModal" id="AddSitesModalbtn"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class='dashboard-nav-dropdown'>
-                                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                    <i class="bi bi-cart"></i> Sites
-                                </a>
-                                <div class='dashboard-nav-dropdown-menu'>
-                                    <a href="/Site/Index" class="dashboard-nav-dropdown-item"><i class="bi bi-cart4"></i>Sites</a>
-                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddSitesModal" id="AddSitesModalbtn"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
+                                <div class='dashboard-nav-dropdown'>
+                                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                        <i class="bi bi-cash-coin"></i> Coin Requests
+                                    </a>
+                                    <div class='dashboard-nav-dropdown-menu'>
+                                        <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn"><i class="bi bi-cash-coin"></i>Desposit Request</a>
+                                        <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#WithdrawCoinsRequestModal"><i class="bi bi-cash-coin"></i>Withdraw Request</a>
+                                        <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Desposit Requests</a>
+                                        <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Withdraw Requests</a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class='dashboard-nav-dropdown'>
-                                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                    <i class="bi bi-cash-coin"></i> Coin Requests
-                                </a>
-                                <div class='dashboard-nav-dropdown-menu'>
-                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn"><i class="bi bi-cash-coin"></i>Desposit Request</a>
-                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#WithdrawCoinsRequestModal"><i class="bi bi-cash-coin"></i>Withdraw Request</a>
-                                    <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Desposit Requests</a>
-                                    <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Withdraw Requests</a>
+                                <div class='dashboard-nav-dropdown'>
+                                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                        <i class="bi bi-people"></i> Users
+                                    </a>
+                                    <div class='dashboard-nav-dropdown-menu'>
+                                        <a href="/User/Index" class="dashboard-nav-dropdown-item"><i class="bi bi-people"> </i>List User</a>
+                                        <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddUserModal" id="LayoutAddUserBtn"><i class="bi bi-person-add"></i>Add Users</a>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class='dashboard-nav-dropdown'>
-                                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                    <i class="bi bi-people"></i> Users
-                                </a>
-                                <div class='dashboard-nav-dropdown-menu'>
-                                    <a href="/User/Index" class="dashboard-nav-dropdown-item"><i class="bi bi-people"> </i>List User</a>
-                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddUserModal" id="LayoutAddUserBtn"><i class="bi bi-person-add"></i>Add Users</a>
-                                </div>
-                            </div>
-                            <a href="#" class="dashboard-nav-item"><i class="bi bi-gear-fill"></i> Settings </a>
-                            <div class="nav-item-divider"></div>
-                            <a href="#" class="dashboard-nav-item"><i class="bi bi-box-arrow-right"></i> Logout </a>
-                            <a href="#" class="dashboard-nav-item"><i class="bi bi-box-arrow-right"></i> Login with Demo ID </a>
-                        </nav>
-
+                                <a href="#" class="dashboard-nav-item"><i class="bi bi-gear-fill"></i> Settings </a>
+                                <div class="nav-item-divider"></div>
+                                <a href="/LoginSignup/SignOut" class="dashboard-nav-item"><i class="bi bi-box-arrow-right"></i> Logout </a>
+                                <a href="#" class="dashboard-nav-item"><i class="bi bi-box-arrow-right"></i> Login with Demo ID </a>
+                            </nav>
+                        }
                         <div class="nav-item-divider"></div>
                         <a href="#" class="dashboard-nav-item"><i class="bi bi-cloud-arrow-down-fill"></i> Download App </a>
                         <div class="social-icons-btn ms-5">
@@ -127,17 +135,19 @@
                         <header class='dashboard-toolbar'>
                             <a href="#!" class="menu-toggle"><i class="bi bi-list"></i></a>
                             <div class="cricket-navigation">
-                                <ul class="nav navbar-right">
-                                    <li style="padding-top: 14px; padding-right: 30px;">
-                                        <a href="#">Demo ID</a>
-                                    </li>
-                                    <li>
-                                        <button data-toggle="modal" data-target="#LoginModal" class="btn btn-primary mb-3 mb-lg-0" tabindex="0" id="loginbtn">Log In</button>
-                                    </li>
-                                </ul>
+                                @if (!User.Identity.IsAuthenticated)
+                                {
+                                    <ul class="nav navbar-right">
+                                        <li style="padding-top: 14px; padding-right: 30px;">
+                                            <a href="#">Demo ID</a>
+                                        </li>
+                                        <li>
+                                            <button data-toggle="modal" data-target="#LoginModal" class="btn btn-primary mb-3 mb-lg-0" tabindex="0" id="loginbtn">Log In</button>
+                                        </li>
+                                    </ul>
+                                }
                             </div>
                         </header>
-
                         @RenderBody()
 
                     </div>
@@ -149,10 +159,15 @@
                                 <div class="row justify-content-center">
                                     <div class="">
                                         <div class="card">
-
+                                            <div style="display: flex;justify-content:space-between;">
+                                                <h4 class="modal-title" id="exampleModalLabel"></h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
                                             <div class="card-header py-4 text-center bg-primary">
                                                 <a href="index.html">
-                                                    <span><img src="assets/images/logo.png" alt="logo" height="22"></span>
+                                                    <span><img src="~/images/banner_ipl.png" alt="logo" height="22"></span>
                                                 </a>
                                             </div>
                                             <form id="LoginModalForm">
@@ -204,6 +219,7 @@
                         </div>
                     </div>
                     <!-- Login Modal -->
+                    
                     <!-- Deposit Coins Request Modal -->
                     <div class="modal fade" id="DepositCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -219,7 +235,7 @@
                                         <div class="form-group col-12">
                                             <div class="d-flex flex-column text-center col-12">
                                                 <span class="business">WALLET BALANCE</span>
-                                                <span class="plan"><i class="bi bi-currency-rupee"></i>32</span>
+                                                <span class="plan"><i class="bi bi-currency-rupee"></i>@coins</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -335,6 +351,7 @@
                         </div>
                     </div>
                     <!-- Deposit Coins Request Modal -->
+                   
                     <!-- Withdraw Coins Request Modal -->
                     <div class="modal fade" id="WithdrawCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -355,7 +372,7 @@
                                         <div class="form-group col-12">
                                             <div class="d-flex flex-column text-center col-12">
                                                 <span class="business">WALLET BALANCE</span>
-                                                <span class="plan"><i class="bi bi-currency-rupee"></i>32</span>
+                                                <span class="plan"><i class="bi bi-currency-rupee"></i>@coins</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -379,7 +396,6 @@
                                         </div>
                                         <div class="nav-item-divider"></div>
                                         <div class="WithDrawCoinsBankDetail" id="WithDrawCoinsBankDetail">
-                                            
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -390,6 +406,7 @@
                         </div>
                     </div>
                     <!-- Withdraw Coins Request Modal-->
+                    
                     <!-- Add sites Modal -->
                     <div class="modal fade" id="AddSitesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -425,6 +442,7 @@
                         </div>
                     </div>
                     <!-- Add sites Modal-->
+                   
                     <!-- Add user Modal -->
                     <div class="modal fade" id="AddUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -457,6 +475,7 @@
                         </div>
                     </div>
                     <!-- Add user Modal-->
+                    
                     <!-- Deposit Coins Modal -->
                     <div class="modal fade" id="DepositCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -472,7 +491,7 @@
                                         <div class="form-group col-12">
                                             <div class="d-flex flex-column text-center col-12">
                                                 <span class="business">WALLET BALANCE</span>
-                                                <span class="plan"><i class="bi bi-currency-rupee"></i>32</span>
+                                                <span class="plan"><i class="bi bi-currency-rupee"></i>@coins</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -490,6 +509,7 @@
                         </div>
                     </div>
                     <!-- Deposit Coins Modal -->
+                    
                     <!-- Withdraw Coins Modal -->
                     <div class="modal fade" id="WithdrawCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -505,7 +525,7 @@
                                         <div class="form-group col-12">
                                             <div class="d-flex flex-column text-center col-12">
                                                 <span class="business">WALLET BALANCE</span>
-                                                <span class="plan"><i class="bi bi-currency-rupee"></i>32</span>
+                                                <span class="plan"><i class="bi bi-currency-rupee"></i>@coins</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -523,6 +543,7 @@
                         </div>
                     </div>
                     <!-- Withdraw Coins Modal-->
+                    
                     <!-- Add Bank Details Modal -->
                     <div class="modal fade" id="AddBankDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -561,8 +582,8 @@
         </main>
     </div>
 
-    <div class="card mt-4 footer-nav footernavbar" style="position: fixed;">
-        <div class="row">
+    <div class="card mt-4 footer-nav footernavbar">
+        <div class="row col-12">
             <div class="col-xl-3 col-sm-3 grid-margin stretch-card">
                 <div class="card" style="background: black;">
                     <div class="card-body text-center">

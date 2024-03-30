@@ -19,6 +19,12 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<bool>>();
         }
 
+        public async Task<ReturnType<BankDetails>> SetDefaultBankAccount(long _sessionUser, long BankDetailID)
+        {
+            var response = await _client.GetAsync($"api/BankAccount/SetDefaultBankAccount/{_sessionUser}/{BankDetailID}");
+            return await response.ReadContentAs<ReturnType<BankDetails>>();
+        }
+
         public async Task<ReturnType<bool>> DeleteBankAccount(DeleteBankAccount details)
         {
             var response = await _client.PostAsJsonAsync($"api/BankAccount/DeleteBankAccount", details);

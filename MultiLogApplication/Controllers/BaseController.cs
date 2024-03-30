@@ -9,7 +9,7 @@ namespace MultiLogApplication.Controllers
         protected readonly long _sessionUser;
         public BaseController(IHttpContextAccessor httpContextAccessor)
         {
-            _sessionUser = 0;// httpContextAccessor.HttpContext.Session.Get<long>("UserId");
+            _sessionUser = httpContextAccessor.HttpContext.Session.Get<long>("UserId");
         }
 
     }

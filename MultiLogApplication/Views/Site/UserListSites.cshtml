@@ -1,34 +1,9 @@
 ﻿@using MultiLogApplication.Models.Common
 @model ReturnType<MultiLogApplication.Models.SiteDetails.SiteDetail>
-<style>
-    #listSites .card {
-        border-radius: 15px;
-        margin-top: 15px;
-    }
-
-    #listSites .active {
-        background-color: black;
-        color: white;
-    }
-
-    #listSites .tabSelection {
-        height: 35px;
-    }
-</style>
-
-<div class="row col-12" style="">
-    <div class="col-6 tabSelection active">
-        My IDs
-    </div>
-
-    <div class="col-6 tabSelection">
-        Create ID
-    </div>
-</div>
 
 @if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
 {
-    @foreach (var bankDetail in Model.ReturnList)
+    @foreach (var siteDetail in Model.ReturnList)
     {
         <div class="card">
             <div class="card-body">
@@ -40,17 +15,100 @@
     margin-right: 10%" />
                             </div>
                             <div class="col-8">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-title">Card title</p>
+                                <h5 class="card-title">@siteDetail.SiteName</h5>
+                                <p class="card-title">@siteDetail.SiteURL</p>
                             </div>
                         </div>
 
                     </div>
                     <div class="col-6">
-                        <button style="float: right;border-radius: 5px;">Create</button>
+                        <button data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right;border-radius: 5px;margin-top: 15px;">Create</button>
                     </div>
                 </div>
             </div>
         </div>
     }
 }
+
+<!-- Create ID Request Modal -->
+<div class="modal fade" id="CreateIDRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <style>
+            .nav-item-divider {
+                background-color: rgb(20 24 25 / 30%);
+            }
+        </style>
+        <div class="modal-content">
+            <form id="CreateIDRequestModalForm">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">CREATE ID</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-12">
+                        <div class="d-flex flex-column text-center col-12">
+                            <span style="height: 51px;width: 51px;margin-left: 45%;">
+                                <img src="~/images/banner_ipl.png" style="height:100%;width:100%;border-radius: 50%;margin-top: 4%;
+    margin-right: 10%" />
+                            </span>
+                            <span class="bussiness">Site Name</span>
+                            <span class="plan">Site URL</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Username*</label>
+                        <input type="text" name="Username" id="Username" class="form-control" placeholder="User Name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success col-12">Create ID</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Create ID Request Modal-->
+
+<!-- Create ID Modal -->
+<div class="modal fade" id="CreateIDModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <style>
+            .nav-item-divider {
+                background-color: rgb(20 24 25 / 30%);
+            }
+        </style>
+        <div class="modal-content">
+            <form id="CreateIDModalForm">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">CREATE ID</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-12">
+                        <div class="d-flex flex-column text-center col-12">
+                            <span class="business">WALLET BALANCE</span>
+                            <span class="plan"><i class="bi bi-currency-rupee"></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Username*</label>
+                        <input type="text" name="Username" id="Username" class="form-control" placeholder="User Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Password*</label>
+                        <input type="text" name="password" id="password" class="form-control" placeholder="User Name">
+                    </div>
+                    <div class="nav-item-divider"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success col-12">Create ID</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Create ID Modal-->

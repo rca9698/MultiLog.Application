@@ -156,7 +156,8 @@ function Login() {
         url: "/LoginSignup/Login",
         data: login,
         success: function () {
-            
+            $('#LoginModal .close').trigger('click');
+            location.reload();
         },
         error: function () {
 
