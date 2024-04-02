@@ -702,3 +702,17 @@ body {
 	width: 100%;
 }
 
+
+.userlistingCircle {
+	width: 5vw;
+	height: 5vw;
+	border-radius: 50%;
+	
+}
+.bgclrred {
+	background-color: red
+} 
+
+.bgclrGreen {
+	background-color: green
+}

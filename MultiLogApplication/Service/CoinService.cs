@@ -39,16 +39,16 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<bool>>();
         }
 
-        public async Task<ReturnType<bool>> AddCoins(InsertCoinDetails details)
+        public async Task<ReturnType<string>> AddCoins(InsertCoinDetails details)
         {
             var response = await _client.PostAsJsonAsync($"api/Coin/AddCoins", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
-        public async Task<ReturnType<bool>> DeleteCoins(InsertCoinDetails details)
+        public async Task<ReturnType<string>> DeleteCoins(InsertCoinDetails details)
         {
             var response = await _client.PostAsJsonAsync($"api/Coin/DeleteCoins", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
     }

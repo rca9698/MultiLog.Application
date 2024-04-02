@@ -122,11 +122,12 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> AddCoins(InsertCoinDetails obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.SessionUser = _sessionUser;
                 res = await _coinService.AddCoins(obj);
+                HttpContext.Session.SetString("Coins", res.ReturnVal);
             }
             catch (Exception ex)
             {
@@ -137,7 +138,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> DeleteCoins(InsertCoinDetails obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.SessionUser = _sessionUser;

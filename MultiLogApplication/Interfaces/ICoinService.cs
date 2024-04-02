@@ -9,7 +9,7 @@ namespace MultiLogApplication.Interfaces
         Task<ReturnType<CoinsRequestModel>> GetCoinsRequest(DepositWithdrawCoinsRequest details);
         Task<ReturnType<bool>> AddCoinsRequest(InsertCoinRequest details);
         Task<ReturnType<bool>> WithDrawCoinsRequest(DeleteCoinRequest details);
-        Task<ReturnType<bool>> AddCoins(InsertCoinDetails details);
-        Task<ReturnType<bool>> DeleteCoins(InsertCoinDetails details);
+        Task<ReturnType<string>> AddCoins(InsertCoinDetails details);
+        Task<ReturnType<string>> DeleteCoins(InsertCoinDetails details);
     }
 }

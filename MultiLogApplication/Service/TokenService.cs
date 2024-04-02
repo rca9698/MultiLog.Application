@@ -15,7 +15,7 @@ namespace MultiLogApplication.Service
         public TokenService(IConfiguration configuration,IHttpContextAccessor httpContextAccessor)
         {
             _configuration = configuration;
-            //_userId = httpContextAccessor.HttpContext.Session.Get<long>("UserId");
+            _userId = httpContextAccessor.HttpContext.Session.Get<long>("UserId");
         }
 
         public string GenerateJSONWebToken()
