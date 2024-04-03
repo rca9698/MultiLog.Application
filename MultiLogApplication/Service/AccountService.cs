@@ -2,6 +2,7 @@
 using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models.Account;
 using MultiLogApplication.Models.Common;
+using MultiLogApplication.Models.SiteDetails;
 
 namespace MultiLogApplication.Service
 {
@@ -19,10 +20,16 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<AccountDetail>>();
         }
 
-        public async Task<ReturnType<AccountDetail>> AccountRequestList(GetAccounts details)
+        public async Task<ReturnType<AccountRequest>> AccountRequestList(GetAccounts details)
         {
             var response = await _client.PostAsJsonAsync($"api/Account/AccountRequestList", details);
-            return await response.ReadContentAs<ReturnType<AccountDetail>>();
+            return await response.ReadContentAs<ReturnType<AccountRequest>>();
+        }
+
+        public async Task<ReturnType<AccountRequest>> AccountRequestDetails(long AccountRequestId)
+        {
+            var response = await _client.GetAsync($"api/Account/AccountRequestDetails/{AccountRequestId}");
+            return await response.ReadContentAs<ReturnType<AccountRequest>>();
         }
 
         public async Task<ReturnType<bool>> AddAccount(AddAccount details)

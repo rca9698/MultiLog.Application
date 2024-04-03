@@ -1,4 +1,17 @@
 ﻿
+$(document).ready(function () {
+    if ($('#accountListing').attr('ViewType') == 'Accounts') {
+        AccountList();
+    }
+    else if ($('#accountListing').attr('ViewType') == 'RejectedAcRequests') {
+        RejectedRequestLists();
+    }
+    else {
+        AccountRequestList();
+    }
+});
+
+
 $(document).on('click', '#DeleteAccountRequestList', function () {
     var userId = $(this).attr('userId');
     var siteId = $(this).attr('siteId');
@@ -13,7 +26,7 @@ $(document).on('click', '#AddAccontRequest', function () {
     $('#AddAccountRequest').attr('siteId', siteId);
 });
 
-$(document).on('click', '#AddAccountRequest', function () {
+$(document).on('click', '#AddAccount', function () {
     var userId = $(this).attr('userId');
     var siteId = $(this).attr('siteId');
     var account = {
@@ -134,10 +147,23 @@ function AddAccountRequest() {
     });
 }
 
-
 $(document).on('click', '#CreateIDModalBtn', function () {
     let AccountRequestId = $(this).attr('accountRequestId');
-    CreateIDFormValidationSingleton.getInstance();
+    let iconPath = $(this).attr('iconpath'); 
+
+    $.ajax({
+        url: '/Account/AccountRequestDetails',
+        type: 'POST',
+        data: { AccountRequestId: AccountRequestId },
+        success: function (result) {
+            $('#CreateIDModalForm .logoicon').attr('src', iconPath);
+            $('#CreateIDModalForm .SiteName').html(result.returnVal.siteName);
+            $('#CreateIDModalForm .SiteURL').html(result.returnVal.siteURL);
+            $('#CreateIDModalForm').attr('accountRequestId', AccountRequestId);
+
+            CreateIDFormValidationSingleton.getInstance();
+        }
+    });
 });
 
 
@@ -192,19 +218,54 @@ var CreateIDFormValidationSingleton = (function () {
 
 function AddAccount() {
     var obj = {
-        Username: $('$Username').val(),
-        SiteId: $('#CreateIDRequestModalForm').attr('SiteId')
+        AccountRequestId: $('#CreateIDModalForm').attr('accountRequestId'),
+        UserName: $('#CreateIDModalForm #Username').val(),
+        Password: $('#CreateIDModalForm #password').val()
     }
 
     $.ajax({
-        url: '/Account/AddAccountRequest',
+        url: '/Account/AddAccount',
         type: 'POST',
         data: obj,
         success: function (result) {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);
-                $('#CreateIDRequestModal .close').trigger('click');
+                $('#CreateIDModal .close').trigger('click');
             }
         }
     });
 }
+
+function AccountRequestList() {
+    $.ajax({
+        url: '/Account/AccountRequestList',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#accountListing').html(result);
+        }
+    });
+}
+
+function AccountList() {
+    $.ajax({
+        url: '/Account/AccountList',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#accountListing').html(result);
+        }
+    });
+}
+
+function RejectedRequestLists() {
+    $.ajax({
+        url: '/Account/RejectedRequestLists',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#accountListing').html(result);
+        }
+    });
+}
+

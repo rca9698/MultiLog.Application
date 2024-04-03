@@ -2,6 +2,7 @@
 using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models.Account;
 using MultiLogApplication.Models.Common;
+using MultiLogApplication.Models.SiteDetails;
 
 namespace MultiLogApplication.Controllers
 {
@@ -14,14 +15,14 @@ namespace MultiLogApplication.Controllers
             _accountService = accountService;
             _logger = logger;
         }
-        public IActionResult Index()
+        public IActionResult Index(string viewType)
         {
-            return View();
+            return View("/Views/Account/Index.cshtml", viewType);
         }
 
         public async Task<IActionResult> AccountRequestList(GetAccounts obj)
         {
-            ReturnType<AccountDetail> res = new ReturnType<AccountDetail>();
+            ReturnType<AccountRequest> res = new ReturnType<AccountRequest>();
             try
             {
                 obj.SessionUser = _sessionUser;
@@ -33,6 +34,20 @@ namespace MultiLogApplication.Controllers
                 _logger.LogError(ex, "Exception Occured at AccountController > AccountRequestList");
             }
             return PartialView(res);
+        }
+
+        public async Task<IActionResult> AccountRequestDetails(long AccountRequestId)
+        {
+            ReturnType<AccountRequest> res = new ReturnType<AccountRequest>();
+            try
+            {
+                res = await _accountService.AccountRequestDetails(AccountRequestId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at AccountController > AccountRequestList");
+            }
+            return Json(res);
         }
 
         public async Task<IActionResult> AccountList(GetAccounts account)
@@ -97,6 +112,19 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-        
+        public async Task<IActionResult> RejectedRequestLists(DeleteAccount account)
+        {
+            ReturnType<bool> res = new ReturnType<bool>();
+            try
+            {
+                account.SessionUser = _sessionUser;
+                res = await _accountService.DeleteAccount(account);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at AccountController > DeleteAccount");
+            }
+            return Json(res);
+        }
     }
 }

@@ -42,16 +42,16 @@
                                 <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]" class="dashboard-nav-item active">
                                     <i class="bi bi-house"></i> dashboard
                                 </a>
-                                @if (User.Claims.Any(x => x.Type.Equals("Admin")))
+                                @if (User.Claims.Any(x => x.Type.Contains("Admin")))
                                 {
                                     <div class='dashboard-nav-dropdown'>
                                         <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                                             <i class="bi bi-person"></i> Accounts
                                         </a>
                                         <div class='dashboard-nav-dropdown-menu'>
-                                            <a href="/Account/AccountRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-people"></i> Account Requests</a>
-                                            <a href="/Account/AccountList" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
-                                            <a href="/Account/RejectedRequestList" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
+                                            <a href="/Account/Index?viewType=AcRequest" class="dashboard-nav-dropdown-item"> <i class="bi bi-people"></i> Account Requests</a>
+                                            <a href="/Account/Index?viewType=Accounts" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
+                                            <a href="/Account/Index?viewType=RejectedAcRequests" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
                                         </div>
                                     </div>
 
@@ -75,29 +75,30 @@
                                         <a href="/Notification/Index" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> List Banks</a>
                                     </div>
                                 </div>
-
-                                <div class='dashboard-nav-dropdown'>
-                                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                        <i class="bi bi-cart"></i> Sites
-                                    </a>
-                                    <div class='dashboard-nav-dropdown-menu'>
-                                        <a href="/Site/Index" class="dashboard-nav-dropdown-item"><i class="bi bi-cart4"></i>Sites</a>
-                                        <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddSitesModal" id="AddSitesModalbtn"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
+                                @if (User.Claims.Any(x => x.Type.Contains("Admin")))
+                                {
+                                    <div class='dashboard-nav-dropdown'>
+                                        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                            <i class="bi bi-cart"></i> Sites
+                                        </a>
+                                        <div class='dashboard-nav-dropdown-menu'>
+                                            <a href="/Site/Index" class="dashboard-nav-dropdown-item"><i class="bi bi-cart4"></i>Sites</a>
+                                            <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddSitesModal" id="AddSitesModalbtn"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class='dashboard-nav-dropdown'>
-                                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                        <i class="bi bi-cash-coin"></i> Coin Requests
-                                    </a>
-                                    <div class='dashboard-nav-dropdown-menu'>
-                                        <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn"><i class="bi bi-cash-coin"></i>Desposit Request</a>
-                                        <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#WithdrawCoinsRequestModal"><i class="bi bi-cash-coin"></i>Withdraw Request</a>
-                                        <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Desposit Requests</a>
-                                        <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Withdraw Requests</a>
+                                    <div class='dashboard-nav-dropdown'>
+                                        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                            <i class="bi bi-cash-coin"></i> Coin Requests
+                                        </a>
+                                        <div class='dashboard-nav-dropdown-menu'>
+                                            <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn"><i class="bi bi-cash-coin"></i>Desposit Request</a>
+                                            <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#WithdrawCoinsRequestModal"><i class="bi bi-cash-coin"></i>Withdraw Request</a>
+                                            <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Desposit Requests</a>
+                                            <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Withdraw Requests</a>
+                                        </div>
                                     </div>
-                                </div>
-
+                                
                                 <div class='dashboard-nav-dropdown'>
                                     <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                                         <i class="bi bi-people"></i> Users
@@ -107,6 +108,8 @@
                                         <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddUserModal" id="LayoutAddUserBtn"><i class="bi bi-person-add"></i>Add Users</a>
                                     </div>
                                 </div>
+                                }
+
                                 <a href="#" class="dashboard-nav-item"><i class="bi bi-gear-fill"></i> Settings </a>
                                 <div class="nav-item-divider"></div>
                                 <a href="/LoginSignup/SignOut" class="dashboard-nav-item"><i class="bi bi-box-arrow-right"></i> Logout </a>
@@ -219,7 +222,6 @@
                         </div>
                     </div>
                     <!-- Login Modal -->
-                    
                     <!-- Deposit Coins Request Modal -->
                     <div class="modal fade" id="DepositCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -351,7 +353,6 @@
                         </div>
                     </div>
                     <!-- Deposit Coins Request Modal -->
-                   
                     <!-- Withdraw Coins Request Modal -->
                     <div class="modal fade" id="WithdrawCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -406,7 +407,6 @@
                         </div>
                     </div>
                     <!-- Withdraw Coins Request Modal-->
-                    
                     <!-- Add sites Modal -->
                     <div class="modal fade" id="AddSitesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -442,7 +442,6 @@
                         </div>
                     </div>
                     <!-- Add sites Modal-->
-                   
                     <!-- Add user Modal -->
                     <div class="modal fade" id="AddUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -475,7 +474,6 @@
                         </div>
                     </div>
                     <!-- Add user Modal-->
-                    
                     <!-- Deposit Coins Modal -->
                     <div class="modal fade" id="DepositCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -509,7 +507,6 @@
                         </div>
                     </div>
                     <!-- Deposit Coins Modal -->
-                    
                     <!-- Withdraw Coins Modal -->
                     <div class="modal fade" id="WithdrawCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -543,7 +540,6 @@
                         </div>
                     </div>
                     <!-- Withdraw Coins Modal-->
-                    
                     <!-- Add Bank Details Modal -->
                     <div class="modal fade" id="AddBankDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">

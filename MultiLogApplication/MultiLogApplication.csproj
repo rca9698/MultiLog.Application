@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\images\PaymentProof\" />
+    <Folder Include="wwwroot\images\Site\" />
+    <Folder Include="wwwroot\images\Payment\" />
     <Folder Include="wwwroot\js\Plugin\" />
   </ItemGroup>
 

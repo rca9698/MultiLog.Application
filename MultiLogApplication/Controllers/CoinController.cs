@@ -12,11 +12,16 @@ namespace MultiLogApplication.Controllers
         private readonly ICoinService _coinService;
         private readonly ILogger<CoinController> _logger;
         private readonly IConfiguration _configuration;
-        public CoinController(ICoinService coinService, ILogger<CoinController> logger, IHttpContextAccessor httpContextAccessor, IConfiguration configuration) : base(httpContextAccessor)
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public CoinController(ICoinService coinService, ILogger<CoinController> logger
+            , IHttpContextAccessor httpContextAccessor, IConfiguration configuration, 
+            IWebHostEnvironment hostingEnvironment) 
+            : base(httpContextAccessor)
         {
             _coinService = coinService;
             _logger = logger;
             _configuration = configuration;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Index(string viewType)
@@ -76,16 +81,18 @@ namespace MultiLogApplication.Controllers
             ReturnType<bool> res = new ReturnType<bool>();
             try
             {
-                string wwwPath = _configuration["StoragePath:BasePath:Path"];
-                string contentPath = _configuration["StoragePath:paymentProof:Path"];
+                string BasePath = _hostingEnvironment.WebRootPath;
+                //string wwwPath = _configuration["StoragePath:BasePath:Path"];
+                string contentPath = _configuration["StoragePath:SiteIcon:Path"];
                 string fileName = Guid.NewGuid().ToString();
-                if (!Directory.Exists(wwwPath + contentPath))
+                string iconContentPath = BasePath + contentPath;
+                if (!Directory.Exists(iconContentPath))
                 {
-                    Directory.CreateDirectory(wwwPath + contentPath);
+                    Directory.CreateDirectory(iconContentPath);
                 }
                 var extenstion = obj.File.FileName.Split(".").LastOrDefault();
-                string docName = wwwPath + contentPath + "\\" + Path.GetFileName(fileName + "." + extenstion);
-                using (FileStream stream = new FileStream(Path.Combine(wwwPath, contentPath, docName), FileMode.Create))
+                string docName = iconContentPath + "\\" + Path.GetFileName(fileName + "." + extenstion);
+                using (FileStream stream = new FileStream(docName, FileMode.Create))
                 {
                     obj.File.CopyTo(stream);
                 }

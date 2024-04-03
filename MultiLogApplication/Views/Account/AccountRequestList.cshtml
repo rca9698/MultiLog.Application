@@ -1,5 +1,6 @@
 ﻿@using MultiLogApplication.Models.Common
-@model ReturnType<MultiLogApplication.Models.Account.AccountDetail>
+@inject IConfiguration Configuration
+@model ReturnType<MultiLogApplication.Models.SiteDetails.AccountRequest>
 
 <div class='dashboard-content'>
     <div class="row mt-4">
@@ -27,13 +28,13 @@
                         @foreach (var account in Model.ReturnList)
                         {
                             <tr>
-                                <td scope="row">@account.UserName</td>
+                                <td scope="row">@account.UserNumber</td>
                                 <td>@account.UserName</td>
-                                <td>@account.SiteName @account.SiteIcon</td>
+                                <td>@account.SiteName (@account.SiteURL)</td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" data-toggle="modal" data-target="#AddAccountDetails" userId="@account.UserId" siteId="@account.SiteId" id="AddAccontRequest"> <i class="bi bi-pencil-square"></i> </button>
-                                        <button type="button" data-toggle="modal" data-target="#DeleteAccountRequest" userId="@account.UserId" siteId="@account.SiteId" id="DeleteAccountRequestList"> <i class="bi bi-trash-fill"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#CreateIDModal" accountRequestID="@account.AccountRequestID" iconPath="@Configuration["StoragePath:SiteIcon:Path"]\@account.DocumentDetailId.@account.FileExtenstion" id="CreateIDModalBtn"> <i class="bi bi-pencil-square"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#DeleteAccountRequest" accountRequestID="@account.AccountRequestID" id="DeleteAccountRequestList"> <i class="bi bi-trash-fill"></i> </button>
                                     </div>
                                 </td>
                             </tr>
@@ -50,34 +51,52 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="AddAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<!-- Create ID Modal -->
+<div class="modal fade" id="CreateIDModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
+        <style>
+            .nav-item-divider {
+                background-color: rgb(20 24 25 / 30%);
+            }
+        </style>
         <div class="modal-content">
-            <form>
+            <form id="CreateIDModalForm">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Confirm Add Account</h4>
+                    <h4 class="modal-title" id="exampleModalLabel">CREATE ID</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-
-                    <div class="form-group">
-                        <label>User Name</label>
-                        <input id="UserName" type="text" class="form-control" placeholder="User Name">
-                        <label>Password</label>
-                        <input id="Password" type="password" class="form-control" placeholder="password">
+                    <div class="form-group col-12">
+                        <div class="d-flex flex-column text-center col-12">
+                            <span style="height: 51px;width: 51px;margin-left: 45%;">
+                                <img class="logoicon" src="~/images/banner_ipl.png" style="height:100%;width:100%;border-radius: 50%;margin-top: 4%;
+    margin-right: 10%" />
+                            </span>
+                            <span class="bussiness SiteName">Site Name</span>
+                            <span class="plan SiteURL">Site URL</span>
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <label>Username*</label>
+                        <input type="text" name="Username" id="Username" class="form-control" placeholder="User Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Password*</label>
+                        <input type="text" name="password" id="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="nav-item-divider"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="AddAccountRequest">Add Account Details</button>
+                    <button type="submit" class="btn btn-success col-12">Create ID</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!-- Create ID Modal-->
 <!-- Modal -->
 <div class="modal fade" id="DeleteAccountRequest" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
