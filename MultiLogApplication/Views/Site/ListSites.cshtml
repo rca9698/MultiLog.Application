@@ -1,52 +1,37 @@
 ﻿@using MultiLogApplication.Models.Common
+@inject IConfiguration Configuration
 @model ReturnType<MultiLogApplication.Models.SiteDetails.SiteDetail>
 
+@if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
+{
+    @foreach (var siteDetail in Model.ReturnList)
+    {
+        <div class="card">
+            <div class="card-body">
+                <div class="row Col-12">
+                    <div class="col-6">
+                        <div class="row col-12">
+                            <div class="col-4">
+                                <img class="siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" style="height:100%;width:100%;border-radius: 50%;margin-top: 4%;
+    margin-right: 10%" />
+                            </div>
+                            <div class="col-8">
+                                <h5 class="card-title siteName">@siteDetail.SiteName</h5>
+                                <p class="card-title siteURL">@siteDetail.SiteURL</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6">
+                        <button data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#UpdateSiteModal" id="updateSiteBtn" style="float: right;border-radius: 5px;margin-top: 15px;">Update Site</button>
+                        <button data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#DeleteSiteModal" id="deleteSiteBtn" style="float: right;border-radius: 5px;margin-top: 15px;">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
 
 
-<div class="row mt-4">
-    <div class="col-6">
-        <h6 class="text-white">Web Site Listing</h6>
-    </div>
-</div>
 
-<div class="card mt-4">
-    <div class="card-body customtable">
-        <h5 class="card-title">Web Sites</h5>
-        <!-- Table with hoverable rows -->
-        <table class="table table-hover" id="userList">
-            <thead>
-                <tr class="tableHeaderClass">
-                    <th scope="col">Site Name</th>
-                    <th scope="col">Site URL</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
-                {
-                    @foreach (var account in Model.ReturnList)
-                    {
-                        <tr id="site_@account.SiteId">
-                            <td scope="row" class="siteName">@account.SiteName</td>
-                            <td class="siteURL">@account.SiteURL</td>
-                            <td>@account.DocumentDetailId+"."+@account.FileExtenstion </td>
-                            <td>
-                                <div class="btn-group">
-                                    <button type="button" data-toggle="modal" data-target="#UpdateSiteModal" id="updateSite" data-siteId="@account.SiteId"> <i class="bi bi-pencil-square"></i> </button>
-                                    <button type="button" data-toggle="modal" data-target="#DeleteSiteModal" id="deleteSite" data-siteId="@account.SiteId"> <i class="bi bi-trash-fill"></i> </button>
-                                </div>
-                            </td>
-                        </tr>
-                    }
-                }
-                else
-                {
-                    <tr><td colspan="4">No Data Found!!</td></tr>
-                }
-            </tbody>
-        </table>
-        <!-- End Table with hoverable rows -->
-    </div>
-</div>
 

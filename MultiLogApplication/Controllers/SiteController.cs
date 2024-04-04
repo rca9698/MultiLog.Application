@@ -23,9 +23,9 @@ namespace MultiLogApplication.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string viewType)
         {
-            return View();
+            return View("/Views/Site/Index.cshtml", viewType);
         }
 
         public async Task<IActionResult> Getsites(ListSites obj)

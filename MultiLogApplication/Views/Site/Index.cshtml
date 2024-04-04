@@ -1,4 +1,5 @@
-﻿
+﻿@model string;
+
 <style>
     #listSites .card {
         border-radius: 15px;
@@ -15,17 +16,20 @@
     }
 </style>
 
-<div class="row col-12 idSwitch" style="">
-    <div class="col-6 tabSelection" idType="myIds">
-        My IDs
-    </div>
+@if(@Model != "Admin")
+{
+    <div class="row col-12 idSwitch" style="">
+        <div class="col-6 tabSelection" idType="myIds">
+            My IDs
+        </div>
 
-    <div class="col-6 tabSelection active" idType="newIds">
-        Create ID
+        <div class="col-6 tabSelection active" idType="newIds">
+            Create ID
+        </div>
     </div>
-</div>
+}
 
-<div class='dashboard-content' id="listSites">
+<div class='dashboard-content' id="listSites" ViewType="@Model">
 </div>
 
 <!-- Update sites Modal -->

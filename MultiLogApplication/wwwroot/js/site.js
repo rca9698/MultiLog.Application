@@ -1,6 +1,9 @@
 ﻿$(document).ready(function () {
-    if ($('#listSites').length)
-    {
+
+    if ($('#listSites').attr('ViewType') == 'Admin') {
+        LoadSites();
+    }
+    else {
         LoadUserSites();
     }
 });
@@ -31,10 +34,11 @@ $(document).on('click', '.idSwitch .tabSelection', function () {
 
 });
 
-$(document).on('click', '#updateSite', function () {
+$(document).on('click', '#updateSiteBtn', function () {
     let siteId = $(this).attr('siteId');
     let Name = $('#site_' + siteId + ' .siteName').html();
     let URL = $('#site_' + siteId + ' .siteURL').html();
+    let iconSrc = $('#site_' + siteId + ' .siteIcon').attr('src');
     $('#UpdateSiteModal').attr('siteId', siteId);
     $('#UpdateSiteModalForm #siteName').val(Name);
     $('#UpdateSiteModalForm #siteURL').val(URL);
@@ -232,5 +236,4 @@ function LoadUserSites() {
         }
     });
 }
-
 
