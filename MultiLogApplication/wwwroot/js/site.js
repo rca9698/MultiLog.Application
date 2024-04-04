@@ -239,6 +239,7 @@ function DeleteSite(id) {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);
                 $('#DeleteSiteModal .close').trigger('click');
+                LoadSites();
             }
         }
     });
