@@ -696,7 +696,7 @@ body {
 
 .footernavbar {
 	background: #000000;
-	padding: 20px;
+	/*padding: 20px;*/
 	z-index: 9999;
 	position: fixed !important;
 	width: 100%;
