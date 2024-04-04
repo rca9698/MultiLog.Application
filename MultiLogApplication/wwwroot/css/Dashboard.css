@@ -101,6 +101,9 @@
         margin-left: 50%;
     }
 
+        .leftCard .container {
+            margin-left: -25px;
+        }
 
     .middleCard {
         background: #222222;
@@ -118,6 +121,10 @@
         margin-right: 50%;
         margin-left: -90%;
     }
+
+        .rightCard .container {
+            margin-left: 25px;
+        }
 }
 
 @media (max-width: 992px) {
