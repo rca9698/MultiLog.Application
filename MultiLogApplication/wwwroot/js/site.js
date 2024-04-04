@@ -39,18 +39,21 @@ $(document).on('click', '#updateSiteBtn', function () {
     let Name = $('.site_' + siteId + ' .siteName').html();
     let URL = $('.site_' + siteId + ' .siteURL').html();
     let iconSrc = $('.site_' + siteId + ' .siteIcon').attr('src');
+    let imageName = $('.site_' + siteId + ' .siteIcon').attr('imageName');
+
     $('#UpdateSiteModal').attr('siteId', siteId);
     $('#UpdateSiteModalForm #siteName').val(Name);
     $('#UpdateSiteModalForm #siteURL').val(URL);
+    $('#UpdateSiteModalForm #siteIcon').attr('siteIcon', imageName);
     UpdateSiteFormValidationSingleton.getInstance();
 });
 
-$(document).on('click', '#deleteSite', function () {
+$(document).on('click', '#deleteSiteBtn', function () {
     let siteId = $(this).attr('siteId');
-    $('#DeleteSitebtn').attr('siteId', siteId);
+    $('#DeleteSiteConfirmbtn').attr('siteId', siteId);
 });
 
-$(document).on('click', '#DeleteSitebtn', function () {
+$(document).on('click', '#DeleteSiteConfirmbtn', function () {
     DeleteSite($(this).attr('siteId'));
 });
 
@@ -73,6 +76,18 @@ var AddSiteFormValidationSingleton = (function () {
                     validators: {
                         notEmpty: {
                             message: 'Site URL is required'
+                        }
+                    }
+                },
+                files: {
+                    validators: {
+                        callback: {
+                            message: 'Please upload icon',
+                            callback: function (value, validator, $field) {
+                                if ($("#AddSitesModal #files")[0].files[0] == undefined)
+                                    return false;
+                                return true;
+                            }
                         }
                     }
                 }
@@ -125,6 +140,18 @@ var UpdateSiteFormValidationSingleton = (function () {
                             message: 'Site URL is required'
                         }
                     }
+                },
+                files: {
+                    validators: {
+                        callback: {
+                            message: 'Please upload icon',
+                            callback: function (value, validator, $field) {
+                                if ($("#UpdateSiteModal #files")[0].files[0] == undefined)
+                                    return false;
+                                return true;
+                            }
+                        }
+                    }
                 }
             },
             plugins: {
@@ -154,7 +181,6 @@ var UpdateSiteFormValidationSingleton = (function () {
 })();
 
 function AddSite() {
-
     var formData = new FormData();
     formData.append("SiteName", $('#AddSitesModal #siteName').val());
     formData.append("SiteURL", $('#AddSitesModal #siteURL').val());
@@ -170,6 +196,7 @@ function AddSite() {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);
                 $('#AddSitesModal .close').trigger('click');
+                LoadSites();
             }
         }
     });
@@ -178,9 +205,10 @@ function AddSite() {
 function UpdateSite() {
 
     var formData = new FormData();
-    formData.append("SiteId", $('#UpdateSiteModal').attr('data-siteId'));
+    formData.append("SiteId", $('#UpdateSiteModal').attr('siteId'));
     formData.append("SiteName", $('#UpdateSiteModal #siteName').val());
     formData.append("SiteURL", $('#UpdateSiteModal #siteURL').val());
+    formData.append("ImageName", $('#UpdateSiteModal #siteIcon').attr('siteIcon'));
     formData.append("File", $("#UpdateSiteModal #files")[0].files[0]);
 
     $.ajax({
@@ -193,6 +221,7 @@ function UpdateSite() {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);
                 $('#UpdateSiteModal .close').trigger('click');
+                LoadSites();
             }
         }
     });

@@ -23,14 +23,19 @@
 
                     </div>
                     <div class="col-6">
-                        <button data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right;border-radius: 5px;margin-top: 15px;">Create</button>
+                        <button class="bg-success" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right;border-radius: 5px;margin-top: 15px;">Create</button>
                     </div>
                 </div>
             </div>
         </div>
     }
 }
-
+else
+{
+    <span>
+        No Data Found!!!
+    </span>
+}
 <!-- Create ID Request Modal -->
 <div class="modal fade" id="CreateIDRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

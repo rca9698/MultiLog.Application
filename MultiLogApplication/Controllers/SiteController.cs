@@ -83,7 +83,34 @@ namespace MultiLogApplication.Controllers
             ReturnType<bool> res = new ReturnType<bool>();
             try
             {
+                string BasePath = _hostingEnvironment.WebRootPath;
+                //string wwwPath = _configuration["StoragePath:BasePath:Path"];
+                string contentPath = _configuration["StoragePath:SiteIcon:Path"];
+                string iconContentPath = BasePath + contentPath;
+                FileInfo file = new FileInfo(iconContentPath+"\\"+obj.ImageName);
+                if (file.Exists)
+                {
+                    file.Delete();
+                }
+
+                string fileName = Guid.NewGuid().ToString();
+                
+                if (!Directory.Exists(iconContentPath))
+                {
+                    Directory.CreateDirectory(iconContentPath);
+                }
+                var extenstion = obj.File.FileName.Split(".").LastOrDefault();
+                string docName = iconContentPath + "\\" + Path.GetFileName(fileName + "." + extenstion);
+                using (FileStream stream = new FileStream(Path.Combine(docName), FileMode.Create))
+                {
+                    obj.File.CopyTo(stream);
+                }
+
                 obj.SessionUser = _sessionUser;
+                obj.ImageName = obj.File.FileName;
+                obj.DocumentDetailId = fileName;
+                obj.FileExtenstion = extenstion;
+                obj.ImageSize = obj.File.Length.ToString();
                 res = await _siteService.UpdateSite(obj);
             }
             catch (Exception ex)
