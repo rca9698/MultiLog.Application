@@ -49,3 +49,18 @@ $(document).on('click', '.CopyToClipboard', function () {
     document.execCommand('copy');
     tempTextarea.remove();
 });
+
+
+$(document).click(function (e) {
+
+    var container2 = $(".menu-toggle");
+    if (container2.is(e.target) && container2.has(e.target).length > 0) {
+        $(".dashboard-nav").addClass("mobile-show");
+    }
+    var container = $(".dashboard-nav");
+    if (!container2.is(e.target) && container2.has(e.target).length === 0 && !container.is(e.target) && container.has(e.target).length === 0) {
+        if (container.hasClass('mobile-show')) {
+            $(".dashboard-nav").removeClass("mobile-show");
+        }
+    }
+});
