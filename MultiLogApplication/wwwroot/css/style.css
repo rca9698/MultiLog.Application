@@ -421,6 +421,7 @@ h1, .h1 {
 		display: -webkit-flex;
 		display: -ms-flexbox;
 		display: flex;
+		margin-left: -25px;
 	}
 }
 
