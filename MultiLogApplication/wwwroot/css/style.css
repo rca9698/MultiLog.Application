@@ -411,6 +411,7 @@ h1, .h1 {
 
 		.dashboard-nav.mobile-show {
 			display: block;
+			width:0px;
 		}
 }
 

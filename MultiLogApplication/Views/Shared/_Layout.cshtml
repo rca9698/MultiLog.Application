@@ -27,7 +27,7 @@
     <div class="container">
         <main role="main" class="pb-3">
             <div class="main">
-                <div class='dashboard'>
+                <div class=''>
                     <div class="dashboard-nav">
                         <header>
                             <a href="" class="menu-toggle"><i class="bi bi-list"></i></a><a href="@Configuration["ApiConfigs:MultilogApp:Uri"]"
@@ -59,21 +59,18 @@
 
                                 <div class='dashboard-nav-dropdown'>
                                     <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                        <i class="bi bi-person"></i> Bank Details
+                                        <i class="bi bi-bank2"></i> Bank Details
                                     </a>
                                     <div class='dashboard-nav-dropdown-menu'>
-                                        <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddBankDetailModal" id="AddBankDetailModalBtn"> <i class="bi bi-people"></i> Add Bank Detail</a>
-                                        <a href="/BankAccount/Index" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> List Banks</a>
+                                        <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddBankDetailModal" id="AddBankDetailModalBtn"> <i class="bi bi-file-earmark-plus"></i> Add Bank Detail</a>
+                                        <a href="/BankAccount/Index" class="dashboard-nav-dropdown-item"> <i class="bi bi-bank"></i> List Banks</a>
                                     </div>
                                 </div>
 
                                 <div class='dashboard-nav-dropdown'>
-                                    <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                        <i class="bi bi-person"></i> Notifications
+                                    <a href="/Notification/Index" class="dashboard-nav-item">
+                                        <i class="bi bi-bell-fill"></i> Notifications
                                     </a>
-                                    <div class='dashboard-nav-dropdown-menu'>
-                                        <a href="/Notification/Index" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> List Banks</a>
-                                    </div>
                                 </div>
                                 @if (User.Claims.Any(x => x.Type.Contains("Admin")))
                                 {
