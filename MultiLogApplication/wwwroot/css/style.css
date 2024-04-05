@@ -176,6 +176,7 @@ h1, .h1 {
 
 .dashboard-nav {
 	background-color: #443ea2;
+	width: 0px;
 }
 
 	.dashboard-nav a {
@@ -706,8 +707,8 @@ body {
 
 
 .userlistingCircle {
-	width: 5vw;
-	height: 5vw;
+	width: 8vw;
+	height: 8vw;
 	border-radius: 50%;
 	
 }

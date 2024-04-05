@@ -1,10 +1,12 @@
 ﻿$(document).ready(function () {
-
     if ($('#listSites').attr('ViewType') == 'Admin') {
         LoadSites();
     }
+    else if ($('#listSites').attr('ViewType') == 'MyIds') {
+        $('.myIdsClass').trigger('click');
+    }
     else {
-        LoadUserSites();
+        $('.newIdsClass').trigger('click');
     }
 });
 
@@ -13,12 +15,17 @@ $(document).on('click', '#AddSitesModalbtn', function () {
 });
 
 $(document).on('click', '#IDsList', function () {
-    location.href = '/Site/Index';
+    location.href = '/Site/Index?viewType=Ids'
+});
+
+$(document).on('click', '#MyIDsList', function () {
+    location.href = '/Site/Index?viewType=MyIds'
 });
 
 $(document).on('click', '.idSwitch .tabSelection', function () {
     $('.idSwitch .tabSelection').removeClass('active');
     $(this).addClass('active');
+    
     let url = $(this).attr('idType') == 'myIds'
         ? '/Site/GetUserListSiteById'
         : '/Site/GetUserListSites';
@@ -256,14 +263,14 @@ function LoadSites() {
     });
 }
 
-function LoadUserSites() {
-    $.ajax({
-        url: '/Site/GetUserListSites',
-        type: 'POST',
-        data: '',
-        success: function (result) {
-            $('#listSites').html(result);
-        }
-    });
-}
+//function LoadUserSites() {
+//    $.ajax({
+//        url: '/Site/GetUserListSites',
+//        type: 'POST',
+//        data: '',
+//        success: function (result) {
+//            $('#listSites').html(result);
+//        }
+//    });
+//}
 
