@@ -64,6 +64,23 @@ $(document).on('click', '#DeleteSiteConfirmbtn', function () {
     DeleteSite($(this).attr('siteId'));
 });
 
+$(document).on('click', '.viewThisSiteDetails', function () {
+    let siteId = $(this).attr('SiteId');
+    $.ajax({
+        url: '/Site/ViewThisSiteDetailsPV',
+        type: 'POST',
+        data: { siteId: siteId },
+        success: function (result) {
+            $('#listSites').hide();
+            $('.idSwitch').hide();
+            $('#SiteDetail').html(result);
+        }
+    });
+});
+
+
+
+
 var AddSiteFormfv;
 var fv1;
 var AddSiteFormValidationSingleton = (function () {

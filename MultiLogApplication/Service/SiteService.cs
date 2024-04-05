@@ -1,5 +1,6 @@
 ﻿using MultiLogApplication.Extensions;
 using MultiLogApplication.Interfaces;
+using MultiLogApplication.Models.Account;
 using MultiLogApplication.Models.Common;
 using MultiLogApplication.Models.SiteDetails;
 
@@ -48,5 +49,13 @@ namespace MultiLogApplication.Service
             var response = await _client.GetAsync($"api/Site/GetUserListSites");
             return await response.ReadContentAs<ReturnType<SiteDetail>>();
         }
+
+        public async Task<ReturnType<AccountDetail>> ViewThisSiteDetails(long userId, long siteId)
+        {
+            var response = await _client.GetAsync($"api/Site/ViewThisSiteDetails");
+            return await response.ReadContentAs<ReturnType<AccountDetail>>();
+        }
+
+
     }
 }

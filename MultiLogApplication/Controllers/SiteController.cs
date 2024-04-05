@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiLogApplication.Interfaces;
+using MultiLogApplication.Models.Account;
 using MultiLogApplication.Models.Common;
 using MultiLogApplication.Models.NotificationDetails;
 using MultiLogApplication.Models.SiteDetails;
@@ -163,6 +164,20 @@ namespace MultiLogApplication.Controllers
                 _logger.LogError(ex, "Exception Occured at SiteController > GetUserListSiteById");
             }
             return PartialView("~/Views/Site/GetUserListSiteById.cshtml", res);
+        }
+
+        public async Task<IActionResult> ViewThisSiteDetailsPV(long siteId)
+        {
+            ReturnType<AccountDetail> res = new ReturnType<AccountDetail>();
+            try
+            {
+                res = await _siteService.ViewThisSiteDetails(_sessionUser, siteId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at SiteController > ViewThisSiteDetailsPV");
+            }
+            return PartialView("~/Views/Site/ViewThisSiteDetailsPV.cshtml", res);
         }
 
     }

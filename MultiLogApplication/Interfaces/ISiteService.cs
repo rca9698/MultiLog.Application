@@ -1,4 +1,5 @@
-﻿using MultiLogApplication.Models.Common;
+﻿using MultiLogApplication.Models.Account;
+using MultiLogApplication.Models.Common;
 using MultiLogApplication.Models.SiteDetails;
 
 namespace MultiLogApplication.Interfaces
@@ -11,5 +12,6 @@ namespace MultiLogApplication.Interfaces
         Task<ReturnType<bool>> UpdateSite(UpdateSite details);
         Task<ReturnType<SiteDetail>> GetUserListSites();
         Task<ReturnType<SiteDetail>> GetUserListSiteById(long userId);
+        Task<ReturnType<AccountDetail>> ViewThisSiteDetails(long userId,long siteId);
     }
 }

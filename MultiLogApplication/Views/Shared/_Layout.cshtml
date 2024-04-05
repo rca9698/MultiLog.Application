@@ -33,8 +33,8 @@
                             <a href="" class="menu-toggle"><i class="bi bi-list"></i></a><a href="@Configuration["ApiConfigs:MultilogApp:Uri"]"
                                                                                             class="brand-logo">
 
-                                <img src="/images/kapunterIcon.jpg" alt="cricket ipl" class="" 
-                                style="border-radius: 10px 10px 10px 10px;width: 50%;height: auto;margin-left: 50px;">
+                                <img src="/images/kapunterIcon.jpg" alt="cricket ipl" class=""
+                                     style="border-radius: 10px 10px 10px 10px;width: 50%;height: auto;margin-left: 50px;">
                             </a>
                         </header>
                         @if (User.Identity.IsAuthenticated)
@@ -97,16 +97,16 @@
                                             <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Withdraw Requests</a>
                                         </div>
                                     </div>
-                                
-                                <div class='dashboard-nav-dropdown'>
-                                    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                        <i class="bi bi-people"></i> Users
-                                    </a>
-                                    <div class='dashboard-nav-dropdown-menu'>
-                                        <a href="/User/Index" class="dashboard-nav-dropdown-item"><i class="bi bi-people"> </i>List User</a>
-                                        <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddUserModal" id="LayoutAddUserBtn"><i class="bi bi-person-add"></i>Add Users</a>
+
+                                    <div class='dashboard-nav-dropdown'>
+                                        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                            <i class="bi bi-people"></i> Users
+                                        </a>
+                                        <div class='dashboard-nav-dropdown-menu'>
+                                            <a href="/User/Index" class="dashboard-nav-dropdown-item"><i class="bi bi-people"> </i>List User</a>
+                                            <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddUserModal" id="LayoutAddUserBtn"><i class="bi bi-person-add"></i>Add Users</a>
+                                        </div>
                                     </div>
-                                </div>
                                 }
 
                                 <a href="#" class="dashboard-nav-item"><i class="bi bi-gear-fill"></i> Settings </a>
@@ -580,18 +580,20 @@
     <div class="card mt-4 footer-nav footernavbar">
         <div class="row col-12">
             <div class="col-3 grid-margin stretch-card">
-                <div class="card" style="background: black;">
-                    <div class="card-body text-center" style="padding: 0px;">
-                        <div class="row">
-                            <i class="bi bi-house-door"></i>
+                <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]">
+                    <div class="card" style="background: black;">
+                        <div class="card-body text-center" style="padding: 0px;">
+                            <div class="row">
+                                <i class="bi bi-house-door"></i>
+                            </div>
+                            <h6 class="text-muted font-weight-normal">
+                                <a href="#" style="font-size: 12px"> Home </a>
+                            </h6>
                         </div>
-                        <h6 class="text-muted font-weight-normal">
-                            <a href="#" style="font-size: 12px"> Home </a>
-                        </h6>
                     </div>
-                </div>
+                </a>
             </div>
-            <div class="col-3 grid-margin stretch-card" id="MyIDsList">
+            <div class="col-3 grid-margin stretch-card" id="IDsList">
                 <div class="card" style="background: black;">
                     <div class="card-body text-center" style="padding: 0px;">
                         <div class="row">
@@ -603,7 +605,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 grid-margin stretch-card" id="IDsList">
+            <div class="col-3 grid-margin stretch-card" id="MyIDsList">
                 <div class="card" style="background: black;">
                     <div class="card-body text-center" style="padding: 0px;">
                         <div class="row">
@@ -627,15 +629,15 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
-    <footer class="border-top footer text-muted">
+   @*  <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - MultiLogApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer> *@
 
     <script src="~/js/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
