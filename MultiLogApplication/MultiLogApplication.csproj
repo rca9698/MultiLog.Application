@@ -17,4 +17,11 @@
     <Folder Include="wwwroot\js\Plugin\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\images\kapunterIcon.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
