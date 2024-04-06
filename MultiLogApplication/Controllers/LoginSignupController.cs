@@ -76,7 +76,7 @@ namespace MultiLogApplication.Controllers
                 if (ModelState.IsValid)
                 {
                     var user = await _loginServices.LoginCred(details);
-                    if (user == null)
+                    if (user == null || user.ReturnStatus == ReturnStatus.Failure)
                     {
                         //Add logic here to display some message to user    
                         returnType.ReturnMessage = "Invalid Credential";

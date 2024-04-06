@@ -95,7 +95,7 @@ $(document).on('click', '#DepositeToAccountRequestCoinsBtn', function () {
     $('#DepositeToAccountRequestModal .siteName').html(Name);
     $('#DepositeToAccountRequestModal .siteURL').html(URL);
     $('#DepositeToAccountRequestModal .siteIcon').attr('src', iconSrc);
-    DepositeCoinsToAccountFormValidationSingleton.createInstance();
+    DepositeCoinsToAccountFormValidationSingleton.getInstance();
 
 })
 
@@ -109,7 +109,7 @@ $(document).on('click', '#withdrawFromAccountRequestCoinsBtn', function () {
     $('#WithDrawToAccountRequestModal .siteName').html(Name);
     $('#WithDrawToAccountRequestModal .siteURL').html(URL);
     $('#WithDrawToAccountRequestModal .siteIcon').attr('src', iconSrc);
-    WithDrawFromAccountRequestFormValidationSingleton.createInstance();
+    WithDrawFromAccountRequestFormValidationSingleton.getInstance();
 })
 
 //End Click Events
@@ -165,30 +165,33 @@ function UpdateSite() {
 
 function DepositeCoinsToAccount() {
 
+    var obj = {};
+    obj.SiteId = $('#DepositeToAccountRequestModal').attr('siteId');
+    obj.Coins = $('#DepositeToAccountRequestModal .Coins').val();
+
     $.ajax({
         url: '/Coin/AddCoinsToAccountRequest',
         type: 'POST',
-        data: formData,
-        contentType: false, // Not to set any content header  
-        processData: false, // Not to process data
+        data: obj,
         success: function (result) {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);
-                LoadMySites();
                 $('#DepositeToAccountRequestModal .close').trigger('click');
+                LoadMySites();
             }
         }
     });
 }
 
 function WithdrawCoinsToAccount() {
+    var obj = {};
+    obj.SiteId = $('#WithDrawToAccountRequestModal').attr('siteId');
+    obj.Coins = $('#WithDrawToAccountRequestModal .Coins').val();
 
     $.ajax({
         url: '/Coin/WithDrawToAccountRequest',
         type: 'POST',
-        data: formData,
-        contentType: false, // Not to set any content header  
-        processData: false, // Not to process data
+        data: obj,
         success: function (result) {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);
@@ -406,7 +409,7 @@ var DepositeCoinsToAccountFormValidationSingleton = (function () {
 
 var WithDrawFromAccountRequestFormfv;
 var fv4;
-var  WithDrawFromAccountRequestFormValidationSingleton = (function () {
+var WithDrawFromAccountRequestFormValidationSingleton = (function () {
     function createInstance() {
 
         let form = document.getElementById('WithDrawToAccountRequestModalForm');

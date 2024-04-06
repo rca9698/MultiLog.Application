@@ -21,7 +21,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="~/css/style.css" rel="stylesheet" />
     <link href="~/css/commonsite.css" rel="stylesheet" />
- 
+
 </head>
 <body>
     <header>
@@ -41,11 +41,11 @@
                         </header>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <nav class="dashboard-nav-list">
+                            <nav class="dashboard-nav-list pSiteNameFontSize">
                                 @if (!User.Claims.Any(x => x.Type.Contains("Admin")))
                                 {
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-person"></i> Profile </a>
-                                    <a href="#" class="dashboard-nav-item"><i class="bi bi-bank2"></i> Withdraw Details </a>
+                                    <a href="/BankAccount/Index" class="dashboard-nav-item"><i class="bi bi-bank2"></i> Withdraw Details </a>
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-plus-circle-fill"></i> Create Id </a>
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-star-fill"></i> Bonus </a>
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-fast-forward-fill"></i> Loss Back </a>
@@ -54,17 +54,11 @@
                                     <div class="nav-item-divider"></div>
 
                                     <div class="social-icons-btn ms-5">
-                                        <a class="icons twitter" href="#">
-                                            <i class="bi bi-twitter"></i>
-                                        </a>
-                                        <a class="icons facebook" href="#">
-                                            <i class="bi bi-facebook"></i>
-                                        </a>
                                         <a class="icons instagram" href="#">
                                             <i class="bi bi-instagram"></i>
                                         </a>
-                                        <a class="icons linkedin" href="#">
-                                            <i class="bi bi-linkedin"></i>
+                                        <a class="icons telegram" href="#">
+                                            <i class="bi bi-telegram"></i>
                                         </a>
                                     </div>
 
@@ -72,7 +66,7 @@
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-tag-fill"></i> Offers </a>
                                     <a href="/Notification/Index" class="dashboard-nav-item"><i class="bi bi-bell-fill"></i> Notifications </a>
                                 }
-                                
+
                                 @if (User.Claims.Any(x => x.Type.Contains("Admin")))
                                 {
                                     <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]" class="dashboard-nav-item active">
@@ -115,8 +109,10 @@
                                             <i class="bi bi-cash-coin"></i> Coin Requests
                                         </a>
                                         <div class='dashboard-nav-dropdown-menu'>
-                                            <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn"><i class="bi bi-cash-coin"></i>Desposit Request</a>
-                                            <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#WithdrawCoinsRequestModal"><i class="bi bi-cash-coin"></i>Withdraw Request</a>
+                                            @*  <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn"><i class="bi bi-cash-coin"></i>Desposit Request</a>
+                                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#WithdrawCoinsRequestModal"><i class="bi bi-cash-coin"></i>Withdraw Request</a>*@
+                                            <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Deposit to Site Requests</a>
+                                            <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Withdraw from Site Requests</a>
                                             <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Desposit Requests</a>
                                             <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Withdraw Requests</a>
                                         </div>
@@ -144,20 +140,20 @@
                         @* <div class="nav-item-divider"></div>
                         <a href="#" class="dashboard-nav-item"><i class="bi bi-cloud-arrow-down-fill"></i> Download App </a>
                         <div class="social-icons-btn ms-5">
-                            <a class="icons twitter" href="#">
-                                <i class="bi bi-twitter"></i>
-                            </a>
-                            <a class="icons facebook" href="#">
-                                <i class="bi bi-facebook"></i>
-                            </a>
-                            <a class="icons instagram" href="#">
-                                <i class="bi bi-instagram"></i>
-                            </a>
-                            <a class="icons linkedin" href="#">
-                                <i class="bi bi-linkedin"></i>
-                            </a>
+                        <a class="icons twitter" href="#">
+                        <i class="bi bi-twitter"></i>
+                        </a>
+                        <a class="icons facebook" href="#">
+                        <i class="bi bi-facebook"></i>
+                        </a>
+                        <a class="icons instagram" href="#">
+                        <i class="bi bi-instagram"></i>
+                        </a>
+                        <a class="icons linkedin" href="#">
+                        <i class="bi bi-linkedin"></i>
+                        </a>
                         </div>
- *@
+                        *@
                     </div>
                     <div class='dashboard-app'>
                         <header class='dashboard-toolbar'>
@@ -166,9 +162,9 @@
                                 @if (!User.Identity.IsAuthenticated)
                                 {
                                     <ul class="nav navbar-right">
-                                       @*  <li style="padding-top: 14px; padding-right: 30px;">
-                                            <a href="#">Demo ID</a>
-                                        </li> *@
+                                        @*  <li style="padding-top: 14px; padding-right: 30px;">
+                                    <a href="#">Demo ID</a>
+                                    </li> *@
                                         <li>
                                             <button data-toggle="modal" data-target="#LoginModal" class="btn btn-primary mb-3 mb-lg-0" tabindex="0" id="loginbtn">Log In</button>
                                         </li>
@@ -194,9 +190,7 @@
                                                 </button>
                                             </div>
                                             <div class="card-header py-4 text-center bg-primary">
-                                                <a href="index.html">
-                                                    <span><img src="~/images/banner_ipl.png" alt="logo" height="22"></span>
-                                                </a>
+                                                <img src="~/images/kapunterIcon.jpg" alt="logo" style="height: 100%;width: 50%">
                                             </div>
                                             <form id="LoginModalForm">
                                                 <div class="card-body p-4 form-group">
@@ -249,8 +243,8 @@
                     <!-- Login Modal -->
                     <!-- Deposit Coins Request Modal -->
                     <div class="modal fade" id="DepositCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
+                        <div class="modal-dialog sitebackground siteColor">
+                            <div class="modal-content sitebackground siteColor">
                                 <form id="DepositCoinsRequestModalForm">
                                     <div class="modal-header text-center col-12">
                                         <h4 class="modal-title" id="exampleModalLabel">Deposit</h4>
@@ -282,8 +276,8 @@
                     </div>
 
                     <div class="modal fade" id="PaymentModesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
+                        <div class="modal-dialog sitebackground siteColor">
+                            <div class="modal-content sitebackground siteColor">
                                 <div class="modal-header text-center col-12">
                                     <h4 class="modal-title" id="exampleModalLabel">Deposit (<span id="depositAmount"></span>)</h4>
                                     <button type="button" class="close col-4" data-dismiss="modal" aria-label="Close" id="closePaymentModesModal">
@@ -306,13 +300,10 @@
                                         </div>
                                         <div class="nav-item-divider"></div>
                                     </div>
-                                    <div class="nav-item-divider"></div>
-                                    <div class="nav-item-divider"></div>
-                                    <div class="nav-item-divider"></div>
-                                    <div class="PaymentModeTypesDetailList">
+                                    <div class="PaymentModeTypesDetailList pSiteNameFontSize">
                                         <div class="PaymentModeTypesDetail" id="QRCodeDetail">
                                             <div class="d-flex flex-column text-center col-12">
-                                                <img src="~/images/banner_ipl.png" />
+                                                <img class="siteheightwidth100" src="~/images/payment/qascanner.jpg" />
                                             </div>
                                         </div>
                                         <div class="nav-item-divider"></div>
@@ -320,26 +311,42 @@
                                             <div class="d-flex flex-column col-12">
                                                 <div class="row col-12">
                                                     <div class="col-5"> Bank Name </div>
-                                                    <div class="col-5"> Sate Bankn of India </div>
-                                                    <div class="col-2 CopyToClipboard" data-value="Sate Bankn of India"> <i class="bi bi-copy"></i>Copy </div>
+                                                    <div class="col-5 bankName"> Sate Bankn of India </div>
+                                                    <div class="col-2 CopyToClipboard bankNameCopy" copyData="Sate Bankn of India">
+                                                        <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                                 <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
                                                 <div class="row col-12">
                                                     <div class="col-5"> Account Holder Name </div>
-                                                    <div class="col-5"> Vikas </div>
-                                                    <div class="col-2 CopyToClipboard" data-value="Vikas"> <i class="bi bi-copy"></i>Copy </div>
+                                                    <div class="col-5 accountHolderName"> Vikas </div>
+                                                    <div class="col-2 CopyToClipboard accountHolderNameCopy" copyData="Vikas">
+                                                        <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                                 <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
                                                 <div class="row col-12">
                                                     <div class="col-5"> Account Number </div>
-                                                    <div class="col-5"> 98765432 </div>
-                                                    <div class="col-2 CopyToClipboard" data-value="98765432"> <i class="bi bi-copy"></i>Copy </div>
+                                                    <div class="col-5 accountNumber"> 98765432 </div>
+                                                    <div class="col-2 CopyToClipboard accountNumberCopy" copyData="98765432">
+                                                        <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                                 <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
                                                 <div class="row col-12">
                                                     <div class="col-5"> IFSC Code </div>
-                                                    <div class="col-5"> SBIN2934587 </div>
-                                                    <div class="col-2 CopyToClipboard" data-value="SBIN2934587"> <i class="bi bi-copy"></i>Copy </div>
+                                                    <div class="col-5 IFSCCode"> SBIN2934587 </div>
+                                                    <div class="col-2 CopyToClipboard IFSCCodeCopy" copyData="SBIN2934587">
+                                                        <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                                 <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
                                             </div>
@@ -355,8 +362,12 @@
                                                 <div b-8bhurmbywf="" class="nav-item-divider-small"></div>
                                                 <div class="row col-12">
                                                     <div class="col-5"> Name </div>
-                                                    <div class="col-5"> asfs@axl </div>
-                                                    <div class="col-2 CopyToClipboard" data-value="asfs@axl"> <i class="bi bi-copy"></i>Copy </div>
+                                                    <div class="col-5 upiCode"> asfs@axl </div>
+                                                    <div class="col-2 CopyToClipboard upiCodeCopy" copyData="asfs@axl">
+                                                        <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -386,7 +397,7 @@
                                     background-color: rgb(20 24 25 / 30%);
                                 }
                             </style>
-                            <div class="modal-content">
+                            <div class="modal-content sitebackground siteColor">
                                 <form id="WithdrawCoinsRequestModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Withdraw</h4>
@@ -435,7 +446,7 @@
                     <!-- Add sites Modal -->
                     <div class="modal fade" id="AddSitesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content sitebackground siteColor">
                                 <form id="AddSiteModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Site</h4>
@@ -470,7 +481,7 @@
                     <!-- Add user Modal -->
                     <div class="modal fade" id="AddUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content sitebackground siteColor">
                                 <form id="AddUserModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Add User</h4>
@@ -502,7 +513,7 @@
                     <!-- Deposit Coins Modal -->
                     <div class="modal fade" id="DepositCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content sitebackground siteColor">
                                 <form id="DepositCoinsForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Deposit</h4>
@@ -535,7 +546,7 @@
                     <!-- Withdraw Coins Modal -->
                     <div class="modal fade" id="WithdrawCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content sitebackground siteColor">
                                 <form id="WithdrawCoinsForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Withdraw</h4>
@@ -568,7 +579,7 @@
                     <!-- Add Bank Details Modal -->
                     <div class="modal fade" id="AddBankDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content sitebackground siteColor">
                                 <form id="AddBankDetailForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Add Bank Detail</h4>
@@ -659,10 +670,10 @@
         </div>
     </div>
 
-   @*  <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - MultiLogApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    @*  <footer class="border-top footer text-muted">
+    <div class="container">
+    &copy; 2024 - MultiLogApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
     </footer> *@
 
     <script src="~/js/jquery.min.js"></script>

@@ -163,6 +163,8 @@ namespace MultiLogApplication.Controllers
             ReturnType<string> res = new ReturnType<string>();
             try
             {
+                obj.UserId = _sessionUser;
+                obj.SessionUser = _sessionUser;
                 res = await _coinService.AddCoinsToAccountRequest(obj);
             }
             catch (Exception ex)

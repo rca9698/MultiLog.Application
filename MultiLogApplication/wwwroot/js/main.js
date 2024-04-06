@@ -41,7 +41,7 @@ $(document).ready(function () {
 });
 
 $(document).on('click', '.CopyToClipboard', function () {
-    var copyText = $(this).attr('data-value');
+    var copyText = $(this).attr('copyData');
 
     var tempTextarea = $('<textarea>');
     $('body').append(tempTextarea);

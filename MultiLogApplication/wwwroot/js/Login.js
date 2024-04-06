@@ -155,9 +155,14 @@ function Login() {
         type: "Post",
         url: "/LoginSignup/Login",
         data: login,
-        success: function () {
-            $('#LoginModal .close').trigger('click');
-            location.reload();
+        success: function (result) {
+            if (result.returnStatus == 1) {
+                $('#LoginModal .close').trigger('click');
+                location.reload();
+            }
+            else {
+                toastr.warning(result.returnMessage);
+            }
         },
         error: function () {
 

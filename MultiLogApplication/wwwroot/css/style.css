@@ -728,3 +728,37 @@ body {
 	border-radius: 10px 10px 10px 10px;
 	color: #FFFF;
 }
+
+
+#listSites .card {
+	border-radius: 15px;
+	margin-top: 15px;
+}
+
+.idSwitch .active {
+	background-color: #222222;
+	color: white;
+}
+
+.idSwitch .tabSelection {
+	height: 35px;
+}
+
+
+.BankDataSwitch .active {
+	background-color: #222222;
+	color: white;
+}
+
+.BankDataSwitch .tabSelection {
+	height: 35px;
+}
+
+.dashboard-nav-list a{
+	margin-left: -25px;
+}
+
+.dashboard-nav-list i {
+	margin-right: 5px;
+}
+

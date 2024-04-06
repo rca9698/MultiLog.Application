@@ -3,6 +3,7 @@
     public class GetBankAccount
     {
         public long UserId { get; set; }
+        public int IsActive { get; set; }
         public long SessionUser { get; set; }
     }
 }

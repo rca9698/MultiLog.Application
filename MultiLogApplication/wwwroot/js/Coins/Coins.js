@@ -277,6 +277,7 @@ var AddCoinsRequestFormValidationSingleton = (function () {
             $('#PaymentModesModal').modal('show');
             $('.PaymentModeTypesDetailList').hide();
             $('#DepositCoinsRequestModal .close').trigger('click');
+            LoadAdminBankDetails();
         });
         return fv3;
     }
@@ -411,6 +412,29 @@ function WithDrawCoinsRequest() {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);
                 $('#WithdrawCoinsRequestModal .close').trigger('click');
+            }
+        }
+    });
+}
+
+
+function LoadAdminBankDetails() {
+    $.ajax({
+        url: '/BankAccount/GetBankUPIDetails',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            if (result.returnStatus == 1) {
+                $('.PaymentModeTypesDetailList #BankTrDetail .bankName').html(result.returnVal.bankName);
+                $('.PaymentModeTypesDetailList #BankTrDetail .bankNameCopy').attr('copydata', result.returnVal.bankName);
+                $('.PaymentModeTypesDetailList #BankTrDetail .accountHolderName').html(result.returnVal.accountHolderName);
+                $('.PaymentModeTypesDetailList #BankTrDetail .accountHolderNameCopy').attr('copydata', result.returnVal.accountHolderName);
+                $('.PaymentModeTypesDetailList #BankTrDetail .accountNumber').html(result.returnVal.accountNumber);
+                $('.PaymentModeTypesDetailList #BankTrDetail .accountNumberCopy').attr('copydata', result.returnVal.accountNumber);
+                $('.PaymentModeTypesDetailList #BankTrDetail .IFSCCode').html(result.returnVal.ifscCode);
+                $('.PaymentModeTypesDetailList #BankTrDetail .IFSCCodeCopy').attr('copydata', result.returnVal.ifscCode);
+                $('.PaymentModeTypesDetailList #PhonePeDetail .upiCode').html(result.returnVal.upiId);
+                $('.PaymentModeTypesDetailList #PhonePeDetail .upiCodeCopy').attr('copydata', result.returnVal.upiId);
             }
         }
     });

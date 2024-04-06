@@ -4,22 +4,39 @@
     }
 });
 
+//Start Click Event
+$(document).on('click', '#AddBankDetailModalBtn', function () {
+    AddBankDetailFormValidationSingleton.getInstance();
+});
+$(document).on('click', '#AddBankDetailModalBtn1', function () {
+    AddBankDetailFormValidationSingleton.getInstance();
+});
+$(document).on('click', '.BankDataSwitch .tabSelection', function () {
+    $('.BankDataSwitch .tabSelection').removeClass('active');
+    $(this).addClass('active');
 
-function LoadBanks() {
+    let url = $(this).attr('idType') == 'bankHistory'
+        ? '/BankAccount/BankAccountsHistory'
+        : $(this).attr('idType') == 'deletedBank'
+            ? '/BankAccount/DeletedBankAccounts'
+        : '/BankAccount/ActiveBankAccounts';
+
     $.ajax({
-        url: '/BankAccount/ViewPanel',
+        url: url,
         type: 'POST',
-        data: '',
+        data: {},
         success: function (result) {
             $('#ListBankDetail').html(result);
         }
     });
-}
 
-$(document).on('click', '#AddBankDetailModalBtn', function () {
-    AddBankDetailFormValidationSingleton.getInstance();
 });
 
+
+//End Click Event
+
+
+//Start Form Validation
 var AddBankDetailFormfv;
 var fv1;
 var AddBankDetailFormValidationSingleton = (function () {
@@ -82,8 +99,10 @@ var AddBankDetailFormValidationSingleton = (function () {
         }
     };
 })();
+//End Form Validation
 
 
+//Start Function Region
 function AddBankAccount() {
     var obj = {
         BankName: $('#AddBankDetailForm #BName').val(),
@@ -105,4 +124,14 @@ function AddBankAccount() {
     });
 }
  
-
+function LoadBanks() {
+    $.ajax({
+        url: '/BankAccount/ViewPanel',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#ListBankDetail').html(result);
+        }
+    });
+}
+// End Function Region

@@ -1,0 +1,102 @@
+﻿
+<div class="card sitebackground siteBorderRadius siteColor" style="margin: 0px 0px 10px 0px;">
+    <div class="card-body">
+        <div class="row Col-12">
+            <p class="card-title">
+                UserName:
+                <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                </svg>
+            </p>
+        </div>
+        <div class="row Col-12">
+            <p class="card-title">
+                Password:
+                <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                </svg>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="card sitebackground siteBorderRadius siteColor">
+    <div class="card-body">
+        <div class="row Col-12">
+            <div class="col-6" style="display: flex;">
+                <i class="bi bi-bank"></i>
+                <p style="margin-left: 10px;">Bank Details</p>
+            </div>
+            <div class="col-6">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddBankDetailModal" id="AddBankDetailModalBtn1" style="float: right;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+                        <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z"></path>
+                    </svg>
+                    Add New
+                </button>
+            </div>
+        </div>
+        <div class="row Col-12">
+            <div class="container">
+                <!-- For demo purpose -->
+                <div class="row py-3"></div>
+                <!-- End -->
+                <div class="row">
+                    <div class="mx-auto">
+                        <!-- Accordion -->
+                        <div id="accordionExample" class="accordion shadow">
+                            <!-- Accordion item 1 -->
+                            @if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
+                            {
+                                @foreach (var bankDetail in Model.ReturnList)
+                                {
+                                    <!-- Accordion item 1 -->
+                                    <div class="card sitebackground" style="margin-bottom: 5%;">
+                                        <div id="heading_@bankDetail.BankAccountDetailID" class="card-header bg-white shadow-sm border-0">
+                                            <h2 class="mb-0">
+                                                <span type="button" data-toggle="collapse" data-target="#collapse_@bankDetail.BankAccountDetailID" aria-expanded="true" aria-controls="collapse_@bankDetail.BankAccountDetailID" class="btn btn-link text-dark font-weight-bold text-uppercase crick-accordion-sub row col-12">
+                                                    <span class="col-8">@bankDetail.BankName</span>
+                                                    <span class="col-4"><i class="bi bi-arrow-down-up"></i></span>
+                                                </span>
+                                            </h2>
+                                        </div>
+                                        <div id="collapse_@bankDetail.BankAccountDetailID" aria-labelledby="heading_@bankDetail.BankAccountDetailID" data-parent="#accordionExample" class="collapse show" style="">
+                                            <div class="card-body p-4">
+                                                <div class="credit rounded mt-2 d-flex justify-content-between align-items-center">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <div class="d-flex flex-column ml-3">
+                                                            <span class="">Bank Name</span>
+                                                            <span class="">Account Holder Name</span>
+                                                            <span class="">Account Number</span>
+                                                            <span class="">IFSC Code</span>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="d-flex flex-column ml-3">
+                                                            <span class="">@bankDetail.BankName</span>
+                                                            <span class="">@bankDetail.AccountHolderName</span>
+                                                            <span class="">@bankDetail.AccountNumber</span>
+                                                            <span class="">@bankDetail.IFSCCode</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End -->
+                                }
+                            }
+                            else
+                            {
+                                <h5>No Data Found!!!</h5>
+                            }
+                            <!-- End -->
+
+                        </div>
+                        <!-- End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

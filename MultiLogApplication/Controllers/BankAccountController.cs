@@ -40,9 +40,63 @@ namespace MultiLogApplication.Controllers
 			return PartialView(res);
 		}
 
-		public async Task<IActionResult> AddBankAccount(AddBankAccount bankAccount)
+        public async Task<IActionResult> ActiveBankAccounts()
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<BankDetails> res = new ReturnType<BankDetails>();
+            try
+            {
+                GetBankAccount obj = new GetBankAccount()
+                {
+                    UserId = _sessionUser,
+                    SessionUser = _sessionUser,
+                    IsActive = 1
+                };
+                res = await _bankAccountService.ActiveBankAccounts(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > ActiveBankAccounts");
+            }
+            return PartialView("~/Views/BankAccount/ActiveBankAccounts.cshtml",res);
+        }
+
+        public async Task<IActionResult> DeletedBankAccounts()
+        {
+            ReturnType<BankDetails> res = new ReturnType<BankDetails>();
+            try
+            {
+                GetBankAccount obj = new GetBankAccount()
+                {
+                    UserId = _sessionUser,
+                    SessionUser = _sessionUser,
+                    IsActive = 0
+                };
+                res = await _bankAccountService.DeletedBankAccounts(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > ActiveBankAccounts");
+            }
+            return PartialView("~/Views/BankAccount/DeletedBankAccounts.cshtml", res);
+        }
+
+        public async Task<IActionResult> BankAccountsHistory()
+        {
+            ReturnType<BankDetails> res = new ReturnType<BankDetails>();
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > BankAccountsHistory");
+            }
+            return PartialView("~/Views/BankAccount/BankAccountsHistory.cshtml", res);
+        }
+
+        public async Task<IActionResult> AddBankAccount(AddBankAccount bankAccount)
+        {
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 bankAccount.SessionUser = _sessionUser;
@@ -76,6 +130,8 @@ namespace MultiLogApplication.Controllers
             try
             {
                 bankAccount.SessionUser = _sessionUser;
+                bankAccount.IsActive = 1;
+                bankAccount.UserId = _sessionUser;
                 res = await _bankAccountService.GetBankAccounts(bankAccount);
             }
             catch (Exception ex)
@@ -85,9 +141,25 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
+        public async Task<IActionResult> GetBankUPIDetails()
+        {
+            ReturnType<BankDetails> res = new ReturnType<BankDetails>();
+            try
+            {
+                res = await _bankAccountService.GetBankUPIDetails();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > GetBankUPIDetails");
+            }
+            return Json(res);
+        }
+
+
+
         public async Task<IActionResult> DeleteBankAccount(DeleteBankAccount bankAccount)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 bankAccount.SessionUser = _sessionUser;
@@ -102,7 +174,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> updateBankAccount(UpdateBankAccount bankAccount)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 bankAccount.SessionUser = _sessionUser;
@@ -117,7 +189,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> AddQRCode(InsertCoinRequest obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 string filePath = _configuration["StoragePath:BasePath:Path"];

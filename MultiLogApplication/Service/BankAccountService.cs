@@ -13,10 +13,10 @@ namespace MultiLogApplication.Service
             _logger = logger;
         }
 
-        public async Task<ReturnType<bool>> AddBankAccount(AddBankAccount details)
+        public async Task<ReturnType<string>> AddBankAccount(AddBankAccount details)
         {
             var response = await _client.PostAsJsonAsync($"api/BankAccount/AddBankAccount", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
         public async Task<ReturnType<BankDetails>> SetDefaultBankAccount(long _sessionUser, long BankDetailID)
@@ -25,10 +25,10 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<BankDetails>>();
         }
 
-        public async Task<ReturnType<bool>> DeleteBankAccount(DeleteBankAccount details)
+        public async Task<ReturnType<string>> DeleteBankAccount(DeleteBankAccount details)
         {
             var response = await _client.PostAsJsonAsync($"api/BankAccount/DeleteBankAccount", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
         public async Task<ReturnType<BankDetails>> GetBankAccounts(GetBankAccount details)
@@ -37,11 +37,28 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<BankDetails>>();
         }
 
-        public async Task<ReturnType<bool>> updateBankAccount(UpdateBankAccount details)
+        public async Task<ReturnType<BankDetails>> GetBankUPIDetails()
         {
-            var response = await _client.PostAsJsonAsync($"api/BankAccount/UpdateBankAccount", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            var response = await _client.GetAsync($"api/BankAccount/GetAdminBankAccounts");
+            return await response.ReadContentAs<ReturnType<BankDetails>>();
         }
 
+        public async Task<ReturnType<string>> updateBankAccount(UpdateBankAccount details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/BankAccount/UpdateBankAccount", details);
+            return await response.ReadContentAs<ReturnType<string>>();
+        }
+
+        public async Task<ReturnType<BankDetails>> ActiveBankAccounts(GetBankAccount details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/BankAccount/GetBankAccounts", details);
+            return await response.ReadContentAs<ReturnType<BankDetails>>();
+        }
+
+        public async Task<ReturnType<BankDetails>> DeletedBankAccounts(GetBankAccount details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/BankAccount/GetBankAccounts", details);
+            return await response.ReadContentAs<ReturnType<BankDetails>>();
+        }
     }
 }
