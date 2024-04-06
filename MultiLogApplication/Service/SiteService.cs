@@ -50,9 +50,9 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<SiteDetail>>();
         }
 
-        public async Task<ReturnType<AccountDetail>> ViewThisSiteDetails(long userId, long siteId)
+        public async Task<ReturnType<AccountDetail>> ViewThisSiteDetails(ViewThisSiteDetailModel details)
         {
-            var response = await _client.GetAsync($"api/Site/ViewThisSiteDetails");
+            var response = await _client.PostAsJsonAsync($"api/Site/ViewThisSiteDetails", details);
             return await response.ReadContentAs<ReturnType<AccountDetail>>();
         }
 

@@ -171,7 +171,12 @@ namespace MultiLogApplication.Controllers
             ReturnType<AccountDetail> res = new ReturnType<AccountDetail>();
             try
             {
-                res = await _siteService.ViewThisSiteDetails(_sessionUser, siteId);
+                ViewThisSiteDetailModel obj = new ViewThisSiteDetailModel()
+                {
+                    SiteId = siteId,
+                    UserId = _sessionUser
+                };
+                res = await _siteService.ViewThisSiteDetails(obj);
             }
             catch (Exception ex)
             {
