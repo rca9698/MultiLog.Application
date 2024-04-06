@@ -1,29 +1,55 @@
 ﻿@using MultiLogApplication.Models.Common
 @inject IConfiguration Configuration
 @model ReturnType<MultiLogApplication.Models.Account.AccountDetail>
-@* 
+@*
 @if (Model != null && Model.ReturnVal != null)
 { *@
-<div class="card" style="border-radius: 10px 10px 10px 10px;">
-        <div class="card-body">
-            <div class="row Col-12">
-                <div class="col-6">
-                    <div class="row col-12">
-                        <div class="col-4">
-                        <img src="/images/kapunterIcon.jpg" alt="cricket ipl" class="" style="height: 25%;border-radius: 10px 10px 10px 10px;">
-                        <span>Username</span>
+<div class="card" style="border-radius: 10px 10px 10px 10px;background:#222222;color: #FFFF;">
+    <div class="card-body">
+        <div class="row Col-12">
+            <div class="col-10">
+                <div class="row col-12">
+                    <div class="col-6">
+                        <img src="/images/kapunterIcon.jpg" alt="cricket ipl" class="" style="height: 100%;border-radius: 10px 10px 10px 10px;width: 100%;">
                     </div>
-                        <div class="col-8">
-                            <h5 class="card-title">data adasf</h5>
-                            <p class="card-title">data adadfas</p>
-                        </div>
+                    <div class="col-6">
+                        <h5 class="card-title">data adasf</h5>
+                        <p class="card-title">data adadfas</p>
                     </div>
+                </div>
 
-                </div>
-                <div class="col-6">
-                    <button class="bg-success" data-toggle="modal" style="float: right;border-radius: 5px;margin-top: 15px;">Create</button>
-                </div>
+            </div>
+            <div class="col-2">
+                <i class="bi bi-arrow-up-right-square-fill" style="float: right;"></i>
             </div>
         </div>
+
+        <div class="row Col-12">
+            <p class="card-title">
+                User NAme :  User anme
+                <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                </svg>
+            </p>
+        </div>
+        <div class="row Col-12">
+            <p class="card-title">
+                Password: Password
+                <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                </svg>
+            </p>
+        </div>
+        <div class="row Col-12">
+            <p class="card-title" style="background: #222200;color: brown;">
+                Pasword is with capital B
+            </p>
+        </div>
+        <div class="row Col-12" style="margin-bottom: -20px;margin-left: 2px;>
+            <p class="card-title">
+                ID Created on: 07 Mar 24 03:07 PM
+            </p>
+        </div>
     </div>
+</div>
 @* } *@
