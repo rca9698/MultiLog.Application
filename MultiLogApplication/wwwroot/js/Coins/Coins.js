@@ -28,12 +28,14 @@ $(document).on('click', '#depositeCoinsBtn', function () {
     $('#DepositCoinsForm').attr('coinRequestID', ($(this).attr('coinRequestId')));
     AddCoinsFormValidationSingleton.getInstance();
 });
+
 $(document).on('click', '#withdrawCoinsBtn', function () {
     $('#WithdrawCoinsForm #userNumber').val($(this).attr('UserNumber'));
     $('#WithdrawCoinsForm').attr('UserId', ($(this).attr('userId')));
     $('#WithdrawCoinsForm').attr('coinRequestID', ($(this).attr('coinRequestId')));
     WithdrawCoinsFormValidationSingleton.getInstance();
 });
+
 $(document).on('click', '#DepositCoinsRequestModalBtn', function () {
     AddCoinsRequestFormValidationSingleton.getInstance();
 });
@@ -55,6 +57,7 @@ $(document).on('click', '#WithdrawCoinsRequestModalBtn', function () {
 
     WithDrawCoinsRequestFormValidationSingleton.getInstance();
 });
+
 $(document).on('click', '#DesitCoins', function () {
 
     if ($("#PaymentModesModal #files")[0].files[0] == undefined) {

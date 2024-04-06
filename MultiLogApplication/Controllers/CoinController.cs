@@ -78,7 +78,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> AddCoinsRequest(InsertCoinRequest obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 string BasePath = _hostingEnvironment.WebRootPath;
@@ -114,7 +114,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> WithDrawCoinsRequest(DeleteCoinRequest obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.SessionUser = _sessionUser;
@@ -157,5 +157,36 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
+
+        public async Task<IActionResult> AddCoinsToAccountRequest(InsertCoinToAccountRequestModel obj)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                res = await _coinService.AddCoinsToAccountRequest(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > AddCoinsToAccountRequest");
+            }
+            return Json(res);
+        }
+
+        public async Task<IActionResult> WithDrawToAccountRequest(DeleteCoinToAccountRequest obj)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                obj.UserId = _sessionUser;
+                obj.SessionUser = _sessionUser;
+                res = await _coinService.WithDrawToAccountRequest(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > WithDrawToAccountRequest");
+            }
+            return Json(res);
+        }
+    
     }
 }

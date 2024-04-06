@@ -27,16 +27,16 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<CoinsRequestModel>>();
         }
 
-        public async Task<ReturnType<bool>> AddCoinsRequest(InsertCoinRequest details)
+        public async Task<ReturnType<string>> AddCoinsRequest(InsertCoinRequest details)
         {
             var response = await _client.PostAsJsonAsync($"api/Coin/AddCoinsRequest", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
-        public async Task<ReturnType<bool>> WithDrawCoinsRequest(DeleteCoinRequest details)
+        public async Task<ReturnType<string>> WithDrawCoinsRequest(DeleteCoinRequest details)
         {
             var response = await _client.PostAsJsonAsync($"api/Coin/WithDrawCoinsRequest", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
         public async Task<ReturnType<string>> AddCoins(InsertCoinDetails details)
@@ -51,5 +51,16 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<string>>();
         }
 
+        public async Task<ReturnType<string>> AddCoinsToAccountRequest(InsertCoinToAccountRequestModel details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/Coin/DeleteCoins", details);
+            return await response.ReadContentAs<ReturnType<string>>();
+        }
+
+        public async Task<ReturnType<string>> WithDrawToAccountRequest(DeleteCoinToAccountRequest details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/Coin/DeleteCoins", details);
+            return await response.ReadContentAs<ReturnType<string>>();
+        }
     }
 }
