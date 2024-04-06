@@ -1,0 +1,38 @@
+﻿.sitebackground {
+    background: #222222 !important;
+}
+.siteBtnbackground {
+    background: #FFFF !important;
+    color: #222222 !important;
+    font-weight: bolder;
+    padding: 5px;
+}
+.siteColor {
+    color: #FFFF !important;
+}
+
+.siteheightwidth100 {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.siteBorderRadius {
+    border-radius: 10px 10px 10px 10px !important;
+}
+
+.siteImageCircle {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    margin-top: 4%;
+    margin-right: 10%;
+}
+
+.pSiteNameFontSize {
+    font-size: 12px;
+}
+
+.pSiteURLFontSize {
+    font-size: 12px;
+}
+

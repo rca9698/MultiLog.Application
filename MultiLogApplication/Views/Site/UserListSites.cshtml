@@ -6,24 +6,23 @@
 {
     @foreach (var siteDetail in Model.ReturnList)
     {
-        <div class="card">
+        <div class="card sitebackground siteBorderRadius siteColor">
             <div class="card-body">
                 <div class="row Col-12">
                     <div class="col-6">
                         <div class="row col-12">
-                            <div class="col-4">
-                                <img src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" style="height:100%;width:100%;border-radius: 50%;margin-top: 4%;
-    margin-right: 10%" />
+                            <div class="col-6">
+                                <img class="siteImageCircle" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
                             </div>
-                            <div class="col-8">
-                                <h5 class="card-title">@siteDetail.SiteName</h5>
-                                <p class="card-title">@siteDetail.SiteURL</p>
+                            <div class="col-6">
+                                <h6 class="pSiteNameFontSize">@siteDetail.SiteName</h6>
+                                <p class="pSiteURLFontSize">@siteDetail.SiteURL</p>
                             </div>
                         </div>
 
                     </div>
                     <div class="col-6">
-                        <button class="bg-success" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right;border-radius: 5px;margin-top: 15px;">Create</button>
+                        <button class="siteBorderRadius siteBtnbackground" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right"><i class="bi bi-plus-square-fill"></i>Create</button>
                     </div>
                 </div>
             </div>
@@ -59,8 +58,8 @@ else
                                 <img src="~/images/banner_ipl.png" style="height:100%;width:100%;border-radius: 50%;margin-top: 4%;
     margin-right: 10%" />
                             </span>
-                            <span class="bussiness">Site Name</span>
-                            <span class="plan">Site URL</span>
+                            <span class="pSiteNameFontSize">Site Name</span>
+                            <span class="pSiteURLFontSize">Site URL</span>
                         </div>
                     </div>
                     <div class="form-group">

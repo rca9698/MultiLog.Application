@@ -73,12 +73,17 @@ $(document).on('click', '.viewThisSiteDetails', function () {
         success: function (result) {
             $('#listSites').hide();
             $('.idSwitch').hide();
+            $('#SiteDetail').show();
             $('#SiteDetail').html(result);
         }
     });
 });
 
-
+$(document).on('click', '.BackBtnMyIds', function () {
+    $('#listSites').show();
+    $('.idSwitch').show();
+    $('#SiteDetail').hide();
+})
 
 
 var AddSiteFormfv;

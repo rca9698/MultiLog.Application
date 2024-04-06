@@ -2,34 +2,31 @@
 @inject IConfiguration Configuration
 @inject IWebHostEnvironment HostingEnvironment
 @model ReturnType<MultiLogApplication.Models.SiteDetails.SiteDetail>
-<style>
-    
-</style>
+ 
 @if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
 {
     @foreach (var siteDetail in Model.ReturnList)
     {
-        <div class="card">
+        <div class="card sitebackground siteBorderRadius siteColor">
             <div class="card-body">
                 <div class="row Col-12">
                     <div class="col-6 viewThisSiteDetails">
                         <div class="row col-12">
-                            <div class="col-4">
-                                <img src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" style="height:100%;width:100%;border-radius: 50%;margin-top: 4%;
-    margin-right: 10%" />
+                            <div class="col-6">
+                                <img class="siteImageCircle" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
                             </div>
-                            <div class="col-8">
-                                <h5 class="card-title">@siteDetail.SiteName</h5>
-                                <p class="card-title">@siteDetail.SiteURL</p>
+                            <div class="col-6">
+                                <h6 class="pSiteNameFontSize">@siteDetail.SiteName</h6>
+                                <p class="pSiteURLFontSize">@siteDetail.SiteURL</p>
                             </div>
                         </div>
 
                     </div>
                     <div class="col-6">
-                        <button class="rounded-circle userlistingCircle bgclrGreen" data-toggle="modal" data-target="#DepositCoinsModal" userId=@siteDetail.UserId UserNumber="@siteDetail.UserNumber" id="depositeCoinsBtn">
+                        <button class="rounded-circle userlistingCircle bgclrGreen" data-toggle="modal" data-target="#DepositeToAccountRequestModal" userId=@siteDetail.UserId UserNumber="@siteDetail.UserNumber" siteId="@siteDetail.SiteId" id="DepositeToAccountRequestCoinsBtn">
                             D
                         </button>
-                        <button class="rounded-circle userlistingCircle bgclrred" data-toggle="modal" data-target="#WithdrawCoinsModal" userId=@siteDetail.UserId UserNumber="@siteDetail.UserNumber" id="withdrawCoinsBtn">
+                        <button class="rounded-circle userlistingCircle bgclrred" data-toggle="modal" data-target="#WithdrawCoinsModal" userId=@siteDetail.UserId UserNumber="@siteDetail.UserNumber" siteId="@siteDetail.SiteId" id="withdrawCoinsBtn">
                             W
                         </button>
                         <button class="rounded-circle userlistingCircle">
@@ -47,3 +44,46 @@ else
         No Data Found!!!
     </span>
 }
+
+
+<!-- Deposite Coins to Account Modal -->
+<div class="modal fade" id="DepositeToAccountRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <style>
+            .nav-item-divider {
+                background-color: rgb(20 24 25 / 30%);
+            }
+        </style>
+        <div class="modal-content">
+            <form id="DepositeToAccountRequestModalForm">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">CREATE ID</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-12">
+                        <div class="d-flex flex-column text-center col-12">
+                            <span style="height: 51px;width: 51px;margin-left: 45%;">
+                                <img src="~/images/banner_ipl.png" style="height:100%;width:100%;border-radius: 50%;margin-top: 4%;
+    margin-right: 10%" />
+                            </span>
+                            <span class="pSiteNameFontSize">Site Name</span>
+                            <span class="pSiteURLFontSize">Site URL</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Username*</label>
+                        <input type="text" name="Username" id="Username" class="form-control" placeholder="User Name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success col-12">Create ID</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Deposite Coins to Account Modal-->
+
