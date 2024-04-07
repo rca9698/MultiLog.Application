@@ -7,14 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\js\Plugin\**" />
+    <Content Remove="wwwroot\js\Plugin\**" />
+    <EmbeddedResource Remove="wwwroot\js\Plugin\**" />
+    <None Remove="wwwroot\js\Plugin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.5" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\images\PaymentProof\" />
     <Folder Include="wwwroot\images\Site\" />
-    <Folder Include="wwwroot\images\Payment\" />
-    <Folder Include="wwwroot\js\Plugin\" />
   </ItemGroup>
 
   <ItemGroup>

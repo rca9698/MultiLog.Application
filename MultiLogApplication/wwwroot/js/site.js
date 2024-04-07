@@ -15,11 +15,11 @@ $(document).on('click', '#AddSitesModalbtn', function () {
     AddSiteFormValidationSingleton.getInstance();
 });
 
-$(document).on('click', '#IDsList', function () {
+$(document).on('click', '.IDsList', function () {
     location.href = '/Site/Index?viewType=Ids'
 });
 
-$(document).on('click', '#MyIDsList', function () {
+$(document).on('click', '.MyIDsList', function () {
     location.href = '/Site/Index?viewType=MyIds'
 });
 
@@ -119,9 +119,9 @@ $(document).on('click', '#withdrawFromAccountRequestCoinsBtn', function () {
 //Start function area
 function AddSite() {
     var formData = new FormData();
-    formData.append("SiteName", $('#AddSitesModal #siteName').val());
-    formData.append("SiteURL", $('#AddSitesModal #siteURL').val());
-    formData.append("File", $("#AddSitesModal #files")[0].files[0]);
+    formData.append("SiteName", $('#AddSitesModal .siteName').val());
+    formData.append("SiteURL", $('#AddSitesModal .siteURL').val());
+    formData.append("File", $("#AddSitesModal .files")[0].files[0]);
 
     $.ajax({
         url: '/Site/AddSite',
@@ -143,10 +143,10 @@ function UpdateSite() {
 
     var formData = new FormData();
     formData.append("SiteId", $('#UpdateSiteModal').attr('siteId'));
-    formData.append("SiteName", $('#UpdateSiteModal #siteName').val());
-    formData.append("SiteURL", $('#UpdateSiteModal #siteURL').val());
-    formData.append("ImageName", $('#UpdateSiteModal #siteIcon').attr('siteIcon'));
-    formData.append("File", $("#UpdateSiteModal #files")[0].files[0]);
+    formData.append("SiteName", $('#UpdateSiteModal .siteName').val());
+    formData.append("SiteURL", $('#UpdateSiteModal .siteURL').val());
+    formData.append("ImageName", $('#UpdateSiteModal .siteIcon').attr('siteIcon'));
+    formData.append("File", $("#UpdateSiteModal .files")[0].files[0]);
 
     $.ajax({
         url: '/Site/UpdateSite',
@@ -292,7 +292,7 @@ var AddSiteFormValidationSingleton = (function () {
                         callback: {
                             message: 'Please upload icon',
                             callback: function (value, validator, $field) {
-                                if ($("#AddSitesModal #files")[0].files[0] == undefined)
+                                if ($("#AddSitesModal .files")[0].files[0] == undefined)
                                     return false;
                                 return true;
                             }
@@ -354,7 +354,7 @@ var UpdateSiteFormValidationSingleton = (function () {
                         callback: {
                             message: 'Please upload icon',
                             callback: function (value, validator, $field) {
-                                if ($("#UpdateSiteModal #files")[0].files[0] == undefined)
+                                if ($("#UpdateSiteModal .files")[0].files[0] == undefined)
                                     return false;
                                 return true;
                             }

@@ -6,25 +6,24 @@
 {
     @foreach (var siteDetail in Model.ReturnList)
     {
-        <div class="card site_@siteDetail.SiteId">
+        <div class="card sitebackground siteBorderRadius siteColor site_@siteDetail.SiteId">
             <div class="card-body">
                 <div class="row Col-12">
-                    <div class="col-6">
+                    <div class="col-8">
                         <div class="row col-12">
-                            <div class="col-4">
-                                <img class="siteIcon" imageName="@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" style="height:100%;width:100%;border-radius: 50%;margin-top: 4%;
-    margin-right: 10%" />
+                            <div class="col-6">
+                                <img class="siteImageCircle siteIcon" imageName="@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
                             </div>
-                            <div class="col-8">
-                                <h5 class="card-title siteName">@siteDetail.SiteName</h5>
-                                <p class="card-title siteURL">@siteDetail.SiteURL</p>
+                            <div class="col-6">
+                                <h5 class="pSiteNameFontSize siteName">@siteDetail.SiteName</h5>
+                                <p class="pSiteURLFontSize siteURL">@siteDetail.SiteURL</p>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-6">
-                        <button data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#UpdateSiteModal" id="updateSiteBtn" style="float: right;border-radius: 5px;margin-top: 15px;background-color: #09400e;color: #f1e3e3;">Update Site</button>
-                        <button data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#DeleteSiteModal" id="deleteSiteBtn" style="float: right;border-radius: 5px;margin-top: 15px;margin-right: 5px;background-color: #5f2122;color: #f1e3e3;">Delete</button>
+                    <div class="col-4">
+                        <button class="siteBtnbackground" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#UpdateSiteModal" id="updateSiteBtn" style="float: right;">Update Site</button>
+                        <button class="siteBtnbackground" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#DeleteSiteModal" id="deleteSiteBtn" style="float: right;">Delete</button>
                     </div>
                 </div>
             </div>

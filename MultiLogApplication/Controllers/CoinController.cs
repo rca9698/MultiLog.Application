@@ -83,7 +83,7 @@ namespace MultiLogApplication.Controllers
             {
                 string BasePath = _hostingEnvironment.WebRootPath;
                 //string wwwPath = _configuration["StoragePath:BasePath:Path"];
-                string contentPath = _configuration["StoragePath:SiteIcon:Path"];
+                string contentPath = _configuration["StoragePath:paymentProof:Path"];
                 string fileName = Guid.NewGuid().ToString();
                 string iconContentPath = BasePath + contentPath;
                 if (!Directory.Exists(iconContentPath))

@@ -46,7 +46,7 @@
                                 {
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-person"></i> Profile </a>
                                     <a href="/BankAccount/Index" class="dashboard-nav-item"><i class="bi bi-bank2"></i> Withdraw Details </a>
-                                    <a href="#" class="dashboard-nav-item"><i class="bi bi-plus-circle-fill"></i> Create Id </a>
+                                    <a href="#" class="dashboard-nav-item IDsList"><i class="bi bi-plus-circle-fill"></i> Create Id </a>
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-star-fill"></i> Bonus </a>
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-fast-forward-fill"></i> Loss Back </a>
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-file-pdf-fill"></i> Rules </a>
@@ -457,13 +457,17 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>Site Name</label>
-                                            <input id="siteName" name="siteName" type="text" class="form-control" placeholder="Site Name">
+                                            <input name="siteName" type="text" class="form-control siteName" placeholder="Site Name">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Site URL</label>
-                                            <input id="siteURL" name="siteURL" type="text" class="form-control" placeholder="Site URL">
+                                            <input name="siteURL" type="text" class="form-control siteURL" placeholder="Site URL">
+                                        </div>
+                                        <div class="form-group">
                                             <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
                                                 <div class="form-group">
                                                     <div class="col-md-10">
-                                                        <input type="file" name="files" id="files" />  @*multiple*@
+                                                        <input type="file" name="files" class="files" />  @*multiple*@
                                                     </div>
                                                 </div>
                                             </div>
@@ -493,12 +497,19 @@
                                         <div class="form-group">
                                             <label>First Name</label>
                                             <input id="FName" name="FName" type="text" class="form-control" placeholder="First Name">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Last Name</label>
                                             <input id="LName" name="LName" type="text" class="form-control" placeholder="Last Name">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Mobile Number</label>
                                             <input id="MNumber" name="MNumber" type="text" class="form-control" placeholder="Mobile Number">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Password</label>
                                             <input id="UPassword" name="UPassword" type="text" class="form-control" placeholder="Password">
+
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -531,6 +542,8 @@
                                         <div class="form-group">
                                             <label>User Number</label>
                                             <input disabled type="text" id="userNumber" name="userNumber" class="form-control" placeholder="User Number">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Coins</label>
                                             <input type="text" id="Coins" name="coins" class="form-control" placeholder="Coins">
                                         </div>
@@ -564,6 +577,8 @@
                                         <div class="form-group">
                                             <label>User Number</label>
                                             <input disabled type="text" id="userNumber" name="userNumber" class="form-control" placeholder="User Number">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Coins</label>
                                             <input type="text" id="Coins" name="coins" class="form-control" placeholder="Coins">
                                         </div>
@@ -591,10 +606,16 @@
                                         <div class="form-group">
                                             <label>Bank Name</label>
                                             <input id="BName" name="BName" type="text" class="form-control" placeholder="Bank Name">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Account Holder Name</label>
                                             <input id="AHName" name="AHName" type="text" class="form-control" placeholder="Account Holder Name">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Account Number</label>
                                             <input id="ANumber" name="ANumber" type="text" class="form-control" placeholder="Account Number">
+                                        </div>
+                                        <div class="form-group">
                                             <label>IFSC Code</label>
                                             <input id="IFSCCode" name="IFSCCode" type="text" class="form-control" placeholder="IFSC Code">
                                         </div>
@@ -630,7 +651,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-3 grid-margin stretch-card" id="IDsList">
+            <div class="col-3 grid-margin stretch-card IDsList">
                 <div class="card" style="background: black;">
                     <div class="card-body text-center" style="padding: 0px;">
                         <div class="row">
@@ -642,7 +663,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 grid-margin stretch-card" id="MyIDsList">
+            <div class="col-3 grid-margin stretch-card MyIDsList">
                 <div class="card" style="background: black;">
                     <div class="card-body text-center" style="padding: 0px;">
                         <div class="row">

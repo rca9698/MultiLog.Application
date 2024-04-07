@@ -6,12 +6,12 @@ $(document).ready(function () {
     else if ($('#accountListing').attr('ViewType') == 'RejectedAcRequests') {
         RejectedRequestLists();
     }
-    else {
+    else if ($('#accountListing').attr('ViewType') == 'AcRequest') {
         AccountRequestList();
     }
 });
 
-
+//Start Click event
 $(document).on('click', '#DeleteAccountRequestList', function () {
     var userId = $(this).attr('userId');
     var siteId = $(this).attr('siteId');
@@ -94,7 +94,28 @@ $(document).on('click', '#CreateIDRequestModalBtn', function () {
     CreateIDRequestFormValidationSingleton.getInstance();
 });
 
+$(document).on('click', '#CreateIDModalBtn', function () {
+    let AccountRequestId = $(this).attr('accountRequestId');
+    let iconPath = $(this).attr('iconpath');
 
+    $.ajax({
+        url: '/Account/AccountRequestDetails',
+        type: 'POST',
+        data: { AccountRequestId: AccountRequestId },
+        success: function (result) {
+            $('#CreateIDModalForm .siteIcon').attr('src', iconPath);
+            $('#CreateIDModalForm .siteName').html(result.returnVal.siteName);
+            $('#CreateIDModalForm .siteURL').html(result.returnVal.siteURL);
+            $('#CreateIDModalForm').attr('accountRequestId', AccountRequestId);
+
+            CreateIDFormValidationSingleton.getInstance();
+        }
+    });
+});
+
+// End Click Event
+
+//Start Form
 var CreateIDRequestFormfv;
 var fv1;
 var CreateIDRequestFormValidationSingleton = (function () {
@@ -137,46 +158,6 @@ var CreateIDRequestFormValidationSingleton = (function () {
     };
 })();
 
-function AddAccountRequest() {
-    debugger;
-    var obj = {
-        UserName: $('#Username').val(),
-        SiteId: $('#CreateIDRequestModal').attr('SiteId')
-    }
-
-    $.ajax({
-        url: '/Account/AddAccountRequest',
-        type: 'POST',
-        data: obj,
-        success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#CreateIDRequestModal .close').trigger('click');
-            }
-        }
-    });
-}
-
-$(document).on('click', '#CreateIDModalBtn', function () {
-    let AccountRequestId = $(this).attr('accountRequestId');
-    let iconPath = $(this).attr('iconpath'); 
-
-    $.ajax({
-        url: '/Account/AccountRequestDetails',
-        type: 'POST',
-        data: { AccountRequestId: AccountRequestId },
-        success: function (result) {
-            $('#CreateIDModalForm .logoicon').attr('src', iconPath);
-            $('#CreateIDModalForm .SiteName').html(result.returnVal.siteName);
-            $('#CreateIDModalForm .SiteURL').html(result.returnVal.siteURL);
-            $('#CreateIDModalForm').attr('accountRequestId', AccountRequestId);
-
-            CreateIDFormValidationSingleton.getInstance();
-        }
-    });
-});
-
-
 var CreateIDFormfv;
 var fv2;
 var CreateIDFormValidationSingleton = (function () {
@@ -185,14 +166,14 @@ var CreateIDFormValidationSingleton = (function () {
         let form = document.getElementById('CreateIDModalForm');
         fv2 = FormValidation.formValidation(form, {
             fields: {
-                UserName: {
+                Username: {
                     validators: {
                         notEmpty: {
                             message: 'User Name is required'
                         }
                     }
                 },
-                Password: {
+                password: {
                     validators: {
                         notEmpty: {
                             message: 'Password is required'
@@ -226,6 +207,29 @@ var CreateIDFormValidationSingleton = (function () {
     };
 })();
 
+// End Form
+
+//Start Function
+function AddAccountRequest() {
+    debugger;
+    var obj = {
+        UserName: $('#Username').val(),
+        SiteId: $('#CreateIDRequestModal').attr('SiteId')
+    }
+
+    $.ajax({
+        url: '/Account/AddAccountRequest',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            if (result.returnStatus == 1) {
+                toastr.success(result.returnMessage);
+                $('#CreateIDRequestModal .close').trigger('click');
+            }
+        }
+    });
+}
+
 function AddAccount() {
     var obj = {
         AccountRequestId: $('#CreateIDModalForm').attr('accountRequestId'),
@@ -241,6 +245,10 @@ function AddAccount() {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);
                 $('#CreateIDModal .close').trigger('click');
+                setTimeout(function() {
+                    AccountRequestList();
+                }, 100);
+               
             }
         }
     });
@@ -279,3 +287,4 @@ function RejectedRequestLists() {
     });
 }
 
+//End Function

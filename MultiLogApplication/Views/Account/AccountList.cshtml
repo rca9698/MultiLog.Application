@@ -3,10 +3,10 @@
 
 
 <div class='dashboard-content'>
-   @*  <div class="row mt-4">
-        <div class="col-6">
-            <h6 class="text-white">Account Listing</h6>
-        </div>
+    @*  <div class="row mt-4">
+    <div class="col-6">
+    <h6 class="text-white">Account Listing</h6>
+    </div>
     </div> *@
 
     <div class="card mt-4 sitebackground siteColor">
@@ -56,7 +56,7 @@
 <div class="modal fade" id="AddAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form id="AddAccountDetailsForm">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel">Confirm Add Coins</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -67,13 +67,15 @@
 
                     <div class="form-group">
                         <label>User Number and Name</label>
-                        <input type="text" class="form-control" id="userNumber" placeholder="User Name">
+                        <input type="text" class="form-control" name="userNumber" id="userNumber" placeholder="User Name">
+                    </div>
+                    <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control" placeholder="password">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="password">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="AddAccountRequest">Add Coins</button>
+                    <button type="submit" class="btn btn-success" id="AddAccountRequest">Add Coins</button>
                 </div>
             </form>
         </div>

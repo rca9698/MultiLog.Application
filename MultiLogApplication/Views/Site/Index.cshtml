@@ -49,14 +49,18 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Site Name</label>
-                        <input id="siteName" name="siteName" type="text" class="form-control" placeholder="Site Name">
+                        <input name="siteName" type="text" class="form-control siteName" placeholder="Site Name">
+                    </div>
+                    <div class="form-group">
                         <label>Site URL</label>
-                        <input id="siteURL" name="siteURL" type="text" class="form-control" placeholder="Site URL">
-                        <input hidden id="siteIcon" name="siteIcon" type="text" class="form-control">
+                        <input name="siteURL" type="text" class="form-control siteURL" placeholder="Site URL">
+                    </div>
+                    <div class="form-group">
+                        <input hidden name="siteIcon" type="text" class="form-control siteIcon">
                         <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
                             <div class="form-group">
                                 <div class="col-md-10">
-                                    <input type="file" name="files" id="files" />  @*multiple*@
+                                    <input type="file" name="files" class="files" />  @*multiple*@
                                 </div>
                             </div>
                         </div>
