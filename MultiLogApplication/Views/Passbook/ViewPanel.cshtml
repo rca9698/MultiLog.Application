@@ -1,0 +1,37 @@
+﻿@using MultiLogApplication.Models.Common
+@inject IConfiguration Configuration
+@model ReturnType<MultiLogApplication.Models.Passbook.PassbookDetailModel>
+
+@if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
+{
+    @foreach (var passbookDetail in Model.ReturnList)
+    {
+        <div class="card sitebackground siteBorderRadius siteColor"> @* site_@siteDetail.SiteId *@
+            <div class="card-body">
+                <div class="row Col-12">
+                    <div class="col-9">
+                        <div class="row col-12">
+                            @* <div class="col-6">
+                                <img class="siteImageCircle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
+                            </div>
+                            <div class="col-6">
+                                <h6 class="pSiteNameFontSize siteName">@siteDetail.SiteName</h6>
+                                <p class="pSiteURLFontSize siteURL">@siteDetail.SiteURL</p>
+                            </div> *@
+                        </div>
+
+                    </div>
+                    <div class="col-3">
+                        @* <button class="siteBorderRadius siteBtnbackground" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right"><i class="bi bi-plus-square-fill"></i>Create</button> *@
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <span>
+        No Data Found!!!
+    </span>
+}

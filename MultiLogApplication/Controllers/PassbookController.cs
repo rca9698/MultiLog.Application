@@ -2,17 +2,18 @@
 using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models.Account;
 using MultiLogApplication.Models.Common;
+using MultiLogApplication.Models.Passbook;
 using MultiLogApplication.Models.SiteDetails;
 
 namespace MultiLogApplication.Controllers
 {
-    public class PassbookController : Controller
+    public class PassbookController : BaseController
     {
-        private readonly IAccountService _accountService;
+        private readonly IPassbookService _passbookService;
         private readonly ILogger<PassbookController> _logger;
-        public PassbookController(IAccountService accountService, ILogger<PassbookController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+        public PassbookController(IPassbookService passbookService, ILogger<PassbookController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
-            _accountService = accountService;
+            _passbookService = passbookService;
             _logger = logger;
         }
 
@@ -20,23 +21,23 @@ namespace MultiLogApplication.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> ViewDetailsPV(long siteId)
+        public async Task<IActionResult> ViewPanel()
         {
-            ReturnType<AccountDetail> res = new ReturnType<AccountDetail>();
+            ReturnType<PassbookDetailModel> res = new ReturnType<PassbookDetailModel>();
             try
             {
-                ViewThisSiteDetailModel obj = new ViewThisSiteDetailModel()
+                GetPassbookDetails obj = new GetPassbookDetails()
                 {
-                    SiteId = siteId,
-                    UserId = _sessionUser
+                    UserId = _sessionUser,
+                    SessionUser = _sessionUser
                 };
-                res = await _siteService.ViewThisSiteDetails(obj);
+                res = await _passbookService.GetPassbookHistory(obj);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Exception Occured at PassbookController > ViewDetailsPV");
+                _logger.LogError(ex, "Exception Occured at PassbookController > ViewPanel");
             }
-            return PartialView("~/Views/Site/ViewDetailsPV.cshtml", res);
+            return PartialView("~/Views/Passbook/ViewPanel.cshtml", res);
         }
     }
 }

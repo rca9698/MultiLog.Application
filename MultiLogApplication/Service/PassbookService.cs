@@ -14,10 +14,10 @@ namespace MultiLogApplication.Service
         {
             _logger = logger;
         }
-        public async Task<ReturnType<AccountDetail>> GetPassbook(GetPassbookDetails details)
+        public async Task<ReturnType<PassbookDetailModel>> GetPassbookHistory(GetPassbookDetails details)
         {
-            var response = await _client.PostAsJsonAsync($"api/Passbook/GetPassbook", details);
-            return await response.ReadContentAs<ReturnType<AccountDetail>>();
+            var response = await _client.PostAsJsonAsync($"api/Passbook/PassbookController", details);
+            return await response.ReadContentAs<ReturnType<PassbookDetailModel>>();
         }
 
     }
