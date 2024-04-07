@@ -9,7 +9,7 @@
         <div class="card sitebackground siteBorderRadius siteColor site_@siteDetail.SiteId">
             <div class="card-body">
                 <div class="row Col-12">
-                    <div class="col-6">
+                    <div class="col-9">
                         <div class="row col-12">
                             <div class="col-6">
                                 <img class="siteImageCircle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
@@ -21,7 +21,7 @@
                         </div>
 
                     </div>
-                    <div class="col-6">
+                    <div class="col-3">
                         <button class="siteBorderRadius siteBtnbackground" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right"><i class="bi bi-plus-square-fill"></i>Create</button>
                     </div>
                 </div>
