@@ -50,7 +50,5 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<bool>>();
         }
     
-        
-    
     }
 }

@@ -145,7 +145,7 @@ $(document).on('click', '#withdrawCoinsFromAccountBtn', function () {
 function DepositCoins() {
     var obj = {
         UserId: $('#DepositCoinsForm').attr('userId'),
-        Coins: $('#DepositCoinsForm #Coins').val(),
+        Coins: $('#DepositCoinsForm .Coins').val(),
         CoinsRequestId: $('#DepositCoinsForm').attr('coinRequestID')
     }
 
@@ -292,7 +292,7 @@ function SetDefaultBank(selectedValue) {
 function WithDrawCoinsRequest() {
     var obj = {
         UserId: $('#WithdrawCoinsRequestModalForm').attr('userId'),
-        Coins: $('#WithdrawCoinsRequestModalForm #coins').val()
+        Coins: $('#WithdrawCoinsRequestModalForm .coins').val()
     }
 
     $.ajax({
@@ -504,7 +504,7 @@ var AddCoinsRequestFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
-            $('#depositAmount').html($('#DepositCoinsRequestModalForm #coins').val());
+            $('#depositAmount').html($('#DepositCoinsRequestModalForm .coins').val());
             $('#PaymentModeList').show()
             $('#PaymentModesModal').modal('show');
             $('.PaymentModeTypesDetailList').hide();

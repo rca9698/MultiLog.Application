@@ -33,8 +33,8 @@
                                 <td>@account.SiteName</td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" data-toggle="modal" data-target="#AddAccountDetails" UserNumber=@account.UserNumber> <i class="bi bi-pencil-square"></i> </button>
-                                        <button type="button" data-toggle="modal" data-target="#DeleteAccountRequest" UserNumber=@account.UserNumber> <i class="bi bi-pencil-square"></i> </button>
+                                        @*<button type="button" data-toggle="modal" data-target="#AddAccountDetails" UserNumber=@account.UserNumber> <i class="bi bi-pencil-square"></i> </button>*@
+                                        <button type="button" data-toggle="modal" data-target="#DeleteAccountDetails" UserNumber=@account.UserNumber> <i class="bi bi-trash-fill"></i> </button>
                                     </div>
                                 </td>
                             </tr>
@@ -53,7 +53,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="AddAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@* <div class="modal fade" id="AddAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form id="AddAccountDetailsForm">
@@ -80,10 +80,10 @@
             </form>
         </div>
     </div>
-</div>
+</div> *@
 <!-- Modal -->
 <!-- Modal -->
-<div class="modal fade" id="AddAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="DeleteAccountDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

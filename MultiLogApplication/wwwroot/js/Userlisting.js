@@ -91,10 +91,10 @@ var UserCreationFormValidationSingleton = (function () {
 
 function AddUser() {
     var obj = {
-        FirstName: $('#AddUserModalForm #FName').val(),
-        LastName: $('#AddUserModalForm #LName').val(),
-        MobileNumber: $('#AddUserModalForm #MNumber').val(),
-        Password: $('#AddUserModalForm #UPassword').val(),
+        FirstName: $('#AddUserModalForm .FName').val(),
+        LastName: $('#AddUserModalForm .LName').val(),
+        MobileNumber: $('#AddUserModalForm .MNumber').val(),
+        Password: $('#AddUserModalForm .UPassword').val(),
         EmailId: ""
     }
 
