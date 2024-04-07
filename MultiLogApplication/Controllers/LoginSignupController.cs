@@ -10,6 +10,7 @@ using System.Text;
 using System.Collections.Specialized;
 using System.Web;
 using System.Runtime.InteropServices;
+using MultiLogApplication.Models.User;
 
 namespace MultiLogApplication.Controllers
 {
@@ -25,11 +26,11 @@ namespace MultiLogApplication.Controllers
             _config = config;
         }
 
-        public async Task<ReturnType<bool>> Login(LoginDetails details)
+        public async Task<IActionResult> Login(LoginDetails details)
         {
 
             //Random rand = new Random();
-            //string apikey = "NmM0NDc0Njc2YTU1NzQ0ZjU3NzA3NTY5NmEzNzQ2NjY=";
+            //string apikey = "NDk0Zjc2NDI3MDc2MzM3NDUwNDg3NDY0NzM1MzM4NjY=";
             //string numbers = "+919740859698";
             //var sentOtp = rand.Next(1000, 9999);
             //string senders = "KAPunter";
@@ -70,29 +71,28 @@ namespace MultiLogApplication.Controllers
             //mywriter.Write(url);
             //mywriter.Close();
 
-            ReturnType<bool> returnType = new ReturnType<bool>();
+            ReturnType<UserDetail> returnType = new ReturnType<UserDetail>();
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var user = await _loginServices.LoginCred(details);
-                    if (user == null || user.ReturnStatus == ReturnStatus.Failure)
+                    returnType = await _loginServices.LoginCred(details);
+                    if (returnType.ReturnStatus == ReturnStatus.Failure)
                     {
                         //Add logic here to display some message to user    
                         returnType.ReturnMessage = "Invalid Credential";
-                        return returnType;
                     }
                     else
                     {
                         //A claim is a statement about a subject by an issuer and    
                         //represent attributes of the subject that are useful in the context of authentication and authorization operations.    
                         var claims = new List<Claim>();
-                        claims.Add(new Claim(ClaimTypes.NameIdentifier, Convert.ToString(user.ReturnVal.UserId)));
-                        claims.Add(new Claim(ClaimTypes.Name, user.ReturnVal.FirstName + user.ReturnVal.LastName));
-                        claims.Add(new Claim("UserNumber", user.ReturnVal.UserNumber));
+                        claims.Add(new Claim(ClaimTypes.NameIdentifier, Convert.ToString(returnType.ReturnVal.UserId)));
+                        claims.Add(new Claim(ClaimTypes.Name, returnType.ReturnVal.FirstName + returnType.ReturnVal.LastName));
+                        claims.Add(new Claim("UserNumber", returnType.ReturnVal.UserNumber));
 
-                        foreach (string claim in user.ReturnVal.Claims.Split(","))
-                            claims.Add(new Claim(claim, Convert.ToString(user.ReturnVal.UserId)));
+                        foreach (string claim in returnType.ReturnVal.Claims.Split(","))
+                            claims.Add(new Claim(claim, Convert.ToString(returnType.ReturnVal.UserId)));
 
                         //Initialize a new instance of the ClaimsIdentity with the claims and authentication scheme    
                         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -104,11 +104,10 @@ namespace MultiLogApplication.Controllers
                             IsPersistent = false //objLoginModel.RememberLogin
                         });
 
-                        HttpContext.Session.SetString("UserId", user.ReturnVal.UserId.ToString());
-                        HttpContext.Session.SetString("UserNumber", user.ReturnVal.UserNumber);
-                        HttpContext.Session.SetString("Coins", user.ReturnVal.Coins);
+                        HttpContext.Session.SetString("UserId", returnType.ReturnVal.UserId.ToString());
+                        HttpContext.Session.SetString("UserNumber", returnType.ReturnVal.UserNumber);
+                        HttpContext.Session.SetString("Coins", returnType.ReturnVal.Coins);
 
-                        return returnType;
                     }
                 }
             }
@@ -117,7 +116,7 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at LoginSignupController > Login");
             }
-            return returnType;
+            return Json(returnType);
         }
 
         public ReturnType<bool> Signup(SignUpDetails details)

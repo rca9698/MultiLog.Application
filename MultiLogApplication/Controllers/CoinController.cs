@@ -14,8 +14,8 @@ namespace MultiLogApplication.Controllers
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _hostingEnvironment;
         public CoinController(ICoinService coinService, ILogger<CoinController> logger
-            , IHttpContextAccessor httpContextAccessor, IConfiguration configuration, 
-            IWebHostEnvironment hostingEnvironment) 
+            , IHttpContextAccessor httpContextAccessor, IConfiguration configuration,
+            IWebHostEnvironment hostingEnvironment)
             : base(httpContextAccessor)
         {
             _coinService = coinService;
@@ -127,13 +127,14 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-        public async Task<IActionResult> AddCoins(InsertCoinDetails obj)
+        public async Task<IActionResult> AddCoins(UpdateCoinDetails obj)
         {
             ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.SessionUser = _sessionUser;
-                res = await _coinService.AddCoins(obj);
+                obj.CoinType = 1;
+                res = await _coinService.UpdateCoins(obj);
                 HttpContext.Session.SetString("Coins", res.ReturnVal);
             }
             catch (Exception ex)
@@ -143,13 +144,15 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-        public async Task<IActionResult> DeleteCoins(InsertCoinDetails obj)
+        public async Task<IActionResult> DeleteCoins(UpdateCoinDetails obj)
         {
             ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.SessionUser = _sessionUser;
-                res = await _coinService.DeleteCoins(obj);
+                obj.CoinType = 0;
+                res = await _coinService.UpdateCoins(obj);
+                HttpContext.Session.SetString("Coins", res.ReturnVal);
             }
             catch (Exception ex)
             {
@@ -158,14 +161,15 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-        public async Task<IActionResult> AddCoinsToAccountRequest(InsertCoinToAccountRequestModel obj)
+        public async Task<IActionResult> AddCoinsToAccountRequest(UpdateCoinsToAccountRequestModel obj)
         {
             ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.UserId = _sessionUser;
                 obj.SessionUser = _sessionUser;
-                res = await _coinService.AddCoinsToAccountRequest(obj);
+                obj.CoinType = 0;
+                res = await _coinService.UpdateCoinsToAccountRequest(obj);
             }
             catch (Exception ex)
             {
@@ -174,14 +178,15 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-        public async Task<IActionResult> WithDrawToAccountRequest(DeleteCoinToAccountRequest obj)
+        public async Task<IActionResult> WithDrawToAccountRequest(UpdateCoinsToAccountRequestModel obj)
         {
             ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.UserId = _sessionUser;
                 obj.SessionUser = _sessionUser;
-                res = await _coinService.WithDrawToAccountRequest(obj);
+                obj.CoinType = 1;
+                res = await _coinService.UpdateCoinsToAccountRequest(obj);
             }
             catch (Exception ex)
             {
@@ -189,6 +194,82 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-    
+
+        public async Task<IActionResult> GetDepositCoinsToAccountRequest()
+        {
+            ReturnType<CoinsToAccountRequestModel> res = new ReturnType<CoinsToAccountRequestModel>();
+            try
+            {
+                res = await _coinService.GetCoinsToAccountRequest(0, _sessionUser);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > GetDepositCoinsToAccountRequest");
+            }
+            return PartialView("~/Views/Coin/GetDepositCoinsToAccountRequest.cshtml", res);
+        }
+
+        public async Task<IActionResult> GetWithdrawCoinsFromAccountRequest()
+        {
+            ReturnType<CoinsToAccountRequestModel> res = new ReturnType<CoinsToAccountRequestModel>();
+            try
+            {
+                res = await _coinService.GetCoinsToAccountRequest(1, _sessionUser);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > GetWithdrawCoinsFromAccountRequest");
+            }
+            return PartialView("~/Views/Coin/GetWithdrawCoinsFromAccountRequest.cshtml", res);
+        }
+
+        public async Task<IActionResult> GetCoinsFromAccountRequestById(string CoinsRequestId, int CoinType)
+        {
+            ReturnType<CoinsToAccountRequestModel> res = new ReturnType<CoinsToAccountRequestModel>();
+            try
+            {
+                res = await _coinService.GetCoinsToAccountRequest(CoinType, _sessionUser);
+                res.ReturnVal = res.ReturnList.FirstOrDefault(x=>x.CoinsRequestId == CoinsRequestId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > GetCoinsFromAccountRequestById");
+            }
+            return Json(res);
+        }
+
+        public async Task<IActionResult> UpdateCoinsToAccount(UpdateCoinsToAccountModel obj)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                obj.SessionUser = _sessionUser;
+                res = await _coinService.UpdateCoinsToAccount(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > UpdateCoinsToAccount");
+            }
+            return Json(res);
+        }
+
+        public async Task<IActionResult> WithdrawCoinsFromAccount(UpdateCoinsToAccountModel obj)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                obj.CoinType = 0;
+                obj.SessionUser = _sessionUser;
+                res = await _coinService.UpdateCoinsToAccount(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > WithdrawCoinsFromAccount");
+            }
+            return Json(res);
+        }
+
+
+
     }
 }

@@ -1,5 +1,5 @@
 ﻿@using MultiLogApplication.Models.Common
-@model ReturnType<MultiLogApplication.Models.Coin.CoinsRequestModel>
+@model ReturnType<MultiLogApplication.Models.Coin.CoinsToAccountRequestModel>
 @* 
 <div class="row mt-4">
     <div class="col-6">
@@ -9,7 +9,7 @@
 
 <div class="card mt-4 sitebackground siteColor">
     <div class="card-body customtable">
-        <h5 class="card-title">Deposit Coin Request</h5>
+        <h5 class="card-title">Withdraw Coins from Request</h5>
         <!-- Table with hoverable rows -->
         <table class="table table-hover" id="userList">
             <thead>
@@ -33,8 +33,8 @@
                             <td>@user.CreatedDate</td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" data-toggle="modal" data-target="#DeleteCoinRequest" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" id="deleteCoinRequestBtn"> <i class="bi bi-person-fill-slash"></i></button>
-                                    <button type="button" data-toggle="modal" data-target="#DepositCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestID ="@user.CoinsRequestId" id="depositeCoinsBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#DeleteCoinRequest" siteId=@user.SiteId userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" id="deleteCoinRequestBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#withdrawCoinsFromAccountModal" siteId=@user.SiteId userId=@user.UserId UserNumber="@user.UserNumber" coinRequestID="@user.CoinsRequestId" id="withdrawCoinsFromAccountBtn"> <i class="bi bi-person-fill-up"></i></button>
                                 </div>
                             </td>
                         </tr>

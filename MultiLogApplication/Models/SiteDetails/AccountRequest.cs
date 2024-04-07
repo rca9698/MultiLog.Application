@@ -3,7 +3,7 @@
     public class AccountRequest
     {
         public long AccountRequestID { get; set; }
-        public int UserId { get; set; }
+        public long UserId { get; set; }
         public string UserNumber { get; set; }
         public string SiteName { get; set; }
         public string SiteURL { get; set; }

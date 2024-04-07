@@ -80,7 +80,17 @@ $(document).on('click', '#DeleteAccountRequest', function () {
 
 $(document).on('click', '#CreateIDRequestModalBtn', function () {
     let siteId = $(this).attr('siteId');
-    $('#CreateIDRequestModalForm').attr('siteId',siteId);
+    $('#CreateIDRequestModal').attr('siteId', siteId);
+
+    let Name = $('.site_' + siteId + ' .siteName').html();
+    let URL = $('.site_' + siteId + ' .siteURL').html();
+    let iconSrc = $('.site_' + siteId + ' .siteIcon').attr('src');
+
+    $('#CreateIDRequestModal').attr('siteId', siteId);
+    $('#CreateIDRequestModal .siteName').html(Name);
+    $('#CreateIDRequestModal .siteURL').html(URL);
+    $('#CreateIDRequestModal .siteIcon').attr('src', iconSrc);
+
     CreateIDRequestFormValidationSingleton.getInstance();
 });
 
@@ -131,7 +141,7 @@ function AddAccountRequest() {
     debugger;
     var obj = {
         UserName: $('#Username').val(),
-        SiteId: $('#CreateIDRequestModalForm').attr('SiteId')
+        SiteId: $('#CreateIDRequestModal').attr('SiteId')
     }
 
     $.ajax({

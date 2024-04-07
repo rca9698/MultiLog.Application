@@ -27,6 +27,12 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<CoinsRequestModel>>();
         }
 
+        public async Task<ReturnType<CoinsToAccountRequestModel>> GetCoinsToAccountRequest(int coinType,long sessionUser)
+        {
+            var response = await _client.GetAsync($"api/Coin/GetCoinsToAccountRequest/{coinType}/{sessionUser}");
+            return await response.ReadContentAs<ReturnType<CoinsToAccountRequestModel>>();
+        }
+
         public async Task<ReturnType<string>> AddCoinsRequest(InsertCoinRequest details)
         {
             var response = await _client.PostAsJsonAsync($"api/Coin/AddCoinsRequest", details);
@@ -39,28 +45,23 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<string>>();
         }
 
-        public async Task<ReturnType<string>> AddCoins(InsertCoinDetails details)
+        public async Task<ReturnType<string>> UpdateCoins(UpdateCoinDetails details)
         {
-            var response = await _client.PostAsJsonAsync($"api/Coin/AddCoinsRequest", details);
+            var response = await _client.PostAsJsonAsync($"api/Coin/UpdateCoins", details);
             return await response.ReadContentAs<ReturnType<string>>();
         }
 
-        public async Task<ReturnType<string>> DeleteCoins(InsertCoinDetails details)
+        public async Task<ReturnType<string>> UpdateCoinsToAccountRequest(UpdateCoinsToAccountRequestModel details)
         {
-            var response = await _client.PostAsJsonAsync($"api/Coin/WithDrawCoinsRequest", details);
+            var response = await _client.PostAsJsonAsync($"api/Coin/UpdateCoinsToAccountRequest", details);
             return await response.ReadContentAs<ReturnType<string>>();
         }
 
-        public async Task<ReturnType<string>> AddCoinsToAccountRequest(InsertCoinToAccountRequestModel details)
+        public async Task<ReturnType<string>> UpdateCoinsToAccount(UpdateCoinsToAccountModel details)
         {
-            var response = await _client.PostAsJsonAsync($"api/Coin/AddCoinsToAccountRequest", details);
+            var response = await _client.PostAsJsonAsync($"api/Coin/UpdateCoinsToAccount", details);
             return await response.ReadContentAs<ReturnType<string>>();
         }
 
-        public async Task<ReturnType<string>> WithDrawToAccountRequest(DeleteCoinToAccountRequest details)
-        {
-            var response = await _client.PostAsJsonAsync($"api/Coin/WithDrawToAccountRequest", details);
-            return await response.ReadContentAs<ReturnType<string>>();
-        }
     }
 }

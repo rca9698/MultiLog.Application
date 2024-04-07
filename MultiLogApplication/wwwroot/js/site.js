@@ -3,10 +3,10 @@
         LoadSites();
     }
     else if ($('#listSites').attr('ViewType') == 'MyIds') {
-        $('.myIdsClass').trigger('click');
+        LoadMySites();
     }
     else {
-        $('.newIdsClass').trigger('click');
+        LoadUserSites();
     }
 });
 //Start Click Events
@@ -95,7 +95,7 @@ $(document).on('click', '#DepositeToAccountRequestCoinsBtn', function () {
     $('#DepositeToAccountRequestModal .siteName').html(Name);
     $('#DepositeToAccountRequestModal .siteURL').html(URL);
     $('#DepositeToAccountRequestModal .siteIcon').attr('src', iconSrc);
-    DepositeCoinsToAccountFormValidationSingleton.getInstance();
+    DepositeCoinsToAccountRequestFormValidationSingleton.getInstance();
 
 })
 
@@ -111,6 +111,7 @@ $(document).on('click', '#withdrawFromAccountRequestCoinsBtn', function () {
     $('#WithDrawToAccountRequestModal .siteIcon').attr('src', iconSrc);
     WithDrawFromAccountRequestFormValidationSingleton.getInstance();
 })
+
 
 //End Click Events
 
@@ -163,8 +164,8 @@ function UpdateSite() {
     });
 }
 
-function DepositeCoinsToAccount() {
-
+function DepositeCoinsToAccountRequest() {
+    
     var obj = {};
     obj.SiteId = $('#DepositeToAccountRequestModal').attr('siteId');
     obj.Coins = $('#DepositeToAccountRequestModal .Coins').val();
@@ -175,15 +176,15 @@ function DepositeCoinsToAccount() {
         data: obj,
         success: function (result) {
             if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
                 $('#DepositeToAccountRequestModal .close').trigger('click');
+                toastr.success(result.returnMessage);
                 LoadMySites();
             }
         }
     });
 }
 
-function WithdrawCoinsToAccount() {
+function WithdrawCoinsToAccountRequest() {
     var obj = {};
     obj.SiteId = $('#WithDrawToAccountRequestModal').attr('siteId');
     obj.Coins = $('#WithDrawToAccountRequestModal .Coins').val();
@@ -231,8 +232,32 @@ function LoadSites() {
     });
 }
 
+function LoadUserSites() {
+    let url = '/Site/GetUserListSites';
+
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: {},
+        success: function (result) {
+            $('#listSites').html(result);
+        }
+    });
+    $('.newIdsClass').addClass('active');
+}
+
 function LoadMySites() {
-    $('.myIdsClass').trigger('click');
+    let url = '/Site/GetUserListSiteById';
+    $('.myIdsClass').addClass('active');
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: {},
+        success: function (result) {
+            $('#listSites').html(result);
+        }
+    });
+    
 }
 
 //End function area
@@ -366,7 +391,7 @@ var UpdateSiteFormValidationSingleton = (function () {
 
 var DepositeCoinsToAccountFormfv;
 var fv3;
-var DepositeCoinsToAccountFormValidationSingleton = (function () {
+var DepositeCoinsToAccountRequestFormValidationSingleton = (function () {
     function createInstance() {
 
         let form = document.getElementById('DepositeToAccountRequestModalForm');
@@ -391,7 +416,7 @@ var DepositeCoinsToAccountFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
-            DepositeCoinsToAccount();
+            DepositeCoinsToAccountRequest();
         });
         return fv3;
     }
@@ -434,7 +459,7 @@ var WithDrawFromAccountRequestFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
-            WithdrawCoinsToAccount();
+            WithdrawCoinsToAccountRequest();
         });
         return fv4;
     }

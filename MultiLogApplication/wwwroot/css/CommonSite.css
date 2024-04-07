@@ -28,6 +28,12 @@
     margin-right: 10%;
 }
 
+.imageSpanCircle {
+    height: 51px;
+    width: 51px;
+    margin-left: 45%;
+}
+
 .pSiteNameFontSize {
     font-size: 12px;
 }
@@ -36,3 +42,10 @@
     font-size: 12px;
 }
 
+.table {
+color:#FFFF;
+}
+
+.table-hover > tbody > tr:hover {
+    color: #FFFF;
+}

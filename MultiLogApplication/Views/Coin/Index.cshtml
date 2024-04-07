@@ -3,3 +3,84 @@
 <div class='dashboard-content' id="ListCoinsDetail" ViewType="@Model">
 
 </div>
+
+
+<!-- Deposite Coins to Account Modal -->
+<div class="modal fade" id="DepositeCoinsToAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <style>
+            .nav-item-divider {
+                background-color: rgb(20 24 25 / 30%);
+            }
+        </style>
+        <div class="modal-content sitebackground siteColor">
+            <form id="DepositeCoinsToAccountModalForm">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Deposite Coins</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-12">
+                        <div class="d-flex flex-column text-center col-12">
+                            <span class="imageSpanCircle">
+                                <img class="siteIcon siteImageCircle" src="" />
+                            </span>
+                            <span class="pSiteNameFontSize siteName">Name</span>
+                            <span class="pSiteURLFontSize siteURL">URL</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Coins*</label>
+                        <input type="text" name="Coins" class="form-control Coins" placeholder="Coins">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success col-12">Deposite Coins To Site</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Deposite Coins to Account Modal-->
+
+<!-- WithDraw Coins to Account Modal -->
+<div class="modal fade" id="withdrawCoinsFromAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <style>
+            .nav-item-divider {
+                background-color: rgb(20 24 25 / 30%);
+            }
+        </style>
+        <div class="modal-content  sitebackground siteColor">
+            <form id="WithDrawCoinsFromAccountModalForm">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Withdraw Coins</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-12">
+                        <div class="d-flex flex-column text-center col-12">
+                            <span class="imageSpanCircle">
+                                <img class="siteIcon siteImageCircle" src="" />
+                            </span>
+                            <span class="pSiteNameFontSize siteName">Name</span>
+                            <span class="pSiteURLFontSize siteURL">URL</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Coins*</label>
+                        <input type="text" name="Coins" class="form-control Coins" placeholder="Coins">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success col-12">Withdraw Coins From Site</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- WithDraw Coins to Account Modal-->
