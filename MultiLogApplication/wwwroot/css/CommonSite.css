@@ -58,6 +58,10 @@ color:#FFFF;
     cursor: pointer;
 }
 
+.contentAlignType {
+    align-content: center;
+    text-align:center
+}
 
 @media (min-width: 992px) {
     .siteImageCircle {
@@ -70,7 +74,6 @@ color:#FFFF;
         align-content: center;
         text-align: end;
     }
-
 }
 
 
@@ -84,9 +87,5 @@ color:#FFFF;
         padding: 0px;
         align-content: center;
         text-align: end;
-    }
-
-    .contentAlignType {
-        align-content: center;
     }
 }
