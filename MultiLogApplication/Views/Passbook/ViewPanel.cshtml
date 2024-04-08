@@ -6,18 +6,20 @@
 {
     @foreach (var passbookDetail in Model.ReturnList)
     {
-        <div class="card sitebackground siteBorderRadius siteColor"> @* site_@siteDetail.SiteId *@
+        <div class="card sitebackground siteBorderRadius siteColor site_@passbookDetail.PassbookHistoryId">
             <div class="card-body">
                 <div class="row Col-12">
                     <div class="col-9">
                         <div class="row col-12">
-                            @* <div class="col-6">
-                                <img class="siteImageCircle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
+                            <div class="col-6">
+                                <img class="siteImageCircle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@passbookDetail.DocumentDetailId.@passbookDetail.FileExtenstion" />
                             </div>
                             <div class="col-6">
-                                <h6 class="pSiteNameFontSize siteName">@siteDetail.SiteName</h6>
-                                <p class="pSiteURLFontSize siteURL">@siteDetail.SiteURL</p>
-                            </div> *@
+                                <p class="pSiteNameFontSize">@passbookDetail.ActivityDescription</p>
+                                <p class="pSiteNameFontSize">@passbookDetail.SiteURL</p>
+                                <p class="pSiteURLFontSize">@passbookDetail.SiteUserName</p>
+                                <p class="pSiteURLFontSize">@passbookDetail.CreatedDate</p>
+                            </div>
                         </div>
 
                     </div>

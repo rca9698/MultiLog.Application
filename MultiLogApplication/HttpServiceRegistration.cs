@@ -16,6 +16,7 @@ namespace MultiLogApplication
             services.AddHttpClient<INotificationService, NotificationService>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));
             services.AddHttpClient<ISiteService, SiteService>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));
             services.AddHttpClient<IUserService, UserService>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));
+            services.AddHttpClient<IPassbookService, PassbookService>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));
             
         }
     }

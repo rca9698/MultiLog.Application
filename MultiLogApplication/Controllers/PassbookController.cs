@@ -17,9 +17,9 @@ namespace MultiLogApplication.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string viewType)
         {
-            return View();
+            return View("Views/Passbook/Index.cshtml", viewType);
         }
         public async Task<IActionResult> ViewPanel()
         {

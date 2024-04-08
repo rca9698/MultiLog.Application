@@ -16,7 +16,7 @@ namespace MultiLogApplication.Service
         }
         public async Task<ReturnType<PassbookDetailModel>> GetPassbookHistory(GetPassbookDetails details)
         {
-            var response = await _client.PostAsJsonAsync($"api/Passbook/PassbookController", details);
+            var response = await _client.PostAsJsonAsync($"api/Passbook/GetPassbookHistory", details);
             return await response.ReadContentAs<ReturnType<PassbookDetailModel>>();
         }
 
