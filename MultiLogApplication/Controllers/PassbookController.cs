@@ -39,5 +39,11 @@ namespace MultiLogApplication.Controllers
             }
             return PartialView("~/Views/Passbook/ViewPanel.cshtml", res);
         }
+
+
+        public async Task<IActionResult> PassbookHistory()
+        {
+            return PartialView("Views/Passbook/ViewPassbookDetail.cshtml");
+        }
     }
 }

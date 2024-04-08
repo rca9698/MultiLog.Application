@@ -6,22 +6,29 @@
 {
     @foreach (var passbookDetail in Model.ReturnList)
     {
-        <div class="card sitebackground siteBorderRadius siteColor site_@passbookDetail.PassbookHistoryId">
+        <div class="card sitebackground siteBorderRadius siteColor">
             <div class="card-body">
                 <div class="row Col-12">
                     <div class="col-9">
-                        <div class="row col-12">
-                            <div class="col-6">
-                                <img class="siteImageCircle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@passbookDetail.DocumentDetailId.@passbookDetail.FileExtenstion" />
+                        <div class="row col-12 viewPassbookHistoryDetails cursorPointer" passbookId="@passbookDetail.PassbookHistoryId">
+                            <div class="col-3 siteImageDivClass">
+                                <img class="siteImageCircle siteIcon" src="\Images\Site\70f46f8c-6d2f-4e32-ad4f-df0bc60c4e9e.png">
                             </div>
-                            <div class="col-6">
-                                <p class="pSiteNameFontSize">@passbookDetail.ActivityDescription</p>
-                                <p class="pSiteNameFontSize">@passbookDetail.SiteURL</p>
-                                <p class="pSiteURLFontSize">@passbookDetail.SiteUserName</p>
-                                <p class="pSiteURLFontSize">@passbookDetail.CreatedDate</p>
+                            <div class="col-9 Col-12">
+                                <div class="Col-3">
+                                    <span class="activityClass">@passbookDetail.ActivityDescription</span>
+                                </div>
+                                <div class="Col-3" style="margin: -10px 0px 0px 2px;">
+                                    <span class="pSiteNameFontSize siteUrl">@passbookDetail.SiteURL</span>
+                                </div>
+                                <div class="Col-3" style="margin: -10px 0px 0px 2px;">
+                                    <span class="pSiteNameFontSize siteUserName">@passbookDetail.SiteUserName</span>
+                                </div>
+                                <div class="Col-3" style="margin: -10px 0px 0px 2px;">
+                                    <span class="pSiteURLFontSize createdOn">@passbookDetail.CreatedDate</span>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="col-3">
                         @* <button class="siteBorderRadius siteBtnbackground" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right"><i class="bi bi-plus-square-fill"></i>Create</button> *@

@@ -149,15 +149,14 @@ var signupFormValidationSingleton = (function () {
 
 function Login() {
     var login = {}
-    login.UserNumber = $('#LoginModalForm #userNumber').val();
-    login.Password = $('#LoginModalForm #password').val();
+    login.UserNumber = $('#LoginModalForm .userNumber').val();
+    login.Password = $('#LoginModalForm .password').val();
     $.ajax({
         type: "Post",
         url: "/LoginSignup/Login",
         data: login,
         success: function (result) {
             if (result.returnStatus == 1) {
-                $('#LoginModal .close').trigger('click');
                 location.reload();
             }
             else {

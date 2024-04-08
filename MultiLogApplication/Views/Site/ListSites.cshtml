@@ -11,19 +11,19 @@
                 <div class="row Col-12">
                     <div class="col-8">
                         <div class="row col-12">
-                            <div class="col-6">
+                            <div class="col-3 siteImageDivClass">
                                 <img class="siteImageCircle siteIcon" imageName="@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
                             </div>
-                            <div class="col-6">
+                            <div class="col-9">
                                 <h5 class="pSiteNameFontSize siteName">@siteDetail.SiteName</h5>
                                 <p class="pSiteURLFontSize siteURL">@siteDetail.SiteURL</p>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-4">
-                        <button class="siteBtnbackground" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#UpdateSiteModal" id="updateSiteBtn" style="float: right;">Update Site</button>
-                        <button class="siteBtnbackground" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#DeleteSiteModal" id="deleteSiteBtn" style="float: right;">Delete</button>
+                    <div class="col-4 cursorPointer">
+                        <div class="siteBorderRadius siteBtnbackground BtnFontSize" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#UpdateSiteModal" id="updateSiteBtn" style="float: right;">Update Site</div>
+                        <div class="siteBorderRadius siteBtnbackground BtnFontSize bgclrred" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#DeleteSiteModal" id="deleteSiteBtn" style="float: right;">Delete</div>
                     </div>
                 </div>
             </div>
