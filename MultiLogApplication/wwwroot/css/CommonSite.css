@@ -60,12 +60,15 @@ color:#FFFF;
 
 
 @media (min-width: 992px) {
-
     .siteImageCircle {
-        height: 60%;
-        width: 60%;
+        height: 70%;
+        width: 70%;
         border-radius: 50%;
-        margin: 15%;
+    }
+    .siteImageDivClass {
+        padding: 0px;
+        align-content: center;
+        text-align: end;
     }
 
 }
@@ -73,10 +76,17 @@ color:#FFFF;
 
 @media (max-width: 992px) {
     .siteImageCircle {
-        height: 60%;
-        width: 60%;
+        height: 70%;
+        width: 70%;
         border-radius: 50%;
-        margin: 15%;
+    }
+    .siteImageDivClass {
+        padding: 0px;
+        align-content: center;
+        text-align: end;
     }
 
+    .contentAlignType {
+        align-content: center;
+    }
 }

@@ -11,17 +11,17 @@
                 <div class="row Col-12">
                     <div class="col-9">
                         <div class="row col-12">
-                            <div class="col-4">
+                            <div class="col-3 siteImageDivClass" >
                                 <img class="siteImageCircle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
                             </div>
-                            <div class="col-8">
+                            <div class="col-9">
                                 <h6 class="pSiteNameFontSize siteName">@siteDetail.SiteName</h6>
                                 <p class="pSiteURLFontSize siteURL">@siteDetail.SiteURL</p>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-3">
+                    <div class="col-3 contentAlignType">
                         <button class="siteBorderRadius siteBtnbackground BtnFontSize" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right"><i class="bi bi-plus-square-fill"></i>Create</button>
                     </div>
                 </div>

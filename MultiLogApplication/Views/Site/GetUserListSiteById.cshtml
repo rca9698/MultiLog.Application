@@ -16,17 +16,17 @@
                 <div class="row Col-12">
                     <div class="col-7 viewThisSiteDetails" siteId ="@siteDetail.SiteId">
                         <div class="row col-12">
-                            <div class="col-6">
+                            <div class="col-3 siteImageDivClass">
                                 <img class="siteImageCircle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
                             </div>
-                            <div class="col-6">
+                            <div class="col-9">
                                 <h6 class="pSiteNameFontSize siteName">@siteDetail.SiteName</h6>
                                 <p class="pSiteURLFontSize siteURL">@siteDetail.SiteURL</p>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-5">
+                    <div class="col-5 contentAlignType">
                         <button class="rounded-circle userlistingCircle bgclrGreen" data-toggle="modal" data-target="#DepositeToAccountRequestModal" userId=@siteDetail.UserId UserNumber="@siteDetail.UserNumber" siteId="@siteDetail.SiteId" id="DepositeToAccountRequestCoinsBtn">
                             D
                         </button>
