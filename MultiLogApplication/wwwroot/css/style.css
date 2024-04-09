@@ -636,8 +636,9 @@ body {
 
 body {
     background: #654ea3;
-    background: -webkit-linear-gradient(to left, #654ea3, #eaafc8);
-    background: linear-gradient(to left, #654ea3, #eaafc8);
+    /*background: -webkit-linear-gradient(to left, #654ea3, #eaafc8);*/
+    /*background: linear-gradient(to left, #654ea3, #eaafc8);*/
+    background: linear-gradient(to left, #080412, #1a030d);
     min-height: 100vh;
     padding-bottom: 5rem;
 }
@@ -652,7 +653,7 @@ body {
 
 .crick-accordion-sub {
     text-decoration: none;
-    color: #351b90 !important;
+    color: #fff !important;
     font-weight: bold;
 }
 
@@ -751,4 +752,8 @@ body {
 
 .dashboard-nav-list i {
     margin-right: 5px;
+}
+
+.bankcard .bankDetails span{
+    text-align:right;
 }

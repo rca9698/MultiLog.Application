@@ -1,14 +1,33 @@
 ﻿.sitebackground {
     background: #222222 !important;
 }
+
 .siteBtnbackground {
-    background: #FFFF !important;
-    color: #222222 !important;
+    background: #000;
+    color: #FFF;
     font-weight: bolder;
     padding: 5px;
+    cursor: pointer;
 }
+
+    .siteBtnbackground:hover {
+        background: #000;
+        color: #FFF;
+        font-weight: bolder;
+        padding: 5px;
+        cursor: pointer;
+    }
+
 .siteColor {
     color: #FFFF !important;
+}
+
+.modal-content .close {
+    color: #FFFF !important;
+}
+
+.fv-plugins-message-container {
+    color: red;
 }
 
 .siteheightwidth100 {
@@ -48,20 +67,25 @@
 }
 
 .table {
-color:#FFFF;
+    color: #FFFF;
 }
 
 .table-hover > tbody > tr:hover {
     color: #FFFF;
 }
 
-.cursorPointer{
+.cursorPointer {
     cursor: pointer;
 }
 
 .contentAlignType {
     align-content: center;
-    text-align:center
+    text-align: center
+}
+
+.form-select, .form-control, .form-control:focus {
+    background: #000 !important;
+    color: #FFF !important;
 }
 
 @media (min-width: 992px) {
@@ -70,6 +94,7 @@ color:#FFFF;
         width: 70%;
         border-radius: 50%;
     }
+
     .siteImageDivClass {
         padding: 0px;
         align-content: center;
@@ -84,6 +109,7 @@ color:#FFFF;
         width: 70%;
         border-radius: 50%;
     }
+
     .siteImageDivClass {
         padding: 0px;
         align-content: center;

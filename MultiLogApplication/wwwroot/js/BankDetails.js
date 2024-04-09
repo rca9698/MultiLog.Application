@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     if ($('#ListBankDetail').length) {
-        LoadBanks();
+        LoadActiveBanks();
     }
 });
 
@@ -11,25 +11,18 @@ $(document).on('click', '#AddBankDetailModalBtn', function () {
 $(document).on('click', '#AddBankDetailModalBtn1', function () {
     AddBankDetailFormValidationSingleton.getInstance();
 });
+
 $(document).on('click', '.BankDataSwitch .tabSelection', function () {
     $('.BankDataSwitch .tabSelection').removeClass('active');
     $(this).addClass('active');
 
-    let url = $(this).attr('idType') == 'bankHistory'
-        ? '/BankAccount/BankAccountsHistory'
-        : $(this).attr('idType') == 'deletedBank'
-            ? '/BankAccount/DeletedBankAccounts'
-        : '/BankAccount/ActiveBankAccounts';
-
-    $.ajax({
-        url: url,
-        type: 'POST',
-        data: {},
-        success: function (result) {
-            $('#ListBankDetail').html(result);
-        }
-    });
-
+    if ($(this).attr('idType') == 'bankHistory') {
+        LoadAccountsHistory();
+    } else if ($(this).attr('idType') == 'deletedBank') {
+        LoadDeletedBanks();
+    } else if ($(this).attr('idType') == 'activeBank') {
+        LoadActiveBanks();
+    }
 });
 
 
@@ -124,9 +117,9 @@ function AddBankAccount() {
     });
 }
  
-function LoadBanks() {
+function LoadActiveBanks() {
     $.ajax({
-        url: '/BankAccount/ViewPanel',
+        url: '/BankAccount/ActiveBankAccounts',
         type: 'POST',
         data: '',
         success: function (result) {
@@ -134,4 +127,28 @@ function LoadBanks() {
         }
     });
 }
+
+function LoadDeletedBanks() {
+    $.ajax({
+        url: '/BankAccount/DeletedBankAccounts',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#ListBankDetail').html(result);
+        }
+    });
+}
+
+function LoadAccountsHistory() {
+    $.ajax({
+        url: '/BankAccount/BankAccountsHistory',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#ListBankDetail').html(result);
+        }
+    });
+}
+
+
 // End Function Region

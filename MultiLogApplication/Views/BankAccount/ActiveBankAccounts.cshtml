@@ -1,20 +1,20 @@
-﻿
-<div class="card sitebackground siteBorderRadius siteColor" style="margin: 0px 0px 10px 0px;">
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@inject IHttpContextAccessor Accessor;
+@{
+    var userNumber = Accessor.HttpContext.Session.GetString("UserNumber");
+    var userName = Accessor.HttpContext.Session.GetString("UserName");
+}
+<div class="card sitebackground siteBorderRadius siteColor" style="margin: 0px 0px 10px 0px;text-align: center;">
     <div class="card-body">
         <div class="row Col-12">
-            <p class="card-title">
-                UserName:
-                <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
-                </svg>
-            </p>
+            <h3>
+                @userName
+            </h3>
         </div>
         <div class="row Col-12">
             <p class="card-title">
-                Password:
-                <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
-                </svg>
+                @userNumber
             </p>
         </div>
     </div>
@@ -51,13 +51,14 @@
                                 @foreach (var bankDetail in Model.ReturnList)
                                 {
                                     <!-- Accordion item 1 -->
-                                    <div class="card sitebackground" style="margin-bottom: 5%;">
-                                        <div id="heading_@bankDetail.BankAccountDetailID" class="card-header bg-white shadow-sm border-0">
-                                            <h2 class="mb-0">
-                                                <span type="button" data-toggle="collapse" data-target="#collapse_@bankDetail.BankAccountDetailID" aria-expanded="true" aria-controls="collapse_@bankDetail.BankAccountDetailID" class="btn btn-link text-dark font-weight-bold text-uppercase crick-accordion-sub row col-12">
+                                    <div class="card sitebackground bankcard" style="margin-bottom: 5%;">
+                                        <div id="heading_@bankDetail.BankAccountDetailID" class="card-header shadow-sm border-0 bg-dark">
+                                            <h2 class="mb-0 col-12">
+                                                <span type="button" data-toggle="collapse" data-target="#collapse_@bankDetail.BankAccountDetailID" aria-expanded="true" aria-controls="collapse_@bankDetail.BankAccountDetailID" class="btn btn-link font-weight-bold text-uppercase crick-accordion-sub row col-11">
                                                     <span class="col-8">@bankDetail.BankName</span>
-                                                    <span class="col-4"><i class="bi bi-arrow-down-up"></i></span>
+                                                    <span class="col-4"><i class="bi bi-arrow-down-up"> </i></span>
                                                 </span>
+                                                <span class="col-1 btn btn-link font-weight-bold crick-accordion-sub row"><i class="bi bi-trash3-fill"> </i></span>
                                             </h2>
                                         </div>
                                         <div id="collapse_@bankDetail.BankAccountDetailID" aria-labelledby="heading_@bankDetail.BankAccountDetailID" data-parent="#accordionExample" class="collapse show" style="">
@@ -72,7 +73,7 @@
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <div class="d-flex flex-column ml-3">
+                                                        <div class="d-flex flex-column ml-3 bankDetails">
                                                             <span class="">@bankDetail.BankName</span>
                                                             <span class="">@bankDetail.AccountHolderName</span>
                                                             <span class="">@bankDetail.AccountNumber</span>
@@ -84,6 +85,7 @@
                                         </div>
                                     </div>
                                     <!-- End -->
+                                    <hr class="rounded">
                                 }
                             }
                             else

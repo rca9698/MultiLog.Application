@@ -88,7 +88,7 @@ namespace MultiLogApplication.Controllers
                         //represent attributes of the subject that are useful in the context of authentication and authorization operations.    
                         var claims = new List<Claim>();
                         claims.Add(new Claim(ClaimTypes.NameIdentifier, Convert.ToString(returnType.ReturnVal.UserId)));
-                        claims.Add(new Claim(ClaimTypes.Name, returnType.ReturnVal.FirstName + returnType.ReturnVal.LastName));
+                        claims.Add(new Claim(ClaimTypes.Name, returnType.ReturnVal.FirstName + " " + returnType.ReturnVal.LastName));
                         claims.Add(new Claim("UserNumber", returnType.ReturnVal.UserNumber));
 
                         foreach (string claim in returnType.ReturnVal.Claims.Split(","))
@@ -107,6 +107,7 @@ namespace MultiLogApplication.Controllers
                         HttpContext.Session.SetString("UserId", returnType.ReturnVal.UserId.ToString());
                         HttpContext.Session.SetString("UserNumber", returnType.ReturnVal.UserNumber);
                         HttpContext.Session.SetString("Coins", returnType.ReturnVal.Coins);
+                        HttpContext.Session.SetString("UserName", returnType.ReturnVal.FirstName + " " + returnType.ReturnVal.LastName);
 
                     }
                 }

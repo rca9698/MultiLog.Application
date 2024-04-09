@@ -33,14 +33,14 @@ $(document).on('click', '#closePaymentModesModal', function () {
 });
 
 $(document).on('click', '#depositeCoinsBtn', function () {
-    $('#DepositCoinsForm #userNumber').val($(this).attr('UserNumber'));
+    $('#DepositCoinsForm .userNumber').val($(this).attr('UserNumber'));
     $('#DepositCoinsForm').attr('UserId', ($(this).attr('userId')));
     $('#DepositCoinsForm').attr('coinRequestID', ($(this).attr('coinRequestId')));
     AddCoinsFormValidationSingleton.getInstance();
 });
 
 $(document).on('click', '#withdrawCoinsBtn', function () {
-    $('#WithdrawCoinsForm #userNumber').val($(this).attr('UserNumber'));
+    $('#WithdrawCoinsForm .userNumber').val($(this).attr('UserNumber'));
     $('#WithdrawCoinsForm').attr('UserId', ($(this).attr('userId')));
     $('#WithdrawCoinsForm').attr('coinRequestID', ($(this).attr('coinRequestId')));
     WithdrawCoinsFormValidationSingleton.getInstance();
@@ -244,7 +244,6 @@ function bankDropDown(result) {
 }
 
 function SetBankdetails(result) {
-    $('#BankTrDetail').empty();
     if (result.returnVal) {
         $('#WithDrawCoinsBankDetail').html(
             `<div class="d-flex flex-column col-12">
