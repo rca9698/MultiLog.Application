@@ -14,7 +14,6 @@
         <table class="table table-hover" id="userList">
             <thead>
                 <tr class="tableHeaderClass">
-                    <th scope="col">User Number</th>
                     <th scope="col">User Name</th>
                     <th scope="col">Coins</th>
                     <th scope="col">Request Date</th>
@@ -27,12 +26,12 @@
                     @foreach (var user in Model.ReturnList)
                     {
                         <tr>
-                            <td scope="row">@user.UserName</td>
-                            <td>@user.UserNumber</td>
+                            <td scope="row">@user.UserNumber</td>
                             <td>@user.Coins</td>
                             <td>@user.CreatedDate</td>
                             <td>
                                 <div class="btn-group">
+                                    <button type="button" data-toggle="modal" data-target="#ViewCoinRequestProof" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" id="viewCoinRequestproofBtn"> <i class="bi bi-eye-fill"></i></button>
                                     <button type="button" data-toggle="modal" data-target="#DeleteCoinRequest" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" id="deleteCoinRequestBtn"> <i class="bi bi-person-fill-slash"></i></button>
                                     <button type="button" data-toggle="modal" data-target="#DepositCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestID ="@user.CoinsRequestId" id="depositeCoinsBtn"> <i class="bi bi-person-fill-up"></i></button>
                                 </div>

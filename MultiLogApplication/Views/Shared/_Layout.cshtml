@@ -166,7 +166,7 @@
                                     <a href="#">Demo ID</a>
                                     </li> *@
                                         <li>
-                                            <button data-toggle="modal" data-target="#LoginModal" class="btn siteBtnbackground mb-3" tabindex="0" id="loginbtn">Log In</button>
+                                            <button data-toggle="modal" data-target="#LoginModal" class="btn siteBtnbackground mb-3" tabindex="0" id="loginbtn">Login | Signup</button>
                                         </li>
                                     </ul>
                                 }
@@ -176,7 +176,7 @@
 
                     </div>
 
-                    
+
                     <!-- Deposit Coins Request Modal -->
                     <div class="modal fade" id="DepositCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog sitebackground siteColor">
@@ -492,6 +492,36 @@
                         </div>
                     </div>
                     <!-- Deposit Coins Modal -->
+                    <!-- Deposit Proof Modal -->
+                    <div class="modal fade" id="DepositCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content sitebackground siteColor">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel">Deposit</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group col-12">
+                                        <div class="d-flex flex-column text-center col-12">
+                                            <span class="business">WALLET BALANCE</span>
+                                            <span class="plan"><i class="bi bi-currency-rupee"></i>@coins</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>User Number</label>
+                                        <input disabled type="text" name="userNumber" class="form-control userNumber" placeholder="User Number" autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Coins</label>
+                                        <input type="text" name="coins" class="form-control Coins" placeholder="Coins" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Deposit Proof Modal -->
                     <!-- Withdraw Coins Modal -->
                     <div class="modal fade" id="WithdrawCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -587,12 +617,12 @@
                             <div class="card-header py-4 text-center">
                                 <img src="~/images/kapunterIcon.jpg" alt="logo" style="height: 100%;width: 50%">
                             </div>
-                           
-                                <div class="card-body p-4">
 
-                                    <div class="text-center w-75 m-auto">
-                                        <h4 class="text-dark-50 text-center pb-0 fw-bold">Welcome to the club!</h4>
-                                    </div>
+                            <div class="card-body p-4">
+
+                                <div class="text-center w-75 m-auto">
+                                    <h4 class="text-dark-50 text-center pb-0 fw-bold">Welcome to the club!</h4>
+                                </div>
                                 <form id="MobileModalForm">
                                     <div class="mb-3 form-group">
                                         <label for="userNumber" class="form-label">Mobile Number *</label>
@@ -602,8 +632,8 @@
                                     <div class="col-12 mb-0 text-center">
                                         <button class="col-12 btn siteBtnbackground" type="submit"> Get OTP On SMS </button>
                                     </div>
-                                 </form>
-                                 <form id="OtpPasswordModalForm">
+                                </form>
+                                <form id="OtpPasswordModalForm">
                                     <div class="mb-3 form-group">
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group input-group-merge">
@@ -618,19 +648,19 @@
                                         <button class="col-12 btn siteBtnbackground" type="submit"> Log In </button>
                                     </div>
                                 </form>
-                                    @* <div class="mb-3 mb-3">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" checked="">
-                                            <label class="form-check-label" for="checkbox-signin">Remember me</label>
-                                        </div>
-                                    </div> *@ 
+                                @* <div class="mb-3 mb-3">
+                                <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkbox-signin" checked="">
+                                <label class="form-check-label" for="checkbox-signin">Remember me</label>
                                 </div>
-                            
-                        </div>
-                       @*  <div class="row mt-3">
-                            <div class="col-12 text-center">
-                                <p class="text-muted">Don't have an account? <a href="#" class="text-muted ms-1"><b>Sign Up</b></a></p>
+                                </div> *@
                             </div>
+
+                        </div>
+                        @*  <div class="row mt-3">
+                        <div class="col-12 text-center">
+                        <p class="text-muted">Don't have an account? <a href="#" class="text-muted ms-1"><b>Sign Up</b></a></p>
+                        </div>
                         </div> *@
                     </div>
                 </div>
@@ -639,9 +669,12 @@
     </div>
     <!-- Login Modal -->
 
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+    <div class="elfsight-app-82a03ea0-0d99-46c7-ba24-acca64318674" data-elfsight-app-lazy></div>
+
     <div class="card mt-4 footer-nav footernavbar sitebackground siteColor pSiteNameFontSize cursorPointer">
         <div class="row col-12">
-             @if (User.Identity.IsAuthenticated)
+            @if (User.Identity.IsAuthenticated)
             {
                 @if (!User.Claims.Any(x => x.Type.Contains("Admin")))
                 {
