@@ -95,6 +95,10 @@
     color: #FFF !important;
 }
 
+.customtable{
+    overflow:scroll;
+}
+
 @media (min-width: 992px) {
     .siteImageCircle {
         height: 70%;
