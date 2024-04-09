@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\PaymentProof\" />
+    <Folder Include="wwwroot\images\Payment\" />
     <Folder Include="wwwroot\images\Site\" />
   </ItemGroup>
 

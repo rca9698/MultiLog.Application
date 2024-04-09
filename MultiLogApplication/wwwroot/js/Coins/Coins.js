@@ -34,6 +34,7 @@ $(document).on('click', '#closePaymentModesModal', function () {
 
 $(document).on('click', '#depositeCoinsBtn', function () {
     $('#DepositCoinsForm .userNumber').val($(this).attr('UserNumber'));
+    $('#DepositCoinsForm .Coins').val($(this).attr('Coins'));
     $('#DepositCoinsForm').attr('UserId', ($(this).attr('userId')));
     $('#DepositCoinsForm').attr('coinRequestID', ($(this).attr('coinRequestId')));
     AddCoinsFormValidationSingleton.getInstance();
