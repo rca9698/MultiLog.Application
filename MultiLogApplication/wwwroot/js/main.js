@@ -47,7 +47,8 @@ $(document).on('click', '.CopyToClipboard', function () {
     $('body').append(tempTextarea);
     tempTextarea.val(copyText).select();
     document.execCommand('copy');
-    //tempTextarea.remove();
+    tempTextarea.remove();
+    toastr.success('copied')
 });
 
 
