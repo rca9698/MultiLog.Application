@@ -42,13 +42,13 @@ $(document).ready(function () {
 
 $(document).on('click', '.CopyToClipboard', function () {
     var copyText = $(this).attr('copyData');
-
-    var tempTextarea = $('<textarea>');
-    $('body').append(tempTextarea);
-    tempTextarea.val(copyText).select();
+    const el = document.createElement('textarea');
+    el.value = copyText;
+    document.body.appendChild(el);
+    el.select();
     document.execCommand('copy');
-    tempTextarea.remove();
-    toastr.success('copied')
+    document.body.removeChild(el);
+    toastr.success('Copied the text:' + el.value);
 });
 
 
