@@ -638,7 +638,7 @@ body {
     background: #654ea3;
     /*background: -webkit-linear-gradient(to left, #654ea3, #eaafc8);*/
     /*background: linear-gradient(to left, #654ea3, #eaafc8);*/
-    background: linear-gradient(to left, #080412, #1a030d);
+    background: linear-gradient(to left, #d334e3, #d334e3);
     min-height: 100vh;
     padding-bottom: 5rem;
 }
@@ -756,4 +756,17 @@ body {
 
 .bankcard .bankDetails span{
     text-align:right;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }

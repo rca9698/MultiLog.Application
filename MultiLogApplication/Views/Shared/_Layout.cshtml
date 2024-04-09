@@ -176,70 +176,7 @@
 
                     </div>
 
-                    <!-- Login Modal -->
-                    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content container">
-                                <div class="row justify-content-center">
-                                    <div class="">
-                                        <div class="card">
-                                            <div style="display: flex;justify-content:space-between;">
-                                                <h4 class="modal-title" id="exampleModalLabel"></h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="card-header py-4 text-center bg-primary">
-                                                <img src="~/images/kapunterIcon.jpg" alt="logo" style="height: 100%;width: 50%">
-                                            </div>
-                                            <form id="LoginModalForm">
-                                                <div class="card-body p-4">
-
-                                                    <div class="text-center w-75 m-auto">
-                                                        <h4 class="text-dark-50 text-center pb-0 fw-bold">Sign In</h4>
-                                                        <p class="text-muted mb-4">Enter your Credentials!</p>
-                                                    </div>
-                                                    <div class="mb-3 form-group">
-                                                        <label for="userNumber" class="form-label">User Number</label>
-                                                        <input class="form-control userNumber" type="number" name="userNumber" required="" placeholder="User Number" autocomplete="off">
-                                                    </div>
-
-                                                    <div class="mb-3 form-group">
-                                                        <label for="password" class="form-label">Password</label>
-                                                        <div class="input-group input-group-merge">
-                                                            <input type="password" name="password" class="form-control password" placeholder="Enter your password" autocomplete="off">
-                                                            <div class="input-group-text" data-password="false">
-                                                                <span><i class="bi bi-eye-fill"></i></span>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#" class="text-muted float-end"><small>Forgot your password?</small></a>
-                                                    </div>
-
-                                                    <div class="mb-3 mb-3">
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" checked="">
-                                                            <label class="form-check-label" for="checkbox-signin">Remember me</label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-12 mb-0 text-center">
-                                                        <button class="col-12 btn siteBtnbackground" type="submit"> Log In </button>
-                                                    </div>
-
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col-12 text-center">
-                                                <p class="text-muted">Don't have an account? <a href="#" class="text-muted ms-1"><b>Sign Up</b></a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Login Modal -->
+                    
                     <!-- Deposit Coins Request Modal -->
                     <div class="modal fade" id="DepositCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog sitebackground siteColor">
@@ -633,6 +570,74 @@
             </div>
         </main>
     </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content container sitebackground siteColor">
+                <div class="row justify-content-center">
+                    <div class="">
+                        <div class="card sitebackground">
+                            <div>
+                                <h4 class="modal-title" id="exampleModalLabel"></h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="card-header py-4 text-center">
+                                <img src="~/images/kapunterIcon.jpg" alt="logo" style="height: 100%;width: 50%">
+                            </div>
+                           
+                                <div class="card-body p-4">
+
+                                    <div class="text-center w-75 m-auto">
+                                        <h4 class="text-dark-50 text-center pb-0 fw-bold">Welcome to the club!</h4>
+                                    </div>
+                                <form id="MobileModalForm">
+                                    <div class="mb-3 form-group">
+                                        <label for="userNumber" class="form-label">Mobile Number *</label>
+                                        <input class="form-control userNumber" type="number" name="userNumber" placeholder="User Number" autocomplete="off">
+                                    </div>
+
+                                    <div class="col-12 mb-0 text-center">
+                                        <button class="col-12 btn siteBtnbackground" type="submit"> Get OTP On SMS </button>
+                                    </div>
+                                 </form>
+                                 <form id="OtpPasswordModalForm">
+                                    <div class="mb-3 form-group">
+                                        <label for="password" class="form-label">Password</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="password" name="password" class="form-control password" placeholder="Enter your password" autocomplete="off">
+                                            <div class="input-group-text sitebackground siteColor" data-password="false">
+                                                <span><i class="bi bi-eye-fill"></i></span>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="float-end"><small>User Password</small></a>
+                                    </div>
+                                    <div class="col-12 mb-0 text-center">
+                                        <button class="col-12 btn siteBtnbackground" type="submit"> Log In </button>
+                                    </div>
+                                </form>
+                                    @* <div class="mb-3 mb-3">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" checked="">
+                                            <label class="form-check-label" for="checkbox-signin">Remember me</label>
+                                        </div>
+                                    </div> *@ 
+                                </div>
+                            
+                        </div>
+                       @*  <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <p class="text-muted">Don't have an account? <a href="#" class="text-muted ms-1"><b>Sign Up</b></a></p>
+                            </div>
+                        </div> *@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login Modal -->
 
     <div class="card mt-4 footer-nav footernavbar sitebackground siteColor pSiteNameFontSize cursorPointer">
         <div class="row col-12">

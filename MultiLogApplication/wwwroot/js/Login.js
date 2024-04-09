@@ -19,15 +19,17 @@
 //})
 
 $(document).on('click', '#loginbtn', function () {
-    LoginFormValidationSingleton.getInstance();
+    MobileFormValidationSingleton.getInstance();
+    $('#OtpPasswordModalForm').hide();
+    $('#MobileModalForm').show();
 });
 
-var LoginFormfv;
+var MobileFormfv;
 var fv1;
-var LoginFormValidationSingleton = (function () {
+var MobileFormValidationSingleton = (function () {
     function createInstance() {
 
-        let form = document.getElementById('LoginModalForm');
+        let form = document.getElementById('MobileModalForm');
         fv1 = FormValidation.formValidation(form, {
             fields: {
                 userNumber: {
@@ -36,7 +38,45 @@ var LoginFormValidationSingleton = (function () {
                             message: 'User Number required'
                         }
                     }
-                },
+                }
+            },
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                bootstrap3: new FormValidation.plugins.Bootstrap3(),
+                submitButton: new FormValidation.plugins.SubmitButton(),
+                icon: new FormValidation.plugins.Icon({
+                    valid: 'fas fa-check',
+                    invalid: 'fa fa-times',
+                    validating: 'fa fa-refresh'
+                }),
+            }
+        }).on('core.form.valid', function () {
+            PasswordFormValidationSingleton.getInstance();
+            $('#OtpPasswordModalForm').show();
+            $('#MobileModalForm').hide();
+        });
+        return fv1;
+    }
+    return {
+        getInstance: function () {
+            if (MobileFormfv) {
+                MobileFormfv.destroy();
+            }
+            MobileFormfv = createInstance();
+            return MobileFormfv;
+        }
+    };
+})();
+
+
+var PasswordFormfv;
+var fv2;
+var PasswordFormValidationSingleton = (function () {
+    function createInstance() {
+
+        let form = document.getElementById('OtpPasswordModalForm');
+        fv2 = FormValidation.formValidation(form, {
+            fields: {
                 password: {
                     validators: {
                         notEmpty: {
@@ -58,26 +98,27 @@ var LoginFormValidationSingleton = (function () {
         }).on('core.form.valid', function () {
             Login();
         });
-        return fv1;
+        return fv2;
     }
     return {
         getInstance: function () {
-            if (LoginFormfv) {
-                LoginFormfv.destroy();
+            if (PasswordFormfv) {
+                PasswordFormfv.destroy();
             }
-            LoginFormfv = createInstance();
-            return LoginFormfv;
+            PasswordFormfv = createInstance();
+            return PasswordFormfv;
         }
     };
 })();
 
+
 var SignupFormfv;
-var fv2;
+var fv3;
 var signupFormValidationSingleton = (function () {
 
     function createInstance() {
         let form = document.getElementById('signupCred');
-        fv2 = FormValidation.formValidation(form, {
+        fv3 = FormValidation.formValidation(form, {
             fields: {
                 signupUserName: {
                     validators: {
@@ -134,7 +175,7 @@ var signupFormValidationSingleton = (function () {
                 }
             });
         });
-        return fv1;
+        return fv3;
     }
     return {
         getInstance: function () {
@@ -149,8 +190,8 @@ var signupFormValidationSingleton = (function () {
 
 function Login() {
     var login = {}
-    login.UserNumber = $('#LoginModalForm .userNumber').val();
-    login.Password = $('#LoginModalForm .password').val();
+    login.UserNumber = $('#MobileModalForm .userNumber').val();
+    login.Password = $('#OtpPasswordModalForm .password').val();
     $.ajax({
         type: "Post",
         url: "/LoginSignup/Login",
