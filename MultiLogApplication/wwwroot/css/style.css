@@ -635,10 +635,11 @@ body {
     }
 
 body {
-    background: #654ea3;
+    /*background: #654ea3;*/
     /*background: -webkit-linear-gradient(to left, #654ea3, #eaafc8);*/
     /*background: linear-gradient(to left, #654ea3, #eaafc8);*/
-    background: linear-gradient(to left, #d334e3, #d334e3);
+    /*background: linear-gradient(to left, #d334e3, #d334e3);*/
+    background-image:url('../images/BodyBackground.jpg');
     min-height: 100vh;
     padding-bottom: 5rem;
 }
