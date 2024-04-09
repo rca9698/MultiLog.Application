@@ -3,48 +3,96 @@
 @inject IHttpContextAccessor Accessor;
 @{
     var coins = Accessor.HttpContext.Session.GetString("Coins");
+    var userId = Accessor.HttpContext.Session.GetString("UserId");
+    var userNumber = Accessor.HttpContext.Session.GetString("UserNumber");
 }
+
 
 <div class='dashboard-content'>
     <div class="row" style="padding-bottom: 50px;">
 
-        <div class="row col-12">
-            <div class="col-4 inline">
-                <div class="card sitebackground leftCard" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn">
-                    <div class="container">
-                        <h6 style="margin-left: 10%;margin-top: 30%">
-                            <b class="DashboardIconText">DEPOSIT</b>
-                        </h6>
-                        <h1 style="margin-left: 20%;">
-                            <i class="bi bi-chevron-double-up"></i>
-                        </h1>
 
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="row col-12">
+                <div class="col-4 inline">
+                    <div class="card sitebackground leftCard" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn" userId="@userId" userNumber="@userNumber">
+                        <div class="container">
+                            <h6 style="margin-left: 10%;margin-top: 30%">
+                                <b class="DashboardIconText">DEPOSIT</b>
+                            </h6>
+                            <h1 style="margin-left: 20%;">
+                                <i class="bi bi-chevron-double-up"></i>
+                            </h1>
+
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-4 inline">
-                <div class="card sitebackground middleCard">
-                    <div class="container">
-                        <img src="~/images/kapunterIcon.jpg" alt="cricket ipl" class="DashboardIcontopradius">
-                        <h6 class="text-muted font-weight-normal DashboardIconText">
-                            WALLET BALANCE
-                        </h6>
-                        <h3 class="text-muted font-weight-normal DashboardIconText">@coins</h3>
+                <div class="col-4 inline">
+                    <div class="card sitebackground middleCard">
+                        <div class="container">
+                            <img src="~/images/kapunterIcon.jpg" alt="cricket ipl" class="DashboardIcontopradius">
+                            <h6 class="text-muted font-weight-normal DashboardIconText">
+                                WALLET BALANCE
+                            </h6>
+                            <h3 class="text-muted font-weight-normal DashboardIconText">@coins</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-4 inline">
-                <div class="card sitebackground rightCard" data-toggle="modal" data-target="#WithdrawCoinsRequestModal" id="WithdrawCoinsRequestModalBtn" userId="1" userNumber="1">
-                    <div class="container">
-                        <h6 style="margin-left:35%;margin-top:28%;"><b class="DashboardIconText">WITHDRAW</b></h6>
-                        <h1 style="margin-left:40%"><i class="bi bi-chevron-double-down"></i></h1>
+                <div class="col-4 inline">
+                    <div class="card sitebackground rightCard" data-toggle="modal" data-target="#WithdrawCoinsRequestModal" id="WithdrawCoinsRequestModalBtn" userId="@userId" userNumber="@userNumber">
+                        <div class="container">
+                            <h6 style="margin-left:35%;margin-top:28%;"><b class="DashboardIconText">WITHDRAW</b></h6>
+                            <h1 style="margin-left:40%"><i class="bi bi-chevron-double-down"></i></h1>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
+        }
+        else
+        {
+            <div class="row col-12" id="loginNotification">
+                <div class="col-4 inline">
+                    <div class="card sitebackground leftCard">
+                        <div class="container">
+                            <h6 style="margin-left: 10%;margin-top: 30%">
+                                <b class="DashboardIconText">DEPOSIT</b>
+                            </h6>
+                            <h1 style="margin-left: 20%;">
+                                <i class="bi bi-chevron-double-up"></i>
+                            </h1>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 inline">
+                    <div class="card sitebackground middleCard">
+                        <div class="container">
+                            <img src="~/images/kapunterIcon.jpg" alt="cricket ipl" class="DashboardIcontopradius">
+                            <h6 class="text-muted font-weight-normal DashboardIconText">
+                                WALLET BALANCE
+                            </h6>
+                            <h3 class="text-muted font-weight-normal DashboardIconText">@coins</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 inline">
+                    <div class="card sitebackground rightCard">
+                        <div class="container">
+                            <h6 style="margin-left:35%;margin-top:28%;"><b class="DashboardIconText">WITHDRAW</b></h6>
+                            <h1 style="margin-left:40%"><i class="bi bi-chevron-double-down"></i></h1>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+      
        
     </div>
     <img src="~/images/banner_ipl.png" alt="cricket ipl" width="100%" height="auto">

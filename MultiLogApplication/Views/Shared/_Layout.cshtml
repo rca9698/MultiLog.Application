@@ -69,7 +69,7 @@
 
                                 @if (User.Claims.Any(x => x.Type.Contains("Admin")))
                                 {
-                                    <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]" class="dashboard-nav-item active">
+                                    <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]" class="dashboard-nav-item">
                                         <i class="bi bi-house"></i> dashboard
                                     </a>
 
@@ -641,57 +641,132 @@
 
     <div class="card mt-4 footer-nav footernavbar sitebackground siteColor pSiteNameFontSize cursorPointer">
         <div class="row col-12">
-            <div class="col-3 grid-margin stretch-card">
-                <div onclick='window.location.href ="@Configuration["ApiConfigs:MultilogApp:Uri"]"'>
-                    <div class="card sitebackground">
-                        <div class="card-body text-center">
-                            <div class="row">
-                                <i class="bi bi-house-door"></i>
+             @if (User.Identity.IsAuthenticated)
+            {
+                @if (!User.Claims.Any(x => x.Type.Contains("Admin")))
+                {
+                    <div class="col-3 grid-margin stretch-card">
+                        <div onclick='window.location.href ="@Configuration["ApiConfigs:MultilogApp:Uri"]"'>
+                            <div class="card sitebackground">
+                                <div class="card-body text-center">
+                                    <div class="row">
+                                        <i class="bi bi-house-door"></i>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal">
+                                        <p class="siteColor pSiteNameFontSize"> Home </p>
+                                    </h6>
+                                </div>
                             </div>
-                            <h6 class="text-muted font-weight-normal">
-                                <p class="siteColor pSiteNameFontSize"> Home </p>
-                            </h6>
+                        </div>
+                    </div>
+                    <div class="col-3 grid-margin stretch-card IDsList">
+                        <div class="card sitebackground">
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <i class="bi bi-plus-circle"></i>
+                                </div>
+                                <h6 class="text-muted font-weight-normal">
+                                    <p class="siteColor pSiteNameFontSize"> Create </p>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 grid-margin stretch-card MyIDsList">
+                        <div class="card sitebackground">
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <i class="bi bi-app"></i>
+                                </div>
+                                <h6 class="text-muted font-weight-normal">
+                                    <p class="siteColor pSiteNameFontSize"> IDs </p>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 grid-margin stretch-card" onclick='window.location.href ="/Passbook/Index?viewType=Client"'>
+                        <div class="card sitebackground">
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <i class="bi bi-pass"></i>
+                                </div>
+                                <h6 class="text-muted font-weight-normal">
+                                    <p class="siteColor pSiteNameFontSize"> Passbook </p>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-3 grid-margin stretch-card">
+                        <div onclick='window.location.href ="@Configuration["ApiConfigs:MultilogApp:Uri"]"'>
+                            <div class="card sitebackground">
+                                <div class="card-body text-center">
+                                    <div class="row">
+                                        <i class="bi bi-house-door"></i>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal">
+                                        <p class="siteColor pSiteNameFontSize"> Home </p>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 grid-margin stretch-card" data-toggle="modal" data-target="#AddSitesModal" id="AddSitesModalbtn">
+                        <div class="card sitebackground">
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <i b-8bhurmbywf="" class="bi bi-cart-plus-fill"></i>
+                                </div>
+                                <h6 class="text-muted font-weight-normal">
+                                    <p class="siteColor pSiteNameFontSize"> Create Site</p>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 grid-margin stretch-card" onclick='window.location.href ="/Site/Index?viewType=Admin"'>
+                        <div class="card sitebackground">
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <i b-8bhurmbywf="" class="bi bi-cart4"></i>
+                                </div>
+                                <h6 class="text-muted font-weight-normal">
+                                    <p class="siteColor pSiteNameFontSize"> Sites </p>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 grid-margin stretch-card" onclick='window.location.href="/User/Index"'>
+                        <div class="card sitebackground">
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <i class="bi bi-pass"></i>
+                                </div>
+                                <h6 class="text-muted font-weight-normal">
+                                    <p class="siteColor pSiteNameFontSize"> Users </p>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 grid-margin stretch-card">
+                    <div onclick='window.location.href ="@Configuration["ApiConfigs:MultilogApp:Uri"]"'>
+                        <div class="card sitebackground">
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <i class="bi bi-house-door"></i>
+                                </div>
+                                <h6 class="text-muted font-weight-normal">
+                                    <p class="siteColor pSiteNameFontSize"> Home </p>
+                                </h6>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-3 grid-margin stretch-card IDsList">
-                <div class="card sitebackground">
-                    <div class="card-body text-center">
-                        <div class="row">
-                            <i class="bi bi-plus-circle"></i>
-                        </div>
-                        <h6 class="text-muted font-weight-normal">
-                            <p class="siteColor pSiteNameFontSize"> Create </p>
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 grid-margin stretch-card MyIDsList">
-                <div class="card sitebackground">
-                    <div class="card-body text-center">
-                        <div class="row">
-                            <i class="bi bi-app"></i>
-                        </div>
-                        <h6 class="text-muted font-weight-normal">
-                            <p class="siteColor pSiteNameFontSize"> IDs </p>
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 grid-margin stretch-card">
-                <div class="card sitebackground">
-                    <div onclick='window.location.href ="/Passbook/Index?viewType=Client"' class="card-body text-center">
-                        <div class="row">
-                            <i class="bi bi-pass"></i>
-                        </div>
-                        <h6 class="text-muted font-weight-normal">
-                            <p class="siteColor pSiteNameFontSize"> Passbook </p>
-                        </h6>
-                    </div>
-                </div>
-            </div>
-
+            }
         </div>
     </div>
 

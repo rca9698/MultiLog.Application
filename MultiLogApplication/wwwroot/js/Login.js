@@ -24,6 +24,10 @@ $(document).on('click', '#loginbtn', function () {
     $('#MobileModalForm').show();
 });
 
+$(document).on('click', '#loginNotification', function () {
+    toastr.warning('Please login to application!!!');
+})
+
 var MobileFormfv;
 var fv1;
 var MobileFormValidationSingleton = (function () {
