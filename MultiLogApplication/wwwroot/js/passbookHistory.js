@@ -4,6 +4,11 @@
     }
 });
 
+$(document).on('click', '#PassbookHistory .backbtnNavDesign', function () {
+    $('#listPassbookHistory').show();
+    $('.tabSelection').show();
+    $('#PassbookHistory').hide();
+});
 
 $(document).on('click', '.viewPassbookHistoryDetails', function () {
     let siteIcon = $(this).find('.siteIcon').attr('src');
