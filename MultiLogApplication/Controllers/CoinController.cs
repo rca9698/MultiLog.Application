@@ -35,6 +35,7 @@ namespace MultiLogApplication.Controllers
             try
             {
                 obj.SessionUser = _sessionUser;
+                obj.UserId = _sessionUser;
                 obj.CoinType = 1;
                 res = await _coinService.GetCoinsRequest(obj);
             }

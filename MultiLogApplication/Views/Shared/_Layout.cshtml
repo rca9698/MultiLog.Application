@@ -113,8 +113,8 @@
                                     <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#WithdrawCoinsRequestModal"><i class="bi bi-cash-coin"></i>Withdraw Request</a>*@
                                             <a href="/Coin/Index?viewType=DepositeToSite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Deposit to Site Requests</a>
                                             <a href="/Coin/Index?viewType=WithdrawFromSite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Withdraw from Site Requests</a>
-                                            <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Desposit Requests</a>
-                                            <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>List Withdraw Requests</a>
+                                            <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Desposit To Wallet Requests</a>
+                                            <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Withdraw From Wallet Requests</a>
                                         </div>
                                     </div>
 
@@ -311,7 +311,7 @@
                                         <div class="PaymentModeTypesDetail" method="post" enctype="multipart/form-data" style="margin-top: 10px" id="proofUpload">
                                             <div class="form-group">
                                                 <div class="col-md-10">
-                                                    <input type="file" name="files" id="files" multiple />
+                                                    <input type="file" name="files" class="files" multiple />
                                                 </div>
                                             </div>
                                         </div>
@@ -493,29 +493,18 @@
                     </div>
                     <!-- Deposit Coins Modal -->
                     <!-- Deposit Proof Modal -->
-                    <div class="modal fade" id="DepositCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="ViewCoinRequestProof" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content sitebackground siteColor">
                                 <div class="modal-header">
-                                    <h4 class="modal-title" id="exampleModalLabel">Deposit</h4>
+                                    <h4 class="modal-title" id="exampleModalLabel">Image View</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group col-12">
-                                        <div class="d-flex flex-column text-center col-12">
-                                            <span class="business">WALLET BALANCE</span>
-                                            <span class="plan"><i class="bi bi-currency-rupee"></i>@coins</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>User Number</label>
-                                        <input disabled type="text" name="userNumber" class="form-control userNumber" placeholder="User Number" autocomplete="off">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Coins</label>
-                                        <input type="text" name="coins" class="form-control Coins" placeholder="Coins" autocomplete="off">
+                                        <img src="" alt="cricket ipl" class="siteBorderRadius siteheightwidth100 paymentProof">
                                     </div>
                                 </div>
                             </div>
@@ -670,6 +659,7 @@
     <!-- Login Modal -->
 
     <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+ 
     <div class="elfsight-app-82a03ea0-0d99-46c7-ba24-acca64318674" data-elfsight-app-lazy></div>
 
     <div class="card mt-4 footer-nav footernavbar sitebackground siteColor pSiteNameFontSize cursorPointer">

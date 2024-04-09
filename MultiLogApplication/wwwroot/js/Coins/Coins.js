@@ -39,6 +39,15 @@ $(document).on('click', '#depositeCoinsBtn', function () {
     AddCoinsFormValidationSingleton.getInstance();
 });
 
+$(document).on('click', '#viewCoinRequestproofBtn', function () {
+    var add = $(this).attr('proofPath');
+    $('#ViewCoinRequestProof .paymentProof').attr('src', $(this).attr('proofPath'));
+});
+
+$(document).on('click', '#deleteCoinRequestBtn', function () {
+
+});
+
 $(document).on('click', '#withdrawCoinsBtn', function () {
     $('#WithdrawCoinsForm .userNumber').val($(this).attr('UserNumber'));
     $('#WithdrawCoinsForm').attr('UserId', ($(this).attr('userId')));
@@ -71,14 +80,14 @@ $(document).on('click', '#WithdrawCoinsRequestModalBtn', function () {
 
 $(document).on('click', '#DesitCoins', function () {
 
-    if ($("#PaymentModesModal #files")[0].files[0] == undefined) {
+    if ($("#PaymentModesModal .files")[0].files[0] == undefined) {
         toastr.warning('Please upload payment proof!!!');
         return;
     }
 
     var formData = new FormData();
-    formData.append("Coins", $('#DepositCoinsRequestModal #coins').val());
-    formData.append("File", $("#PaymentModesModal #files")[0].files[0]);
+    formData.append("Coins", $('#DepositCoinsRequestModal .coins').val());
+    formData.append("File", $("#PaymentModesModal .files")[0].files[0]);
 
     $.ajax({
         url: '/Coin/AddCoinsRequest',

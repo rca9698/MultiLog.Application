@@ -1,4 +1,5 @@
 ﻿@using MultiLogApplication.Models.Common
+@inject IConfiguration Configuration
 @model ReturnType<MultiLogApplication.Models.Coin.CoinsRequestModel>
 @* 
 <div class="row mt-4">
@@ -31,7 +32,7 @@
                             <td>@user.CreatedDate</td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" data-toggle="modal" data-target="#ViewCoinRequestProof" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" id="viewCoinRequestproofBtn"> <i class="bi bi-eye-fill"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#ViewCoinRequestProof" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" proofPath="@Configuration["StoragePath:paymentProof:Path"]\@user.DocumentDetailId.@user.FileExtenstion" id="viewCoinRequestproofBtn"> <i class="bi bi-eye-fill"></i></button>
                                     <button type="button" data-toggle="modal" data-target="#DeleteCoinRequest" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" id="deleteCoinRequestBtn"> <i class="bi bi-person-fill-slash"></i></button>
                                     <button type="button" data-toggle="modal" data-target="#DepositCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestID ="@user.CoinsRequestId" id="depositeCoinsBtn"> <i class="bi bi-person-fill-up"></i></button>
                                 </div>
