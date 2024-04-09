@@ -12,7 +12,7 @@
         else if ($('#ListCoinsDetail').attr('ViewType') == 'WithdrawFromSite') {
             GetWithdrawCoinsToAccountRequest();
         }
-        else {
+        else if ($('#ListCoinsDetail').attr('ViewType') == 'CoinsHistory') {
             LoadCoinsHistory();
         }
     }

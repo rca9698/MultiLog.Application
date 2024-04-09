@@ -5,7 +5,7 @@
     else if ($('#listSites').attr('ViewType') == 'MyIds') {
         LoadMySites();
     }
-    else {
+    else if ($('#listSites').attr('ViewType') == 'Ids') {
         LoadUserSites();
     }
 });
