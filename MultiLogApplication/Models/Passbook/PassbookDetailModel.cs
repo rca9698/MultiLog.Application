@@ -4,6 +4,7 @@
     {
         public long UserId { get; set; }
         public int SiteId { get; set; }
+        public int ActivityId { get; set; }
 
         public string PassbookHistoryId { get; set; }
         public string ActivityDescription { get; set; }
@@ -12,7 +13,11 @@
         public string SiteUserName { get; set; }
         public string DocumentDetailId { get; set; }
         public string FileExtenstion { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public int Coins { get; set; }
         public string CreatedDate { get; set; }
+        public string ApprovedDate { get; set; }
 
     }
 }

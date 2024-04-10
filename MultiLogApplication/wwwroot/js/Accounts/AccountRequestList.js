@@ -95,22 +95,26 @@ $(document).on('click', '#CreateIDRequestModalBtn', function () {
 });
 
 $(document).on('click', '#CreateIDModalBtn', function () {
-    let AccountRequestId = $(this).attr('accountRequestId');
-    let iconPath = $(this).attr('iconpath');
-
-    $.ajax({
-        url: '/Account/AccountRequestDetails',
-        type: 'POST',
-        data: { AccountRequestId: AccountRequestId },
-        success: function (result) {
+    let accountRequestId = $(this).attr('accountRequestId');
+    let userNumber = $('#accountRequest_' + accountRequestId).find('.userNumber').attr('username');
+    let userName = $('#accountRequest_' + accountRequestId).find('.userName').attr('userName');
+    let siteName = $('#accountRequest_' + accountRequestId).find('.sitedetails').attr('siteName');
+    let siteUrl = $('#accountRequest_' + accountRequestId).find('.sitedetails').attr('siteUrl');
+    let iconPath = $('#accountRequest_' + accountRequestId).find('.sitedetails').attr('iconPath');
+    CreateIDFormValidationSingleton.getInstance();
+    //$.ajax({
+    //    url: '/Account/AccountRequestDetails',
+    //    type: 'POST',
+    //    data: { AccountRequestId: AccountRequestId },
+    //    success: function (result) {
             $('#CreateIDModalForm .siteIcon').attr('src', iconPath);
-            $('#CreateIDModalForm .siteName').html(result.returnVal.siteName);
-            $('#CreateIDModalForm .siteURL').html(result.returnVal.siteURL);
-            $('#CreateIDModalForm').attr('accountRequestId', AccountRequestId);
-
-            CreateIDFormValidationSingleton.getInstance();
-        }
-    });
+            $('#CreateIDModalForm .siteName').html(siteName);
+            $('#CreateIDModalForm .siteURL').html(siteUrl);
+            $('#CreateIDModalForm .Username').val(userName);
+            $('#CreateIDModalForm').attr('accountRequestId', accountRequestId);
+    //        CreateIDFormValidationSingleton.getInstance();
+    //    }
+    //});
 });
 
 // End Click Event
@@ -233,8 +237,8 @@ function AddAccountRequest() {
 function AddAccount() {
     var obj = {
         AccountRequestId: $('#CreateIDModalForm').attr('accountRequestId'),
-        UserName: $('#CreateIDModalForm #Username').val(),
-        Password: $('#CreateIDModalForm #password').val()
+        UserName: $('#CreateIDModalForm .Username').val(),
+        Password: $('#CreateIDModalForm .password').val()
     }
 
     $.ajax({

@@ -41,9 +41,19 @@ namespace MultiLogApplication.Controllers
         }
 
 
-        public async Task<IActionResult> PassbookHistory()
+        public async Task<IActionResult> PassbookHistory(GetPassbookHistoryById obj)
         {
-            return PartialView("Views/Passbook/ViewPassbookDetail.cshtml");
+            ReturnType<PassbookDetailModel> res = new ReturnType<PassbookDetailModel>();
+            try
+            {
+                obj.SessionUser = _sessionUser;
+                res = await _passbookService.GetPassbookHistoryById(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at PassbookController > PassbookHistory");
+            }
+            return PartialView("Views/Passbook/ViewPassbookDetail.cshtml", res);
         }
     }
 }

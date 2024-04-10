@@ -23,6 +23,9 @@ $(document).on('click', '#loginbtn', function () {
     $('#OtpPasswordModalForm').hide();
     $('#MobileModalForm').show();
 });
+$(document).on('click', '.LogoutBtnSubmit', function () {
+    location.href = '/LoginSignup/SignOut';
+});
 
 $(document).on('click', '#loginNotification', function () {
     toastr.warning('Please login to application!!!');

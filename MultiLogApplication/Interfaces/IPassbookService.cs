@@ -7,5 +7,6 @@ namespace MultiLogApplication.Interfaces
     public interface IPassbookService
     {
         Task<ReturnType<PassbookDetailModel>> GetPassbookHistory(GetPassbookDetails details);
+        Task<ReturnType<PassbookDetailModel>> GetPassbookHistoryById(GetPassbookHistoryById details);
     }
 }

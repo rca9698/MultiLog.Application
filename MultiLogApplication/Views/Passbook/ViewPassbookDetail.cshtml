@@ -1,70 +1,88 @@
-﻿
-<div class="BackBtnMyIds card-body card-body-padding row col-12 backbtnNavDesign">
+﻿@using MultiLogApplication.Models.Common
+@inject IConfiguration Configuration
+@model ReturnType<MultiLogApplication.Models.Passbook.PassbookDetailModel>
+
+@if (Model != null && Model.ReturnVal != null)
+{
+    <div class="BackBtnMyIds card-body card-body-padding row col-12 backbtnNavDesign">
         <div class="col-2" style="margin: -11px;">
             <i class="bi bi-arrow-left-circle-fill"></i>
         </div>
         <div class="col-10"></div>
     </div>
-<div class="card sitebackground siteBorderRadius siteColor" style="margin:10px 10px 10px 0px">
+
+    <div class="" style="background: transparent">
         <div class="card-body card-body-padding">
             <div class="row Col-12">
-            <div class="d-flex flex-column text-center col-12">
-                <span class="imageSpanCircle">
-                    <img class="siteIcon siteImageCircle" src="" />
-                </span> 
-                <span class="pSiteURLFontSize siteURL">URL</span>
-                <span class="pSiteNameFontSize siteUserName">Name</span>
-            </div>
+                <div class="d-flex flex-column text-center col-12">
+                    <span class="imageSpanCircle">
+                        <img class="siteIcon siteImageCircle" src="" />
+                    </span>
+                    <span class="pSiteURLFontSize">@Model.ReturnVal.SiteURL</span>
+                    <span class="pSiteNameFontSize">@Model.ReturnVal.SiteName</span>
+                </div>
             </div> 
         </div>
     </div>
 
+    <div class="card sitebackground siteBorderRadius siteColor">
+        <div class="card-body card-body-padding">
+            @Model.ReturnVal.ActivityDescription
+        </div>
+    </div>
 
-<div class="card sitebackground siteBorderRadius siteColor">
-    <div class="card-body card-body-padding">
-        <div class="row Col-12">
-            Details
-        </div>
-        <div class="nav-item-divider" style="color:white"></div>
-        <div class="row Col-12">
-            <div class="col-6" style="text-align:left">
-                Coins
+    <div class="card sitebackground siteBorderRadius siteColor">
+        <div class="card-body card-body-padding">
+            <div class="row Col-12">
+                Details
             </div>
-            <div class="col-6 Coins" style="text-align:right">
-                Coins
+            <div class="nav-item-divider" style="color:white"></div>
+            @if (@Model.ReturnVal.Coins == 0)
+            {
+                <div class="row Col-12">
+                    <div class="col-6" style="text-align:left">
+                        Coins
+                    </div>
+                    <div class="col-6" style="text-align:right">
+                        @Model.ReturnVal.Coins
+                    </div>
+                </div>
+            }
+            @if (@Model.ReturnVal.ActivityId == 3)
+            {
+                <div class="row Col-12">
+                    <div class="col-6 activityType" style="text-align:left">
+                    Paid from wallet
+                </div>
+                <div class="col-6" style="text-align:right">
+                        @Model.ReturnVal.Coins
+                </div>
             </div>
-        </div>
-        <div class="row Col-12">
-            <div class="col-6" style="text-align:left">
-                Paid from wallet
+            }
+            <div class="row Col-12">
+                <div class="col-6" style="text-align:left">
+                    Reference No
+                </div>
+                <div class="col-6" style="text-align:right">
+                    @Model.ReturnVal.PassbookHistoryId
+                </div>
             </div>
-            <div class="col-6 paidCoins" style="text-align:right">
-                Paid from wallet
+            <div class="row Col-12">
+                <div class="col-6" style="text-align:left">
+                    Request Date
+                </div>
+                <div class="col-6 createdOn" style="text-align:right">
+                    @Model.ReturnVal.CreatedDate
+                </div>
             </div>
-        </div>
-        <div class="row Col-12">
-            <div class="col-6" style="text-align:left">
-                Reference No
-            </div>
-            <div class="col-6 passbookId" style="text-align:right">
-                Reference No
-            </div>
-        </div>
-        <div class="row Col-12">
-            <div class="col-6 createdOn" style="text-align:left">
-                Request Date
-            </div>
-            <div class="col-6" style="text-align:right">
-                Request Date
-            </div>
-        </div>
-        <div class="row Col-12">
-            <div class="col-6" style="text-align:left">
-                Approved On
-            </div>
-            <div class="col-6 createdOn" style="text-align:right">
-                Approved Date
+            <div class="row Col-12">
+                <div class="col-6" style="text-align:left">
+                    Approved On
+                </div>
+                <div class="col-6 approvedOn" style="text-align:right">
+                    @Model.ReturnVal.ApprovedDate
+                </div>
             </div>
         </div>
     </div>
-</div>
+}

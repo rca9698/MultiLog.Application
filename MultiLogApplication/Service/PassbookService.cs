@@ -20,5 +20,13 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<PassbookDetailModel>>();
         }
 
+        public async Task<ReturnType<PassbookDetailModel>> GetPassbookHistoryById(GetPassbookHistoryById details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/Passbook/GetPassbookHistoryById", details);
+            return await response.ReadContentAs<ReturnType<PassbookDetailModel>>();
+        }
+
+
+
     }
 }
