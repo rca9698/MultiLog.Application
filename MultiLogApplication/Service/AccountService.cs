@@ -32,22 +32,22 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<AccountRequest>>();
         }
 
-        public async Task<ReturnType<bool>> AddAccount(AddAccount details)
+        public async Task<ReturnType<string>> AddAccount(AddAccount details)
         {
             var response = await _client.PostAsJsonAsync($"api/Account/AddAccount", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
-        public async Task<ReturnType<bool>> AddAccountRequest(AddAccountRequest details)
+        public async Task<ReturnType<string>> AddAccountRequest(AddAccountRequest details)
         {
             var response = await _client.PostAsJsonAsync($"api/Account/AddAccountRequest", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
-        public async Task<ReturnType<bool>> DeleteAccount(DeleteAccount details)
+        public async Task<ReturnType<string>> DeleteAccount(DeleteAccount details)
         {
             var response = await _client.PostAsJsonAsync($"api/Account/DeleteAccount", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
     
     }

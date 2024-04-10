@@ -46,7 +46,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> AddSite(AddSite obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 string BasePath = _hostingEnvironment.WebRootPath;
@@ -81,7 +81,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> UpdateSite(UpdateSite obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 string BasePath = _hostingEnvironment.WebRootPath;
@@ -123,7 +123,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> DeleteSite(DeleteSite obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.SessionUser = _sessionUser;

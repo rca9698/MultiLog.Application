@@ -14,16 +14,16 @@ namespace MultiLogApplication.Service
             _logger = logger;
         }
 
-        public async Task<ReturnType<bool>> AddSite(AddSite details)
+        public async Task<ReturnType<string>> AddSite(AddSite details)
         {
             var response = await _client.PostAsJsonAsync($"api/Site/AddSite", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
-        public async Task<ReturnType<bool>> DeleteSite(DeleteSite details)
+        public async Task<ReturnType<string>> DeleteSite(DeleteSite details)
         {
             var response = await _client.PostAsJsonAsync($"api/Site/DeleteSite", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
         public async Task<ReturnType<SiteDetail>> Getsites(ListSites details)
@@ -32,10 +32,10 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<SiteDetail>>();
         }
 
-        public async Task<ReturnType<bool>> UpdateSite(UpdateSite details)
+        public async Task<ReturnType<string>> UpdateSite(UpdateSite details)
         {
             var response = await _client.PostAsJsonAsync($"api/Site/UpdateSite", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
         public async Task<ReturnType<SiteDetail>> GetUserListSiteById(long userId)

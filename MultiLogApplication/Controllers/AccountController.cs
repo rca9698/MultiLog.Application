@@ -68,7 +68,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> AddAccount(AddAccount account)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 account.SessionUser = _sessionUser;
@@ -83,7 +83,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> AddAccountRequest(AddAccountRequest account)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 account.UserId = _sessionUser;
@@ -99,7 +99,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> DeleteAccount(DeleteAccount account)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 account.SessionUser = _sessionUser;
@@ -114,7 +114,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> RejectedRequestLists(DeleteAccount account)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 account.SessionUser = _sessionUser;

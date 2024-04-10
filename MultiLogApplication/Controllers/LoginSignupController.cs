@@ -120,9 +120,9 @@ namespace MultiLogApplication.Controllers
             return Json(returnType);
         }
 
-        public ReturnType<bool> Signup(SignUpDetails details)
+        public ReturnType<string> Signup(SignUpDetails details)
         {
-            ReturnType<bool> returnType = new ReturnType<bool>();
+            ReturnType<string> returnType = new ReturnType<string>();
             try
             {
                 _loginServices.SignupCred(details);

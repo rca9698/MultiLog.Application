@@ -215,7 +215,6 @@ var CreateIDFormValidationSingleton = (function () {
 
 //Start Function
 function AddAccountRequest() {
-    debugger;
     var obj = {
         UserName: $('#Username').val(),
         SiteId: $('#CreateIDRequestModal').attr('SiteId')

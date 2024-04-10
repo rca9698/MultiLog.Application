@@ -9,8 +9,8 @@ namespace MultiLogApplication.Interfaces
         Task<ReturnType<AccountDetail>> GetAccounts(GetAccounts details);
         Task<ReturnType<AccountRequest>> AccountRequestList(GetAccounts details);
         Task<ReturnType<AccountRequest>> AccountRequestDetails(long AccountRequestId);
-        Task<ReturnType<bool>> AddAccount(AddAccount details);
-        Task<ReturnType<bool>> AddAccountRequest(AddAccountRequest details);
-        Task<ReturnType<bool>> DeleteAccount(DeleteAccount details);
+        Task<ReturnType<string>> AddAccount(AddAccount details);
+        Task<ReturnType<string>> AddAccountRequest(AddAccountRequest details);
+        Task<ReturnType<string>> DeleteAccount(DeleteAccount details);
     }
 }

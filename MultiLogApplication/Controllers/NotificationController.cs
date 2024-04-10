@@ -39,7 +39,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> InsertNotification(InsertNotification obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.SessionUser = _sessionUser;
@@ -54,7 +54,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> UpdateNotification(UpdateNotification obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.SessionUser = _sessionUser;
@@ -69,7 +69,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> DeleteNotification(DeleteNotification obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.SessionUser = _sessionUser;

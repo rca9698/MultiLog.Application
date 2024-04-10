@@ -5,9 +5,9 @@ namespace MultiLogApplication.Interfaces
 {
     public interface INotificationService
     {
-        Task<ReturnType<bool>> InsertNotification(InsertNotification entity);
-        Task<ReturnType<bool>> UpdateNotification(UpdateNotification entity);
-        Task<ReturnType<bool>> DeleteNotification(DeleteNotification entity);
+        Task<ReturnType<string>> InsertNotification(InsertNotification entity);
+        Task<ReturnType<string>> UpdateNotification(UpdateNotification entity);
+        Task<ReturnType<string>> DeleteNotification(DeleteNotification entity);
         Task<ReturnType<NotificationDetail>> GetNotifications(GetNotification entity);
     }
 }

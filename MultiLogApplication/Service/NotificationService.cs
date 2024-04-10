@@ -13,10 +13,10 @@ namespace MultiLogApplication.Service
             _logger = logger;
         }
 
-        public async Task<ReturnType<bool>> DeleteNotification(DeleteNotification details)
+        public async Task<ReturnType<string>> DeleteNotification(DeleteNotification details)
         {
             var response = await _client.PostAsJsonAsync($"api/Notification/DeleteNotification", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
         public async Task<ReturnType<NotificationDetail>> GetNotifications(GetNotification details)
@@ -25,16 +25,16 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<NotificationDetail>>();
         }
 
-        public async Task<ReturnType<bool>> InsertNotification(InsertNotification details)
+        public async Task<ReturnType<string>> InsertNotification(InsertNotification details)
         {
             var response = await _client.PostAsJsonAsync($"api/Notification/InsertNotification", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
-        public async Task<ReturnType<bool>> UpdateNotification(UpdateNotification details)
+        public async Task<ReturnType<string>> UpdateNotification(UpdateNotification details)
         {
             var response = await _client.PostAsJsonAsync($"api/Notification/UpdateNotification", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
     }
 }
