@@ -175,7 +175,7 @@ function DepositCoins() {
 function WithdrawCoins() {
     var obj = {
         UserId: $('#WithdrawCoinsForm').attr('userId'),
-        Coins: $('#WithdrawCoinsForm #Coins').val(),
+        Coins: $('#WithdrawCoinsForm .Coins').val(),
         CoinsRequestId: $('#WithdrawCoinsForm').attr('coinRequestID')
     }
 
@@ -186,7 +186,8 @@ function WithdrawCoins() {
         success: function (result) {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);
-                $('#WithdrawCoinsModal .close').trigger('click');
+                $('#WithdrawCoinsForm .close').trigger('click');
+                location.reload();
             }
         }
     });
@@ -301,7 +302,8 @@ function SetDefaultBank(selectedValue) {
 function WithDrawCoinsRequest() {
     var obj = {
         UserId: $('#WithdrawCoinsRequestModalForm').attr('userId'),
-        Coins: $('#WithdrawCoinsRequestModalForm .coins').val()
+        Coins: $('#WithdrawCoinsRequestModalForm .coins').val(),
+        BankId: $('#WithdrawCoinsRequestModalForm .bankListDropdown').find(":selected").val()
     }
 
     $.ajax({
