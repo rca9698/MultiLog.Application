@@ -45,7 +45,7 @@
                                 @if (!User.Claims.Any(x => x.Type.Contains("Admin")))
                                 {
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-person"></i> Profile </a>
-                                    <a href="/BankAccount/Index" class="dashboard-nav-item"><i class="bi bi-bank2"></i> Withdraw Details </a>
+                                    <a href="/BankAccount/Index?viewType=admin" class="dashboard-nav-item"><i class="bi bi-bank2"></i> Withdraw Details </a>
                                     <a href="#" class="dashboard-nav-item IDsList"><i class="bi bi-plus-circle-fill"></i> Create Id </a>
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-star-fill"></i> Bonus </a>
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-fast-forward-fill"></i> Loss Back </a>
@@ -89,8 +89,8 @@
                                             <i class="bi bi-bank2"></i> Bank Details
                                         </a>
                                         <div class='dashboard-nav-dropdown-menu'>
-                                            <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddBankDetailModal" id="AddBankDetailModalBtn"> <i class="bi bi-file-earmark-plus"></i> Add Bank Detail</a>
-                                            <a href="/BankAccount/Index" class="dashboard-nav-dropdown-item"> <i class="bi bi-bank"></i> List Banks</a>
+                                        @*<a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddAdminBankDetailModal" id="AddAdminBankDetailModalBtn"> <i class="bi bi-file-earmark-plus"></i> Add Bank Detail</a>*@
+                                            <a href="/BankAccount/Index?viewType=admin" class="dashboard-nav-dropdown-item"> <i class="bi bi-bank"></i> List Banks</a>
                                         </div>
                                     </div>
 
@@ -545,6 +545,7 @@
                         </div>
                     </div>
                     <!-- Withdraw Coins Modal-->
+                    
                     <!-- Add Bank Details Modal -->
                     <div class="modal fade" id="AddBankDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -559,30 +560,67 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>Bank Name</label>
-                                            <input id="BName" name="BName" type="text" class="form-control" placeholder="Bank Name" autocomplete="off">
+                                            <input name="BName" type="text" class="form-control BName" placeholder="Bank Name" autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label>Account Holder Name</label>
-                                            <input id="AHName" name="AHName" type="text" class="form-control" placeholder="Account Holder Name" autocomplete="off">
+                                            <input name="AHName" type="text" class="form-control AHName" placeholder="Account Holder Name" autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label>Account Number</label>
-                                            <input id="ANumber" name="ANumber" type="text" class="form-control" placeholder="Account Number" autocomplete="off">
+                                            <input name="ANumber" type="text" class="form-control ANumber" placeholder="Account Number" autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label>IFSC Code</label>
-                                            <input id="IFSCCode" name="IFSCCode" type="text" class="form-control" placeholder="IFSC Code" autocomplete="off">
+                                            <input name="IFSCCode" type="text" class="form-control IFSCCode" placeholder="IFSC Code" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn siteBtnbackground">Add Bank Account</button>
-                                        <button type="reset" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn siteBtnbackground col-12">Add Bank Account</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <!-- Add Bank Details Modal-->
+
+                    <!-- Add Admin Bank Details Modal -->
+                    <div class="modal fade" id="AddAdminBankDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content sitebackground siteColor">
+                                <form id="AddAdminBankDetailForm">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Add Bank Detail</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Bank Name</label>
+                                            <input name="BName" type="text" class="form-control BName" placeholder="Bank Name" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Account Holder Name</label>
+                                            <input name="AHName" type="text" class="form-control AHName" placeholder="Account Holder Name" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Account Number</label>
+                                            <input name="ANumber" type="text" class="form-control ANumber" placeholder="Account Number" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>IFSC Code</label>
+                                            <input name="IFSCCode" type="text" class="form-control IFSCCode" placeholder="IFSC Code" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn siteBtnbackground col-12">Add Bank Account</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Admin Bank Details Modal-->
 
                 </div>
             </div>

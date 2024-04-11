@@ -1,12 +1,17 @@
 ﻿$(document).ready(function () {
     if ($('#ListBankDetail').length) {
-        LoadActiveBanks();
+        if ($('#ListBankDetail').attr('ViewType') == 'admin') {
+            LoadAdminBanks();
+        }
+        else {
+            LoadActiveBanks();
+        }
     }
 });
 
 //Start Click Event
-$(document).on('click', '#AddBankDetailModalBtn', function () {
-    AddBankDetailFormValidationSingleton.getInstance();
+$(document).on('click', '#AddAdminBankDetailModalBtn', function () {
+    AddAdminBankDetailFormValidationSingleton.getInstance();
 });
 $(document).on('click', '#AddBankDetailModalBtn1', function () {
     AddBankDetailFormValidationSingleton.getInstance();
@@ -92,6 +97,69 @@ var AddBankDetailFormValidationSingleton = (function () {
         }
     };
 })();
+
+let AddAdminBankDetailFormfv;
+let fv2;
+var AddAdminBankDetailFormValidationSingleton = (function () {
+    function createInstance() {
+
+        let form = document.getElementById('AddAdminBankDetailForm');
+        fv1 = FormValidation.formValidation(form, {
+            fields: {
+                BName: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Bank Name is required'
+                        }
+                    }
+                },
+                AHName: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Account Holder Name is required'
+                        }
+                    }
+                },
+                ANumber: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Account Number is required'
+                        }
+                    }
+                },
+                IFSCCode: {
+                    validators: {
+                        notEmpty: {
+                            message: 'IFSC Code is required'
+                        }
+                    }
+                }
+            },
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                bootstrap3: new FormValidation.plugins.Bootstrap3(),
+                submitButton: new FormValidation.plugins.SubmitButton(),
+                icon: new FormValidation.plugins.Icon({
+                    valid: 'fas fa-check',
+                    invalid: 'fa fa-times',
+                    validating: 'fa fa-refresh'
+                }),
+            }
+        }).on('core.form.valid', function () {
+            AddAdminBankAccount();
+        });
+        return fv2;
+    }
+    return {
+        getInstance: function () {
+            if (AddAdminBankDetailFormfv) {
+                AddAdminBankDetailFormfv.destroy();
+            }
+            AddAdminBankDetailFormfv = createInstance();
+            return AddAdminBankDetailFormfv;
+        }
+    };
+})();
 //End Form Validation
 
 
@@ -116,7 +184,28 @@ function AddBankAccount() {
         }
     });
 }
- 
+
+function AddAdminBankAccount() {
+    var obj = {
+        BankName: $('#AddBankDetailForm #BName').val(),
+        AccountHolderName: $('#AddBankDetailForm #AHName').val(),
+        AccountNumber: $('#AddBankDetailForm #ANumber').val(),
+        IFSCCode: $('#AddBankDetailForm #IFSCCode').val(),
+    }
+
+    $.ajax({
+        url: '/BankAccount/AddBankAccount',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            if (result.returnStatus == 1) {
+                toastr.success(result.returnMessage);
+                $('#AddBankDetailForm .close').trigger('click');
+            }
+        }
+    });
+}
+
 function LoadActiveBanks() {
     $.ajax({
         url: '/BankAccount/ActiveBankAccounts',
@@ -150,5 +239,15 @@ function LoadAccountsHistory() {
     });
 }
 
+function LoadAdminBanks() {
+    $.ajax({
+        url: '/BankAccount/ActiveBankAccounts',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#ListBankDetail').html(result);
+        }
+    });
+}
 
 // End Function Region

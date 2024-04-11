@@ -39,7 +39,7 @@ namespace MultiLogApplication.Service
 
         public async Task<ReturnType<BankDetails>> GetBankUPIDetails()
         {
-            var response = await _client.GetAsync($"api/BankAccount/GetAdminBankAccounts");
+            var response = await _client.GetAsync($"api/BankAccount/GetBankUPIDetails");
             return await response.ReadContentAs<ReturnType<BankDetails>>();
         }
 
@@ -57,8 +57,20 @@ namespace MultiLogApplication.Service
 
         public async Task<ReturnType<BankDetails>> DeletedBankAccounts(GetBankAccount details)
         {
-            var response = await _client.PostAsJsonAsync($"api/BankAccount/GetBankAccounts", details);
+            var response = await _client.PostAsJsonAsync($"api/BankAccount/DeleteBankAccount", details);
             return await response.ReadContentAs<ReturnType<BankDetails>>();
+        }
+
+        public async Task<ReturnType<BankDetails>> AdminBankAccounts()
+        {
+            var response = await _client.GetAsync($"api/BankAccount/GetAdminBankAccounts");
+            return await response.ReadContentAs<ReturnType<BankDetails>>();
+        }
+
+        public async Task<ReturnType<string>> AddUpdateAdminBankAccount(AddAdminBankAccount details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/BankAccount/AddUpdateAdminBankAccount", details);
+            return await response.ReadContentAs<ReturnType<string>>();
         }
     }
 }

@@ -18,9 +18,9 @@ namespace MultiLogApplication.Controllers
             _logger = logger;
             _configuration = configuration;
         }
-        public IActionResult Index()
+        public IActionResult Index(string viewType)
         {
-            return View();
+            return View("/Views/BankAccount/Index.cshtml", viewType);
         }
 
 		public async Task<IActionResult> ViewPanel()
@@ -155,8 +155,6 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-
-
         public async Task<IActionResult> DeleteBankAccount(DeleteBankAccount bankAccount)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -214,6 +212,34 @@ namespace MultiLogApplication.Controllers
                 _logger.LogError(ex, "Exception Occured at CoinController > AddQRCode");
             }
             return Json(res);
+        }
+
+        public async Task<IActionResult> AdminBankAccounts()
+        {
+            ReturnType<BankDetails> res = new ReturnType<BankDetails>();
+            try
+            {
+                res = await _bankAccountService.AdminBankAccounts();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > AdminBankAccounts");
+            }
+            return PartialView("~/Views/BankAccount/AdminBankAccountDetails.cshtml", res);
+        }
+
+        public async Task<IActionResult> AddUpdateAdminBankAccount(AddAdminBankAccount obj)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                res = await _bankAccountService.AddUpdateAdminBankAccount(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > AddUpdateAdminBankAccount");
+            }
+            return PartialView("~/Views/BankAccount/ActiveBankAccounts.cshtml", res);
         }
 
     }

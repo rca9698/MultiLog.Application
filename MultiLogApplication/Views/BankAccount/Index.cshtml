@@ -1,4 +1,5 @@
-﻿
+﻿@model string;
+
 <div class="row col-12 BankDataSwitch" style="">
     <div class="col-4 tabSelection active" idtype="activeBank">
         Active Bank
@@ -13,6 +14,6 @@
     </div>
 </div>
 
-<div class='dashboard-content' id="ListBankDetail">
+<div class='dashboard-content' id="ListBankDetail" ViewType="@Model">
 
 </div>
