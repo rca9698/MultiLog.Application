@@ -97,6 +97,21 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
+        public async Task<IActionResult> DeleteAccountRequest(DeleteAccountRequest account)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                account.SessionUser = _sessionUser;
+                res = await _accountService.DeleteAccountRequest(account);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at AccountController > DeleteAccountRequest");
+            }
+            return Json(res);
+        }
+
         public async Task<IActionResult> DeleteAccount(DeleteAccount account)
         {
             ReturnType<string> res = new ReturnType<string>();

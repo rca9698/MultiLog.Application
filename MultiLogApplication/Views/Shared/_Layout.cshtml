@@ -45,7 +45,7 @@
                                 @if (!User.Claims.Any(x => x.Type.Contains("Admin")))
                                 {
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-person"></i> Profile </a>
-                                    <a href="/BankAccount/Index?viewType=admin" class="dashboard-nav-item"><i class="bi bi-bank2"></i> Withdraw Details </a>
+                                    <a href="/BankAccount/Index?viewType=beneficiary" class="dashboard-nav-item"><i class="bi bi-bank2"></i> Withdraw Details </a>
                                     <a href="#" class="dashboard-nav-item IDsList"><i class="bi bi-plus-circle-fill"></i> Create Id </a>
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-star-fill"></i> Bonus </a>
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-fast-forward-fill"></i> Loss Back </a>
@@ -611,6 +611,10 @@
                                         <div class="form-group">
                                             <label>IFSC Code</label>
                                             <input name="IFSCCode" type="text" class="form-control IFSCCode" placeholder="IFSC Code" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Upi Number</label>
+                                            <input name="UpiId" type="text" class="form-control UpiId" placeholder="UPI" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="modal-footer">

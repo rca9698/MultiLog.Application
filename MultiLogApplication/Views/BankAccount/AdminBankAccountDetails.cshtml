@@ -28,7 +28,7 @@
                 <p style="margin-left: 10px;">Bank Details</p>
             </div>
             <div class="col-6">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddBankDetailModal" id="AddBankDetailModalBtn" style="float: right;">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddAdminBankDetailModal" id="AddAdminBankDetailModalBtn" style="float: right;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
                         <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z"></path>
                     </svg>
@@ -58,7 +58,9 @@
                                                     <span class="col-8">@bankDetail.BankName</span>
                                                     <span class="col-4"><i class="bi bi-arrow-down-up"> </i></span>
                                                 </span>
-                                                <span class="col-1 btn btn-link font-weight-bold crick-accordion-sub row"><i class="bi bi-trash3-fill"> </i></span>
+                                                <span class="col-1 btn btn-link font-weight-bold crick-accordion-sub row DeleteAdminBankAccount" bankId="@bankDetail.BankAccountDetailID" data-toggle="modal" data-target="#DeleteAdminBankDetailsModal">
+                                                    <i class="bi bi-trash3-fill"> </i>
+                                                </span>
                                             </h2>
                                         </div>
                                         <div id="collapse_@bankDetail.BankAccountDetailID" aria-labelledby="heading_@bankDetail.BankAccountDetailID" data-parent="#accordionExample" class="collapse show" style="">
@@ -102,3 +104,27 @@
         </div>
     </div>
 </div>
+
+
+<!-- Delete Modal -->
+<div class="modal fade" id="DeleteAdminBankDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content sitebackground siteColor">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Delete Admin Bank Detail!</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Are you sure, want to delete Admin Bank Account?</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn siteBtnbackground DeleteAdminBankDetails">Delete Admin Bank</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Delete Modal -->

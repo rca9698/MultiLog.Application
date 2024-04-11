@@ -13,10 +13,8 @@ $(document).ready(function () {
 
 //Start Click event
 $(document).on('click', '#DeleteAccountRequestList', function () {
-    var userId = $(this).attr('userId');
-    var siteId = $(this).attr('siteId');
-    $('#DeleteAccountRequest').attr('userId', userId);
-    $('#DeleteAccountRequest').attr('siteId', siteId);
+    var accountrequestid = $(this).attr('accountrequestid');
+    $('.DeleteAccountRequestBtn').attr('accountrequestid', accountrequestid);
 });
 
 $(document).on('click', '#AddAccontRequest', function () {
@@ -53,23 +51,20 @@ $(document).on('click', '#AddAccount', function () {
     })
 });
 
-$(document).on('click', '#DeleteAccountRequest', function () {
-    var userId = $(this).attr('userId');
-    var siteId = $(this).attr('siteId');
+$(document).on('click', '.DeleteAccountRequestBtn', function () {
+    var accountrequestid = $(this).attr('accountrequestid');
     var account = {
-        SiteID: siteId,
-        UserId: userId
+        AccountrequestId: accountrequestid
     }
     $.ajax({
         type: "Post",
-        url: "/Account/DeleteAccount",
+        url: "/Account/DeleteAccountRequest",
         data: account,
         success: function(result) {
             if (result.returnStatus == 1) {
-
-            }
-            else {
-
+                    toastr.success(result.returnMessage);
+                $('.DeleteAccountRequestModel .close').trigger('click');
+                    location.reload();
             }
         },
         error: function() {

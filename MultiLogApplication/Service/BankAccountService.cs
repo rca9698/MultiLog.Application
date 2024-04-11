@@ -31,6 +31,12 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<string>>();
         }
 
+         public async Task<ReturnType<string>> DeleteAdminBankAccount(DeleteAdminBankAccount details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/BankAccount/DeleteAdminBankAccount", details);
+            return await response.ReadContentAs<ReturnType<string>>();
+        }
+
         public async Task<ReturnType<BankDetails>> GetBankAccounts(GetBankAccount details)
         {
             var response = await _client.PostAsJsonAsync($"api/BankAccount/GetBankAccounts", details);

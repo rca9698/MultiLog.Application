@@ -160,6 +160,7 @@ namespace MultiLogApplication.Controllers
             ReturnType<string> res = new ReturnType<string>();
             try
             {
+                bankAccount.UserId = _sessionUser;
                 bankAccount.SessionUser = _sessionUser;
                 res = await _bankAccountService.DeleteBankAccount(bankAccount);
             }
@@ -169,7 +170,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+         
         public async Task<IActionResult> updateBankAccount(UpdateBankAccount bankAccount)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -233,13 +234,30 @@ namespace MultiLogApplication.Controllers
             ReturnType<string> res = new ReturnType<string>();
             try
             {
+                obj.UserId = _sessionUser;
+                obj.SessionUser = _sessionUser;
                 res = await _bankAccountService.AddUpdateAdminBankAccount(obj);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Exception Occured at BankAccountController > AddUpdateAdminBankAccount");
             }
-            return PartialView("~/Views/BankAccount/ActiveBankAccounts.cshtml", res);
+            return Json(res);
+        }
+
+        public async Task<IActionResult> DeleteAdminBankAccount(DeleteAdminBankAccount obj)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                obj.SessionUser = _sessionUser;
+                res = await _bankAccountService.DeleteAdminBankAccount(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > DeleteAdminBankAccount");
+            }
+            return Json(res);
         }
 
     }

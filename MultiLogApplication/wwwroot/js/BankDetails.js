@@ -1,9 +1,11 @@
 ﻿$(document).ready(function () {
     if ($('#ListBankDetail').length) {
         if ($('#ListBankDetail').attr('ViewType') == 'admin') {
+            $('.BankDataSwitch').hide();
             LoadAdminBanks();
         }
         else {
+            $('.BankDataSwitch').show();
             LoadActiveBanks();
         }
     }
@@ -16,7 +18,6 @@ $(document).on('click', '#AddAdminBankDetailModalBtn', function () {
 $(document).on('click', '#AddBankDetailModalBtn1', function () {
     AddBankDetailFormValidationSingleton.getInstance();
 });
-
 $(document).on('click', '.BankDataSwitch .tabSelection', function () {
     $('.BankDataSwitch .tabSelection').removeClass('active');
     $(this).addClass('active');
@@ -30,18 +31,62 @@ $(document).on('click', '.BankDataSwitch .tabSelection', function () {
     }
 });
 
+$(document).on('click', '.DeleteAdminBankAccount', function () {
+    $('.DeleteAdminBankDetails').attr('bankId', $(this).attr('bankId'));
+});
+
+$(document).on('click', '.DeleteAdminBankDetails', function () {
+    let obj = {
+        BankId: $(this).attr('bankId')
+    };
+    $.ajax({
+        url: '/BankAccount/DeleteAdminBankAccount',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            if (result.returnStatus == 1) {
+                toastr.success(result.returnMessage);
+                location.reload();
+            }
+        }
+    });
+});
+
+
+$(document).on('click', '.DeleteBankAccount', function () {
+    $('.DeleteBankDetails').attr('bankId', $(this).attr('bankId'));
+});
+
+$(document).on('click', '.DeleteBankDetails', function () {
+    let obj = {
+        BankId: $(this).attr('bankId')
+    };
+    $.ajax({
+        url: '/BankAccount/DeleteBankAccount',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            if (result.returnStatus == 1) {
+                toastr.success(result.returnMessage);
+                location.reload();
+            }
+        }
+    });
+});
+
+
 
 //End Click Event
 
 
 //Start Form Validation
 var AddBankDetailFormfv;
-var fv1;
+var bkfv1;
 var AddBankDetailFormValidationSingleton = (function () {
     function createInstance() {
 
         let form = document.getElementById('AddBankDetailForm');
-        fv1 = FormValidation.formValidation(form, {
+        bkfv1 = FormValidation.formValidation(form, {
             fields: {
                 BName: {
                     validators: {
@@ -85,7 +130,7 @@ var AddBankDetailFormValidationSingleton = (function () {
         }).on('core.form.valid', function () {
             AddBankAccount();
         });
-        return fv1;
+        return bkfv1;
     }
     return {
         getInstance: function () {
@@ -98,13 +143,13 @@ var AddBankDetailFormValidationSingleton = (function () {
     };
 })();
 
-let AddAdminBankDetailFormfv;
-let fv2;
+var AddAdminBankDetailFormfv;
+var bkfv2;
 var AddAdminBankDetailFormValidationSingleton = (function () {
     function createInstance() {
 
         let form = document.getElementById('AddAdminBankDetailForm');
-        fv1 = FormValidation.formValidation(form, {
+        bkfv2 = FormValidation.formValidation(form, {
             fields: {
                 BName: {
                     validators: {
@@ -133,6 +178,13 @@ var AddAdminBankDetailFormValidationSingleton = (function () {
                             message: 'IFSC Code is required'
                         }
                     }
+                },
+                UpiId: {
+                    validators: {
+                        notEmpty: {
+                            message: 'UPI is required'
+                        }
+                    }
                 }
             },
             plugins: {
@@ -148,7 +200,7 @@ var AddAdminBankDetailFormValidationSingleton = (function () {
         }).on('core.form.valid', function () {
             AddAdminBankAccount();
         });
-        return fv2;
+        return bkfv2;
     }
     return {
         getInstance: function () {
@@ -166,10 +218,10 @@ var AddAdminBankDetailFormValidationSingleton = (function () {
 //Start Function Region
 function AddBankAccount() {
     var obj = {
-        BankName: $('#AddBankDetailForm #BName').val(),
-        AccountHolderName: $('#AddBankDetailForm #AHName').val(),
-        AccountNumber: $('#AddBankDetailForm #ANumber').val(),
-        IFSCCode: $('#AddBankDetailForm #IFSCCode').val(),
+        BankName: $('#AddBankDetailForm .BName').val(),
+        AccountHolderName: $('#AddBankDetailForm .AHName').val(),
+        AccountNumber: $('#AddBankDetailForm .ANumber').val(),
+        IFSCCode: $('#AddBankDetailForm .IFSCCode').val(),
     }
 
     $.ajax({
@@ -180,6 +232,7 @@ function AddBankAccount() {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);
                 $('#AddBankDetailForm .close').trigger('click');
+                location.reload();
             }
         }
     });
@@ -187,20 +240,21 @@ function AddBankAccount() {
 
 function AddAdminBankAccount() {
     var obj = {
-        BankName: $('#AddBankDetailForm #BName').val(),
-        AccountHolderName: $('#AddBankDetailForm #AHName').val(),
-        AccountNumber: $('#AddBankDetailForm #ANumber').val(),
-        IFSCCode: $('#AddBankDetailForm #IFSCCode').val(),
+        BankName: $('#AddAdminBankDetailForm .BName').val(),
+        AccountHolderName: $('#AddAdminBankDetailForm .AHName').val(),
+        AccountNumber: $('#AddAdminBankDetailForm .ANumber').val(),
+        IFSCCode: $('#AddAdminBankDetailForm .IFSCCode').val(),
+        UpiId: $('#AddAdminBankDetailForm .UpiId').val()
     }
 
     $.ajax({
-        url: '/BankAccount/AddBankAccount',
+        url: '/BankAccount/AddUpdateAdminBankAccount',
         type: 'POST',
         data: obj,
         success: function (result) {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);
-                $('#AddBankDetailForm .close').trigger('click');
+                $('#AddAdminBankDetailForm .close').trigger('click');
             }
         }
     });
@@ -241,7 +295,7 @@ function LoadAccountsHistory() {
 
 function LoadAdminBanks() {
     $.ajax({
-        url: '/BankAccount/ActiveBankAccounts',
+        url: '/BankAccount/AdminBankAccounts',
         type: 'POST',
         data: '',
         success: function (result) {

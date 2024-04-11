@@ -34,7 +34,7 @@
                                 <td>
                                     <div class="btn-group">
                                         <button type="button" data-toggle="modal" data-target="#CreateIDModal" accountRequestID="@account.AccountRequestID" id="CreateIDModalBtn"> <i class="bi bi-pencil-square"></i> </button>
-                                        <button type="button" data-toggle="modal" data-target="#DeleteAccountRequest" accountRequestID="@account.AccountRequestID" id="DeleteAccountRequestList"> <i class="bi bi-trash-fill"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#DeleteAccountRequestModel" accountRequestID="@account.AccountRequestID" id="DeleteAccountRequestList"> <i class="bi bi-trash-fill"></i> </button>
                                     </div>
                                 </td>
                             </tr>
@@ -97,7 +97,7 @@
 </div>
 <!-- Create ID Modal-->
 <!-- Modal -->
-<div class="modal fade" id="DeleteAccountRequest" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="DeleteAccountRequestModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content sitebackground siteColor">
             <div class="modal-header">
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn siteBtnbackground" id="DeleteAccountRequest">Delete Account Request</button>
+                <button type="button" class="btn siteBtnbackground DeleteAccountRequestBtn">Delete Account Request</button>
             </div>
         </div>
     </div>

@@ -12,5 +12,6 @@ namespace MultiLogApplication.Interfaces
         Task<ReturnType<string>> AddAccount(AddAccount details);
         Task<ReturnType<string>> AddAccountRequest(AddAccountRequest details);
         Task<ReturnType<string>> DeleteAccount(DeleteAccount details);
+        Task<ReturnType<string>> DeleteAccountRequest(DeleteAccountRequest details);
     }
 }
