@@ -31,12 +31,6 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<string>>();
         }
 
-         public async Task<ReturnType<string>> DeleteAdminBankAccount(DeleteAdminBankAccount details)
-        {
-            var response = await _client.PostAsJsonAsync($"api/BankAccount/DeleteAdminBankAccount", details);
-            return await response.ReadContentAs<ReturnType<string>>();
-        }
-
         public async Task<ReturnType<BankDetails>> GetBankAccounts(GetBankAccount details)
         {
             var response = await _client.PostAsJsonAsync($"api/BankAccount/GetBankAccounts", details);
@@ -67,6 +61,7 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<BankDetails>>();
         }
 
+
         public async Task<ReturnType<BankDetails>> AdminBankAccounts()
         {
             var response = await _client.GetAsync($"api/BankAccount/GetAdminBankAccounts");
@@ -78,11 +73,58 @@ namespace MultiLogApplication.Service
             var response = await _client.PostAsJsonAsync($"api/BankAccount/AddUpdateAdminBankAccount", details);
             return await response.ReadContentAs<ReturnType<string>>();
         }
-         
+
+        public async Task<ReturnType<string>> DeleteAdminBankAccount(DeleteAdminBankAccount details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/BankAccount/DeleteAdminBankAccount", details);
+            return await response.ReadContentAs<ReturnType<string>>();
+        }
+
         public async Task<ReturnType<string>> SetDefaultAdminBankAccount(long _sessionUser, long BankDetailID)
         {
             var response = await _client.GetAsync($"api/BankAccount/SetDefaultAdminBankAccount/{_sessionUser}/{BankDetailID}");
             return await response.ReadContentAs<ReturnType<string>>();
         }
+
+
+
+        public async Task<ReturnType<BankDetails>> AdminUpiAccounts()
+        {
+            var response = await _client.GetAsync($"api/BankAccount/GetAdminUpiAccount");
+            return await response.ReadContentAs<ReturnType<BankDetails>>();
+        }
+
+        public async Task<ReturnType<string>> AddUpdateAdminUpiAccount(AddUpdateAdminUpiAccount details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/BankAccount/AddUpdateAdminUpiAccount", details);
+            return await response.ReadContentAs<ReturnType<string>>();
+        }
+
+        public async Task<ReturnType<string>> DeleteAdminUpiAccount(long _sessionUser, long UpiId)
+        {
+            var response = await _client.GetAsync($"api/BankAccount/DeleteAdminUpiAccount/{_sessionUser}/{UpiId}");
+            return await response.ReadContentAs<ReturnType<string>>();
+        }
+
+        public async Task<ReturnType<string>> SetDefaultAdminUpiAccount(long _sessionUser, long UpiId)
+        {
+            var response = await _client.GetAsync($"api/BankAccount/SetDefaultAdminBankAccount/{_sessionUser}/{UpiId}");
+            return await response.ReadContentAs<ReturnType<string>>();
+        }
+
+
+
+        public async Task<ReturnType<BankDetails>> GetAdminQRCode()
+        {
+            var response = await _client.GetAsync($"api/BankAccount/GetAdminQRCode");
+            return await response.ReadContentAs<ReturnType<BankDetails>>();
+        }
+
+        public async Task<ReturnType<string>> AddAdminQRCode(long sessionUser,string userName)
+        {
+            var response = await _client.GetAsync($"api/BankAccount/AddUpdateAdminQRCode/{sessionUser}/{userName}");
+            return await response.ReadContentAs<ReturnType<string>>();
+        }
+
     }
 }

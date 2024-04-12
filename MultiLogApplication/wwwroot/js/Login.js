@@ -31,6 +31,15 @@ $(document).on('click', '#loginNotification', function () {
     toastr.warning('Please login to application!!!');
 })
 
+$('.viewPassword').mousedown(function () {
+    $('.password').attr('type', 'text');
+}).mouseup(function () {
+    $('.password').attr('type', 'password');
+}).mouseout(function () {
+    $('.password').attr('type', 'password');
+});
+
+
 var MobileFormfv;
 var fv1;
 var MobileFormValidationSingleton = (function () {

@@ -23,15 +23,16 @@
     </div>
 </div>
 
+
 <div class="card sitebackground siteBorderRadius siteColor">
     <div class="card-body card-body-padding">
         <div class="row Col-12">
             <div class="col-6" style="display: flex;">
                 <i class="bi bi-bank"></i>
-                <p style="margin-left: 10px;">Bank Details</p>
+                <p style="margin-left: 10px;">UPI Details</p>
             </div>
             <div class="col-6">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddAdminBankDetailModal" id="AddAdminBankDetailModalBtn" style="float: right;">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddAdminUpiDetailModal" id="AddAdminUpiDetailModalBtn" style="float: right;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
                         <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z"></path>
                     </svg>
@@ -64,16 +65,16 @@
                                                     }
                                                 </span>
                                                 <span type="button" data-toggle="collapse" data-target="#collapse_@bankDetail.BankAccountDetailID" aria-expanded="true" aria-controls="collapse_@bankDetail.BankAccountDetailID" class="btn btn-link font-weight-bold text-uppercase crick-accordion-sub row col-9" title="">
-                                                    <span class="col-8">@bankDetail.BankName</span>
+                                                    <span class="col-8">@bankDetail.AccountDisplayName</span>
                                                     <span class="col-4"><i class="bi bi-arrow-down-up"> </i></span>
                                                 </span>
-                                                <span class="col-1 btn btn-link font-weight-bold crick-accordion-sub row MakeAdminBankDefault" bankId="@bankDetail.BankAccountDetailID" data-toggle="modal" data-target="#MakeAdminBankDetailDefaultModal">
+                                                <span class="col-1 btn btn-link font-weight-bold crick-accordion-sub row MakeAdminUpiDefault" upiId="@bankDetail.BankAccountDetailID" data-toggle="modal" data-target="#MakeAdminUpiDetailDefaultModal">
                                                     @if (!@bankDetail.IsDefault)
                                                     {
                                                         <i class="bi bi-patch-plus-fill" title="Make Default"></i>
                                                     }
                                                 </span>
-                                                <span class="col-1 btn btn-link font-weight-bold crick-accordion-sub row DeleteAdminBankAccount" bankId="@bankDetail.BankAccountDetailID" data-toggle="modal" data-target="#DeleteAdminBankDetailsModal">
+                                                <span class="col-1 btn btn-link font-weight-bold crick-accordion-sub row DeleteAdminUpiAccount" upiId="@bankDetail.BankAccountDetailID" data-toggle="modal" data-target="#DeleteAdminUpiDetailsModal">
                                                     <i class="bi bi-trash3-fill" title="Delete Account"> </i>
                                                 </span>
 
@@ -84,18 +85,14 @@
                                                 <div class="credit rounded mt-2 d-flex justify-content-between align-items-center">
                                                     <div class="d-flex flex-row align-items-center">
                                                         <div class="d-flex flex-column ml-3">
-                                                            <span class="">Bank Name</span>
-                                                            <span class="">Account Holder Name</span>
-                                                            <span class="">Account Number</span>
-                                                            <span class="">IFSC Code</span>
+                                                            <span class="">User Name</span>
+                                                            <span class="">UPI</span> 
                                                         </div>
                                                     </div>
                                                     <div>
                                                         <div class="d-flex flex-column ml-3 bankDetails">
-                                                            <span class="">@bankDetail.BankName</span>
-                                                            <span class="">@bankDetail.AccountHolderName</span>
-                                                            <span class="">@bankDetail.AccountNumber</span>
-                                                            <span class="">@bankDetail.IFSCCode</span>
+                                                            <span class="">@bankDetail.AccountDisplayName</span>
+                                                            <span class="">@bankDetail.UpiId</span> 
                                                         </div>
                                                     </div>
                                                 </div>
@@ -122,11 +119,12 @@
 </div>
 
 
-<!-- Add Admin Bank Details Modal -->
-<div class="modal fade" id="AddAdminBankDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<!-- Add Admin UPI Code-->
+<div class="modal fade" id="AddAdminUpiDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content sitebackground siteColor">
-            <form id="AddAdminBankDetailForm">
+            <form id="AddAdminUpiDetailForm">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel">Add Bank Detail</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -135,37 +133,29 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Bank Name</label>
-                        <input name="BName" type="text" class="form-control BName" placeholder="Bank Name" autocomplete="off">
+                        <label>UPI</label>
+                        <input name="UPI" type="text" class="form-control UPI" placeholder="UPI" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label>Account Holder Name</label>
-                        <input name="AHName" type="text" class="form-control AHName" placeholder="Account Holder Name" autocomplete="off">
+                        <label>User Name</label>
+                        <input name="UserName" type="text" class="form-control UserName" placeholder="User Name" autocomplete="off">
                     </div>
-                    <div class="form-group">
-                        <label>Account Number</label>
-                        <input name="ANumber" type="text" class="form-control ANumber" placeholder="Account Number" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label>IFSC Code</label>
-                        <input name="IFSCCode" type="text" class="form-control IFSCCode" placeholder="IFSC Code" autocomplete="off">
-                    </div> 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn siteBtnbackground col-12">Add Bank Account</button>
+                    <button type="submit" class="btn siteBtnbackground col-12">Add UPI DEtails</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<!-- Add Admin Bank Details Modal-->
+<!-- End Admin UPI Code -->
 
 <!-- Delete Modal -->
-<div class="modal fade" id="DeleteAdminBankDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="DeleteAdminUpiDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content sitebackground siteColor">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Delete Admin Bank Detail!</h4>
+                <h4 class="modal-title" id="exampleModalLabel">Delete Admin UPI Account!</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -176,38 +166,32 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn siteBtnbackground DeleteAdminBankDetails">Delete Admin Bank Account</button>
+                <button type="button" class="btn siteBtnbackground DeleteAdminUpiDetailsBtn">Delete Admin Bank Account</button>
             </div>
         </div>
     </div>
 </div>
 <!-- Delete Modal -->
 
-
 <!-- Make Default bank Modal -->
-<div class="modal fade" id="MakeAdminBankDetailDefaultModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="MakeAdminUpiDetailDefaultModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content sitebackground siteColor">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Primary Bank Account!</h4>
+                <h4 class="modal-title" id="exampleModalLabel">Primary UPI Account!</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Are you sure, want to make Primary Bank Account?</label>
+                    <label>Are you sure, want to set Primary UPI Account?</label>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn siteBtnbackground MakeAdminBankDetailDefaultBtn">Add Primary Bank Account</button>
+                <button type="button" class="btn siteBtnbackground MakeAdminUpiDetailDefaultBtn">Add Primary UPI Account</button>
             </div>
         </div>
     </div>
 </div>
 <!-- Make Default bank Modal -->
-
-
-
-
-

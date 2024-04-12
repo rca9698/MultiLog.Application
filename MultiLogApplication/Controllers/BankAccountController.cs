@@ -12,11 +12,13 @@ namespace MultiLogApplication.Controllers
         private readonly IBankAccountService _bankAccountService;
         private readonly ILogger<BankAccountController> _logger;
         private readonly IConfiguration _configuration;
-        public BankAccountController(IBankAccountService bankAccountService, ILogger<BankAccountController> logger, IHttpContextAccessor httpContextAccessor, IConfiguration configuration) : base(httpContextAccessor)
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public BankAccountController(IBankAccountService bankAccountService, ILogger<BankAccountController> logger, IHttpContextAccessor httpContextAccessor, IConfiguration configuration, IWebHostEnvironment hostingEnvironment) : base(httpContextAccessor)
         {
             _bankAccountService = bankAccountService;
             _logger = logger;
             _configuration = configuration;
+            _hostingEnvironment = hostingEnvironment;
         }
         public IActionResult Index(string viewType)
         {
@@ -186,34 +188,6 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-        public async Task<IActionResult> AddQRCode(InsertCoinRequest obj)
-        {
-            ReturnType<string> res = new ReturnType<string>();
-            try
-            {
-                string filePath = _configuration["StoragePath:BasePath:Path"];
-                string contentPath = _configuration["StoragePath:QRPath:Path"];
-
-                string pathDocument = Path.Combine(filePath, contentPath);
-
-                if (!Directory.Exists(pathDocument))
-                {
-                    Directory.CreateDirectory(pathDocument);
-                }
-                string docName = Path.GetFileName(obj.File.FileName);
-                using (FileStream stream = new FileStream(Path.Combine(pathDocument, docName), FileMode.Create))
-                {
-                    obj.File.CopyTo(stream);
-                }
-
-                return Json(res);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Exception Occured at CoinController > AddQRCode");
-            }
-            return Json(res);
-        }
 
         public async Task<IActionResult> AdminBankAccounts()
         {
@@ -270,6 +244,112 @@ namespace MultiLogApplication.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Exception Occured at BankAccountController > SetDefaultAdminBankAccount");
+            }
+            return Json(res);
+        }
+
+
+        public async Task<IActionResult> AdminUpiAccounts()
+        {
+            ReturnType<BankDetails> res = new ReturnType<BankDetails>();
+            try
+            {
+                res = await _bankAccountService.AdminUpiAccounts();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > AdminUpiAccounts");
+            }
+            return PartialView("~/Views/BankAccount/AdminUpiDetails.cshtml", res);
+        }
+        
+        public async Task<IActionResult> AddUpdateAdminUpiAccount(AddUpdateAdminUpiAccount obj)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                obj.SessionUser = _sessionUser;
+                res = await _bankAccountService.AddUpdateAdminUpiAccount(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > AddUpdateAdminUpiAccount");
+            }
+            return Json(res);
+        }
+
+        public async Task<IActionResult> DeleteAdminUpiAccount(long UpiId)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                res = await _bankAccountService.DeleteAdminUpiAccount(_sessionUser, UpiId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > DeleteAdminUpiAccount");
+            }
+            return Json(res);
+        }
+
+        public async Task<IActionResult> SetDefaultAdminUpiAccount(long UpiId)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                res = await _bankAccountService.SetDefaultAdminUpiAccount(_sessionUser, UpiId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > SetDefaultAdminUpiAccount");
+            }
+            return Json(res);
+        }
+
+
+
+        public async Task<IActionResult> AdminQRDetails()
+        {
+            ReturnType<BankDetails> res = new ReturnType<BankDetails>();
+            try
+            {
+                res = await _bankAccountService.GetAdminQRCode();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > AdminQRDetails");
+            }
+            return PartialView("~/Views/BankAccount/AdminQRDetails.cshtml", res);
+        }
+
+        public async Task<IActionResult> AddQRCode(AddUPIQRCode obj)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                string BasePath = _hostingEnvironment.WebRootPath;
+                //string wwwPath = _configuration["StoragePath:BasePath:Path"];
+                string contentPath = _configuration["StoragePath:PaymentPath:Path"];
+                string fileName = "qascanner";
+                string iconContentPath = BasePath + contentPath;
+                if (!Directory.Exists(iconContentPath))
+                {
+                    Directory.CreateDirectory(iconContentPath);
+                }
+                var extenstion = obj.File.FileName.Split(".").LastOrDefault();
+                string docName = iconContentPath + "\\" + Path.GetFileName(fileName + "." + extenstion);
+                using (FileStream stream = new FileStream(Path.Combine(docName), FileMode.Create))
+                {
+                    obj.File.CopyTo(stream);
+                }
+
+                res = await _bankAccountService.AddAdminQRCode(_sessionUser,obj.UserName);
+
+                return Json(res);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > AddQRCode");
             }
             return Json(res);
         }

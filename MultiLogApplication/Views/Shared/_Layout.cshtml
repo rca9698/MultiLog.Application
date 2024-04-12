@@ -90,7 +90,11 @@
                                         </a>
                                         <div class='dashboard-nav-dropdown-menu'>
                                         @*<a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddAdminBankDetailModal" id="AddAdminBankDetailModalBtn"> <i class="bi bi-file-earmark-plus"></i> Add Bank Detail</a>*@
-                                            <a href="/BankAccount/Index?viewType=admin" class="dashboard-nav-dropdown-item"> <i class="bi bi-bank"></i> List Banks</a>
+                                            <a href="/BankAccount/Index?viewType=adminBank" class="dashboard-nav-dropdown-item"> <i class="bi bi-bank"></i> List Vendor Banks</a>
+
+                                            <a href="/BankAccount/Index?viewType=adminUpi" class="dashboard-nav-dropdown-item"> <i class="bi bi-bank"></i> List Vendor Upi</a>
+
+                                            <a href="/BankAccount/Index?viewType=adminQR" class="dashboard-nav-dropdown-item"> <i class="bi bi-bank"></i> List Vendor QR</a>
                                         </div>
                                     </div>
 
@@ -584,103 +588,6 @@
                     </div>
                     <!-- Add Bank Details Modal-->
 
-                    <!-- Add Admin Bank Details Modal -->
-                    <div class="modal fade" id="AddAdminBankDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content sitebackground siteColor">
-                                <form id="AddAdminBankDetailForm">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="exampleModalLabel">Add Bank Detail</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label>Bank Name</label>
-                                            <input name="BName" type="text" class="form-control BName" placeholder="Bank Name" autocomplete="off">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Account Holder Name</label>
-                                            <input name="AHName" type="text" class="form-control AHName" placeholder="Account Holder Name" autocomplete="off">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Account Number</label>
-                                            <input name="ANumber" type="text" class="form-control ANumber" placeholder="Account Number" autocomplete="off">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>IFSC Code</label>
-                                            <input name="IFSCCode" type="text" class="form-control IFSCCode" placeholder="IFSC Code" autocomplete="off">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Upi Number</label>
-                                            <input name="UpiId" type="text" class="form-control UpiId" placeholder="UPI" autocomplete="off">
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn siteBtnbackground col-12">Add Bank Account</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Add Admin Bank Details Modal-->
-
-                    <!-- Add Admin QA Code-->
-                    <div class="modal fade" id="AddAdminQRDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content sitebackground siteColor">
-                                <form id="AddAdminQADetailForm">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="exampleModalLabel">Add Bank Detail</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label>Bank Name</label>
-                                            <input name="BName" type="text" class="form-control BName" placeholder="Bank Name" autocomplete="off">
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn siteBtnbackground col-12">Add QA Code</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Admin QR Code -->
-
-                    <!-- Add Admin UPI Code-->
-                    <div class="modal fade" id="AddAdminQRDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content sitebackground siteColor">
-                                <form id="AddAdminQADetailForm">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="exampleModalLabel">Add Bank Detail</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label>UPI</label>
-                                            <input name="BUPI" type="text" class="form-control BUPI" placeholder="UPI" autocomplete="off">
-                                        </div>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn siteBtnbackground col-12">Add QA Code</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Admin UPI Code -->
-
-
                 </div>
             </div>
         </main>
@@ -723,7 +630,7 @@
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" name="password" class="form-control password" placeholder="Enter your password" autocomplete="off">
-                                            <div class="input-group-text sitebackground siteColor" data-password="false">
+                                            <div class="input-group-text sitebackground siteColor viewPassword" data-password="false">
                                                 <span><i class="bi bi-eye-fill"></i></span>
                                             </div>
                                         </div>
