@@ -325,7 +325,7 @@ function LoadAdminBankDetails() {
         type: 'POST',
         data: '',
         success: function (result) {
-            if (result.returnStatus == 1) {
+            if (result.returnStatus == 1 && result.returnVal != null) {
                 $('.PaymentModeTypesDetailList #BankTrDetail .bankName').html(result.returnVal.bankName);
                 $('.PaymentModeTypesDetailList #BankTrDetail .bankNameCopy').attr('copydata', result.returnVal.bankName);
                 $('.PaymentModeTypesDetailList #BankTrDetail .accountHolderName').html(result.returnVal.accountHolderName);

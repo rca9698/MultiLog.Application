@@ -39,7 +39,7 @@ namespace MultiLogApplication.Service
 
         public async Task<ReturnType<BankDetails>> GetBankUPIDetails()
         {
-            var response = await _client.GetAsync($"api/BankAccount/GetBankUPIDetails");
+            var response = await _client.GetAsync($"api/BankAccount/GetAdminBankAccounts");
             return await response.ReadContentAs<ReturnType<BankDetails>>();
         }
 
@@ -108,7 +108,7 @@ namespace MultiLogApplication.Service
 
         public async Task<ReturnType<string>> SetDefaultAdminUpiAccount(long _sessionUser, long UpiId)
         {
-            var response = await _client.GetAsync($"api/BankAccount/SetDefaultAdminBankAccount/{_sessionUser}/{UpiId}");
+            var response = await _client.GetAsync($"api/BankAccount/SetDefaultAdminUpiAccount/{_sessionUser}/{UpiId}");
             return await response.ReadContentAs<ReturnType<string>>();
         }
 
