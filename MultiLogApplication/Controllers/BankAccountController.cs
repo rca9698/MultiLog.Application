@@ -260,17 +260,16 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-        public async Task<IActionResult> SetDefaultAdminBankAccount(DeleteAdminBankAccount obj)
+        public async Task<IActionResult> SetDefaultAdminBankAccount(long BankDetailID)
         {
             ReturnType<string> res = new ReturnType<string>();
             try
             {
-                obj.SessionUser = _sessionUser;
-                res = await _bankAccountService.DeleteAdminBankAccount(obj);
+                res = await _bankAccountService.SetDefaultAdminBankAccount(_sessionUser, BankDetailID);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Exception Occured at BankAccountController > DeleteAdminBankAccount");
+                _logger.LogError(ex, "Exception Occured at BankAccountController > SetDefaultAdminBankAccount");
             }
             return Json(res);
         }

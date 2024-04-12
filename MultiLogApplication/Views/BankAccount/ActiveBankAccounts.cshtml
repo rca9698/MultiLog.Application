@@ -1,6 +1,9 @@
 ﻿@using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 @inject IHttpContextAccessor Accessor;
+@using MultiLogApplication.Models.Common
+@model ReturnType<MultiLogApplication.Models.BankAccount.BankDetails>
+
 @{
     var userNumber = Accessor.HttpContext.Session.GetString("UserNumber");
     var userName = Accessor.HttpContext.Session.GetString("UserName");

@@ -16,5 +16,6 @@ namespace MultiLogApplication.Interfaces
         Task<ReturnType<string>> updateBankAccount(UpdateBankAccount entity);
         Task<ReturnType<BankDetails>> AdminBankAccounts();
         Task<ReturnType<string>> AddUpdateAdminBankAccount(AddAdminBankAccount entity);
+        Task<ReturnType<string>> SetDefaultAdminBankAccount(long _sessionUser, long BankDetailID);
     }
 }

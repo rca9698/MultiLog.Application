@@ -35,6 +35,11 @@ $(document).on('click', '.DeleteAdminBankAccount', function () {
     $('.DeleteAdminBankDetails').attr('bankId', $(this).attr('bankId'));
 });
 
+$(document).on('click', '.MakeAdminBankDefault', function () {
+    $('.MakeAdminBankDetailDefaultBtn').attr('bankId', $(this).attr('bankId'));
+});
+
+
 $(document).on('click', '.DeleteAdminBankDetails', function () {
     let obj = {
         BankId: $(this).attr('bankId')
@@ -43,6 +48,22 @@ $(document).on('click', '.DeleteAdminBankDetails', function () {
         url: '/BankAccount/DeleteAdminBankAccount',
         type: 'POST',
         data: obj,
+        success: function (result) {
+            if (result.returnStatus == 1) {
+                toastr.success(result.returnMessage);
+                location.reload();
+            }
+        }
+    });
+});
+
+
+$(document).on('click', '.MakeAdminBankDetailDefaultBtn', function () {
+   
+    $.ajax({
+        url: '/BankAccount/SetDefaultAdminBankAccount',
+        type: 'POST',
+        data: { BankDetailID : $(this).attr('bankId') },
         success: function (result) {
             if (result.returnStatus == 1) {
                 toastr.success(result.returnMessage);

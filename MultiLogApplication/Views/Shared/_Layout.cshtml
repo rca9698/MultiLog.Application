@@ -311,7 +311,7 @@
                                         <div class="PaymentModeTypesDetail" method="post" enctype="multipart/form-data" style="margin-top: 10px" id="proofUpload">
                                             <div class="form-group">
                                                 <div class="col-md-10">
-                                                    <input type="file" name="files" class="files" multiple />
+                                                    <input type="file" name="files" class="files" />
                                                 </div>
                                             </div>
                                         </div>
@@ -625,6 +625,61 @@
                         </div>
                     </div>
                     <!-- Add Admin Bank Details Modal-->
+
+                    <!-- Add Admin QA Code-->
+                    <div class="modal fade" id="AddAdminQRDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content sitebackground siteColor">
+                                <form id="AddAdminQADetailForm">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Add Bank Detail</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Bank Name</label>
+                                            <input name="BName" type="text" class="form-control BName" placeholder="Bank Name" autocomplete="off">
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn siteBtnbackground col-12">Add QA Code</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Admin QR Code -->
+
+                    <!-- Add Admin UPI Code-->
+                    <div class="modal fade" id="AddAdminQRDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content sitebackground siteColor">
+                                <form id="AddAdminQADetailForm">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Add Bank Detail</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>UPI</label>
+                                            <input name="BUPI" type="text" class="form-control BUPI" placeholder="UPI" autocomplete="off">
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn siteBtnbackground col-12">Add QA Code</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Admin UPI Code -->
+
 
                 </div>
             </div>
