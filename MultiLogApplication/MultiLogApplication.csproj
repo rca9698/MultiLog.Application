@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>kapunterIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +12,10 @@
     <Content Remove="wwwroot\js\Plugin\**" />
     <EmbeddedResource Remove="wwwroot\js\Plugin\**" />
     <None Remove="wwwroot\js\Plugin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="kapunterIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>
