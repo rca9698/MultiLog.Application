@@ -103,10 +103,7 @@ function AddUser() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#AddUserModal .close').trigger('click');
-            }
+            ToasteRMessage('#AddUserModal');
         }
     });
 }
@@ -121,10 +118,7 @@ function DeleteUser(id) {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#AddUserModal .close').trigger('click');
-            }
+            ToasteRMessage('#AddUserModal');
         }
     });
 }

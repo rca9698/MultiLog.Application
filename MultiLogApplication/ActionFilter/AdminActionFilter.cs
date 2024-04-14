@@ -17,7 +17,7 @@ namespace MultiLogApplication.ActionFilter
             }
             else
             {
-                context.HttpContext.Response.Redirect("/Error");
+                //context.HttpContext.Response.Redirect("Home/Error");
                 throw new Exception("Invalid Action");
             }
         }

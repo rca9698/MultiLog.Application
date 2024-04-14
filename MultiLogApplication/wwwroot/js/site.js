@@ -130,11 +130,7 @@ function AddSite() {
         contentType: false, // Not to set any content header  
         processData: false, // Not to process data
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#AddSitesModal .close').trigger('click');
-                LoadSites();
-            }
+            ToasteRMessage('#AddSitesModal');
         }
     });
 }
@@ -155,11 +151,7 @@ function UpdateSite() {
         contentType: false, // Not to set any content header  
         processData: false, // Not to process data
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#UpdateSiteModal .close').trigger('click');
-                LoadSites();
-            }
+            ToasteRMessage('#UpdateSiteModal');
         }
     });
 }
@@ -175,11 +167,7 @@ function DepositeCoinsToAccountRequest() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                $('#DepositeToAccountRequestModal .close').trigger('click');
-                toastr.success(result.returnMessage);
-                LoadMySites();
-            }
+            ToasteRMessage('#DepositeToAccountRequestModal');
         }
     });
 }
@@ -194,11 +182,7 @@ function WithdrawCoinsToAccountRequest() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#WithDrawToAccountRequestModal .close').trigger('click');
-                LoadMySites();
-            }
+            ToasteRMessage('#WithDrawToAccountRequestModal');
         }
     });
 }
@@ -212,11 +196,7 @@ function DeleteSite(id) {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#DeleteSiteModal .close').trigger('click');
-                LoadSites();
-            }
+            ToasteRMessage('#DeleteSiteModal');
         }
     });
 }

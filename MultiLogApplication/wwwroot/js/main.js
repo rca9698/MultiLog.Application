@@ -2,21 +2,21 @@ var accountCoins = 0;
 
 (function ($) {
 
-	"use strict";
+    "use strict";
 
-	var fullHeight = function() {
+    var fullHeight = function () {
 
-		$('.js-fullheight').css('height', $(window).height());
-		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
-		});
+        $('.js-fullheight').css('height', $(window).height());
+        $(window).resize(function () {
+            $('.js-fullheight').css('height', $(window).height());
+        });
 
-	};
-	fullHeight();
+    };
+    fullHeight();
 
-	$('#sidebarCollapse').on('click', function () {
-      $('#sidebar').toggleClass('active');
-  });
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
 
 })(jQuery);
 
@@ -71,7 +71,7 @@ $(document).click(function (e) {
         }
     }
 
-    $(document).on('click', '.closeMobileMenu', function (){
+    $(document).on('click', '.closeMobileMenu', function () {
         if (container.hasClass('mobile-show')) {
             $(".dashboard-nav").removeClass("mobile-show");
         }
@@ -94,4 +94,12 @@ function LoadSessionData() {
     });
 }
 
-
+function ToasteRMessage(id) {
+    if (result.returnStatus == 1) {
+        toastr.success(result.returnMessage);
+        $(id + ' .close').trigger('click');
+        location.reload();
+    } else {
+        toastr.warning(result.returnMessage);
+    }
+}

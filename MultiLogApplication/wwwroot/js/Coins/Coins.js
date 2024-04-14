@@ -97,10 +97,7 @@ $(document).on('click', '#DesitCoins', function () {
         contentType: false, // Not to set any content header  
         processData: false, // Not to process data
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#closePaymentModesModal').trigger('click');
-            }
+            ToasteRMessage('#closePaymentModesModal');
         }
     });
 });
@@ -120,6 +117,9 @@ $(document).on('click', '#DepositeCoinsToAccountBtn', function () {
                 $('#DepositeCoinsToAccountModal .siteName').html(result.returnVal.siteName);
                 $('#DepositeCoinsToAccountModal .siteURL').html(result.returnVal.siteURL);
                 $('#DepositeCoinsToAccountModal .siteIcon').attr('siteIcon', '');
+            }
+            else {
+                toastr.warning(result.returnMessage);
             }
           }
     });
@@ -164,10 +164,7 @@ function DepositCoins() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#DepositCoinsModal .close').trigger('click');
-            }
+            ToasteRMessage('#DepositCoinsModal');
         }
     });
 }
@@ -184,11 +181,7 @@ function WithdrawCoins() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#WithdrawCoinsForm .close').trigger('click');
-                location.reload();
-            }
+            ToasteRMessage('#WithdrawCoinsForm');
         }
     });
 }
@@ -312,10 +305,7 @@ function WithDrawCoinsRequest() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#WithdrawCoinsRequestModal .close').trigger('click');
-            }
+            ToasteRMessage('#WithdrawCoinsRequestModal');
         }
     });
 }
@@ -356,11 +346,7 @@ function DepositeCoinsToAccount() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#DepositeCoinsToAccountModal .close').trigger('click');
-                GetDepositCoinsToAccountRequest();
-            }
+            ToasteRMessage('#DepositeCoinsToAccountModal');
         }
     });
 }
@@ -379,11 +365,7 @@ function WithdrawCoinsFromAccount() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#withdrawCoinsFromAccountModal .close').trigger('click');
-                GetWithdrawCoinsToAccountRequest();
-            }
+            ToasteRMessage('#withdrawCoinsFromAccountModal');
         }
     });
 }

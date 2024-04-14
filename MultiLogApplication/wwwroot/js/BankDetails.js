@@ -67,10 +67,7 @@ $(document).on('click', '.MakeAdminUpiDetailDefaultBtn', function () {
         type: 'POST',
         data: { UpiId: $(this).attr('upiId') },
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                location.reload();
-            }
+            ToasteRMessage('');
         }
     });
 });
@@ -86,10 +83,7 @@ $(document).on('click', '.DeleteAdminUpiDetailsBtn', function () {
         type: 'POST',
         data: { UpiId: $(this).attr('upiId') },
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                location.reload();
-            }
+            ToasteRMessage('');
         }
     });
 });
@@ -104,10 +98,7 @@ $(document).on('click', '.DeleteAdminBankDetails', function () {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                location.reload();
-            }
+            ToasteRMessage('');
         }
     });
 });
@@ -119,10 +110,7 @@ $(document).on('click', '.MakeAdminBankDetailDefaultBtn', function () {
         type: 'POST',
         data: { BankDetailID : $(this).attr('bankId') },
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                location.reload();
-            }
+            ToasteRMessage('');
         }
     });
 });
@@ -140,10 +128,7 @@ $(document).on('click', '.DeleteBankDetails', function () {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                location.reload();
-            }
+            ToasteRMessage('');
         }
     });
 });
@@ -402,11 +387,7 @@ function AddBankAccount() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#AddBankDetailForm .close').trigger('click');
-                location.reload();
-            }
+            ToasteRMessage('#AddBankDetailForm');
         }
     });
 }
@@ -424,11 +405,7 @@ function AddAdminBankAccount() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#AddAdminBankDetailForm .close').trigger('click');
-                location.reload();
-            }
+            ToasteRMessage('#AddAdminBankDetailForm');
         }
     });
 }
@@ -444,11 +421,7 @@ function AddAdminUpiAccount() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#AddAdminUpiDetailForm .close').trigger('click');
-                location.reload();
-            }
+            ToasteRMessage('#AddAdminUpiDetailForm');
         }
     });
 }
@@ -465,11 +438,7 @@ function AddAdminQRAccount() {
         contentType: false, // Not to set any content header  
         processData: false, // Not to process data
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#AddAdminQRDetailForm .close').trigger('click');
-                location.reload();
-            }
+            ToasteRMessage('#AddAdminQRDetailForm');
         }
     });
 }

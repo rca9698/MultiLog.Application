@@ -38,12 +38,7 @@ $(document).on('click', '#AddAccount', function () {
         url: "/Account/AddAccount",
         data: account,
         success: function (result) {
-            if (result.returnStatus == 1) {
-
-            }
-            else {
-
-            }
+            ToasteRMessage('#AddAccount')
         },
         error: function () {
 
@@ -60,12 +55,8 @@ $(document).on('click', '.DeleteAccountRequestBtn', function () {
         type: "Post",
         url: "/Account/DeleteAccountRequest",
         data: account,
-        success: function(result) {
-            if (result.returnStatus == 1) {
-                    toastr.success(result.returnMessage);
-                $('.DeleteAccountRequestModel .close').trigger('click');
-                    location.reload();
-            }
+        success: function (result) {
+            ToasteRMessage('.DeleteAccountRequestModel');
         },
         error: function() {
             
@@ -220,10 +211,7 @@ function AddAccountRequest() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#CreateIDRequestModal .close').trigger('click');
-            }
+            ToasteRMessage('#CreateIDRequestModal');
         }
     });
 }
@@ -240,14 +228,7 @@ function AddAccount() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                toastr.success(result.returnMessage);
-                $('#CreateIDModal .close').trigger('click');
-                setTimeout(function() {
-                    AccountRequestList();
-                }, 100);
-               
-            }
+            ToasteRMessage('#CreateIDModal');
         }
     });
 }

@@ -222,12 +222,7 @@ function Login() {
         url: "/LoginSignup/Login",
         data: login,
         success: function (result) {
-            if (result.returnStatus == 1) {
-                location.reload();
-            }
-            else {
-                toastr.warning(result.returnMessage);
-            }
+            ToasteRMessage('');
         },
         error: function () {
 
