@@ -94,11 +94,13 @@ function LoadSessionData() {
     });
 }
 
-function ToasteRMessage(id) {
+function ToasteRMessage(result,id) {
     if (result.returnStatus == 1) {
         toastr.success(result.returnMessage);
         $(id + ' .close').trigger('click');
-        location.reload();
+        setTimeout(function () {
+            location.reload();
+        }, 300);
     } else {
         toastr.warning(result.returnMessage);
     }

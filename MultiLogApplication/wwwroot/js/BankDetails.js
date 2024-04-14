@@ -67,7 +67,7 @@ $(document).on('click', '.MakeAdminUpiDetailDefaultBtn', function () {
         type: 'POST',
         data: { UpiId: $(this).attr('upiId') },
         success: function (result) {
-            ToasteRMessage('');
+            ToasteRMessage(result,'');
         }
     });
 });
@@ -83,7 +83,7 @@ $(document).on('click', '.DeleteAdminUpiDetailsBtn', function () {
         type: 'POST',
         data: { UpiId: $(this).attr('upiId') },
         success: function (result) {
-            ToasteRMessage('');
+            ToasteRMessage(result,'');
         }
     });
 });
@@ -98,7 +98,7 @@ $(document).on('click', '.DeleteAdminBankDetails', function () {
         type: 'POST',
         data: obj,
         success: function (result) {
-            ToasteRMessage('');
+            ToasteRMessage(result,'');
         }
     });
 });
@@ -110,7 +110,7 @@ $(document).on('click', '.MakeAdminBankDetailDefaultBtn', function () {
         type: 'POST',
         data: { BankDetailID : $(this).attr('bankId') },
         success: function (result) {
-            ToasteRMessage('');
+            ToasteRMessage(result,'');
         }
     });
 });
@@ -128,7 +128,7 @@ $(document).on('click', '.DeleteBankDetails', function () {
         type: 'POST',
         data: obj,
         success: function (result) {
-            ToasteRMessage('');
+            ToasteRMessage(result,'');
         }
     });
 });
@@ -387,7 +387,7 @@ function AddBankAccount() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            ToasteRMessage('#AddBankDetailForm');
+            ToasteRMessage(result,'#AddBankDetailForm');
         }
     });
 }
@@ -405,7 +405,7 @@ function AddAdminBankAccount() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            ToasteRMessage('#AddAdminBankDetailForm');
+            ToasteRMessage(result,'#AddAdminBankDetailForm');
         }
     });
 }
@@ -421,7 +421,7 @@ function AddAdminUpiAccount() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            ToasteRMessage('#AddAdminUpiDetailForm');
+            ToasteRMessage(result,'#AddAdminUpiDetailForm');
         }
     });
 }
@@ -438,7 +438,7 @@ function AddAdminQRAccount() {
         contentType: false, // Not to set any content header  
         processData: false, // Not to process data
         success: function (result) {
-            ToasteRMessage('#AddAdminQRDetailForm');
+            ToasteRMessage(result,'#AddAdminQRDetailForm');
         }
     });
 }

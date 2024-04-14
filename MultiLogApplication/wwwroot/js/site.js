@@ -130,7 +130,7 @@ function AddSite() {
         contentType: false, // Not to set any content header  
         processData: false, // Not to process data
         success: function (result) {
-            ToasteRMessage('#AddSitesModal');
+            ToasteRMessage(result,'#AddSitesModal');
         }
     });
 }
@@ -151,7 +151,7 @@ function UpdateSite() {
         contentType: false, // Not to set any content header  
         processData: false, // Not to process data
         success: function (result) {
-            ToasteRMessage('#UpdateSiteModal');
+            ToasteRMessage(result,'#UpdateSiteModal');
         }
     });
 }
@@ -167,7 +167,7 @@ function DepositeCoinsToAccountRequest() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            ToasteRMessage('#DepositeToAccountRequestModal');
+            ToasteRMessage(result,'#DepositeToAccountRequestModal');
         }
     });
 }
@@ -182,7 +182,7 @@ function WithdrawCoinsToAccountRequest() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            ToasteRMessage('#WithDrawToAccountRequestModal');
+            ToasteRMessage(result,'#WithDrawToAccountRequestModal');
         }
     });
 }
@@ -196,7 +196,7 @@ function DeleteSite(id) {
         type: 'POST',
         data: obj,
         success: function (result) {
-            ToasteRMessage('#DeleteSiteModal');
+            ToasteRMessage(result,'#DeleteSiteModal');
         }
     });
 }

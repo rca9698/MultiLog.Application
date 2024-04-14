@@ -222,7 +222,7 @@ function Login() {
         url: "/LoginSignup/Login",
         data: login,
         success: function (result) {
-            ToasteRMessage('');
+            ToasteRMessage(result,'');
         },
         error: function () {
 

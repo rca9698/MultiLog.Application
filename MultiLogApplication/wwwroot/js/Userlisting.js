@@ -103,7 +103,7 @@ function AddUser() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            ToasteRMessage('#AddUserModal');
+            ToasteRMessage(result,'#AddUserModal');
         }
     });
 }
@@ -118,7 +118,7 @@ function DeleteUser(id) {
         type: 'POST',
         data: obj,
         success: function (result) {
-            ToasteRMessage('#AddUserModal');
+            ToasteRMessage(result,'#AddUserModal');
         }
     });
 }

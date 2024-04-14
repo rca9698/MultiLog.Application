@@ -38,7 +38,7 @@ $(document).on('click', '#AddAccount', function () {
         url: "/Account/AddAccount",
         data: account,
         success: function (result) {
-            ToasteRMessage('#AddAccount')
+            ToasteRMessage(result,'#AddAccount')
         },
         error: function () {
 
@@ -56,7 +56,7 @@ $(document).on('click', '.DeleteAccountRequestBtn', function () {
         url: "/Account/DeleteAccountRequest",
         data: account,
         success: function (result) {
-            ToasteRMessage('.DeleteAccountRequestModel');
+            ToasteRMessage(result,'.DeleteAccountRequestModel');
         },
         error: function() {
             
@@ -211,7 +211,7 @@ function AddAccountRequest() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            ToasteRMessage('#CreateIDRequestModal');
+            ToasteRMessage(result,'#CreateIDRequestModal');
         }
     });
 }
@@ -228,7 +228,7 @@ function AddAccount() {
         type: 'POST',
         data: obj,
         success: function (result) {
-            ToasteRMessage('#CreateIDModal');
+            ToasteRMessage(result,'#CreateIDModal');
         }
     });
 }
