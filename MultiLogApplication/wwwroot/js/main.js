@@ -64,6 +64,13 @@ $(document).click(function (e) {
             $(".dashboard-nav").removeClass("mobile-show");
         }
     }
+
+    $(document).on('click', '.closeMobileMenu', function (){
+        if (container.hasClass('mobile-show')) {
+            $(".dashboard-nav").removeClass("mobile-show");
+        }
+    });
+
 });
 
 

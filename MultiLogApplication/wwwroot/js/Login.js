@@ -31,14 +31,23 @@ $(document).on('click', '#loginNotification', function () {
     toastr.warning('Please login to application!!!');
 })
 
-$('.viewPassword').mousedown(function () {
-    $('.password').attr('type', 'text');
-}).mouseup(function () {
-    $('.password').attr('type', 'password');
-}).mouseout(function () {
-    $('.password').attr('type', 'password');
-});
+//$('.viewPassword').mousedown(function () {
+//    $('.password').attr('type', 'text');
+//}).mouseup(function () {
+//    $('.password').attr('type', 'password');
+//}).mouseout(function () {
+//    $('.password').attr('type', 'password');
+//});
 
+$(document).on('click', '.viewPassword', function () {
+    if ($('.password').attr('type') === 'text') {
+        $('.password').attr('type', 'password');
+        $(this).find('i').removeClass('bi-eye-slash-fill').addClass('bi-eye-fill');
+    } else {
+        $('.password').attr('type', 'text');
+        $(this).find('i').removeClass('bi-eye-fill').addClass('bi-eye-slash-fill');
+    }
+});
 
 var MobileFormfv;
 var fv1;

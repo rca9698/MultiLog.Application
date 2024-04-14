@@ -44,12 +44,12 @@
                             <nav class="dashboard-nav-list pSiteNameFontSize">
                                 @if (!User.Claims.Any(x => x.Type.Contains("Admin")))
                                 {
-                                    <a href="#" class="dashboard-nav-item"><i class="bi bi-person"></i> Profile </a>
-                                    <a href="/BankAccount/Index?viewType=beneficiary" class="dashboard-nav-item"><i class="bi bi-bank2"></i> Withdraw Details </a>
-                                    <a href="#" class="dashboard-nav-item IDsList"><i class="bi bi-plus-circle-fill"></i> Create Id </a>
-                                    <a href="#" class="dashboard-nav-item"><i class="bi bi-star-fill"></i> Bonus </a>
-                                    <a href="#" class="dashboard-nav-item"><i class="bi bi-fast-forward-fill"></i> Loss Back </a>
-                                    <a href="#" class="dashboard-nav-item"><i class="bi bi-file-pdf-fill"></i> Rules </a>
+                                    <a href="#" class="dashboard-nav-item closeMobileMenu"><i class="bi bi-person"></i> Profile </a>
+                                    <a href="/BankAccount/Index?viewType=beneficiary" class="dashboard-nav-item closeMobileMenu"><i class="bi bi-bank2"></i> Withdraw Details </a>
+                                    <a href="#" class="dashboard-nav-item closeMobileMenu IDsList"><i class="bi bi-plus-circle-fill"></i> Create Id </a>
+                                    <a href="#" class="dashboard-nav-item closeMobileMenu"><i class="bi bi-star-fill"></i> Bonus </a>
+                                    <a href="#" class="dashboard-nav-item closeMobileMenu"><i class="bi bi-fast-forward-fill"></i> Loss Back </a>
+                                    <a href="#" class="dashboard-nav-item closeMobileMenu"><i class="bi bi-file-pdf-fill"></i> Rules </a>
 
                                     <div class="nav-item-divider"></div>
 
@@ -62,9 +62,9 @@
                                         </a>
                                     </div>
 
-                                    <a href="#" class="dashboard-nav-item"><i class="bi bi-file-earmark-text-fill"></i> Terms </a>
-                                    <a href="#" class="dashboard-nav-item"><i class="bi bi-tag-fill"></i> Offers </a>
-                                    <a href="/Notification/Index" class="dashboard-nav-item"><i class="bi bi-bell-fill"></i> Notifications </a>
+                                    <a href="#" class="dashboard-nav-item closeMobileMenu"><i class="bi bi-file-earmark-text-fill"></i> Terms </a>
+                                    <a href="#" class="dashboard-nav-item closeMobileMenu"><i class="bi bi-tag-fill"></i> Offers </a>
+                                    <a href="/Notification/Index" class="dashboard-nav-item closeMobileMenu"><i class="bi bi-bell-fill"></i> Notifications </a>
                                 }
 
                                 @if (User.Claims.Any(x => x.Type.Contains("Admin")))
@@ -135,9 +135,9 @@
                                     <a href="#" class="dashboard-nav-item"><i class="bi bi-gear-fill"></i> Settings </a>
                                 }
 
-                                <a href="#" class="dashboard-nav-item"><i class="bi bi-cloud-arrow-down-fill"></i> Download App </a>
+                                <a href="#" class="dashboard-nav-item closeMobileMenu"><i class="bi bi-cloud-arrow-down-fill"></i> Download App </a>
                                 <div class="nav-item-divider"></div>
-                                <a @* href="/LoginSignup/SignOut" *@ href="#" data-toggle="modal" data-target="#LogOutModal" class="dashboard-nav-item"><i class="bi bi-box-arrow-right"></i> Logout </a>
+                                <a @* href="/LoginSignup/SignOut" *@ href="#" data-toggle="modal" data-target="#LogOutModal" class="dashboard-nav-item closeMobileMenu"><i class="bi bi-box-arrow-right"></i> Logout </a>
                                 <a href="#" class="dashboard-nav-item"><i class="bi bi-box-arrow-right"></i> Login with Demo ID </a>
                             </nav>
                         }
