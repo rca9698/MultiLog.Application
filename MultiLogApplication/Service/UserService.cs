@@ -37,5 +37,11 @@ namespace MultiLogApplication.Service
             var response = await _client.PostAsJsonAsync($"api/User/UpdateUser", details);
             return await response.ReadContentAs<ReturnType<bool>>();
         }
+
+        public async Task<ReturnType<UserDetail>> GetUserById(GetUserById details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/User/GetUserById", details);
+            return await response.ReadContentAs<ReturnType<UserDetail>>();
+        }
     }
 }

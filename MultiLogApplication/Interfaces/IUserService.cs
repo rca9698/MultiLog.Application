@@ -9,5 +9,6 @@ namespace MultiLogApplication.Interfaces
         Task<ReturnType<bool>> AddUser(AddUser details);
         Task<ReturnType<bool>> DeleteUser(DeleteUser details);
         Task<ReturnType<bool>> UpdateUser(UpdateUser details);
+        Task<ReturnType<UserDetail>> GetUserById(GetUserById details);
     }
 }

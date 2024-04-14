@@ -137,7 +137,7 @@ namespace MultiLogApplication.Controllers
                 obj.SessionUser = _sessionUser;
                 obj.CoinType = 1;
                 res = await _coinService.UpdateCoins(obj);
-                HttpContext.Session.SetString("Coins", res.ReturnVal);
+                //HttpContext.Session.SetString("Coins", res.ReturnVal);
             }
             catch (Exception ex)
             {
@@ -154,7 +154,7 @@ namespace MultiLogApplication.Controllers
                 obj.SessionUser = _sessionUser;
                 obj.CoinType = 0;
                 res = await _coinService.UpdateCoins(obj);
-                HttpContext.Session.SetString("Coins", res.ReturnVal);
+                //HttpContext.Session.SetString("Coins", res.ReturnVal);
             }
             catch (Exception ex)
             {

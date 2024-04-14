@@ -1,4 +1,6 @@
-(function($) {
+var accountCoins = 0;
+
+(function ($) {
 
 	"use strict";
 
@@ -22,6 +24,10 @@
 
 const mobileScreen = window.matchMedia("(max-width: 990px )");
 $(document).ready(function () {
+
+    LoadSessionData();
+
+    accountCoins = parseInt($('.coinsValidation').attr('data-coins'));
     $(".dashboard-nav-dropdown-toggle").click(function () {
         $(this).closest(".dashboard-nav-dropdown")
             .toggleClass("show")
@@ -73,5 +79,19 @@ $(document).click(function (e) {
 
 });
 
+
+function LoadSessionData() {
+    $.ajax({
+        url: '/User/GetUserById',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            if (result.returnStatus == 1) {
+                $('.coinsValidation').attr('data-coins', result.returnVal.coins);
+                accountCoins = parseInt($('.coinsValidation').attr('data-coins'));
+            }
+        }
+    });
+}
 
 

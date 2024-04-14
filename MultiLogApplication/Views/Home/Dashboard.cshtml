@@ -123,8 +123,10 @@
             </a>
         </div>
         <div class="card" style="background: #3e3e3e;">
-            <div class="col-12" style="display: flex;">
-                <div class="col-3 grid-margin stretch-card" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="col-12" style="display: flex;">
+                    <div class="col-3 grid-margin stretch-card" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn">
                     <div class="card" style="background: black;">
                         <div class="card-body text-center">
                             <div class="row">
@@ -172,7 +174,61 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-12" style="display: flex;">
+                    <div class="col-3 grid-margin stretch-card">
+                        <div class="card" style="background: black;">
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <i class="bi bi-chevron-double-up" style="color: green;"></i>
+                                </div>
+                                <h6 class="text-muted font-weight-normal">
+                                    <a href="#" style="font-size: 12px"> Deposite </a>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 grid-margin stretch-card">
+                        <div class="card" style="background: black;">
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <i class="bi bi-chevron-double-down" style="color: darkred;"></i>
+                                </div>
+                                <h6 class="text-muted font-weight-normal">
+                                    <a href="#" style="font-size: 12px"> Withdraw </a>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 grid-margin stretch-card">
+                        <div class="card" style="background: black;">
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <i class="bi bi-key-fill"></i>
+                                </div>
+                                <h6 class="text-muted font-weight-normal">
+                                    <a href="#" style="font-size: 12px"> Password </a>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 grid-margin stretch-card">
+                        <div class="card" style="background: black;">
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <i class="bi bi-ticket-detailed-fill"></i>
+                                </div>
+                                <h6 class="text-muted font-weight-normal">
+                                    <a href="#" style="font-size: 12px"> View Detail </a>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
             </div>
         </div>
     </div>

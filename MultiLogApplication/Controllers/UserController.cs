@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models.Common;
 using MultiLogApplication.Models.SiteDetails;
@@ -83,5 +84,27 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
+        public async Task<IActionResult> GetUserById()
+        {
+            ReturnType<UserDetail> res = new ReturnType<UserDetail>();
+            try
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    GetUserById obj = new GetUserById()
+                    {
+                        SessionUser = _sessionUser,
+                        UserId = _sessionUser
+                    };
+                    res = await _userService.GetUserById(obj);
+                    HttpContext.Session.SetString("Coins", res.ReturnVal.Coins);
+                } 
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at UserController > GetUserById");
+            }
+            return Json(res);
+        }
     }
 }
