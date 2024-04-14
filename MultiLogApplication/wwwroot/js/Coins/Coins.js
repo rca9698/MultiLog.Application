@@ -534,7 +534,7 @@ var WithDrawCoinsRequestFormValidationSingleton = (function () {
                         callback: {
                             message: 'Requested coins should be less then or equal to account coins',
                             callback: function (value, validator, $field) {
-                                if ($('#WithdrawCoinsRequestModalForm .coins').val() != '' && $('#WithdrawCoinsRequestModalForm .coins').val() >= accountCoins)
+                                if ($('#WithdrawCoinsRequestModalForm .coins').val() != '' && $('#WithdrawCoinsRequestModalForm .coins').val() > accountCoins)
                                     return false;
                                 return true;
                             }
