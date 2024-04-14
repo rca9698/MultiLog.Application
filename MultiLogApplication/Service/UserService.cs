@@ -14,16 +14,16 @@ namespace MultiLogApplication.Service
             _logger = logger;
         }
 
-        public async Task<ReturnType<bool>> AddUser(AddUser details)
+        public async Task<ReturnType<string>> AddUser(AddUser details)
         {
             var response = await _client.PostAsJsonAsync($"api/User/AddUser", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
-        public async Task<ReturnType<bool>> DeleteUser(DeleteUser details)
+        public async Task<ReturnType<string>> DeleteUser(DeleteUser details)
         {
             var response = await _client.PostAsJsonAsync($"api/User/DeleteUser", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
         public async Task<ReturnType<UserDetail>> GetUsers(GetUsers details)
@@ -32,10 +32,10 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<UserDetail>>();
         }
 
-        public async Task<ReturnType<bool>> UpdateUser(UpdateUser details)
+        public async Task<ReturnType<string>> UpdateUser(UpdateUser details)
         {
             var response = await _client.PostAsJsonAsync($"api/User/UpdateUser", details);
-            return await response.ReadContentAs<ReturnType<bool>>();
+            return await response.ReadContentAs<ReturnType<string>>();
         }
 
         public async Task<ReturnType<UserDetail>> GetUserById(GetUserById details)

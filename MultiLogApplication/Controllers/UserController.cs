@@ -40,7 +40,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> AddUser(AddUser obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.SessionUser = _sessionUser;
@@ -56,7 +56,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> UpdateUser(UpdateUser obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.SessionUser = _sessionUser;
@@ -71,7 +71,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> DeleteUser(DeleteUser obj)
         {
-            ReturnType<bool> res = new ReturnType<bool>();
+            ReturnType<string> res = new ReturnType<string>();
             try
             {
                 obj.SessionUser = _sessionUser;
@@ -89,7 +89,7 @@ namespace MultiLogApplication.Controllers
             ReturnType<UserDetail> res = new ReturnType<UserDetail>();
             try
             {
-                if (User.Identity.IsAuthenticated)
+                if (User.Identity.IsAuthenticated && _sessionUser != 0)
                 {
                     GetUserById obj = new GetUserById()
                     {

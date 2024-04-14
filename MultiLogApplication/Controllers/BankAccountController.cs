@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MultiLogApplication.ActionFilter;
 using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models.Account;
 using MultiLogApplication.Models.BankAccount;
@@ -41,7 +42,7 @@ namespace MultiLogApplication.Controllers
 			}
 			return PartialView(res);
 		}
-
+        [ServiceFilter(typeof(UserActionFilter))]
         public async Task<IActionResult> ActiveBankAccounts()
         {
             ReturnType<BankDetails> res = new ReturnType<BankDetails>();
@@ -188,7 +189,7 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> AdminBankAccounts()
         {
             ReturnType<BankDetails> res = new ReturnType<BankDetails>();
@@ -202,7 +203,8 @@ namespace MultiLogApplication.Controllers
             }
             return PartialView("~/Views/BankAccount/AdminBankAccountDetails.cshtml", res);
         }
-
+        
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> AddUpdateAdminBankAccount(AddAdminBankAccount obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -218,7 +220,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> DeleteAdminBankAccount(DeleteAdminBankAccount obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -233,7 +235,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> SetDefaultAdminBankAccount(long BankDetailID)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -248,7 +250,7 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> AdminUpiAccounts()
         {
             ReturnType<BankDetails> res = new ReturnType<BankDetails>();
@@ -262,7 +264,7 @@ namespace MultiLogApplication.Controllers
             }
             return PartialView("~/Views/BankAccount/AdminUpiDetails.cshtml", res);
         }
-        
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> AddUpdateAdminUpiAccount(AddUpdateAdminUpiAccount obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -277,7 +279,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> DeleteAdminUpiAccount(long UpiId)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -291,7 +293,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> SetDefaultAdminUpiAccount(long UpiId)
         {
             ReturnType<string> res = new ReturnType<string>();

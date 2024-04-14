@@ -6,9 +6,9 @@ namespace MultiLogApplication.Interfaces
     public interface IUserService
     {
         Task<ReturnType<UserDetail>> GetUsers(GetUsers details);
-        Task<ReturnType<bool>> AddUser(AddUser details);
-        Task<ReturnType<bool>> DeleteUser(DeleteUser details);
-        Task<ReturnType<bool>> UpdateUser(UpdateUser details);
+        Task<ReturnType<string>> AddUser(AddUser details);
+        Task<ReturnType<string>> DeleteUser(DeleteUser details);
+        Task<ReturnType<string>> UpdateUser(UpdateUser details);
         Task<ReturnType<UserDetail>> GetUserById(GetUserById details);
     }
 }

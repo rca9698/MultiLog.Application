@@ -1,4 +1,5 @@
-﻿using MultiLogApplication.Interfaces;
+﻿using MultiLogApplication.ActionFilter;
+using MultiLogApplication.Interfaces;
 using MultiLogApplication.Service;
 
 namespace MultiLogApplication
@@ -7,6 +8,8 @@ namespace MultiLogApplication
     {
         public static void AddHttpServices(this IServiceCollection services, IConfiguration config)
         {
+            services.AddScoped<AdminActionFilter>();
+            services.AddScoped<UserActionFilter>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<ITokenService, TokenService>();
             services.AddHttpClient<ILoginServices, LoginServices>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));

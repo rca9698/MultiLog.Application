@@ -69,7 +69,7 @@
 
                                 @if (User.Claims.Any(x => x.Type.Contains("Admin")))
                                 {
-                                    <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]" class="dashboard-nav-item">
+                                    <a href="@Configuration["ApiConfigs:MultilogApp:Uri"]" class="dashboard-nav-item closeMobileMenu">
                                         <i class="bi bi-house"></i> dashboard
                                     </a>
 
@@ -78,9 +78,9 @@
                                             <i class="bi bi-person"></i> Accounts
                                         </a>
                                         <div class='dashboard-nav-dropdown-menu'>
-                                            <a href="/Account/Index?viewType=AcRequest" class="dashboard-nav-dropdown-item"> <i class="bi bi-people"></i> Account Requests</a>
-                                            <a href="/Account/Index?viewType=Accounts" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
-                                            <a href="/Account/Index?viewType=RejectedAcRequests" class="dashboard-nav-dropdown-item"> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
+                                            <a href="/Account/Index?viewType=AcRequest" class="dashboard-nav-dropdown-item closeMobileMenu"> <i class="bi bi-people"></i> Account Requests</a>
+                                            <a href="/Account/Index?viewType=Accounts" class="dashboard-nav-dropdown-item closeMobileMenu"> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
+                                            <a href="/Account/Index?viewType=RejectedAcRequests" class="dashboard-nav-dropdown-item closeMobileMenu"> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
                                         </div>
                                     </div>
 
@@ -90,11 +90,11 @@
                                         </a>
                                         <div class='dashboard-nav-dropdown-menu'>
                                         @*<a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddAdminBankDetailModal" id="AddAdminBankDetailModalBtn"> <i class="bi bi-file-earmark-plus"></i> Add Bank Detail</a>*@
-                                            <a href="/BankAccount/Index?viewType=adminBank" class="dashboard-nav-dropdown-item"> <i class="bi bi-bank"></i> List Vendor Banks</a>
+                                            <a href="/BankAccount/Index?viewType=adminBank" class="dashboard-nav-dropdown-item closeMobileMenu"> <i class="bi bi-bank"></i> List Vendor Banks</a>
 
-                                            <a href="/BankAccount/Index?viewType=adminUpi" class="dashboard-nav-dropdown-item"> <i class="bi bi-bank"></i> List Vendor Upi</a>
+                                            <a href="/BankAccount/Index?viewType=adminUpi" class="dashboard-nav-dropdown-item closeMobileMenu"> <i class="bi bi-bank"></i> List Vendor Upi</a>
 
-                                            <a href="/BankAccount/Index?viewType=adminQR" class="dashboard-nav-dropdown-item"> <i class="bi bi-bank"></i> List Vendor QR</a>
+                                            <a href="/BankAccount/Index?viewType=adminQR" class="dashboard-nav-dropdown-item closeMobileMenu"> <i class="bi bi-bank"></i> List Vendor QR</a>
                                         </div>
                                     </div>
 
@@ -103,8 +103,8 @@
                                             <i class="bi bi-cart"></i> Sites
                                         </a>
                                         <div class='dashboard-nav-dropdown-menu'>
-                                            <a href="/Site/Index?viewType=Admin" class="dashboard-nav-dropdown-item"><i class="bi bi-cart4"></i>Sites</a>
-                                            <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddSitesModal" id="AddSitesModalbtn"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
+                                            <a href="/Site/Index?viewType=Admin" class="dashboard-nav-dropdown-item closeMobileMenu"><i class="bi bi-cart4"></i>Sites</a>
+                                            <a href="#" class="dashboard-nav-dropdown-item closeMobileMenu" data-toggle="modal" data-target="#AddSitesModal" id="AddSitesModalbtn"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
                                         </div>
                                     </div>
 
@@ -115,10 +115,10 @@
                                         <div class='dashboard-nav-dropdown-menu'>
                                             @*  <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn"><i class="bi bi-cash-coin"></i>Desposit Request</a>
                                     <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#WithdrawCoinsRequestModal"><i class="bi bi-cash-coin"></i>Withdraw Request</a>*@
-                                            <a href="/Coin/Index?viewType=DepositeToSite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Deposit to Site Requests</a>
-                                            <a href="/Coin/Index?viewType=WithdrawFromSite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Withdraw from Site Requests</a>
-                                            <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Desposit To Wallet Requests</a>
-                                            <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item"><i class="bi bi-cash-coin"></i>Withdraw From Wallet Requests</a>
+                                            <a href="/Coin/Index?viewType=DepositeToSite" class="dashboard-nav-dropdown-item closeMobileMenu"><i class="bi bi-cash-coin"></i>Deposit to Site Requests</a>
+                                            <a href="/Coin/Index?viewType=WithdrawFromSite" class="dashboard-nav-dropdown-item closeMobileMenu"><i class="bi bi-cash-coin"></i>Withdraw from Site Requests</a>
+                                            <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item closeMobileMenu"><i class="bi bi-cash-coin"></i>Desposit To Wallet Requests</a>
+                                            <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item closeMobileMenu"><i class="bi bi-cash-coin"></i>Withdraw From Wallet Requests</a>
                                         </div>
                                     </div>
 
@@ -127,12 +127,12 @@
                                             <i class="bi bi-people"></i> Users
                                         </a>
                                         <div class='dashboard-nav-dropdown-menu'>
-                                            <a href="/User/Index" class="dashboard-nav-dropdown-item"><i class="bi bi-people"> </i>List User</a>
-                                            <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddUserModal" id="LayoutAddUserBtn"><i class="bi bi-person-add"></i>Add Users</a>
+                                            <a href="/User/Index" class="dashboard-nav-dropdown-item closeMobileMenu"><i class="bi bi-people"> </i>List User</a>
+                                            <a href="#" class="dashboard-nav-dropdown-item closeMobileMenu" data-toggle="modal" data-target="#AddUserModal" id="LayoutAddUserBtn"><i class="bi bi-person-add"></i>Add Users</a>
                                         </div>
                                     </div>
 
-                                    <a href="#" class="dashboard-nav-item"><i class="bi bi-gear-fill"></i> Settings </a>
+                                    <a href="#" class="dashboard-nav-item closeMobileMenu"><i class="bi bi-gear-fill"></i> Settings </a>
                                 }
 
                                 <a href="#" class="dashboard-nav-item closeMobileMenu"><i class="bi bi-cloud-arrow-down-fill"></i> Download App </a>
@@ -360,13 +360,13 @@
 
                                         <div class="nav-item-divider"></div>
 
-                                        <div class="container">
+                                        <div class="container form-group">
                                             <div class="row col-12">
                                                 <div class="col col-6">
                                                     Preffered Bank
                                                 </div>
                                                 <div class="col col-6 bankListDropdown">
-                                                    <select class="form-select form-select-md mb-3" onchange="ChangeWithDrawBank()" aria-label="">
+                                                    <select class="form-select form-select-md mb-3" name="bankDropdown" onchange="ChangeWithDrawBank()" aria-label="">
                                                     </select>
                                                 </div>
                                             </div>

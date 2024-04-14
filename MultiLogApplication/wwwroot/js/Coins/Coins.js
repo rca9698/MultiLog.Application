@@ -239,19 +239,20 @@ function GetWithdrawCoinsToAccountRequest() {
 
 function bankDropDown(result) {
     $('.bankListDropdown select').empty();
-    var dropDownData = `<option disabled="" selected=""> CHANGE BANK </option>`;
+    var dropDownData = `<option disabled="" selected="" value="0"> CHANGE BANK </option>`;
     if (result.returnList) {
         result.returnList.forEach(function (item) {
             dropDownData += `<option value="${item.bankAccountDetailID}">${item.bankName}</option>`
         });
     }
 
+    $('.bankListDropdown select').append(dropDownData);
+
     if (result.returnVal) {
         $('.bankListDropdown option').attr('selected', false);
         $('.bankListDropdown option[value=' + result.returnVal.bankAccountDetailID + ']').attr('selected', true);
     }
 
-    $('.bankListDropdown select').append(dropDownData);
 }
 
 function SetBankdetails(result) {
@@ -552,6 +553,18 @@ var WithDrawCoinsRequestFormValidationSingleton = (function () {
                             message: 'Requested coins should be less then or equal to account coins',
                             callback: function (value, validator, $field) {
                                 if ($('#WithdrawCoinsRequestModalForm .coins').val() != '' && $('#WithdrawCoinsRequestModalForm .coins').val() >= accountCoins)
+                                    return false;
+                                return true;
+                            }
+                        }
+                    }
+                },
+                bankDropdown: {
+                    validators: {
+                        callback: {
+                            message: 'Please Select Bank Account',
+                            callback: function (value, validator, $field) {
+                                if ($('#WithdrawCoinsRequestModalForm .bankListDropdown').find(":selected").val() == '0')
                                     return false;
                                 return true;
                             }

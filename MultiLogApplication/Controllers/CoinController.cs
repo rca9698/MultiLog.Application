@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models.BankAccount;
 using MultiLogApplication.Models.Coin;
 using MultiLogApplication.Models.Common;
 using MultiLogApplication.Service;
+using System.Security.Claims;
 
 namespace MultiLogApplication.Controllers
 {
