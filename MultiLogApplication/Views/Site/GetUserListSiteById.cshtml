@@ -29,12 +29,12 @@
                     <div class="col-4 contentAlignType">
                         <div class="row col-12">
                             <div class="col-4">
-                                <div class="rounded-circle userlistingCircle bgclrGreen contentAlignType" data-toggle="modal" data-target="#DepositeToAccountRequestModal" siteid="2" id="DepositeToAccountRequestCoinsBtn">
+                                <div class="rounded-circle userlistingCircle bgclrGreen contentAlignType" data-toggle="modal" data-target="#DepositeToAccountRequestModal" siteid="@siteDetail.SiteId" id="DepositeToAccountRequestCoinsBtn">
                                     D
                                 </div>
                             </div>
                             <div class="col-4">
-                                <div class="rounded-circle userlistingCircle bgclrred contentAlignType" data-toggle="modal" data-target="#WithDrawToAccountRequestModal" siteid="2" id="withdrawFromAccountRequestCoinsBtn">
+                                <div class="rounded-circle userlistingCircle bgclrred contentAlignType" data-toggle="modal" data-target="#WithDrawToAccountRequestModal" siteid="@siteDetail.SiteId" id="withdrawFromAccountRequestCoinsBtn">
                                     W
                                 </div>
                             </div>
@@ -44,8 +44,8 @@
                                         ...
                                     </div>
                                     <ul class="dropdown-menu" aria-labelledby="">
-                                        <li><a class="dropdown-item" href="#">Deposit</a></li>
-                                        <li><a class="dropdown-item" href="#">Withdraw</a></li>
+                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#DepositeToAccountRequestModal" siteid="@siteDetail.SiteId" id="DepositeToAccountRequestCoinsBtn">Deposit</a></li>
+                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#WithDrawToAccountRequestModal" siteid="@siteDetail.SiteId" id="withdrawFromAccountRequestCoinsBtn">Withdraw</a></li>
                                         <li><a class="dropdown-item" href="#">View Transaction</a></li>
                                         <li><a class="dropdown-item" href="#">Change Password</a></li>
                                         <li><a class="dropdown-item" href="#">Close ID</a></li>
@@ -95,7 +95,7 @@ else
                     </div>
                     <div class="form-group">
                         <label>Username*</label>
-                        <input type="text" name="depositeToAccountCoins" class="form-control Coins" placeholder="Coins" autocomplete="off">
+                        <input type="number" name="depositeToAccountCoins" class="form-control Coins" placeholder="Coins" autocomplete="off">
                         <span>Current Wallet Balance: @coins</span>
                     </div>
                 </div>
@@ -136,7 +136,7 @@ else
                     </div>
                     <div class="form-group">
                         <label>Username*</label>
-                        <input type="text" name="withdrawFromAccountCoins" class="form-control Coins" placeholder="Coins" autocomplete="off">
+                        <input type="number" name="withdrawFromAccountCoins" class="form-control Coins" placeholder="Coins" autocomplete="off">
                     </div>
                 </div>
                 <div class="modal-footer">

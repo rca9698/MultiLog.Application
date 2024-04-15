@@ -743,3 +743,9 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+
+.text-center {
+    text-align: center !important;
+    align-content: center !important;
+}

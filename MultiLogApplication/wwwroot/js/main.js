@@ -71,9 +71,12 @@ $(document).click(function (e) {
         }
     }
 
-    $(document).on('click', '.closeMobileMenu', function () {
-        if (container.hasClass('mobile-show')) {
-            $(".dashboard-nav").removeClass("mobile-show");
+    $(document).on('click', '.dashboard-nav-item, .dashboard-nav-dropdown-item', function () {
+
+        if (!$(this).hasClass('dashboard-nav-dropdown-toggle')) {
+            if (container.hasClass('mobile-show')) {
+                $(".dashboard-nav").removeClass("mobile-show");
+            }
         }
     });
 
