@@ -93,22 +93,6 @@
     overflow:scroll;
 }
 
-@media (min-width: 992px) {
-    .siteImageCircle {
-        width: 14vw;
-        height: 14vw;
-    }
-}
-
-
-@media (max-width: 992px) {
-    .siteImageCircle {
-        width: 14vw;
-        height: 14vw;
-    }
-}
-
-
 .userlistingCircle {
     width: 6vw;
     height: 6vw;
@@ -141,4 +125,35 @@
 
 .btn-sm{
     font-size:7px;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .siteImageCircle {
+        width: 14vw;
+        height: 14vw;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .siteImageCircle {
+        width: 14vw;
+        height: 14vw;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+     
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+     
 }
