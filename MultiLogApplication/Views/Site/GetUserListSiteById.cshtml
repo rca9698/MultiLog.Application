@@ -16,8 +16,8 @@
                 <div class="row Col-12">
                     <div class="col-8 viewThisSiteDetails" siteId ="@siteDetail.SiteId">
                         <div class="row col-12">
-                            <div class="col-3 siteImageDivClass">
-                                <img class="siteImageCircle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
+                            <div class="col-3 text-center">
+                                <img class="siteImageCircle rounded-circle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
                             </div>
                             <div class="col-9">
                                 <h6 class="pSiteNameFontSize siteName">@siteDetail.SiteName</h6>
@@ -39,8 +39,17 @@
                                 </div>
                             </div>
                             <div class="col-4">
-                                <div class="rounded-circle userlistingCircle contentAlignType">
-                                    ...
+                                <div class="dropdown">
+                                    <div class="rounded-circle userlistingCircle contentAlignType" data-bs-toggle="dropdown" aria-expanded="false">
+                                        ...
+                                    </div>
+                                    <ul class="dropdown-menu" aria-labelledby="">
+                                        <li><a class="dropdown-item" href="#">Deposit</a></li>
+                                        <li><a class="dropdown-item" href="#">Withdraw</a></li>
+                                        <li><a class="dropdown-item" href="#">View Transaction</a></li>
+                                        <li><a class="dropdown-item" href="#">Change Password</a></li>
+                                        <li><a class="dropdown-item" href="#">Close ID</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -70,15 +79,15 @@ else
             <form id="DepositeToAccountRequestModalForm">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel">Deposite Coins</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group col-12">
                         <div class="d-flex flex-column text-center col-12">
-                            <span class="imageSpanCircle" >
-                                <img class="siteIcon siteImageCircle" src="" />
+                            <span class="" >
+                                <img class="siteIcon rounded-circle siteImageCircle" src="" />
                             </span>
                             <span class="pSiteNameFontSize siteName">Name</span>
                             <span class="pSiteURLFontSize siteURL">URL</span>
@@ -111,15 +120,15 @@ else
             <form id="WithDrawToAccountRequestModalForm">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel">Withdraw Coins</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group col-12">
                         <div class="d-flex flex-column text-center col-12">
-                            <span class="imageSpanCircle">
-                                <img class="siteIcon siteImageCircle" src="" />
+                            <span class="">
+                                <img class="siteIcon rounded-circle siteImageCircle" src="" />
                             </span>
                             <span class="pSiteNameFontSize siteName">Name</span>
                             <span class="pSiteURLFontSize siteURL">URL</span>

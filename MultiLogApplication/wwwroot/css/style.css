@@ -713,34 +713,6 @@ body {
 }
 
 
-.userlistingCircle {
-    width: 8vw;
-    height: 8vw;
-    border-radius: 50%;
-}
-
-.bgclrred {
-    background-color: red
-}
-
-.bgclrGreen {
-    background-color: green
-}
-
-.backbtnNavDesign {
-    background: #0f1424;
-    height: 23px;
-    width: 100%;
-    margin: 0px 0px 20px 0px;
-    border-radius: 10px 10px 10px 10px;
-    color: #FFFF;
-}
-
-
-#listSites .card {
-    border-radius: 15px;
-    margin-top: 15px;
-}
 
 .tabSelection {
     height: 35px;

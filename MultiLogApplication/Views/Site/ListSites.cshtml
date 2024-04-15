@@ -11,8 +11,8 @@
                 <div class="row Col-12">
                     <div class="col-8">
                         <div class="row col-12">
-                            <div class="col-3 siteImageDivClass">
-                                <img class="siteImageCircle siteIcon" imageName="@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
+                            <div class="col-3 text-center">
+                                <img class="siteImageCircle rounded-circle siteIcon" imageName="@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
                             </div>
                             <div class="col-9">
                                 <h5 class="pSiteNameFontSize siteName">@siteDetail.SiteName</h5>
@@ -21,10 +21,18 @@
                         </div>
 
                     </div>
-                    <div class="col-4 contentAlignType  cursorPointer">
+
+                    <div class="col-4 d-grid gap-2 mx-auto">
+                        <div class="col-12 text-center">
+                            <button class="btn btn-primary btn-sm col-6" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#UpdateSiteModal" id="updateSiteBtn" type="button">Update Site</button>
+                            <button class="btn btn-danger btn-sm col-6 ml-2" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#DeleteSiteModal" id="deleteSiteBtn" type="button">Delete</button>
+                        </div>
+                    </div>
+
+                   @*  <div class="col-4 contentAlignType  cursorPointer">
                         <div class="siteBorderRadius siteBtnbackground BtnFontSize" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#UpdateSiteModal" id="updateSiteBtn" style="float: right;">Update Site</div>
                         <div class="siteBorderRadius siteBtnbackground BtnFontSize bgclrred" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#DeleteSiteModal" id="deleteSiteBtn" style="float: right;margin-left:2px">Delete</div>
-                    </div>
+                    </div> *@
                 </div>
             </div>
         </div>

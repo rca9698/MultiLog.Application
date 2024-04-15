@@ -11,8 +11,8 @@
                 <div class="row Col-12">
                     <div class="col-9">
                         <div class="row col-12">
-                            <div class="col-3 siteImageDivClass" >
-                                <img class="siteImageCircle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
+                            <div class="col-3 text-center">
+                                <img class="siteImageCircle rounded-circle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
                             </div>
                             <div class="col-9">
                                 <h6 class="pSiteNameFontSize siteName">@siteDetail.SiteName</h6>
@@ -21,9 +21,14 @@
                         </div>
 
                     </div>
-                    <div class="col-3 contentAlignType cursorPointer">
-                        <div class="siteBorderRadius siteBtnbackground BtnFontSize" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right"><i class="bi bi-plus-square-fill"></i>Create</div>
+
+                    <div class="align-items-center row py-4 col-3">
+                        <button type="button" class="btn btn-primary text-nowrap" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn"><i class="bi bi-plus-square-fill px-2"></i>Create</button>
                     </div>
+
+                    @* <div class="col-3 contentAlignType cursorPointer">
+                        <div class="siteBorderRadius siteBtnbackground BtnFontSize" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" ><i class="bi bi-plus-square-fill"></i>Create</div>
+                    </div> *@
                 </div>
             </div>
         </div>
@@ -47,15 +52,15 @@ else
             <form id="CreateIDRequestModalForm">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel">CREATE ID</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group col-12">
                         <div class="d-flex flex-column text-center col-12">
-                            <span class="imageSpanCircle">
-                                <img class="siteIcon siteImageCircle" src="" />
+                            <span class="">
+                                <img class="siteIcon rounded-circle siteImageCircle" src="" />
                             </span>
                             <span class="pSiteNameFontSize siteName">Site Name</span>
                             <span class="pSiteURLFontSize siteURL">Site URL</span>
