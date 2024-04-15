@@ -1,6 +1,6 @@
 ﻿namespace MultiLogApplication.Models.Coin
 {
-    public class DeleteCoinRequest
+    public class WithdrawCoinRequest
     {
         public int Coins { get; set; }
         public long SessionUser { get; set; }

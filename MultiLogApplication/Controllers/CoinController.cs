@@ -115,7 +115,7 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
-        public async Task<IActionResult> WithDrawCoinsRequest(DeleteCoinRequest obj)
+        public async Task<IActionResult> WithDrawCoinsRequest(WithdrawCoinRequest obj)
         {
             ReturnType<string> res = new ReturnType<string>();
             try
@@ -274,6 +274,35 @@ namespace MultiLogApplication.Controllers
         }
 
 
+        public async Task<IActionResult> DeleteAccountRequestCoins(DeleteRequestCoinsModel obj)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            { 
+                obj.SessionUser = _sessionUser;
+                res = await _coinService.DeleteAccountRequestCoins(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > DeleteAccountRequestCoins");
+            }
+            return Json(res);
+        }
+
+        public async Task<IActionResult> DeleteRequestCoins(DeleteRequestCoinsModel obj)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                obj.SessionUser = _sessionUser;
+                res = await _coinService.DeleteRequestCoins(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > DeleteAccountRequestCoins");
+            }
+            return Json(res);
+        }
 
     }
 }

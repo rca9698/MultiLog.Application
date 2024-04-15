@@ -46,7 +46,9 @@ $(document).on('click', '#viewCoinRequestproofBtn', function () {
 });
 
 $(document).on('click', '#deleteCoinRequestBtn', function () {
-
+    debugger;
+    let coinrequestid = $(this).attr('coinrequestid');
+    $('#DeleteConsToAccountConfirmbtn').attr('coinrequestid', coinrequestid);
 });
 
 $(document).on('click', '#withdrawCoinsBtn', function () {
@@ -147,10 +149,43 @@ $(document).on('click', '#withdrawCoinsFromAccountBtn', function () {
     WithdrawCoinsFromAccountFormValidationSingleton.getInstance();
 })
 
+$(document).on('click', '#DeleteConsToAccountConfirmbtn', function () {
+    let coinrequestid = $(this).attr('coinrequestid');
+    DeleteAccountRequestCoins(coinrequestid);
+});
 
 //End click event region
 
 //Start function region
+
+function DeleteAccountRequestCoins(id) {
+    var obj = {
+        CoinRequestId: id
+    }
+    $.ajax({
+        url: '/Coin/DeleteAccountRequestCoins',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            ToasteRMessage(result, '#DeleteSiteModal');
+        }
+    });
+}
+
+function DeleteRequestCoins(id) {
+    var obj = {
+        CoinRequestId: id
+    }
+    $.ajax({
+        url: '/Coin/DeleteRequestCoins',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            ToasteRMessage(result, '#DeleteSiteModal');
+        }
+    });
+}
+
 
 function DepositCoins() {
     var obj = {
