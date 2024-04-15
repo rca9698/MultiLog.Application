@@ -48,8 +48,15 @@ $(document).on('click', '#viewCoinRequestproofBtn', function () {
 $(document).on('click', '#deleteCoinRequestBtn', function () {
     debugger;
     let coinrequestid = $(this).attr('coinrequestid');
+    $('#DeleteCoinsToWalletConfirmbtn').attr('coinrequestid', coinrequestid);
+});
+
+$(document).on('click', '#DeleteCoinsToAccountRequestBtn', function () {
+    let coinrequestid = $(this).attr('coinrequestid');
     $('#DeleteConsToAccountConfirmbtn').attr('coinrequestid', coinrequestid);
 });
+
+
 
 $(document).on('click', '#withdrawCoinsBtn', function () {
     $('#WithdrawCoinsForm .userNumber').val($(this).attr('UserNumber'));
@@ -153,6 +160,13 @@ $(document).on('click', '#DeleteConsToAccountConfirmbtn', function () {
     let coinrequestid = $(this).attr('coinrequestid');
     DeleteAccountRequestCoins(coinrequestid);
 });
+
+$(document).on('click', '#DeleteCoinsToWalletConfirmbtn', function () {
+    let coinrequestid = $(this).attr('coinrequestid');
+    DeleteRequestCoins(coinrequestid);
+});
+
+
 
 //End click event region
 
