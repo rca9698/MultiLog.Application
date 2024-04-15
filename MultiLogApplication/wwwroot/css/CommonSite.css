@@ -95,16 +95,16 @@
 
 @media (min-width: 992px) {
     .siteImageCircle {
-        width: 15vw;
-        height: 15vw;
+        width: 14vw;
+        height: 14vw;
     }
 }
 
 
 @media (max-width: 992px) {
     .siteImageCircle {
-        width: 15vw;
-        height: 15vw;
+        width: 14vw;
+        height: 14vw;
     }
 }
 
