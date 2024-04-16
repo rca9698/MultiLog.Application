@@ -1,6 +1,6 @@
 ﻿@model string;
 
-@if(@Model != "Admin")
+@if (@Model != "Admin")
 {
     <div class="row col-12 idSwitch text-white" style="">
         <div class="col-6 tabSelection myIdsClass" idType="myIds">
@@ -13,10 +13,10 @@
     </div>
 }
 
-<div class='dashboard-content' id="listSites" ViewType="@Model">
+<div class='dashboard-content rounded bg-dark' id="listSites" ViewType="@Model">
 </div>
 
-<div class='dashboard-content bg-dark' id="SiteDetail">
+<div class='dashboard-content bg-dark' id="SiteDetail" style="display:none">
 </div>
 
 <!-- Update sites Modal -->
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn siteBtnbackground col-12">Update Site</button> 
+                    <button type="submit" class="btn siteBtnbackground col-12">Update Site</button>
                 </div>
             </form>
         </div>
