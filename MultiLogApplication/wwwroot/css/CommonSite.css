@@ -121,7 +121,6 @@
     margin-top: 15px;
 }
 
-
 .btn-sm{
     font-size:7px;
 }
@@ -129,6 +128,17 @@
 .dashboardSite .card .card-body p {
     font-size: 15px
 }
+
+.tempclass {
+    @extend .grid-margin;
+    @extend .stretch-card;
+    @extend .bg-dark-1;
+    @extend .rounded;
+    @extend .text-center;
+}
+
+
+
 
 
 
