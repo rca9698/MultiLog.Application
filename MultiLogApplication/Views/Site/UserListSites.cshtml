@@ -6,17 +6,17 @@
 {
     @foreach (var siteDetail in Model.ReturnList)
     {
-        <div class="card sitebackground siteBorderRadius siteColor site_@siteDetail.SiteId">
+        <div class="card sitebackground rounded siteColor site_@siteDetail.SiteId">
             <div class="card-body">
                 <div class="row Col-12">
                     <div class="col-9">
                         <div class="row col-12">
                             <div class="col-3 text-center">
-                                <img class="siteImageCircle rounded-circle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
+                                <img class="siteImageSize rounded-circle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
                             </div>
-                            <div class="col-9">
-                                <h6 class="pSiteNameFontSize siteName">@siteDetail.SiteName</h6>
-                                <p class="pSiteURLFontSize siteURL">@siteDetail.SiteURL</p>
+                            <div class="col-9 align-self-center">
+                                <p class="fw-bolder siteName">@siteDetail.SiteName</p>
+                                <p class="fw-normal siteURL">@siteDetail.SiteURL</p>
                             </div>
                         </div>
 
@@ -27,7 +27,7 @@
                     </div>
 
                     @* <div class="col-3 contentAlignType cursorPointer">
-                        <div class="siteBorderRadius siteBtnbackground BtnFontSize" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" ><i class="bi bi-plus-square-fill"></i>Create</div>
+                        <div class="rounded siteBtnbackground BtnFontSize" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" ><i class="bi bi-plus-square-fill"></i>Create</div>
                     </div> *@
                 </div>
             </div>
@@ -60,7 +60,7 @@ else
                     <div class="form-group col-12">
                         <div class="d-flex flex-column text-center col-12">
                             <span class="">
-                                <img class="siteIcon rounded-circle siteImageCircle" src="" />
+                                <img class="siteIcon rounded-circle siteImageSize" src="" />
                             </span>
                             <span class="pSiteNameFontSize siteName">Site Name</span>
                             <span class="pSiteURLFontSize siteURL">Site URL</span>

@@ -37,12 +37,12 @@
     height: 100% !important;
     width: 100% !important;
 }
-
+/*
 .siteBorderRadius {
     border-radius: 10px 10px 10px 10px !important;
 }
-
-.siteImageCircle {
+*/
+.siteImageSize {
     width: 7vw;
     height: 7vw;
 }
@@ -126,37 +126,47 @@
     font-size:7px;
 }
 
+.dashboardSite .card .card-body p {
+    font-size: 15px
+}
+
+
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    .siteImageCircle {
+    .siteImageSize {
         width: 14vw;
         height: 14vw;
+    }
+
+    .dashboardSite .card .card-body p {
+        font-size: 6px
     }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    .siteImageCircle {
+@media only screen and (max-width: 750px) {
+    .siteImageSize {
         width: 14vw;
         height: 14vw;
+    }
+
+    .dashboardSite .card .card-body p {
+        font-size: 6px
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    .siteImageCircle {
-        width: 14vw;
-        height: 14vw;
-    }
+@media only screen and (max-width: 768px) {
+
 } 
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+@media only screen and (max-width: 992px) {
     
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
+@media only screen and (max-width: 1200px) {
      
 }

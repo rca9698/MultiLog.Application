@@ -3,62 +3,62 @@
 @model ReturnType<MultiLogApplication.Models.Account.AccountDetail>
 
 @if (Model != null && Model.ReturnVal != null)
-{ 
+{
     <div class="BackBtnMyIds card-body card-body-padding row col-12 backbtnNavDesign">
-    <div class="col-2" style="margin: -11px;">
-        <i class="bi bi-arrow-left-circle-fill"></i>
+        <div class="col-2" style="margin: -11px;">
+            <i class="bi bi-arrow-left-circle-fill"></i>
+        </div>
+        <div class="col-10"></div>
     </div>
-    <div class="col-10"></div>
-</div>
-    <div class="card sitebackground siteBorderRadius siteColor">
+    <div class="card sitebackground rounded siteColor">
         <div class="card-body card-body-padding">
-        <div class="row Col-12">
-            <div class="col-10">
-                <div class="row col-12">
-                    <div class="col-6">
-                            <img src="@Configuration["StoragePath:SiteIcon:Path"]\@Model.ReturnVal.DocumentDetailId.@Model.ReturnVal.FileExtenstion" alt="cricket ipl" class="siteBorderRadius siteheightwidth100">
+            <div class="row Col-12">
+                <div class="col-10">
+                    <div class="row col-12">
+                        <div class="col-3">
+                            <img src="@Configuration["StoragePath:SiteIcon:Path"]\@Model.ReturnVal.DocumentDetailId.@Model.ReturnVal.FileExtenstion" alt="cricket ipl" class="rounded siteImageSize">
+                        </div>
+                        <div class="col-9 align-self-center">
+                            <h5 class="fw-bolder">@Model.ReturnVal.SiteName</h5>
+                            <p class="fw-normal">@Model.ReturnVal.SiteURL</p>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <h5 class="card-title">@Model.ReturnVal.SiteName</h5>
-                        <p class="card-title">@Model.ReturnVal.SiteURL</p>
-                    </div>
-                </div>
 
-            </div>
-            <div class="col-2">
+                </div>
+                <div class="col-2">
                     <a href="@Model.ReturnVal.SiteURL" target="_blank">
                         <i class="bi bi-arrow-up-right-square-fill" style="float: right;"></i>
-                        </a>
-                
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="row Col-12">
+                <p class="card-title">
+                    UserName: @Model.ReturnVal.UserName
+                    <svg width="16" height="16" fill="currentColor" class="bi bi-copy CopyToClipboard" copyData="@Model.ReturnVal.UserName" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                    </svg>
+                </p>
+            </div>
+            <div class="row Col-12">
+                <p class="card-title">
+                    Password: @Model.ReturnVal.Password
+                    <svg width="16" height="16" fill="currentColor" class="bi bi-copy CopyToClipboard" copyData="@Model.ReturnVal.Password" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+                    </svg>
+                </p>
+            </div>
+            <div class="row Col-12">
+                <p class="card-title" style="background: #222200;color: brown;">
+                    Pasword is with capital @Model.ReturnVal.Password?.Substring(0, 1)
+                </p>
+            </div>
+            <div class="row Col-12" style="margin-bottom: -20px;margin-left: 2px;">
+                <p class="card-title">
+                    @Model.ReturnVal.CreatedDate
+                </p>
             </div>
         </div>
-
-        <div class="row Col-12">
-            <p class="card-title">
-                UserName: @Model.ReturnVal.UserName
-                <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
-                </svg>
-            </p>
-        </div>
-        <div class="row Col-12">
-            <p class="card-title">
-                Password: @Model.ReturnVal.Password
-                <svg width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
-                </svg>
-            </p>
-        </div>
-        <div class="row Col-12">
-            <p class="card-title" style="background: #222200;color: brown;">
-                Pasword is with capital B
-            </p>
-        </div>
-        <div class="row Col-12" style="margin-bottom: -20px;margin-left: 2px;">
-            <p class="card-title">
-                @Model.ReturnVal.CreatedDate
-            </p>
-        </div>
     </div>
-</div>
- } 
+}

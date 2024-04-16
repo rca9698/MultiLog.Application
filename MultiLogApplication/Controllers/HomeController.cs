@@ -1,17 +1,23 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiLogApplication.Extensions;
+using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models;
+using MultiLogApplication.Models.Common;
+using MultiLogApplication.Models.Dashboard;
+using MultiLogApplication.Models.SiteDetails;
 using System.Diagnostics;
 
 namespace MultiLogApplication.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
-        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor httpContextAccessor)
+        private readonly ISiteService _siteService;
+        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor httpContextAccessor, ISiteService siteService) : base(httpContextAccessor)
         {
             _logger = logger;
+            _siteService = siteService;
         }
 
         public IActionResult Index()
@@ -19,9 +25,20 @@ namespace MultiLogApplication.Controllers
             return View();
         }
 
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
-            return View();
+            DashboardModel dashboardModel = new DashboardModel();
+            ReturnType<SiteDetail> res = new ReturnType<SiteDetail>();
+            try
+            {
+                var data = _sessionUser != 0 ? await _siteService.GetUserListSiteById(_sessionUser) : new ReturnType<SiteDetail>();
+                dashboardModel.SiteDetail = data?.ReturnList?.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at HomeController > Dashboard");
+            }
+            return View(dashboardModel);
         }
 
         public IActionResult Privacy()

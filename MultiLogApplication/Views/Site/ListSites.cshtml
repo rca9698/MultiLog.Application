@@ -2,21 +2,28 @@
 @inject IConfiguration Configuration
 @model ReturnType<MultiLogApplication.Models.SiteDetails.SiteDetail>
 
+    <style>
+    #listSites button {
+        height: 50%;
+        width: 50%;
+    }
+    </style>
+
 @if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
 {
     @foreach (var siteDetail in Model.ReturnList)
     {
-        <div class="card sitebackground siteBorderRadius siteColor site_@siteDetail.SiteId">
+        <div class="card sitebackground rounded siteColor site_@siteDetail.SiteId">
             <div class="card-body">
                 <div class="row Col-12">
                     <div class="col-8">
                         <div class="row col-12">
                             <div class="col-3 text-center">
-                                <img class="siteImageCircle rounded-circle siteIcon" imageName="@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
+                                <img class="siteImageSize rounded-circle siteIcon" imageName="@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
                             </div>
-                            <div class="col-9">
-                                <h5 class="pSiteNameFontSize siteName">@siteDetail.SiteName</h5>
-                                <p class="pSiteURLFontSize siteURL">@siteDetail.SiteURL</p>
+                            <div class="col-9 align-self-center">
+                                <p class="fw-bolder siteName">@siteDetail.SiteName</p>
+                                <p class="fw-normal siteURL">@siteDetail.SiteURL</p>
                             </div>
                         </div>
 
@@ -30,8 +37,8 @@
                     </div>
 
                    @*  <div class="col-4 contentAlignType  cursorPointer">
-                        <div class="siteBorderRadius siteBtnbackground BtnFontSize" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#UpdateSiteModal" id="updateSiteBtn" style="float: right;">Update Site</div>
-                        <div class="siteBorderRadius siteBtnbackground BtnFontSize bgclrred" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#DeleteSiteModal" id="deleteSiteBtn" style="float: right;margin-left:2px">Delete</div>
+                        <div class="rounded siteBtnbackground BtnFontSize" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#UpdateSiteModal" id="updateSiteBtn" style="float: right;">Update Site</div>
+                        <div class="rounded siteBtnbackground BtnFontSize bgclrred" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#DeleteSiteModal" id="deleteSiteBtn" style="float: right;margin-left:2px">Delete</div>
                     </div> *@
                 </div>
             </div>

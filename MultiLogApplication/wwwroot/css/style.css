@@ -36,7 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 a {
@@ -639,7 +639,8 @@ body {
     /*background: -webkit-linear-gradient(to left, #654ea3, #eaafc8);*/
     /*background: linear-gradient(to left, #654ea3, #eaafc8);*/
     /*background: linear-gradient(to left, #d334e3, #d334e3);*/
-    background-image:url('../images/BodyBackground.jpg');
+    /*background-image:url('../images/BodyBackground.jpg');*/
+    background:#050A30;
     min-height: 100vh;
     padding-bottom: 5rem;
 }
@@ -748,4 +749,36 @@ input[type=number] {
 .text-center {
     text-align: center !important;
     align-content: center !important;
+}
+
+.bg-dark {
+    background-color: #000000 !important;
+}
+
+.bg-dark-1 {
+    background-color: #191616 !important;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 750px) {
+     
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+    
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px) {
+
 }

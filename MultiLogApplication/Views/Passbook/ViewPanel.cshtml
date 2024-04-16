@@ -6,13 +6,13 @@
 {
     @foreach (var passbookDetail in Model.ReturnList)
     {
-        <div class="card sitebackground siteBorderRadius siteColor" style="margin: 0px 0px 10px 0px;">
+        <div class="card sitebackground rounded siteColor" style="margin: 0px 0px 10px 0px;">
             <div class="card-body">
                 <div class="row Col-12">
                     <div class="col-9">
                         <div class="row col-12 viewPassbookHistoryDetails cursorPointer" passbookId="@passbookDetail.PassbookHistoryId">
                             <div class="col-3">
-                                <img class="siteImageCircle rounded-circle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@passbookDetail.DocumentDetailId.@passbookDetail.FileExtenstion">
+                                <img class="siteImageSize rounded-circle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@passbookDetail.DocumentDetailId.@passbookDetail.FileExtenstion">
                             </div>
                             <div class="col-9 Col-12">
                                 <div class="Col-3">
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     <div class="col-3">
-                        @* <button class="siteBorderRadius siteBtnbackground" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right"><i class="bi bi-plus-square-fill"></i>Create</button> *@
+                        @* <button class="rounded siteBtnbackground" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right"><i class="bi bi-plus-square-fill"></i>Create</button> *@
                     </div>
                 </div>
             </div>

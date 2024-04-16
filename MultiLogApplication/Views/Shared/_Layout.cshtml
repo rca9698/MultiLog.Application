@@ -220,9 +220,9 @@
                             <div class="modal-content sitebackground siteColor">
                                 <div class="modal-header text-center col-12">
                                     <h4 class="modal-title" id="exampleModalLabel">Deposit (<span id="depositAmount"></span>)</h4>
-                                    <button type="button" class="close col-4" data-dismiss="modal" aria-label="Close" id="closePaymentModesModal">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <div type="button" class="close" data-dismiss="modal" aria-label="Close" id="closePaymentModesModal">
+                                        <i class="bi bi-x-circle-fill"></i>
+                                    </div>
                                 </div>
                                 <div class="modal-body">
                                     <div id="PaymentModeList">
@@ -506,7 +506,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group col-12">
-                                        <img src="" alt="cricket ipl" class="siteBorderRadius siteheightwidth100 paymentProof">
+                                        <img src="" alt="cricket ipl" class="rounded siteheightwidth100 paymentProof">
                                     </div>
                                 </div>
                             </div>
@@ -586,6 +586,88 @@
                         </div>
                     </div>
                     <!-- Add Bank Details Modal-->
+                
+                    <!-- Deposite Coins to Account Modal -->
+                    <div class="modal fade" id="DepositeToAccountRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <style>
+                                .nav-item-divider {
+                                    background-color: rgb(20 24 25 / 30%);
+                                }
+                            </style>
+                            <div class="modal-content sitebackground siteColor">
+                                <form id="DepositeToAccountRequestModalForm">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Deposite Coins To Account</h4>
+                                        <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <i class="bi bi-x-circle-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group col-12">
+                                            <div class="d-flex flex-column text-center col-12">
+                                                <span class="">
+                                                    <img class="siteIcon rounded-circle siteImageSize" src="" />
+                                                </span>
+                                                <span class="pSiteNameFontSize siteName">Name</span>
+                                                <span class="pSiteURLFontSize siteURL">URL</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Username*</label>
+                                            <input type="number" name="depositeToAccountCoins" class="form-control Coins" placeholder="Coins" autocomplete="off">
+                                            <span>Current Wallet Balance: @coins</span>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn siteBtnbackground col-12">Deposite Coins To Site</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Deposite Coins to Account Modal-->
+
+                    <!-- WithDraw Coins to Account Modal -->
+                    <div class="modal fade" id="WithDrawToAccountRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <style>
+                                .nav-item-divider {
+                                    background-color: rgb(20 24 25 / 30%);
+                                }
+                            </style>
+                            <div class="modal-content sitebackground siteColor">
+                                <form id="WithDrawToAccountRequestModalForm">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Withdraw Coins from Account</h4>
+                                        <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <i class="bi bi-x-circle-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group col-12">
+                                            <div class="d-flex flex-column text-center col-12">
+                                                <span class="">
+                                                    <img class="siteIcon rounded-circle siteImageSize" src="" />
+                                                </span>
+                                                <span class="pSiteNameFontSize siteName">Name</span>
+                                                <span class="pSiteURLFontSize siteURL">URL</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Username*</label>
+                                            <input type="number" name="withdrawFromAccountCoins" class="form-control Coins" placeholder="Coins" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn siteBtnbackground col-12">Withdraw Coins From Site</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- WithDraw Coins to Account Modal-->
+
 
                 </div>
             </div>

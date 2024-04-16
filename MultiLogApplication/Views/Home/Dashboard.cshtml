@@ -1,12 +1,13 @@
 ﻿<link href="~/css/dashboard.css" rel="stylesheet" />
-
+@model MultiLogApplication.Models.Dashboard.DashboardModel
+@inject IConfiguration Configuration;
 @inject IHttpContextAccessor Accessor;
+
 @{
     var coins = Accessor.HttpContext.Session.GetString("Coins");
     var userId = Accessor.HttpContext.Session.GetString("UserId");
     var userNumber = Accessor.HttpContext.Session.GetString("UserNumber");
 }
-
 
 <div class='dashboard-content'>
     <div class="row" style="padding-bottom: 50px;">
@@ -14,7 +15,7 @@
 
         @if (User.Identity.IsAuthenticated)
         {
-            <div class="row col-12">
+            <div class="row col-12 text-white">
                 <div class="col-4 inline">
                     <div class="card sitebackground leftCard" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn" userId="@userId" userNumber="@userNumber">
                         <div class="container">
@@ -33,10 +34,10 @@
                     <div class="card sitebackground middleCard">
                         <div class="container">
                             <img src="~/images/kapunterIcon.jpg" alt="cricket ipl" class="DashboardIcontopradius">
-                            <h6 class="text-muted font-weight-normal DashboardIconText">
+                            <h6 class="font-weight-normal DashboardIconText">
                                 WALLET BALANCE
                             </h6>
-                            <h3 class="text-muted font-weight-normal DashboardIconText">@coins</h3>
+                            <h3 class="font-weight-normal DashboardIconText">@coins</h3>
                         </div>
                     </div>
                 </div>
@@ -54,7 +55,7 @@
         }
         else
         {
-            <div class="row col-12" id="loginNotification">
+            <div class="row col-12 text-white" id="loginNotification">
                 <div class="col-4 inline">
                     <div class="card sitebackground leftCard">
                         <div class="container">
@@ -73,10 +74,10 @@
                     <div class="card sitebackground middleCard">
                         <div class="container">
                             <img src="~/images/kapunterIcon.jpg" alt="cricket ipl" class="DashboardIcontopradius">
-                            <h6 class="text-muted font-weight-normal DashboardIconText">
+                            <h6 class="font-weight-normal DashboardIconText">
                                 WALLET BALANCE
                             </h6>
-                            <h3 class="text-muted font-weight-normal DashboardIconText">@coins</h3>
+                            <h3 class="font-weight-normal DashboardIconText">@coins</h3>
                         </div>
                     </div>
                 </div>
@@ -92,247 +93,100 @@
 
             </div>
         }
-      
-       
+
+
     </div>
     <img src="~/images/banner_ipl.png" alt="cricket ipl" width="100%" height="auto">
 
-    <div class="mt-4 bg-dark">
-        <div class="row col-12">
-            <div class="col-6">
-                <h6 class="text-white" style="padding-right: 15px;font-size: smaller;">My IDs</h6>
-            </div>
-            <div class="col-6 d-flex justify-content-end">
-                <a href="#" class="text-white IDsList" style="padding-right: 15px;font-size: smaller;">
-                    <i class="bi bi-plus-circle-fill"></i> Create ID
-                </a>
-                <a href="#" class="text-primary" style="padding-right: 15px;font-size: smaller;">View All</a>
+    @if (User.Identity.IsAuthenticated && Model.SiteDetail != null)
+    {
+        <div class="mt-4 bg-dark rounded">
+            <div class="row col-12">
+                <div class="col-6">
+                    <h6 class="text-white" style="padding-right: 15px;font-size: smaller;">My IDs</h6>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                    <a href="#" class="text-white IDsList" style="padding-right: 15px;font-size: smaller;">
+                        <i class="bi bi-plus-circle-fill"></i> Create ID
+                    </a>
+                    <a href="#" class="text-primary" style="padding-right: 15px;font-size: smaller;">View All</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="card" style="background: #222; padding: 30px;">
-        <div class="row">
-            <a class="nav-link collapsed" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>KAPunter</span>
-            </a>
-            <a class="nav-link collapsed" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>Vikas S</span>
-            </a>
-        </div>
-        <div class="card" style="background: #3e3e3e;">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div class="col-12" style="display: flex;">
-                    <div class="col-3 grid-margin stretch-card" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn">
-                    <div class="card" style="background: black;">
+        <div class="card text-white rounded sitebackground dashboardSite site_@Model.SiteDetail.SiteId" style="padding: 30px;">
+            <div class="row Col-12 bg-dark-1 p-2 rounded">
+                <div class="col-10">
+                    <div class="row col-12">
+                        <div class="col-3">
+                            <img src="@Configuration["StoragePath:SiteIcon:Path"]\@Model.SiteDetail.DocumentDetailId.@Model.SiteDetail.FileExtenstion" alt="cricket ipl" class="rounded siteImageSize siteIcon">
+                        </div>
+                        <div class="col-9 align-self-center">
+                            <p class="fw-bolder siteName"> @Model.SiteDetail.SiteName</p>
+                            <p class="fw-normal siteURL"> @Model.SiteDetail.SiteURL </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-2">
+                    <a href="@Model.SiteDetail.SiteURL" target="_blank">
+                        <i class="bi bi-arrow-up-right-square-fill" style="float: right;"></i>
+                    </a>
+
+                </div>
+            </div>
+            <div class="row Col-12 bg-dark-1 p-2">
+                <div class="col-3 grid-margin stretch-card bg-dark-1 rounded text-center" data-toggle="modal" data-target="#DepositeToAccountRequestModal" siteid="@Model.SiteDetail.SiteId" id="DepositeToAccountRequestCoinsBtn">
+                    <div class="card bg-dark p-2">
                         <div class="card-body text-center">
                             <div class="row">
                                 <i class="bi bi-chevron-double-up" style="color: green;"></i>
                             </div>
-                            <h6 class="text-muted font-weight-normal">
-                                <a href="#" style="font-size: 12px"> Deposite </a>
-                            </h6>
+                            <p class="fw-bolder">
+                                Deposite
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-3 grid-margin stretch-card" data-toggle="modal" data-target="#WithdrawCoinsRequestModal" id="WithdrawCoinsRequestModalBtn">
-                    <div class="card" style="background: black;">
+                <div class="col-3 grid-margin stretch-card bg-dark-1 rounded text-center" data-toggle="modal" data-target="#WithDrawToAccountRequestModal" siteid="@Model.SiteDetail.SiteId" id="withdrawFromAccountRequestCoinsBtn">
+                    <div class="card bg-dark p-2">
                         <div class="card-body text-center">
                             <div class="row">
                                 <i class="bi bi-chevron-double-down" style="color: darkred;"></i>
                             </div>
-                            <h6 class="text-muted font-weight-normal">
-                                <a href="#" style="font-size: 12px"> Withdraw </a>
-                            </h6>
+                            <p class="fw-bolder">
+                                Withdraw 
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-3 grid-margin stretch-card">
-                    <div class="card" style="background: black;">
+                <div class="col-3 grid-margin stretch-card bg-dark-1 rounded text-center">
+                    <div class="card bg-dark p-2">
                         <div class="card-body text-center">
                             <div class="row">
                                 <i class="bi bi-key-fill"></i>
                             </div>
-                            <h6 class="text-muted font-weight-normal">
-                                <a href="#" style="font-size: 12px"> Password </a>
-                            </h6>
+                            <p class="fw-bolder">
+                                Password
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-3 grid-margin stretch-card">
-                    <div class="card" style="background: black;">
+                <div class="col-3 grid-margin stretch-card bg-dark-1 rounded text-center">
+                    <div class="card bg-dark p-2">
                         <div class="card-body text-center">
                             <div class="row">
                                 <i class="bi bi-ticket-detailed-fill"></i>
                             </div>
-                            <h6 class="text-muted font-weight-normal">
-                                <a href="#" style="font-size: 12px"> View Detail </a>
-                            </h6>
+                            <p class="fw-bolder">
+                                 View Detail
+                            </p>
                         </div>
                     </div>
                 </div>
-                </div>
-            }
-            else
-            {
-                <div class="col-12" style="display: flex;">
-                    <div class="col-3 grid-margin stretch-card">
-                        <div class="card" style="background: black;">
-                            <div class="card-body text-center">
-                                <div class="row">
-                                    <i class="bi bi-chevron-double-up" style="color: green;"></i>
-                                </div>
-                                <h6 class="text-muted font-weight-normal">
-                                    <a href="#" style="font-size: 12px"> Deposite </a>
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 grid-margin stretch-card">
-                        <div class="card" style="background: black;">
-                            <div class="card-body text-center">
-                                <div class="row">
-                                    <i class="bi bi-chevron-double-down" style="color: darkred;"></i>
-                                </div>
-                                <h6 class="text-muted font-weight-normal">
-                                    <a href="#" style="font-size: 12px"> Withdraw </a>
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 grid-margin stretch-card">
-                        <div class="card" style="background: black;">
-                            <div class="card-body text-center">
-                                <div class="row">
-                                    <i class="bi bi-key-fill"></i>
-                                </div>
-                                <h6 class="text-muted font-weight-normal">
-                                    <a href="#" style="font-size: 12px"> Password </a>
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 grid-margin stretch-card">
-                        <div class="card" style="background: black;">
-                            <div class="card-body text-center">
-                                <div class="row">
-                                    <i class="bi bi-ticket-detailed-fill"></i>
-                                </div>
-                                <h6 class="text-muted font-weight-normal">
-                                    <a href="#" style="font-size: 12px"> View Detail </a>
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
             </div>
         </div>
-    </div>
 
-
-   @*  <div class="card mt-4">
-        <div class="card-body">
-            <h5 class="card-title">Cricket</h5>
-            <!-- Table with hoverable rows -->
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Timing</th>
-                        <th scope="col">Back</th>
-                        <th scope="col">Back</th>
-                        <th scope="col">Lay</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Designer</td>
-                        <td>28</td>
-                        <td>2016-05-25</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Developer</td>
-                        <td>35</td>
-                        <td>2014-12-05</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Finance</td>
-                        <td>45</td>
-                        <td>2011-08-12</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>HR</td>
-                        <td>34</td>
-                        <td>2012-06-11</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Dynamic Division Officer Dynamic Division Officer</td>
-                        <td>47</td>
-                        <td>2011-04-19</td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- End Table with hoverable rows -->
-        </div>
-    </div>
-    <div class="card mt-4" style="background: #3e3e3e;padding: 20px;">
-        <div class="row">
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                <div class="card" style="background: black;">
-                    <div class="card-body text-center">
-                        <div class="row">
-                            <i class="bi bi-arrow-up text-success"></i>
-                        </div>
-                        <h6 class="text-muted font-weight-normal">
-                            <a href="#"> Home </a>
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                <div class="card" style="background: black;">
-                    <div class="card-body text-center">
-                        <div class="row">
-                            <i class="bi bi-arrow-up text-success"></i>
-                        </div>
-                        <h6 class="text-muted font-weight-normal">
-                            <a href="#"> Cricket </a>
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                <div class="card" style="background: black;">
-                    <div class="card-body text-center">
-                        <div class="row">
-                            <i class="bi bi-arrow-up text-success"></i>
-                        </div>
-                        <h6 class="text-muted font-weight-normal">
-                            <a href="#"> Passbook </a>
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-                <div class="card" style="background: black;">
-                    <div class="card-body text-center">
-                        <div class="row">
-                            <i class="bi bi-arrow-up text-success"></i>
-                        </div>
-                        <h6 class="text-muted font-weight-normal">
-                            <a href="#"> IDs </a>
-                        </h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> *@
+    }
 </div>
+

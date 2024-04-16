@@ -48,13 +48,15 @@ $(document).ready(function () {
 
 $(document).on('click', '.CopyToClipboard', function () {
     var copyText = $(this).attr('copyData');
-    const el = document.createElement('textarea');
-    el.value = copyText;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    toastr.success('Copied the text:' + el.value);
+    //const el = document.createElement('textarea');
+    //el.value = copyText;
+    //document.body.appendChild(el);
+    //el.select();
+    //document.execCommand('copy');
+    //document.body.removeChild(el);
+
+    navigator.clipboard.writeText(copyText);
+    toastr.success('Copied the text:' + copyText);
 });
 
 
