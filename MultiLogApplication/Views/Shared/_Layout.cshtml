@@ -75,6 +75,16 @@
 
                                     <div class='dashboard-nav-dropdown'>
                                         <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                                            <i class="bi bi-person"></i> Dashboard Images
+                                        </a>
+                                        <div class='dashboard-nav-dropdown-menu'>
+                                            <a href="/Home/Index?viewType=AcRequest" class="dashboard-nav-dropdown-item closeMobileMenu"> <i class="bi bi-people"></i> List Image </a>
+                                            <a href="#" class="dashboard-nav-dropdown-item closeMobileMenu" data-toggle="modal" data-target="#AddImgModal" id="AddImgModalBtn"><i class="bi bi-cart-plus-fill"></i>Add Image</a>
+                                        </div>
+                                    </div>
+
+                                    <div class='dashboard-nav-dropdown'>
+                                        <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                                             <i class="bi bi-person"></i> Accounts
                                         </a>
                                         <div class='dashboard-nav-dropdown-menu'>
@@ -667,7 +677,41 @@
                         </div>
                     </div>
                     <!-- WithDraw Coins to Account Modal-->
-
+                    
+                    <!-- Add Dashboard Image Modal -->
+                    <div class="modal fade" id="AddImgModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content sitebackground siteColor">
+                                <form id="AddImgModalForm">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="exampleModalLabel">Dashboard Image</h4>
+                                        <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <i class="bi bi-x-circle-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Display Date</label>
+                                            <input name="ImgDisplayDate" type="date" class="form-control DisplayDate" placeholder="Display Date" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <input type="file" name="files" class="files" />  @*multiple*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn siteBtnbackground col-12">Add Image</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Dashboard Image Modal-->
 
                 </div>
             </div>
@@ -936,6 +980,7 @@
     <script src="~/js/accounts/accountrequestlist.js"></script>
     <script src="~/js/bankdetails.js"></script>
     <script src="~/js/passbookhistory.js"></script>
+    <script src="~/js/Home.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

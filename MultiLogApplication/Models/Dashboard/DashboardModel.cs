@@ -4,6 +4,7 @@ namespace MultiLogApplication.Models.Dashboard
 {
     public class DashboardModel
     {
-        public SiteDetail SiteDetail { get; set; }
+        public List<SiteDetail> SiteDetail { get; set; }
+        public List<DashboardImages> DashboardImages { get; set; }
     }
 }
