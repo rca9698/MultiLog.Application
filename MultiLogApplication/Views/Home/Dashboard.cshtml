@@ -97,20 +97,21 @@
 
     </div>
     @* <img src="~/images/banner_ipl.png" alt="cricket ipl" width="100%" height="auto"> *@
+    @if (User.Identity.IsAuthenticated && Model.DashboardImages != null && Model.DashboardImages.Count > 0)
+    {
+        <div id="DashboardImageSlides" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
 
-    <div id="DashboardImageSlides" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-
-            @if (Model.DashboardImages != null)
-            {
-                @foreach (var DashboardImage in Model.DashboardImages)
+                @if (Model.DashboardImages != null && Model.DashboardImages.Count > 0)
                 {
-                    <div class="carousel-item active" data-bs-interval="2000">
-                        <img src="@Configuration["StoragePath:DashboardImages:Path"]\@DashboardImage.DocumentDetailId.@DashboardImage.FileExtenstion" class="d-block w-100" alt="Dsashbaord Image">
-                    </div>
+                    @foreach (var DashboardImage in Model.DashboardImages)
+                    {
+                        <div class="carousel-item active" data-bs-interval="2000">
+                            <img src="@Configuration["StoragePath:DashboardImages:Path"]\@DashboardImage.DocumentDetailId.@DashboardImage.FileExtenstion" class="d-block w-100" alt="Dsashbaord Image">
+                        </div>
+                    }
                 }
-            }
-        </div>
+            </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#DashboardImageSlides" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -120,8 +121,9 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    }
 
-    @if (User.Identity.IsAuthenticated && Model.SiteDetail != null)
+    @if (User.Identity.IsAuthenticated && Model.SiteDetail != null && Model.SiteDetail.Count > 0)
     {
         <div class="mt-4 bg-dark rounded">
             <div class="row col-12">
@@ -140,7 +142,7 @@
         <div id="DashboardSiteSlides" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
 
-                @if (Model.DashboardImages != null)
+                @if (Model.SiteDetail != null && Model.SiteDetail.Count > 0)
                 {
                     @foreach (var SiteDetail in Model.SiteDetail)
                     {

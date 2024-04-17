@@ -28,9 +28,9 @@ namespace MultiLogApplication.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string viewType)
         {
-            return View();
+            return View("/Views/Home/Index.cshtml", viewType);
         }
 
         public async Task<IActionResult> Dashboard()
@@ -85,9 +85,22 @@ namespace MultiLogApplication.Controllers
             {
                 _logger.LogError(ex, "Exception Occured at HomeController > InsertDahboardImages");
             }
-            return View();
+            return Json(res);
         }
 
+        public async Task<IActionResult> DashboardImages()
+        {
+            ReturnType<DashboardImages> res = new ReturnType<DashboardImages>();
+            try
+            {
+                res = await _homeService.DashboardImages();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at SiteController > Getsites");
+            }
+            return PartialView("~/Views/Site/ListSites.cshtml", res);
+        }
 
         public IActionResult Privacy()
         {

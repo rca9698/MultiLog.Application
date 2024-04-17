@@ -1,4 +1,11 @@
-﻿
+﻿$(document).ready(function () {
+    if ($('#ListDashboardImgDetail').attr('ViewType') == 'AdminImg') {
+        LoadSites();
+    }
+});
+
+
+
 $(document).on('click', '#AddImgModalBtn', function () {
     AddImgFormValidationSingleton.getInstance();
 })
@@ -76,3 +83,16 @@ function AddDashBoardImg() {
         }
     });
 }
+
+function LoadSites() {
+    $.ajax({
+        url: '/Home/Getsites',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#ListDashboardImgDetail').html(result);
+        }
+    });
+}
+
+
