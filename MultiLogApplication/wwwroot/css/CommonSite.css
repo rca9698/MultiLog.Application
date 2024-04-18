@@ -1,24 +1,59 @@
 ﻿.sitebackground {
-    background: #222222 !important;
+    /*background: #222222 !important;*/
+    background: #070F1B !important;
 }
 
+.dashboard-nav, .dashboard-content {
+    background-color: #070F1B !important;
+}
+
+.dashboard-toolbar, .modal-dialog .modal-content, .modal-dialog .card {
+    background-color: #070F1B !important;
+}
+ 
 .siteBtnbackground {
     /*background: #000;*/
-    background: #d334e3;
+    /*background: #d334e3;*/
+    background: #7752A2;
     color: #FFF;
     font-weight: bolder;
     padding: 5px;
     cursor: pointer;
 }
 
-    .siteBtnbackground:hover {
-        /*background: #000;*/
-        background: #d334e3;
-        color: #FFF;
-        font-weight: bolder;
-        padding: 5px;
-        cursor: pointer;
-    }
+.modal-header .close i {
+    color: #7752A2;
+}
+
+.leftCard, .middleCard, .rightCard {
+    background: #0F1035 !important;
+}
+
+.idSwitch {
+    padding: 10px;
+}
+
+.dashboard-content .card {
+    background: #000000 !important;
+}
+
+.modal-dialog {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 1rem;
+}
+
+
+.siteBtnbackground:hover {
+    /*background: #000;*/
+    /*background: #d334e3;*/
+    background: #7752C1;
+    color: #FFF;
+    font-weight: bolder;
+    padding: 5px;
+    cursor: pointer;
+}
 
 .siteColor {
     color: #FFFF !important;
@@ -27,6 +62,14 @@
 .modal-content .close {
     width: 3vw;
     height: 3vw;
+}
+
+.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-footer {
+    border-top: 0 none;
 }
 
 .fv-plugins-message-container {
@@ -88,8 +131,8 @@
     color: #FFF !important;
 }
 
-.customtable{
-    overflow:scroll;
+.customtable {
+    overflow: scroll;
 }
 
 .userlistingCircle {
@@ -121,8 +164,8 @@
     margin-top: 15px;
 }
 
-.btn-sm{
-    font-size:7px;
+.btn-sm {
+    font-size: 7px;
 }
 
 .dashboardSite .card .card-body p {
@@ -168,15 +211,12 @@
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (max-width: 768px) {
-
-} 
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (max-width: 992px) {
-    
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (max-width: 1200px) {
-     
 }

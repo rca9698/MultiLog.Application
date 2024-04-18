@@ -1,14 +1,34 @@
 ﻿$(document).ready(function () {
     if ($('#ListDashboardImgDetail').attr('ViewType') == 'AdminImg') {
-        LoadSites();
+        LoadDahboardImages();
     }
 });
-
-
 
 $(document).on('click', '#AddImgModalBtn', function () {
     AddImgFormValidationSingleton.getInstance();
 })
+
+$(document).on('click', '#ViewDashboardImgBtn', function () {
+    var add = $(this).attr('dashboardPath');
+    $('#ViewCoinRequestProof .paymentProof').attr('src', add);
+});
+
+$(document).on('click', '#DeleteDashboardImgBtn', function () {
+    var docid = $(this).attr('docid');
+    $('#DeleteDashboardImgConfirmbtn').attr('docid', docid);
+});
+
+$(document).on('click', '#DeleteDashboardImgConfirmbtn', function () {
+    var docId = $(this).attr('docId');
+    $.ajax({
+        url: '/Home/DeleteDashboardImages',
+        type: 'POST',
+        data: { DocId: docId },
+        success: function (result) {
+            ToasteRMessage(result, '');
+        }
+    });
+});
 
 
 var AddImgFormfv;
@@ -84,9 +104,9 @@ function AddDashBoardImg() {
     });
 }
 
-function LoadSites() {
+function LoadDahboardImages() {
     $.ajax({
-        url: '/Home/Getsites',
+        url: '/Home/DashboardImages',
         type: 'POST',
         data: '',
         success: function (result) {

@@ -8,7 +8,7 @@
     var userNumber = Accessor.HttpContext.Session.GetString("UserNumber");
     var userName = Accessor.HttpContext.Session.GetString("UserName");
 }
-<div class="card sitebackground rounded siteColor" style="margin: 0px 0px 10px 0px;text-align: center;">
+@* <div class="card rounded-3 siteColor" style="margin: 0px 0px 10px 0px;text-align: center;">
     <div class="card-body card-body-padding">
         <div class="row Col-12">
             <h3>
@@ -21,9 +21,9 @@
             </p>
         </div>
     </div>
-</div>
+</div> *@
 
-<div class="card sitebackground rounded siteColor">
+<div class="card rounded siteColor">
     <div class="card-body card-body-padding">
         <div class="row Col-12">
             <div class="col-6" style="display: flex;">
@@ -31,7 +31,7 @@
                 <p style="margin-left: 10px;">Bank Details</p>
             </div>
             <div class="col-6">
-                <button type="button" class="rounded btn-primary text-nowrap" data-toggle="modal" data-target="#AddAdminBankDetailModal" id="AddAdminBankDetailModalBtn" style="float: right;">
+                <button type="button" class="rounded-3 btn-primary text-nowrap" data-toggle="modal" data-target="#AddAdminBankDetailModal" id="AddAdminBankDetailModalBtn" style="float: right;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
                         <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z"></path>
                     </svg>
@@ -80,8 +80,8 @@
                                             </h2>
                                         </div>
                                         <div id="collapse_@bankDetail.BankAccountDetailID" aria-labelledby="heading_@bankDetail.BankAccountDetailID" data-parent="#accordionExample" class="collapse show" style="">
-                                            <div class="card-body p-4">
-                                                <div class="credit rounded mt-2 d-flex justify-content-between align-items-center">
+                                            <div class="card-body p-4 sitebackground">
+                                                <div class="credit rounded-3 mt-2 d-flex justify-content-between align-items-center">
                                                     <div class="d-flex flex-row align-items-center">
                                                         <div class="d-flex flex-column ml-3">
                                                             <span class="">Bank Name</span>
@@ -103,7 +103,7 @@
                                         </div>
                                     </div>
                                     <!-- End -->
-                                    <hr class="rounded">
+                                    <hr class="rounded-3">
                                 }
                             }
                             else
@@ -125,7 +125,7 @@
 <!-- Add Admin Bank Details Modal -->
 <div class="modal fade" id="AddAdminBankDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content sitebackground siteColor">
+        <div class="modal-content siteColor">
             <form id="AddAdminBankDetailForm">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel">Add Bank Detail</h4>
@@ -163,7 +163,7 @@
 <!-- Delete Modal -->
 <div class="modal fade" id="DeleteAdminBankDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content sitebackground siteColor">
+        <div class="modal-content siteColor">
             <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel">Delete Admin Bank Detail!</h4>
                 <div type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -176,7 +176,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn siteBtnbackground DeleteAdminBankDetails">Delete Admin Bank Account</button>
+                <button type="button" class="btn siteBtnbackground DeleteAdminBankDetails col-12">Delete Admin Bank Account</button>
             </div>
         </div>
     </div>
@@ -187,7 +187,7 @@
 <!-- Make Default bank Modal -->
 <div class="modal fade" id="MakeAdminBankDetailDefaultModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content sitebackground siteColor">
+        <div class="modal-content siteColor">
             <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel">Primary Bank Account!</h4>
                 <div type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -200,7 +200,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn siteBtnbackground MakeAdminBankDetailDefaultBtn">Add Primary Bank Account</button>
+                <button type="button" class="btn siteBtnbackground MakeAdminBankDetailDefaultBtn col-12">Add Primary Bank Account</button>
             </div>
         </div>
     </div>

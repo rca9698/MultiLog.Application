@@ -1,6 +1,16 @@
 ﻿$(document).ready(function () {
-    if ($('#listPassbookHistory').attr('ViewType') == 'Client') {
-        LoadPassbookHistory();
+    let viewType = $('#listPassbookHistory').attr('ViewType');
+    if (viewType != null && viewType != undefined) {
+        if (viewType == 'Client') {
+            //whole account history
+            LoadPassbookHistory();
+        }
+        else if (viewType.startsWith('account_')) {
+            //site related passbook
+            var str = $('#listPassbookHistory').attr('ViewType');
+            let siteid = str.replace('account_', '');
+            LoadAccountPassbookHistory(siteid);
+        }
     }
 });
 
@@ -43,4 +53,15 @@ function LoadPassbookHistory() {
     });
 }
 
+
+function LoadAccountPassbookHistory(siteId) {
+    $.ajax({
+        url: '/Passbook/LoadAccountPassbook',
+        type: 'POST',
+        data: { SiteId: siteId },
+        success: function (result) {
+            $('#listPassbookHistory').html(result);
+        }
+    });
+}
 

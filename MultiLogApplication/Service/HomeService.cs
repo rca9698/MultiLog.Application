@@ -24,7 +24,7 @@ namespace MultiLogApplication.Service
             return await response.ReadContentAs<ReturnType<string>>();
         }
 
-        public async Task<ReturnType<string>> DeleteDahboardImages(string DocId)
+        public async Task<ReturnType<string>> DeleteDashboardImages(string DocId)
         {
             var response = await _client.GetAsync($"api/Home/DeleteDahboardImages/{DocId}");
             return await response.ReadContentAs<ReturnType<string>>();

@@ -24,9 +24,9 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #515151;
+    color: #eee;
     text-align: left;
-    background-color: #e9edf4;
+    background: #070F2B;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -91,6 +91,7 @@ h1, .h1 {
 }
 .card-body-padding {
     padding: 1rem 1rem;
+    margin: 0px 0px 10px 0px;
 }
 
 .card-header {
@@ -141,7 +142,6 @@ h1, .h1 {
     top: 0;
     bottom: 0;
     overflow: auto;
-    background-color: #373193;
 }
 
 .dashboard-compact .dashboard-nav {
@@ -179,7 +179,7 @@ h1, .h1 {
     }
 
 .dashboard-nav {
-    background-color: #443ea2;
+    /*background-color: #443ea2;*/
     width: 0px;
 }
 
@@ -251,7 +251,7 @@ h1, .h1 {
     }
 
 .active {
-    background-color: #222222;
+    background-color: #070F1B;
     color: white;
 }
 
@@ -349,7 +349,7 @@ h1, .h1 {
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
-    color: #443ea2;
+    color: #fff;
 }
 
     .menu-toggle:hover, .menu-toggle:active, .menu-toggle:focus {
@@ -363,7 +363,8 @@ h1, .h1 {
 
 .dashboard-toolbar {
     min-height: 84px;
-    background-color: #dfdfdf;
+    /*background-color: #dfdfdf;*/
+    background-color:transparent;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -446,14 +447,6 @@ h1, .h1 {
     width: 1000px;
     margin: 0 auto;
 }
-
-body {
-    background: #000000;
-}
-
-
-
-
 
 .bottom-tabs ul {
     margin: 0;
@@ -640,7 +633,7 @@ body {
     /*background: linear-gradient(to left, #654ea3, #eaafc8);*/
     /*background: linear-gradient(to left, #d334e3, #d334e3);*/
     /*background-image:url('../images/BodyBackground.jpg');*/
-    background:#050A30;
+    /*background:#050A30;*/
     min-height: 100vh;
     padding-bottom: 5rem;
 }
@@ -758,6 +751,11 @@ input[type=number] {
 .bg-dark-1 {
     background-color: #191616 !important;
 }
+
+.BankDataSwitch{
+    padding:15px;
+}
+
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

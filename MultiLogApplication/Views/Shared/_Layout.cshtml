@@ -9,6 +9,7 @@
 <html lang="en">
 <head>
     <title>KA Punter</title>
+    <link rel="icon" type="image/x-icon" href="/images/kapunterIcon.jpg">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     @* <link href="~/css/fonts.css" rel="stylesheet" /> *@
@@ -21,7 +22,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="~/css/style.css" rel="stylesheet" />
     <link href="~/css/commonsite.css" rel="stylesheet" />
-    
+
 </head>
 <body>
     <header>
@@ -31,13 +32,21 @@
             <div class="main">
                 <div class='coinsValidation' data-coins="@coins">
                     <div class="dashboard-nav">
-                        <header>
-                            <a href="" class="menu-toggle"><i class="bi bi-list"></i></a><a href="@Configuration["ApiConfigs:MultilogApp:Uri"]"
-                                                                                            class="brand-logo">
+                        <header class="row col-12" style="padding:0px">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="col-12" data-toggle="modal" data-target="#LogOutModal" style="text-align: end;color: white;font-size: x-large;">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                </div>
+                            }
+                            <div class="col-12">
+                                <a href="" class="menu-toggle"><i class="bi bi-list"></i></a><a href="@Configuration["ApiConfigs:MultilogApp:Uri"]"
+                                                                                                class="brand-logo">
+                                    <img src="/images/kapunterIcon.jpg" alt="cricket ipl" class=""
+                                         style="border-radius: 10px 10px 10px 10px;width: 50%;height: auto;margin-left: 50px;">
+                                </a>
+                            </div>
 
-                                <img src="/images/kapunterIcon.jpg" alt="cricket ipl" class=""
-                                     style="border-radius: 10px 10px 10px 10px;width: 50%;height: auto;margin-left: 50px;">
-                            </a>
                         </header>
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -99,7 +108,7 @@
                                             <i class="bi bi-bank2"></i> Bank Details
                                         </a>
                                         <div class='dashboard-nav-dropdown-menu'>
-                                        @*<a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddAdminBankDetailModal" id="AddAdminBankDetailModalBtn"> <i class="bi bi-file-earmark-plus"></i> Add Bank Detail</a>*@
+                                            @*<a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddAdminBankDetailModal" id="AddAdminBankDetailModalBtn"> <i class="bi bi-file-earmark-plus"></i> Add Bank Detail</a>*@
                                             <a href="/BankAccount/Index?viewType=adminBank" class="dashboard-nav-dropdown-item closeMobileMenu"> <i class="bi bi-bank"></i> List Vendor Banks</a>
 
                                             <a href="/BankAccount/Index?viewType=adminUpi" class="dashboard-nav-dropdown-item closeMobileMenu"> <i class="bi bi-bank"></i> List Vendor Upi</a>
@@ -171,19 +180,35 @@
                     </div>
                     <div class='dashboard-app'>
                         <header class='dashboard-toolbar'>
-                            <a href="#!" class="menu-toggle"><i class="bi bi-list"></i></a>
-                            <div class="cricket-navigation">
-                                @if (!User.Identity.IsAuthenticated)
-                                {
-                                    <ul class="nav navbar-right">
-                                        @*  <li style="padding-top: 14px; padding-right: 30px;">
-                                    <a href="#">Demo ID</a>
-                                    </li> *@
-                                        <li>
-                                            <button data-toggle="modal" data-target="#LoginModal" class="btn siteBtnbackground mb-3" tabindex="0" id="loginbtn">Login | Signup</button>
-                                        </li>
-                                    </ul>
-                                }
+
+                            <div class="row col-12">
+                                <div class="col-3">
+                                    <a href="#!" class="menu-toggle"><i class="bi bi-list"></i></a>
+                                </div>
+                                <div class="col-9 text-center">
+                                    
+                                        @if (!User.Identity.IsAuthenticated)
+                                        {
+                                        <div class="cricket-navigation">
+                                            <ul class="nav navbar-right">
+                                                @*  <li style="padding-top: 14px; padding-right: 30px;">
+                                            <a href="#">Demo ID</a>
+                                            </li> *@
+                                                <li>
+                                                    <button data-toggle="modal" data-target="#LoginModal" class="btn siteBtnbackground mb-3" tabindex="0" id="loginbtn">Login | Signup</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        }
+                                        else
+                                        {
+                                            <h4 class="ContentHeader"></h4>
+                                        }
+                            </div>
+
+
+                            
+                            
                             </div>
                         </header>
                         @RenderBody()
@@ -193,8 +218,8 @@
 
                     <!-- Deposit Coins Request Modal -->
                     <div class="modal fade" id="DepositCoinsRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog sitebackground siteColor">
-                            <div class="modal-content sitebackground siteColor">
+                        <div class="modal-dialog siteColor">
+                            <div class="modal-content siteColor">
                                 <form id="DepositCoinsRequestModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Deposit</h4>
@@ -226,8 +251,8 @@
                     </div>
 
                     <div class="modal fade" id="PaymentModesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog sitebackground siteColor">
-                            <div class="modal-content sitebackground siteColor">
+                        <div class="modal-dialog siteColor">
+                            <div class="modal-content siteColor">
                                 <div class="modal-header text-center col-12">
                                     <h4 class="modal-title" id="exampleModalLabel">Deposit (<span id="depositAmount"></span>)</h4>
                                     <div type="button" class="close" data-dismiss="modal" aria-label="Close" id="closePaymentModesModal">
@@ -347,7 +372,7 @@
                                     background-color: rgb(20 24 25 / 30%);
                                 }
                             </style>
-                            <div class="modal-content sitebackground siteColor">
+                            <div class="modal-content siteColor">
                                 <form id="WithdrawCoinsRequestModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Withdraw</h4>
@@ -396,7 +421,7 @@
                     <!-- Add sites Modal -->
                     <div class="modal fade" id="AddSitesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content sitebackground siteColor">
+                            <div class="modal-content siteColor">
                                 <form id="AddSiteModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Site</h4>
@@ -424,7 +449,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn siteBtnbackground col-12">Add Site</button> 
+                                        <button type="submit" class="btn siteBtnbackground col-12">Add Site</button>
                                     </div>
                                 </form>
                             </div>
@@ -434,7 +459,7 @@
                     <!-- Add user Modal -->
                     <div class="modal fade" id="AddUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content sitebackground siteColor">
+                            <div class="modal-content siteColor">
                                 <form id="AddUserModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Add User</h4>
@@ -472,7 +497,7 @@
                     <!-- Deposit Coins Modal -->
                     <div class="modal fade" id="DepositCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content sitebackground siteColor">
+                            <div class="modal-content siteColor">
                                 <form id="DepositCoinsForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Deposit</h4>
@@ -507,7 +532,7 @@
                     <!-- Deposit Proof Modal -->
                     <div class="modal fade" id="ViewCoinRequestProof" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content sitebackground siteColor">
+                            <div class="modal-content siteColor">
                                 <div class="modal-header">
                                     <h4 class="modal-title" id="exampleModalLabel">Image View</h4>
                                     <div type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -516,7 +541,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group col-12">
-                                        <img src="" alt="cricket ipl" class="rounded siteheightwidth100 paymentProof">
+                                        <img src="" alt="cricket ipl" class="rounded-3 siteheightwidth100 paymentProof">
                                     </div>
                                 </div>
                             </div>
@@ -526,7 +551,7 @@
                     <!-- Withdraw Coins Modal -->
                     <div class="modal fade" id="WithdrawCoinsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content sitebackground siteColor">
+                            <div class="modal-content siteColor">
                                 <form id="WithdrawCoinsForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Withdraw</h4>
@@ -558,11 +583,10 @@
                         </div>
                     </div>
                     <!-- Withdraw Coins Modal-->
-                    
                     <!-- Add Bank Details Modal -->
                     <div class="modal fade" id="AddBankDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content sitebackground siteColor">
+                            <div class="modal-content siteColor">
                                 <form id="AddBankDetailForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Add Bank Detail</h4>
@@ -596,7 +620,6 @@
                         </div>
                     </div>
                     <!-- Add Bank Details Modal-->
-                
                     <!-- Deposite Coins to Account Modal -->
                     <div class="modal fade" id="DepositeToAccountRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -605,7 +628,7 @@
                                     background-color: rgb(20 24 25 / 30%);
                                 }
                             </style>
-                            <div class="modal-content sitebackground siteColor">
+                            <div class="modal-content siteColor">
                                 <form id="DepositeToAccountRequestModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Deposite Coins To Account</h4>
@@ -637,7 +660,6 @@
                         </div>
                     </div>
                     <!-- Deposite Coins to Account Modal-->
-
                     <!-- WithDraw Coins to Account Modal -->
                     <div class="modal fade" id="WithDrawToAccountRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -646,7 +668,7 @@
                                     background-color: rgb(20 24 25 / 30%);
                                 }
                             </style>
-                            <div class="modal-content sitebackground siteColor">
+                            <div class="modal-content siteColor">
                                 <form id="WithDrawToAccountRequestModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Withdraw Coins from Account</h4>
@@ -677,11 +699,10 @@
                         </div>
                     </div>
                     <!-- WithDraw Coins to Account Modal-->
-                    
                     <!-- Add Dashboard Image Modal -->
                     <div class="modal fade" id="AddImgModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content sitebackground siteColor">
+                            <div class="modal-content siteColor">
                                 <form id="AddImgModalForm">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="exampleModalLabel">Dashboard Image</h4>
@@ -721,7 +742,7 @@
     <!-- Login Modal -->
     <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content container sitebackground siteColor">
+            <div class="modal-content container siteColor">
                 <div class="row justify-content-center">
                     <div class="">
                         <div class="card sitebackground">
@@ -788,10 +809,10 @@
     <!-- Logout Modal -->
     <div class="modal fade" id="LogOutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content container sitebackground siteColor">
+            <div class="modal-content container siteColor">
                 <div class="row justify-content-center">
                     <div class="">
-                        <div class="card sitebackground">
+                        <div class="card">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="exampleModalLabel"></h4>
                                 <div type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -822,7 +843,7 @@
     <!-- Logout Modal -->
 
     <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
- 
+
     <div class="elfsight-app-82a03ea0-0d99-46c7-ba24-acca64318674" data-elfsight-app-lazy></div>
 
     <div class="card mt-4 footer-nav footernavbar sitebackground siteColor pSiteNameFontSize cursorPointer">
@@ -963,7 +984,7 @@
     </footer> *@
 
     <script src="~/js/jquery.min.js"></script>
-    
+
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>

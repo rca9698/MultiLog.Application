@@ -2,8 +2,8 @@
 
 @if (@Model != "Admin")
 {
-    <div class="row col-12 idSwitch text-white" style="">
-        <div class="col-6 tabSelection myIdsClass" idType="myIds">
+    <div class="row col-12 idSwitch rounded-3 text-white" style="">
+        <div class="col-6 tabSelection rounded-3 myIdsClass" idType="myIds">
             My IDs
         </div>
 
@@ -13,10 +13,10 @@
     </div>
 }
 
-<div class='dashboard-content rounded bg-dark' id="listSites" ViewType="@Model">
+<div class='dashboard-content rounded-3' id="listSites" ViewType="@Model">
 </div>
 
-<div class='dashboard-content bg-dark' id="SiteDetail" style="display:none">
+<div class='dashboard-content' id="SiteDetail" style="display:none">
 </div>
 
 <!-- Update sites Modal -->

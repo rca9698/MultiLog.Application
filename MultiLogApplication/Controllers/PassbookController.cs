@@ -21,6 +21,7 @@ namespace MultiLogApplication.Controllers
         {
             return View("Views/Passbook/Index.cshtml", viewType);
         }
+
         public async Task<IActionResult> ViewPanel()
         {
             ReturnType<PassbookDetailModel> res = new ReturnType<PassbookDetailModel>();
@@ -29,6 +30,7 @@ namespace MultiLogApplication.Controllers
                 GetPassbookDetails obj = new GetPassbookDetails()
                 {
                     UserId = _sessionUser,
+                    SiteId = 0,
                     SessionUser = _sessionUser
                 };
                 res = await _passbookService.GetPassbookHistory(obj);
@@ -39,7 +41,6 @@ namespace MultiLogApplication.Controllers
             }
             return PartialView("~/Views/Passbook/ViewPanel.cshtml", res);
         }
-
 
         public async Task<IActionResult> PassbookHistory(GetPassbookHistoryById obj)
         {
@@ -55,5 +56,26 @@ namespace MultiLogApplication.Controllers
             }
             return PartialView("Views/Passbook/ViewPassbookDetail.cshtml", res);
         }
+
+        public async Task<IActionResult> LoadAccountPassbook(int SiteId, long UserId = 0)
+        {
+            ReturnType<PassbookDetailModel> res = new ReturnType<PassbookDetailModel>();
+            try
+            {
+                GetPassbookDetails obj = new GetPassbookDetails()
+                {
+                    UserId = UserId != null && UserId != 0 ? UserId : _sessionUser,
+                    SiteId = SiteId,
+                    SessionUser = _sessionUser
+                };
+                res = await _passbookService.GetPassbookHistory(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at PassbookController > LoadAccountPassbook");
+            }
+            return PartialView("~/Views/Passbook/ViewPanel.cshtml", res);
+        }
+
     }
 }

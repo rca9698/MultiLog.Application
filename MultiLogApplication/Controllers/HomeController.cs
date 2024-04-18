@@ -97,10 +97,26 @@ namespace MultiLogApplication.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Exception Occured at SiteController > Getsites");
+                _logger.LogError(ex, "Exception Occured at HomeController > DashboardImages");
             }
-            return PartialView("~/Views/Site/ListSites.cshtml", res);
+            return PartialView("~/Views/Home/ListImages.cshtml", res);
         }
+
+        public async Task<IActionResult> DeleteDashboardImages(string DocId)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                res = await _homeService.DeleteDashboardImages(DocId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at HomeController > DeleteDahboardImages");
+            }
+            return Json(res);
+        }
+
+
 
         public IActionResult Privacy()
         {

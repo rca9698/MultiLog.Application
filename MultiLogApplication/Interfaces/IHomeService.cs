@@ -7,7 +7,7 @@ namespace MultiLogApplication.Interfaces
     {
         Task<ReturnType<DashboardImages>> DashboardImages();
         Task<ReturnType<string>> InsertDahboardImages(InsertDashboardImages obj);
-        Task<ReturnType<string>> DeleteDahboardImages(string DocId);
+        Task<ReturnType<string>> DeleteDashboardImages(string DocId);
 
     }
 }

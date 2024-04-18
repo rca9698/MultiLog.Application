@@ -6,7 +6,7 @@
 {
     @foreach (var passbookDetail in Model.ReturnList)
     {
-        <div class="card sitebackground rounded siteColor" style="margin: 0px 0px 10px 0px;">
+        <div class="card rounded-3 siteColor" style="margin: 0px 0px 10px 0px;">
             <div class="card-body">
                 <div class="row Col-12">
                     <div class="col-9">
@@ -14,7 +14,7 @@
                             <div class="col-3">
                                 <img class="siteImageSize rounded-circle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@passbookDetail.DocumentDetailId.@passbookDetail.FileExtenstion">
                             </div>
-                            <div class="col-9 Col-12">
+                            <div class="col-9 Col-12 align-self-center">
                                 <div class="Col-3">
                                     <span class="activityClass">@passbookDetail.ActivityDescription</span>
                                 </div>
@@ -40,7 +40,7 @@
 }
 else
 {
-    <span>
+    <p>
         No Data Found!!!
-    </span>
+    </p>
 }

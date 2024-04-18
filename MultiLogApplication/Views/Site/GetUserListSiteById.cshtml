@@ -11,7 +11,7 @@
 {
     @foreach (var siteDetail in Model.ReturnList)
     {
-        <div class="card sitebackground rounded siteColor site_@siteDetail.SiteId">
+        <div class="card rounded-3 siteColor site_@siteDetail.SiteId">
             <div class="card-body cursorPointer">
                 <div class="row Col-12">
                     <div class="col-8 viewThisSiteDetails" siteId ="@siteDetail.SiteId">
@@ -46,7 +46,7 @@
                                     <ul class="dropdown-menu" aria-labelledby="">
                                         <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#DepositeToAccountRequestModal" siteid="@siteDetail.SiteId" id="DepositeToAccountRequestCoinsBtn">Deposit</a></li>
                                         <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#WithDrawToAccountRequestModal" siteid="@siteDetail.SiteId" id="withdrawFromAccountRequestCoinsBtn">Withdraw</a></li>
-                                        <li><a class="dropdown-item" href="#">View Transaction</a></li>
+                                        <li><a class="dropdown-item" href="/Passbook/Index?viewType=account_@siteDetail.SiteId">View Transaction</a></li>
                                         <li><a class="dropdown-item" href="#">Change Password</a></li>
                                         <li><a class="dropdown-item" href="#">Close ID</a></li>
                                     </ul>

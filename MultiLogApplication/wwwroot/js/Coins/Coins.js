@@ -42,7 +42,7 @@ $(document).on('click', '#depositeCoinsBtn', function () {
 
 $(document).on('click', '#viewCoinRequestproofBtn', function () {
     var add = $(this).attr('proofPath');
-    $('#ViewCoinRequestProof .paymentProof').attr('src', $(this).attr('proofPath'));
+    $('#ViewCoinRequestProof .paymentProof').attr('src', add);
 });
 
 $(document).on('click', '#deleteCoinRequestBtn', function () {
