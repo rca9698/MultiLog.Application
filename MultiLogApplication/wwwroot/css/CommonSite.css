@@ -13,7 +13,16 @@
 .dashboard-toolbar, .modal-dialog .modal-content, .modal-dialog .card {
     background-color: #070F1B !important;
 }
- 
+
+
+    .dashboard-toolbar .menu-toggle {
+        width: 3vw;
+        height: 3vw;
+        background: #51087E !important;
+        border-radius:50%;
+    }
+
+
 .siteBtnbackground {
     /*background: #000;*/
     /*background: #d334e3;*/
