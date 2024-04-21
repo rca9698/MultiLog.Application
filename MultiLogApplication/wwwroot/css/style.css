@@ -26,7 +26,7 @@ body {
     line-height: 1.5;
     color: #eee;
     text-align: left;
-    background: #070F2B;
+    background: #51087E;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -434,7 +434,7 @@ h1, .h1 {
 
 @media (min-width: 992px) {
     .dashboard-toolbar {
-        left: 238px;
+        left: 200px;
     }
 
     .dashboard-compact .dashboard-toolbar {

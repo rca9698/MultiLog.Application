@@ -3,10 +3,13 @@
     background: #070F1B !important;
 }
 
-.dashboard-nav, .dashboard-content {
+.dashboard-nav {
     background-color: #070F1B !important;
 }
 
+.dashboard-content {
+    /*background-color: #65a765 !important;*/
+}
 .dashboard-toolbar, .modal-dialog .modal-content, .modal-dialog .card {
     background-color: #070F1B !important;
 }
@@ -97,7 +100,7 @@
 }*/
 
 .pSiteNameFontSize {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 900;
 }
 
@@ -182,6 +185,15 @@
 
 
 
+.modalContentBgclr{
+    background: #212529;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+
+
+
 
 
 
@@ -195,6 +207,10 @@
     .dashboardSite .card .card-body p {
         font-size: 6px
     }
+
+    .p {
+        font-size: 10px
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -206,6 +222,10 @@
 
     .dashboardSite .card .card-body p {
         font-size: 6px
+    }
+
+    .p {
+        font-size:10px
     }
 }
 

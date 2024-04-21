@@ -187,3 +187,95 @@
 .middleCard .container{
     padding:0px;
 }
+
+
+
+
+.main-container {
+    padding: 30px;
+}
+
+.account-container {
+    position: relative;
+    padding: 10px;
+    margin: auto;
+    width: 240px;
+}
+
+.acc-content {
+    width: 65px;
+    color: white;
+    border-radius: 12px;
+    font-size: 9px;
+    font-weight: bold;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.depwith {
+    background-color: rgba(0, 0, 0, 0.964);
+    box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.632);
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    border-radius: 12px;
+}
+
+.deposite,
+.withdraw {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .deposite div {
+        margin-bottom: 17px;
+        margin-top: 8px;
+    }
+
+    .withdraw div {
+        margin-bottom: 8px;
+        margin-top: 8px;
+    }
+
+.wallet {
+    background-color: rgba(0, 0, 0, 0.964);
+    box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.632);
+    position: absolute;
+    right: 29%;
+    bottom: -12%;
+    height: 110px;
+    width: 100px;
+}
+
+.arrow {
+    border: solid white;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 6px;
+    margin-bottom: -6px;
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+/* More styling Part :----------------------------- */
+
+.wallet img {
+    height: 50px;
+    width: 80px;
+}
+
+.wallet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
