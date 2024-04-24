@@ -18,8 +18,8 @@
                     <span class="">
                         <img class="siteIcon rounded-circle siteImageSize" src="" />
                     </span>
-                    <span class="pSiteURLFontSize">@Model.ReturnVal.SiteURL</span>
-                    <span class="pSiteNameFontSize">@Model.ReturnVal.SiteName</span>
+                    <p class="pSiteURLFontSize">@Model.ReturnVal.SiteURL</p>
+                    <p class="pSiteNameFontSize">@Model.ReturnVal.SiteName</p>
                 </div>
             </div> 
         </div>
@@ -52,35 +52,35 @@
             {
                 <div class="row Col-12">
                     <div class="col-6 activityType" style="text-align:left">
-                    Paid from wallet
+                        <p>Paid from wallet</p>
                 </div>
                 <div class="col-6" style="text-align:right">
-                        @Model.ReturnVal.Coins
-                </div>
+                        <p>@Model.ReturnVal.Coins</p>
+                    </div>
             </div>
             }
             <div class="row Col-12">
                 <div class="col-6" style="text-align:left">
-                    Reference No
+                    <p>Reference No</p>
                 </div>
                 <div class="col-6" style="text-align:right">
-                    @Model.ReturnVal.PassbookHistoryId
+                    <p>@Model.ReturnVal.PassbookHistoryId</p>
                 </div>
             </div>
             <div class="row Col-12">
                 <div class="col-6" style="text-align:left">
-                    Request Date
+                    <p>Request Date</p>
                 </div>
                 <div class="col-6 createdOn" style="text-align:right">
-                    @Model.ReturnVal.CreatedDate
+                    <p>@Model.ReturnVal.CreatedDate</p>
                 </div>
             </div>
             <div class="row Col-12">
                 <div class="col-6" style="text-align:left">
-                    Approved On
+                    <p>Approved On</p>
                 </div>
                 <div class="col-6 approvedOn" style="text-align:right">
-                    @Model.ReturnVal.ApprovedDate
+                    <p>@Model.ReturnVal.ApprovedDate</p>
                 </div>
             </div>
         </div>

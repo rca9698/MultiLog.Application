@@ -12,10 +12,12 @@ namespace MultiLogApplication.Service
     {
         private readonly IConfiguration _configuration;
         private readonly long _userId;
-        public TokenService(IConfiguration configuration,IHttpContextAccessor httpContextAccessor)
+        private readonly long _otp;
+        public TokenService(IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             _configuration = configuration;
             _userId = httpContextAccessor.HttpContext.Session.Get<long>("UserId");
+            _otp = httpContextAccessor.HttpContext.Session.Get<long>("OTPPass");
         }
 
         public string GenerateJSONWebToken()
@@ -24,7 +26,7 @@ namespace MultiLogApplication.Service
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:key"]);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("UserId", _userId.ToString()) }),
+                Subject = new ClaimsIdentity(new[] { new Claim("UserId", _userId.ToString()), new Claim("otp", _otp == 0 ? "" : _otp.ToString()) }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 Issuer = _configuration["Jwt:Issuer"],
                 Audience = _configuration["Jwt:Audience"],

@@ -87,8 +87,16 @@ var MobileFormValidationSingleton = (function () {
             fields: {
                 userNumber: {
                     validators: {
-                        notEmpty: {
-                            message: 'User Number required'
+                        //notEmpty: {
+                        //    message: 'Mobile Number required'
+                        //},
+                        callback: {
+                            message: 'Mobile Number should be 10 digit',
+                            callback: function (value, validator, $field) {
+                                if ($('#MobileModalForm .userNumber').val().length != 10)
+                                    return false;
+                                return true;
+                            }
                         }
                     }
                 }
@@ -146,8 +154,16 @@ var PasswordFormValidationSingleton = (function () {
                 },
                 otp: {
                     validators: {
-                        notEmpty: {
-                            message: 'Otp is required'
+                        //notEmpty: {
+                        //    message: 'Otp is required'
+                        //},
+                        callback: {
+                            message: 'OTP should be 6 digit',
+                            callback: function (value, validator, $field) {
+                                if ($('#OtpPasswordModalForm .otp').val().length != 6)
+                                    return false;
+                                return true;
+                            }
                         }
                     }
                 }
@@ -186,9 +202,9 @@ function SendOtpToMobile(){
         data: { MobileNumber: MobileNumber },
         success: function (result) {
             if (result.returnStatus == 1) {
-                toastr.success(result.retunMessage);
+                toastr.success(result.returnMessage);
             } else {
-                toastr.warning(result.retunMessage);
+                toastr.warning(result.returnMessage);
             }
         },
         error: function () {

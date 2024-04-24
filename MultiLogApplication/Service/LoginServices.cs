@@ -38,12 +38,27 @@ namespace MultiLogApplication.Service
 
             var apiKey = otpData.ReturnVal.ApiKey;
             var otp = otpData.ReturnVal.Otp;
-            var Message = $"{otpData.ReturnVal.Otp}";
-            //http://cloud.smsindiahub.in/vendorsms/pushsms.aspx?APIKey=ztAZri2RPU6PuyAaEJE6Lg&msisdn=919893085852&sid=SMSHUB&msg=Welcome to the Kapunter powered by SMSINDIAHUB. Your OTP for registration is 1212121&fl=0&dc=0&gwid=2
-            var response = await _client.GetAsync($"http://cloud.smsindiahub.in/vendorsms/pushsms.aspx?APIKey={apiKey}&msisdn={otp}&sid={otp}&msg={Message}");
-            var otpResp = await response.Content.ReadAsStringAsync();
+            var sid = otpData.ReturnVal.Sid;
+            var Message = $"{otpData.ReturnVal.Message}";
+            var smsBaseUrl = _configuration["ApiConfigs:SMS:Uri"];
 
-            if (otpResp != null && !otpResp.Contains("Failed"))
+            //http://cloud.smsindiahub.in/vendorsms/pushsms.aspx?APIKey=ztAZri2RPU6PuyAaEJE6Lg&msisdn=919893085852&sid=SMSHUB&msg=Welcome to the Kapunter powered by SMSINDIAHUB. Your OTP for registration is 1212121&fl=0&dc=0&gwid=2
+            string otpResp = "";
+            if (_configuration["Environment:Type"] == "DEV")
+            { 
+                otpRespMsg.ReturnMessage = "OTP sent to your number As " + otp + "!!";
+                otpRespMsg.ReturnStatus = ReturnStatus.Success;
+
+                return otpRespMsg;
+            }
+            else
+            {
+                var smsUrl = $"{smsBaseUrl}?APIKey={apiKey}&msisdn={mobileNumber}&sid={sid}&msg={Message}";
+                var response = await _client.GetAsync(smsUrl);
+                otpResp = await response.Content.ReadAsStringAsync();
+            }
+
+            if (otpResp != null && otpResp.Contains("Failed"))
             {
                 otpRespMsg.ReturnMessage = "Failed to send OTP your number!!";
                 otpRespMsg.ReturnStatus = ReturnStatus.Failure;

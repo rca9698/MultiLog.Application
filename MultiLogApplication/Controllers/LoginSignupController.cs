@@ -119,10 +119,13 @@ namespace MultiLogApplication.Controllers
                             IsPersistent = false //objLoginModel.RememberLogin
                         });
 
+                        var otp = details.OTP.ToString() != null ? details.OTP.ToString() : details.Password.ToString();
+
                         HttpContext.Session.SetString("UserId", returnType.ReturnVal.UserId.ToString());
                         HttpContext.Session.SetString("UserNumber", returnType.ReturnVal.UserNumber);
                         HttpContext.Session.SetString("Coins", returnType.ReturnVal.Coins);
                         HttpContext.Session.SetString("UserName", returnType.ReturnVal.FirstName + " " + returnType.ReturnVal.LastName);
+                        HttpContext.Session.SetString("OTPPass", otp);
 
                     }
                 }

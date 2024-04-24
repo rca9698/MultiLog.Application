@@ -37,43 +37,43 @@
                 </div>
             </div>
 
-          @*   <div class="row col-12 text-white">
-                <div class="col-4 inline">
-                    <div class="card sitebackground leftCard" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn" userId="@userId" userNumber="@userNumber">
-                        <div class="container">
-                            <h6 style="margin-left: 10%;margin-top: 30%">
-                                <b class="DashboardIconText">DEPOSIT</b>
-                            </h6>
-                            <h1 style="margin-left: 20%;">
-                                <i class="bi bi-chevron-double-up"></i>
-                            </h1>
+            @*   <div class="row col-12 text-white">
+        <div class="col-4 inline">
+        <div class="card sitebackground leftCard" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn" userId="@userId" userNumber="@userNumber">
+        <div class="container">
+        <h6 style="margin-left: 10%;margin-top: 30%">
+        <b class="DashboardIconText">DEPOSIT</b>
+        </h6>
+        <h1 style="margin-left: 20%;">
+        <i class="bi bi-chevron-double-up"></i>
+        </h1>
 
-                        </div>
-                    </div>
-                </div>
+        </div>
+        </div>
+        </div>
 
-                <div class="col-4 inline">
-                    <div class="card sitebackground middleCard">
-                        <div class="container">
-                            <img src="~/images/kapunterIcon.jpg" alt="cricket ipl" class="DashboardIcontopradius">
-                            <h6 class="font-weight-normal DashboardIconText">
-                                WALLET BALANCE
-                            </h6>
-                            <h3 class="font-weight-normal DashboardIconText">@coins</h3>
-                        </div>
-                    </div>
-                </div>
+        <div class="col-4 inline">
+        <div class="card sitebackground middleCard">
+        <div class="container">
+        <img src="~/images/kapunterIcon.jpg" alt="cricket ipl" class="DashboardIcontopradius">
+        <h6 class="font-weight-normal DashboardIconText">
+        WALLET BALANCE
+        </h6>
+        <h3 class="font-weight-normal DashboardIconText">@coins</h3>
+        </div>
+        </div>
+        </div>
 
-                <div class="col-4 inline">
-                    <div class="card sitebackground rightCard" data-toggle="modal" data-target="#WithdrawCoinsRequestModal" id="WithdrawCoinsRequestModalBtn" userId="@userId" userNumber="@userNumber">
-                        <div class="container">
-                            <h6 style="margin-left:35%;margin-top:28%;"><b class="DashboardIconText">WITHDRAW</b></h6>
-                            <h1 style="margin-left:40%"><i class="bi bi-chevron-double-down"></i></h1>
-                        </div>
-                    </div>
-                </div>
+        <div class="col-4 inline">
+        <div class="card sitebackground rightCard" data-toggle="modal" data-target="#WithdrawCoinsRequestModal" id="WithdrawCoinsRequestModalBtn" userId="@userId" userNumber="@userNumber">
+        <div class="container">
+        <h6 style="margin-left:35%;margin-top:28%;"><b class="DashboardIconText">WITHDRAW</b></h6>
+        <h1 style="margin-left:40%"><i class="bi bi-chevron-double-down"></i></h1>
+        </div>
+        </div>
+        </div>
 
-            </div> *@
+        </div> *@
         }
         else
         {
@@ -112,21 +112,21 @@
                 {
                     @foreach (var DashboardImage in Model.DashboardImages)
                     {
-                        <div class="carousel-item active" data-bs-interval="2000">
+                        <div class="carousel-item active" data-bs-interval="8000">
                             <img src="@Configuration["StoragePath:DashboardImages:Path"]\@DashboardImage.DocumentDetailId.@DashboardImage.FileExtenstion" class="d-block w-100" alt="Dsashbaord Image">
                         </div>
                     }
                 }
             </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#DashboardImageSlides" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#DashboardImageSlides" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#DashboardImageSlides" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#DashboardImageSlides" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     }
 
     @if (User.Identity.IsAuthenticated && Model.SiteDetail != null && Model.SiteDetail.Count > 0)
@@ -152,7 +152,7 @@
                 {
                     @foreach (var SiteDetail in Model.SiteDetail)
                     {
-                        <div class="carousel-item active" data-bs-interval="10000">
+                        <div class="carousel-item active" data-bs-interval="20000">
                             <div class="card text-white rounded-3 sitebackground dashboardSite site_@SiteDetail.SiteId" style="padding: 30px;">
                                 <div class="row Col-12 bg-dark-1 p-2 rounded-3">
                                     <div class="col-10">
@@ -161,15 +161,15 @@
                                                 <img src="@Configuration["StoragePath:SiteIcon:Path"]\@SiteDetail.DocumentDetailId.@SiteDetail.FileExtenstion" alt="cricket ipl" class="rounded-3 siteImageSize siteIcon">
                                             </div>
                                             <div class="col-9 align-self-center">
-                                                <p class="fw-bolder siteName"> @SiteDetail.SiteName</p>
-                                                <p class="fw-normal siteURL"> @SiteDetail.SiteURL </p>
+                                                <p class="text-uppercase siteName"> @SiteDetail.SiteName</p>
+                                                <p class="siteURL"> @SiteDetail.SiteURL </p>
                                             </div>
                                         </div>
 
                                     </div>
                                     <div class="col-2">
                                         <a href="@SiteDetail.SiteURL" target="_blank">
-                                            <i class="bi bi-arrow-up-right-square-fill" style="float: right;"></i>
+                                            <i class="bi bi-arrow-up-right-square-fill" style="float: right;padding: 15px;"></i>
                                         </a>
 
                                     </div>
@@ -230,11 +230,11 @@
                     }
                 }
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#DashboardSiteSlides" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#DashboardSiteSlides" data-bs-slide="prev" style="margin-left: -100px;">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#DashboardSiteSlides" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#DashboardSiteSlides" data-bs-slide="next" style="margin-right: -100px;">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
