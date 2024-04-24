@@ -42,6 +42,10 @@ p {
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+    p .FontSize {
+        font-size: 15px;
+    }
+
 a {
     color: #3f84fc;
     text-decoration: none;

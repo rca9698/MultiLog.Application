@@ -10,13 +10,13 @@
 }
 <div class="card sitebackground rounded-3 siteColor" style="margin: 0px 0px 10px 0px;text-align: center;">
     <div class="card-body card-body-padding">
-        <div class="row Col-12">
+       @*  <div class="row Col-12">
             <h3>
                 @userName
             </h3>
-        </div>
+        </div> *@
         <div class="row Col-12">
-            <p class="card-title">
+            <p class="FontSize text-uppercase">
                 @userNumber
             </p>
         </div>
@@ -28,7 +28,7 @@
         <div class="row Col-12">
             <div class="col-6" style="display: flex;">
                 <i class="bi bi-bank"></i>
-                <p style="margin-left: 10px;">Bank Details</p>
+                <p class="FontSize text-uppercase" style="margin-left: 10px; align-self:center">Bank Details</p>
             </div>
             <div class="col-6">
                 <button type="button" class="rounded-3 btn-primary text-nowrap" data-toggle="modal" data-target="#AddBankDetailModal" id="AddBankDetailModalBtn1" style="float: right;">
@@ -56,13 +56,13 @@
                                     <!-- Accordion item 1 -->
                                     <div class="card sitebackground bankcard" style="margin-bottom: 5%;">
                                         <div id="heading_@bankDetail.BankAccountDetailID" class="card-header shadow-sm border-0 bg-dark">
-                                            <h2 class="mb-0 col-12">
+                                            <p class="mb-0 col-12 FontSize text-uppercase">
                                                 <span type="button" data-toggle="collapse" data-target="#collapse_@bankDetail.BankAccountDetailID" aria-expanded="true" aria-controls="collapse_@bankDetail.BankAccountDetailID" class="btn btn-link font-weight-bold text-uppercase crick-accordion-sub row col-11">
                                                     <span class="col-8">@bankDetail.BankName</span>
                                                     <span class="col-4"><i class="bi bi-arrow-down-up"> </i></span>
                                                 </span>
                                                 <span class="col-1 btn btn-link font-weight-bold crick-accordion-sub row DeleteBankAccount" bankId="@bankDetail.BankAccountDetailID" data-toggle="modal" data-target="#DeleteBankDetailsModal"><i class="bi bi-trash3-fill"> </i></span>
-                                            </h2>
+                                            </p>
                                         </div>
                                         <div id="collapse_@bankDetail.BankAccountDetailID" aria-labelledby="heading_@bankDetail.BankAccountDetailID" data-parent="#accordionExample" class="collapse show" style="">
                                             <div class="card-body p-4">
@@ -123,7 +123,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn siteBtnbackground DeleteBankDetails col-12">Delete Account Request</button>
+                <button type="button" class="btn siteBtnbackground DeleteBankDetails col-12">Delete Bank Details</button>
             </div>
         </div>
     </div>
