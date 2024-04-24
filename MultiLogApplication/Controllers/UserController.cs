@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MultiLogApplication.ActionFilter;
 using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models.Common;
 using MultiLogApplication.Models.SiteDetails;
@@ -7,6 +8,7 @@ using MultiLogApplication.Models.User;
 
 namespace MultiLogApplication.Controllers
 {
+    [ServiceFilter(typeof(AdminActionFilter))]
     public class UserController : BaseController
     {
         private readonly IUserService _userService;

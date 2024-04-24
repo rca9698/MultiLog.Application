@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace MultiLogApplication.ActionFilter
 {
-    public class AdminActionFilter : IAsyncActionFilter
+    public class SeesionActiveFilter
     {
         public async Task OnActionExecutionAsync(ActionExecutingContext context,
             ActionExecutionDelegate next)
         {
-            var adminClaim = context.HttpContext?.User.Claims.FirstOrDefault(x=>x.Type.Contains("Admin"))?.Type;
-            if(adminClaim != null)
+            var adminClaim = context.HttpContext.User.Claims.FirstOrDefault(x => x.Type.Contains("Admin"))?.Type;
+            if (adminClaim != null)
             {
                 //To do : before the action executes
                 await next();

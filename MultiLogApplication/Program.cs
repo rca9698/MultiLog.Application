@@ -16,14 +16,14 @@ builder.Services.AddAuthentication(options =>
 })
 .AddCookie(options =>
 {
-    options.ExpireTimeSpan = TimeSpan.FromDays(3650); // Set the expiration time to a very large value (e.g., 10 years)
+    options.ExpireTimeSpan = TimeSpan.FromDays(1); // Set the expiration time to a very large value (e.g., 10 years)
     options.SlidingExpiration = true; // Optionally, enable sliding expiration to extend the expiration time with each request
     options.LoginPath = "/Home/Index";
 });
 
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromSeconds(1800);
+    options.IdleTimeout = TimeSpan.FromHours(24);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });

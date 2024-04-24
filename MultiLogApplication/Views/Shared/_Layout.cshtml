@@ -772,7 +772,19 @@
                                     </div>
                                 </form>
                                 <form id="OtpPasswordModalForm">
-                                    <div class="mb-3 form-group">
+
+                                    <div class="mb-3 form-group otpFormGroup">
+                                        <label for="otp" class="form-label">OTP</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="text" name="otp" class="form-control otp" placeholder="Please Enter otp" autocomplete="off">
+                                            <div class="input-group-text sitebackground siteColor viewotp" data-password="false">
+                                                <span><i class="bi bi-eye-fill"></i></span>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="float-end" onclick="LoadPassword()"><small>User Password</small></a>
+                                    </div>
+
+                                    <div class="mb-3 form-group passwordFromGroup">
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" name="password" class="form-control password" placeholder="Enter your password" autocomplete="off">
@@ -780,8 +792,9 @@
                                                 <span><i class="bi bi-eye-fill"></i></span>
                                             </div>
                                         </div>
-                                        <a href="#" class="float-end"><small>User Password</small></a>
+                                        <a href="#" class="float-end" onclick="LoadOTP()"><small>User OTP</small></a>
                                     </div>
+                                    
                                     <div class="col-12 mb-0 text-center">
                                         <button class="col-12 btn siteBtnbackground" type="submit"> Log In </button>
                                     </div>

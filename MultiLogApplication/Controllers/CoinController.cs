@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MultiLogApplication.ActionFilter;
 using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models.BankAccount;
 using MultiLogApplication.Models.Coin;
@@ -30,7 +31,7 @@ namespace MultiLogApplication.Controllers
         {
             return View("/Views/Coin/Index.cshtml", viewType);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> GetDepositCoinsRequest(DepositWithdrawCoinsRequest obj)
         {
             ReturnType<CoinsRequestModel> res = new ReturnType<CoinsRequestModel>();
@@ -47,7 +48,7 @@ namespace MultiLogApplication.Controllers
             }
             return PartialView("~/Views/Coin/DepositCoinsRequests.cshtml", res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> GetWithdrawCoinsRequest(DepositWithdrawCoinsRequest obj)
         {
             ReturnType<CoinsRequestModel> res = new ReturnType<CoinsRequestModel>();
@@ -63,7 +64,7 @@ namespace MultiLogApplication.Controllers
             }
             return PartialView("~/Views/Coin/WithdrawCoinsRequests.cshtml", res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> GetTransaction(ListCoinModel obj)
         {
             ReturnType<CoinsRequestModel> res = new ReturnType<CoinsRequestModel>();
@@ -130,7 +131,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> AddCoins(UpdateCoinDetails obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -147,7 +148,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> DeleteCoins(UpdateCoinDetails obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -198,7 +199,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> GetDepositCoinsToAccountRequest()
         {
             ReturnType<CoinsToAccountRequestModel> res = new ReturnType<CoinsToAccountRequestModel>();
@@ -212,7 +213,7 @@ namespace MultiLogApplication.Controllers
             }
             return PartialView("~/Views/Coin/GetDepositCoinsToAccountRequest.cshtml", res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> GetWithdrawCoinsFromAccountRequest()
         {
             ReturnType<CoinsToAccountRequestModel> res = new ReturnType<CoinsToAccountRequestModel>();
@@ -241,7 +242,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> UpdateCoinsToAccount(UpdateCoinsToAccountModel obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -256,7 +257,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> WithdrawCoinsFromAccount(UpdateCoinsToAccountModel obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -272,8 +273,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> DeleteAccountRequestCoins(DeleteRequestCoinsModel obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -288,7 +288,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> DeleteRequestCoins(DeleteRequestCoinsModel obj)
         {
             ReturnType<string> res = new ReturnType<string>();

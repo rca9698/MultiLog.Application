@@ -49,6 +49,34 @@ $(document).on('click', '.viewPassword', function () {
     }
 });
 
+function LoadPassword() {
+    $('.otpFormGroup').hide();
+    $('.passwordFromGroup').show();
+
+    fv2.disableValidator('otp');
+    fv2.enableValidator('password');
+}
+
+function LoadOTP() {
+    $('.otpFormGroup').show();
+    $('.passwordFromGroup').hide();
+
+    fv2.disableValidator('password');
+    fv2.enableValidator('otp');
+}
+
+$(document).on('click', '.viewotp', function () {
+    if ($('#OtpPasswordModalForm .password').attr('type') === 'text') {
+        $('#OtpPasswordModalForm .password').attr('type', 'password');
+        $(this).find('i').removeClass('bi-eye-slash-fill').addClass('bi-eye-fill');
+    } else {
+        $('#OtpPasswordModalForm .password').attr('type', 'text');
+        $(this).find('i').removeClass('bi-eye-fill').addClass('bi-eye-slash-fill');
+    }
+});
+
+
+
 var MobileFormfv;
 var fv1;
 var MobileFormValidationSingleton = (function () {
@@ -76,8 +104,15 @@ var MobileFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            SendOtpToMobile();
             PasswordFormValidationSingleton.getInstance();
             $('#OtpPasswordModalForm').show();
+            $('.otpFormGroup').show();
+            $('.passwordFromGroup').hide();
+
+            fv2.disableValidator('password');
+            fv2.enableValidator('otp');
+
             $('#MobileModalForm').hide();
         });
         return fv1;
@@ -108,6 +143,13 @@ var PasswordFormValidationSingleton = (function () {
                             message: 'Password is required'
                         }
                     }
+                },
+                otp: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Otp is required'
+                        }
+                    }
                 }
             },
             plugins: {
@@ -136,87 +178,30 @@ var PasswordFormValidationSingleton = (function () {
     };
 })();
 
-
-var SignupFormfv;
-var fv3;
-var signupFormValidationSingleton = (function () {
-
-    function createInstance() {
-        let form = document.getElementById('signupCred');
-        fv3 = FormValidation.formValidation(form, {
-            fields: {
-                signupUserName: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Email is required'
-                        }
-                    }
-                },
-                signupPassowrd: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Password is required'
-                        }
-                    }
-                },
-                SignupConfirmPassword: {
-                    validators: {
-                        callback: {
-                            message: "Confirm password should be same as password",
-                            callback: function (input) {
-                                var signupPassowrd = $('#signupPassowrd').val();
-                                var SignupConfirmPassword = $('#SignupConfirmPassword').val();
-                                if (signupPassowrd == SignupConfirmPassword) {
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            plugins: {
-                trigger: new FormValidation.plugins.Trigger(),
-                bootstrap3: new FormValidation.plugins.Bootstrap3(),
-                submitButton: new FormValidation.plugins.SubmitButton(),
-                icon: new FormValidation.plugins.Icon({
-                    valid: 'fas fa-check',
-                    invalid: 'fa fa-times',
-                    validating: 'fa fa-refresh'
-                }),
+function SendOtpToMobile(){
+    var MobileNumber = $('#MobileModalForm .userNumber').val();
+    $.ajax({
+        type: "Post",
+        url: "/LoginSignup/SendOTP",
+        data: { MobileNumber: MobileNumber },
+        success: function (result) {
+            if (result.returnStatus == 1) {
+                toastr.success(result.retunMessage);
+            } else {
+                toastr.warning(result.retunMessage);
             }
-        }).on('core.form.valid', function () {
-            var signup = {}
-            login.UserName = $('#UserName');
-            login.Password = $('#Password');
-            $.ajax({
-                type: "Post",
-                url: "/LoginSignup/Login",
-                data: login,
-                success: function () {
-                    Location.re
-                },
-                error: function () {
-
-                }
-            });
-        });
-        return fv3;
-    }
-    return {
-        getInstance: function () {
-            if (SignupFormfv) {
-                SignupFormfv.destroy();
-            }
-            SignupFormfv = createInstance();
-            return SignupFormfv;
+        },
+        error: function () {
+            toastr.warning('error while sending OTP!!')
         }
-    };
-})();
+    });
+}
 
 function Login() {
     var login = {}
     login.UserNumber = $('#MobileModalForm .userNumber').val();
     login.Password = $('#OtpPasswordModalForm .password').val();
+    login.otp = $('#OtpPasswordModalForm .otp').val();
     $.ajax({
         type: "Post",
         url: "/LoginSignup/Login",
@@ -230,8 +215,5 @@ function Login() {
     });
 };
 
-function SignUp() {
-
-};
 
 

@@ -11,6 +11,7 @@ using System.Collections.Specialized;
 using System.Web;
 using System.Runtime.InteropServices;
 using MultiLogApplication.Models.User;
+using MultiLogApplication.Models.LoginModel;
 
 namespace MultiLogApplication.Controllers
 {
@@ -24,6 +25,20 @@ namespace MultiLogApplication.Controllers
             _loginServices = loginServices;
             _logger = logger;
             _config = config;
+        }
+
+        public async Task<IActionResult> SendOTP(string MobileNumber)
+        {
+            ReturnType<string> returnType = new ReturnType<string>();
+            try
+            {
+                returnType = await _loginServices.SendOTP(MobileNumber);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at LoginSignupController > SendOTP");
+            }
+            return Json(returnType);
         }
 
         public async Task<IActionResult> Login(LoginDetails details)
@@ -133,7 +148,6 @@ namespace MultiLogApplication.Controllers
             }
             return returnType;
         }
-
 
         public async Task<IActionResult> SignOut()
         {
