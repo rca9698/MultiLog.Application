@@ -107,6 +107,7 @@ namespace MultiLogApplication.Controllers
                         claims.Add(new Claim(ClaimTypes.NameIdentifier, Convert.ToString(returnType.ReturnVal.UserId)));
                         claims.Add(new Claim(ClaimTypes.Name, returnType.ReturnVal.FirstName + " " + returnType.ReturnVal.LastName));
                         claims.Add(new Claim("UserNumber", returnType.ReturnVal.UserNumber));
+                        claims.Add(new Claim("Otp", returnType.ReturnVal.Otp));
 
                         foreach (string claim in returnType.ReturnVal.Claims.Split(","))
                             claims.Add(new Claim(claim, Convert.ToString(returnType.ReturnVal.UserId)));
