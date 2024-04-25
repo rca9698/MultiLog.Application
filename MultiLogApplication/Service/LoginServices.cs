@@ -44,31 +44,39 @@ namespace MultiLogApplication.Service
 
             //http://cloud.smsindiahub.in/vendorsms/pushsms.aspx?APIKey=ztAZri2RPU6PuyAaEJE6Lg&msisdn=919893085852&sid=SMSHUB&msg=Welcome to the Kapunter powered by SMSINDIAHUB. Your OTP for registration is 1212121&fl=0&dc=0&gwid=2
             string otpResp = "";
-            if (_configuration["Environment:Type"] == "DEV")
-            { 
-                otpRespMsg.ReturnMessage = "OTP sent to your number As " + otp + "!!";
-                otpRespMsg.ReturnStatus = ReturnStatus.Success;
-
-                return otpRespMsg;
-            }
-            else
+            try
             {
-                var smsUrl = $"{smsBaseUrl}?APIKey={apiKey}&msisdn={mobileNumber}&sid={sid}&msg={Message}";
-                var response = await _client.GetAsync(smsUrl);
-                otpResp = await response.Content.ReadAsStringAsync();
-            }
+                if (_configuration["Environment:Type"] == "DEV")
+                {
+                    otpRespMsg.ReturnMessage = "OTP sent to your number As " + otp + "!!";
+                    otpRespMsg.ReturnStatus = ReturnStatus.Success;
 
-            if (otpResp != null && otpResp.Contains("Failed"))
+                    return otpRespMsg;
+                }
+                else
+                {
+                    var smsUrl = $"{smsBaseUrl}?APIKey={apiKey}&msisdn={mobileNumber}&sid={sid}&msg={Message}";
+                    var response = await _client.GetAsync(smsUrl);
+                    otpResp = await response.Content.ReadAsStringAsync();
+
+                }
+
+                if (otpResp != null && otpResp.Contains("Failed"))
+                {
+                    otpRespMsg.ReturnMessage = "Failed to send OTP your number!!";
+                    otpRespMsg.ReturnStatus = ReturnStatus.Failure;
+                }
+                else
+                {
+                    otpRespMsg.ReturnMessage = "OTP sent to your number!!";
+                    otpRespMsg.ReturnStatus = ReturnStatus.Success;
+                }
+            }
+            catch (Exception ex)
             {
                 otpRespMsg.ReturnMessage = "Failed to send OTP your number!!";
                 otpRespMsg.ReturnStatus = ReturnStatus.Failure;
-            }
-            else
-            {
-                otpRespMsg.ReturnMessage = "OTP sent to your number!!";
-                otpRespMsg.ReturnStatus= ReturnStatus.Success;
-            }
-
+            } 
             return otpRespMsg;
         }
 

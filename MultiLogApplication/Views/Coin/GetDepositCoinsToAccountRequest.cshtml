@@ -15,7 +15,6 @@
             <thead>
                 <tr class="tableHeaderClass">
                     <th scope="col">User Number</th>
-                    <th scope="col">User Name</th>
                     <th scope="col">Coins</th>
                     <th scope="col">Request Date</th>
                     <th scope="col">Action</th>
@@ -27,13 +26,12 @@
                     @foreach (var user in Model.ReturnList)
                     {
                         <tr>
-                            <td scope="row">@user.UserName</td>
                             <td>@user.UserNumber</td>
                             <td>@user.Coins</td>
                             <td>@user.CreatedDate</td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" data-toggle="modal" data-target="#DeleteCoinsToAccountRequest" siteId=@user.SiteId userId=@user.UserId UserNumber="@user.UserNumber" coinRequestID="@user.CoinsRequestId" id="deleteCoinRequestBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#DeleteCoinsToAccountRequest" siteId=@user.SiteId userId=@user.UserId UserNumber="@user.UserNumber" coinRequestID="@user.CoinsRequestId" id="DeleteCoinsToAccountRequestBtn"> <i class="bi bi-person-fill-slash"></i></button>
                                     <button type="button" data-toggle="modal" data-target="#DepositeCoinsToAccountModal" siteId=@user.SiteId userId=@user.UserId UserNumber="@user.UserNumber" coinRequestID="@user.CoinsRequestId" id="DepositeCoinsToAccountBtn"> <i class="bi bi-person-fill-up"></i></button>
                                 </div>
                             </td>

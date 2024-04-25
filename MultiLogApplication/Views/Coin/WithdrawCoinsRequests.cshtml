@@ -16,7 +16,6 @@
             <thead>
                 <tr class="tableHeaderClass">
                     <th scope="col">User Number</th>
-                    <th scope="col">User Name</th>
                     <th scope="col">Coins</th>
                     <th scope="col">Request Date</th>
                     <th scope="col">Action</th>
@@ -28,7 +27,6 @@
                     @foreach (var user in Model.ReturnList)
                     {
                         <tr>
-                            <td scope="row">@user.UserName</td>
                             <td>@user.UserNumber</td>
                             <td>@user.Coins</td>
                             <td>@user.CreatedDate</td>

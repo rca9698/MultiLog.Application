@@ -56,6 +56,7 @@ namespace MultiLogApplication.Controllers
             {
                 obj.SessionUser = _sessionUser;
                 obj.CoinType = 0;
+                obj.UserId = _sessionUser;
                 res = await _coinService.GetCoinsRequest(obj);
             }
             catch (Exception ex)
