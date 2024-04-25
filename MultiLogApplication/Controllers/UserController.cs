@@ -8,7 +8,7 @@ using MultiLogApplication.Models.User;
 
 namespace MultiLogApplication.Controllers
 {
-    [ServiceFilter(typeof(AdminActionFilter))]
+    
     public class UserController : BaseController
     {
         private readonly IUserService _userService;
@@ -23,7 +23,7 @@ namespace MultiLogApplication.Controllers
         {
             return View();
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> GetUsers()
         {
             ReturnType<UserDetail> res = new ReturnType<UserDetail>();
@@ -39,7 +39,7 @@ namespace MultiLogApplication.Controllers
             }
             return PartialView("~/Views/User/ViewPanel.cshtml", res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> AddUser(AddUser obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -55,7 +55,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> UpdateUser(UpdateUser obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -70,7 +70,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> DeleteUser(DeleteUser obj)
         {
             ReturnType<string> res = new ReturnType<string>();
