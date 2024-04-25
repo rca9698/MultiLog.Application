@@ -206,9 +206,6 @@
                                         }
                             </div>
 
-
-                            
-                            
                             </div>
                         </header>
                         @RenderBody()
@@ -819,6 +816,7 @@
         </div>
     </div>
     <!-- Login Modal -->
+    
     <!-- Logout Modal -->
     <div class="modal fade" id="LogOutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -854,6 +852,53 @@
         </div>
     </div>
     <!-- Logout Modal -->
+
+    <!-- Change Password Modal -->
+    <div class="modal fade" id="ChangePasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content container siteColor">
+                <div class="row justify-content-center">
+                    <div class="">
+                        <div class="card sitebackground">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel"></h4>
+                                <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <i class="bi bi-x-circle-fill"></i>
+                                </div>
+                            </div>
+                            <div class="card-header py-4 text-center">
+                                <img src="~/images/kapunterIcon.jpg" alt="logo" style="height: 100%;width: 50%">
+                            </div>
+
+                            <div class="card-body p-4">
+
+                                <div class="text-center w-75 m-auto">
+                                    <h4 class="text-dark-50 text-center pb-0 fw-bold">Welcome to the club!</h4>
+                                </div>
+                                <form id="ChangePasswordForm">
+                                    <div class="mb-3 form-group">
+                                        <label for="password" class="form-label">Password*</label>
+                                        <input class="form-control Password" type="password" name="Password" placeholder="Password" autocomplete="off">
+                                    </div>
+                                    <div class="mb-3 form-group">
+                                        <label for="confirmPassword" class="form-label">Confirm Password*</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="text" name="confirmPassword" class="form-control" placeholder="Confirm Password" autocomplete="off">
+                                        </div>
+                                    </div> 
+
+                                    <div class="col-12 mb-0 text-center">
+                                        <button class="col-12 btn siteBtnbackground" type="submit"> Add Password </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Change Password Modal -->
 
     <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
 
