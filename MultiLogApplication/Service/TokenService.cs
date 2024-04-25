@@ -26,7 +26,7 @@ namespace MultiLogApplication.Service
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:key"]);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("UserId", _userId.ToString()), new Claim("otp", _otp == 0 ? "" : _otp.ToString()) }),
+                Subject = new ClaimsIdentity(new[] { new Claim("UserId", _userId.ToString()), new Claim("otp", _otp.ToString()) }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 Issuer = _configuration["Jwt:Issuer"],
                 Audience = _configuration["Jwt:Audience"],

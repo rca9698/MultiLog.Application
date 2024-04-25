@@ -16,7 +16,7 @@
                 <thead>
                 <tr class="tableHeaderClass">
                         <th scope="col">User Number</th>
-                        <th scope="col">UpdatedBy</th>
+                        <th scope="col">Created Date</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -27,7 +27,7 @@
                         {
                             <tr>
                                 <th scope="row">@user.UserNumber</th>
-                                <td>@user.UpdatedDate</td>
+                                <td>@user.CreatedDate</td>
                                 <td>
                                     <div class="btn-group">
                                     <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
