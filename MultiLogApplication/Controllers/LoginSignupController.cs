@@ -119,7 +119,7 @@ namespace MultiLogApplication.Controllers
                             IsPersistent = false //objLoginModel.RememberLogin
                         });
 
-                        var otp = details.OTP.ToString() != null ? details.OTP.ToString() : details.Password.ToString();
+                        var otp = details.OTP != null ? details.OTP.ToString() : details.Password.ToString();
 
                         HttpContext.Session.SetString("UserId", returnType.ReturnVal.UserId.ToString());
                         HttpContext.Session.SetString("UserNumber", returnType.ReturnVal.UserNumber);
