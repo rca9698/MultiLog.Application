@@ -24,16 +24,19 @@
             <div class="main-container">
                 <div class="account-container">
                     <div class="depwith">
-                        <div class="deposite acc-content" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn" userId="@userId" userNumber="@userNumber">
-                            <div>DEPOSIT</div>
-                            <i class="arrow up"></i>
-                            <i class="arrow up"></i>
-                        </div>
-                        <div class="withdraw acc-content" data-toggle="modal" data-target="#WithdrawCoinsRequestModal" id="WithdrawCoinsRequestModalBtn" userId="@userId" userNumber="@userNumber">
-                            <div>WITHDRAW</div>
-                            <i class="arrow down"></i>
-                            <i class="arrow down"></i>
-                        </div>
+                        @if (!User.Claims.Any(x => x.Type.Contains("Admin")))
+                        {
+                            <div class="deposite acc-content" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn" userId="@userId" userNumber="@userNumber">
+                                <div>DEPOSIT</div>
+                                <i class="arrow up"></i>
+                                <i class="arrow up"></i>
+                            </div>
+                            <div class="withdraw acc-content" data-toggle="modal" data-target="#WithdrawCoinsRequestModal" id="WithdrawCoinsRequestModalBtn" userId="@userId" userNumber="@userNumber">
+                                <div>WITHDRAW</div>
+                                <i class="arrow down"></i>
+                                <i class="arrow down"></i>
+                            </div>
+                        }
                     </div>
                     <div class="wallet acc-content">
                         <img src="/images/kapunterIcon.jpg" alt="">

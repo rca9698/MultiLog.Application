@@ -223,7 +223,12 @@ function Login() {
         url: "/LoginSignup/Login",
         data: login,
         success: function (result) {
-            ToasteRMessage(result,'');
+            if (result.returnStatus == 1) {
+                toastr.success(result.returnMessage);
+                location.href = result.returnVal;
+            } else {
+                toastr.warning(result.returnMessage);
+            }
         },
         error: function () {
 

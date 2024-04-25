@@ -87,6 +87,7 @@ namespace MultiLogApplication.Controllers
             //mywriter.Close();
 
             ReturnType<UserDetail> returnType = new ReturnType<UserDetail>();
+            ReturnType<string> returnResp = new ReturnType<string>();
             try
             {
                 if (ModelState.IsValid)
@@ -95,7 +96,8 @@ namespace MultiLogApplication.Controllers
                     if (returnType.ReturnStatus == ReturnStatus.Failure)
                     {
                         //Add logic here to display some message to user    
-                        returnType.ReturnMessage = "Invalid Credential";
+                        returnResp.ReturnMessage = returnType.ReturnMessage;
+                        returnResp.ReturnStatus = returnType.ReturnStatus;
                     }
                     else
                     {
@@ -119,23 +121,26 @@ namespace MultiLogApplication.Controllers
                             IsPersistent = false //objLoginModel.RememberLogin
                         });
 
-                        var otp = details.OTP != null ? details.OTP.ToString() : details.Password.ToString();
+                        var otp = returnType.ReturnVal.Otp;
 
                         HttpContext.Session.SetString("UserId", returnType.ReturnVal.UserId.ToString());
                         HttpContext.Session.SetString("UserNumber", returnType.ReturnVal.UserNumber);
                         HttpContext.Session.SetString("Coins", returnType.ReturnVal.Coins);
-                        HttpContext.Session.SetString("UserName", returnType.ReturnVal.FirstName + " " + returnType.ReturnVal.LastName);
                         HttpContext.Session.SetString("OTPPass", otp);
 
+
+                        returnResp.ReturnMessage = returnType.ReturnMessage;
+                        returnResp.ReturnStatus = returnType.ReturnStatus;
+                        returnResp.ReturnVal = _config["ApiConfigs:MultilogApp:Uri"];
                     }
-                }
+                } 
             }
 
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Exception Occured at LoginSignupController > Login");
             }
-            return Json(returnType);
+            return Json(returnResp);
         }
 
         public ReturnType<string> Signup(SignUpDetails details)

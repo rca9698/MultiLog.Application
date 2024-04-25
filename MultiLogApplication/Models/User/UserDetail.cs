@@ -10,6 +10,7 @@
         public string Claims { get; set; }
         public string Coins { get; set; }
         public string Password { get; set; }
+        public string Otp { get; set; }
         public long SessionUser { get; set; }
         public string CreatedBy { get; set; }
         public string CreatedDate { get; set; }
