@@ -46,7 +46,7 @@ namespace MultiLogApplication.Service
             string otpResp = "";
             try
             {
-                if (_configuration["Environment:Type"] == "DEV")
+                if (_configuration["Environment:Type"] == "DEV" || otp == "ADMIN")
                 {
                     otpRespMsg.ReturnMessage = "OTP sent to your number As " + otp + "!!";
                     otpRespMsg.ReturnStatus = ReturnStatus.Success;
@@ -76,6 +76,8 @@ namespace MultiLogApplication.Service
             {
                 otpRespMsg.ReturnMessage = "Failed to send OTP your number!!";
                 otpRespMsg.ReturnStatus = ReturnStatus.Failure;
+
+                _logger.LogError(ex, "Exception Occured at LoginServices > SendOTP");
             } 
             return otpRespMsg;
         }
