@@ -3,6 +3,7 @@
 @inject IHttpContextAccessor Accessor;
 @{
     var coins = Accessor.HttpContext.Session.GetString("Coins");
+    var userNumber = Accessor.HttpContext.Session.GetString("UserNumber");
 }
 
 <!DOCTYPE html>
@@ -47,6 +48,12 @@
                                 </a>
                             </div>
 
+                            <div class="col-12 row text-center">
+                                <p>
+                                    <i class="bi bi-person-circle col-2"></i>
+                                    0987654321
+                                </p>
+                            </div>
                         </header>
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -84,7 +91,7 @@
 
                                     <div class='dashboard-nav-dropdown'>
                                         <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-                                            <i class="bi bi-person"></i> Dashboard Images
+                                            <i class="bi bi-image"></i> Dashboard Images
                                         </a>
                                         <div class='dashboard-nav-dropdown-menu'>
                                             <a href="/Home/Index?viewType=AdminImg" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> List Image </a>
