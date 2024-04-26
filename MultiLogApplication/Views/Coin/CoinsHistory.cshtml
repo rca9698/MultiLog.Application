@@ -2,8 +2,8 @@
 @model ReturnType<MultiLogApplication.Models.Coin.CoinsRequestModel>
 
 <div class="row mt-4">
-    <div class="col-6">
-        <h6 class="text-white">Coins History (<span id="coinHistoryUserid"></span>)</h6>
+    <div class="col-12 text-center">
+        <p class="text-uppercase">Coins History (<span id="coinHistoryUserid"></span>)</p>
     </div>
 </div>
 
@@ -15,7 +15,7 @@
             <thead>
                 <tr>
                     <th scope="col"><p class="text-uppercase">Coins</p></th>
-                    <th scope="col"><p class="text-uppercase">Coin Type</p></th>
+                    <th scope="col"><p class="text-uppercase">Total Coins</p></th>
                     <th scope="col"><p class="text-uppercase">Transaction By</p></th>
                     <th scope="col"><p class="text-uppercase">Transaction Date</p></th>
                 </tr>
@@ -27,9 +27,9 @@
                     {
                         <tr class="@user.CoinTypeColor">
                             <td><p>@user.Coins</p></td>
-                            <td><p>@user.CoinType</p></td>
-                            <td><p>@user.UpdatedBy</p></td>
-                            <td><p>@user.UpdatedDate</p></td>
+                            <td><p>@user.TotalCoins</p></td>
+                            <td><p>@user.CreatedBy</p></td>
+                            <td><p>@user.CreatedDate</p></td>
                         </tr>
                     }
                 }

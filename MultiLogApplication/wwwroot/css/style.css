@@ -26,7 +26,36 @@ body {
     line-height: 1.5;
     color: #eee;
     text-align: left;
-    background: #51087E;
+    background: linear-gradient(to left, #65278b, #311147)
+}
+
+.siteBtnbackground {
+    /*background: #000;*/
+    /*background: #d334e3;*/
+    /*background: #7752A2;*/
+    background: linear-gradient(to left, #65278b, #311147);
+    color: #FFF;
+    font-weight: bolder;
+    padding: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+    .siteBtnbackground:hover {
+        /*background: #000;*/
+        /*background: #d334e3;*/
+        background: #7752C1;
+        color: #FFF;
+        font-weight: bolder;
+        padding: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+.AddBankDetailModalBtn1, AddAdminQRDetailModalBtn, AddAdminUpiDetailModalBtn, AddAdminBankDetailModalBtn {
+    float: right;
+    background: transparent;
+    padding: 5px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -34,13 +63,13 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.5rem;
 }
 
-p {
+p, input, label, .viewotp, .viewPassword {
     /*margin-top: 0;*/
     margin-bottom: 0;
     font-size: 9px;
     margin-top: 5px;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    color:white;
+    color: white;
 }
 
     p .FontSize {
@@ -97,6 +126,7 @@ h1, .h1 {
     /*padding: 1.25rem;*/
     padding: 0em;
 }
+
 .card-body-padding {
     padding: 1rem 1rem;
     margin: 0px 0px 10px 0px;
@@ -373,7 +403,7 @@ h1, .h1 {
 .dashboard-toolbar {
     min-height: 84px;
     /*background-color: #dfdfdf;*/
-    background-color:transparent;
+    background-color: transparent;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -662,12 +692,22 @@ body {
 }
 
 .DepositeCoinClass {
-    background-color: green;
+    /*background-color: green;*/
+    border: solid green;
 }
 
+    .DepositeCoinClass p {
+        color: green;
+    }
+
 .WithdrawCoinClass {
-    background-color: red;
+    /*background-color: red;*/
+    /*border: solid red;*/
 }
+
+    .WithdrawCoinClass p {
+        color: red;
+    }
 
 .tableHeaderClass {
     background-color: #01010a;
@@ -730,8 +770,8 @@ body {
     margin-right: 5px;
 }
 
-.bankcard .bankDetails span{
-    text-align:right;
+.bankcard .bankDetails span {
+    text-align: right;
 }
 
 
@@ -761,8 +801,8 @@ input[type=number] {
     background-color: #191616 !important;
 }
 
-.BankDataSwitch{
-    padding:15px;
+.BankDataSwitch {
+    padding: 15px;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -771,12 +811,10 @@ input[type=number] {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 750px) {
-     
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (max-width: 768px) {
-    
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

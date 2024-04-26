@@ -9,8 +9,9 @@
 
 .dashboard-content {
     /*background-color: #65a765 !important;*/
-    padding:0px
+    padding: 0px
 }
+
 .dashboard-toolbar, .modal-dialog .modal-content, .modal-dialog .card {
     background-color: #070F1B !important;
 }
@@ -20,19 +21,11 @@
         width: 3vw;
         height: 3vw;
         background: #51087E !important;
-        border-radius:50%;
+        border-radius: 50%;
     }
 
 
-.siteBtnbackground {
-    /*background: #000;*/
-    /*background: #d334e3;*/
-    background: #7752A2;
-    color: #FFF;
-    font-weight: bolder;
-    padding: 5px;
-    cursor: pointer;
-}
+
 
 .modal-header .close i {
     color: #7752A2;
@@ -54,19 +47,13 @@
     padding: 1rem;
 }
 
-
-.siteBtnbackground:hover {
-    /*background: #000;*/
-    /*background: #d334e3;*/
-    background: #7752C1;
-    color: #FFF;
-    font-weight: bolder;
-    padding: 5px;
-    cursor: pointer;
-}
-
 .siteColor {
     color: #FFFF !important;
+}
+
+.modal-title {
+    font-size: 20px;
+    text-transform: uppercase;
 }
 
 .modal-content .close {
@@ -76,6 +63,8 @@
 
 .modal-header {
     border-bottom: 0 none;
+    padding: 0px;
+    margin-left: 20px;
 }
 
 .modal-footer {
@@ -192,18 +181,19 @@
 
 
 
-.modalContentBgclr{
+.modalContentBgclr {
     background: #212529;
     border-radius: 10px;
     padding: 15px;
 }
 
+.DeleteAdminBankAccount {
+    text-align: right;
+}
 
-
-
-
-
-
+.MakeAdminBankDefault {
+    text-align: left;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .siteImageSize {
@@ -232,7 +222,7 @@
     }
 
     .p {
-        font-size:10px
+        font-size: 10px
     }
 }
 
