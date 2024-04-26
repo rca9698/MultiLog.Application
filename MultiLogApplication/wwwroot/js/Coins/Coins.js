@@ -60,6 +60,7 @@ $(document).on('click', '#DeleteCoinsToAccountRequestBtn', function () {
 
 $(document).on('click', '#withdrawCoinsBtn', function () {
     $('#WithdrawCoinsForm .userNumber').val($(this).attr('UserNumber'));
+    $('#WithdrawCoinsForm .Coins').val($(this).attr('Coins'));
     $('#WithdrawCoinsForm').attr('UserId', ($(this).attr('userId')));
     $('#WithdrawCoinsForm').attr('coinRequestID', ($(this).attr('coinRequestId')));
     WithdrawCoinsFormValidationSingleton.getInstance();

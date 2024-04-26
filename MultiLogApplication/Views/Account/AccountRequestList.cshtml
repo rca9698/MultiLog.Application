@@ -27,7 +27,7 @@
                         @foreach (var account in Model.ReturnList)
                         {
                             <tr id="accountRequest_@account.AccountRequestID">
-                                <td scope="row" class="userNumber" userName="@account.UserNumber"><p>@account.UserNumber</p></td>
+                                <td scope="row" class="userNumber" userName="@account.UserName" userNumber="@account.UserNumber"><p>@account.UserNumber</p></td>
                                 <td class="sitedetails" siteName="@account.SiteName" siteUrl="@account.SiteURL" iconPath="@Configuration["StoragePath:SiteIcon:Path"]\@account.DocumentDetailId.@account.FileExtenstion"><p>@account.SiteName (@account.SiteURL)</p></td>
                                 <td>
                                     <div class="btn-group">

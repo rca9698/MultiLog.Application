@@ -82,8 +82,8 @@ $(document).on('click', '#CreateIDRequestModalBtn', function () {
 
 $(document).on('click', '#CreateIDModalBtn', function () {
     let accountRequestId = $(this).attr('accountRequestId');
-    let userNumber = $('#accountRequest_' + accountRequestId).find('.userNumber').attr('username');
-    let userName = $('#accountRequest_' + accountRequestId).find('.userName').attr('userName');
+    let userNumber = $('#accountRequest_' + accountRequestId).find('.userNumber').attr('userNumber');
+    let userName = $('#accountRequest_' + accountRequestId).find('.userNumber').attr('userName');
     let siteName = $('#accountRequest_' + accountRequestId).find('.sitedetails').attr('siteName');
     let siteUrl = $('#accountRequest_' + accountRequestId).find('.sitedetails').attr('siteUrl');
     let iconPath = $('#accountRequest_' + accountRequestId).find('.sitedetails').attr('iconPath');

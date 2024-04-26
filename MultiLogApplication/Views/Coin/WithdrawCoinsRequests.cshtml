@@ -32,8 +32,8 @@
                             <td><p>@user.CreatedDate</p></td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" data-toggle="modal" data-target="#DeleteCoinRequest" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" id="deleteCoinRequestBtn"> <i class="bi bi-person-fill-slash"></i></button>
-                                    <button type="button" data-toggle="modal" data-target="#WithdrawCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" id="withdrawCoinsBtn"> <i class="bi bi-person-fill-down"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#DeleteCoinRequest" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" Coins="@user.Coins" id="deleteCoinRequestBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#WithdrawCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" Coins="@user.Coins" id="withdrawCoinsBtn"> <i class="bi bi-person-fill-down"></i></button>
                                 </div>
                             </td>
                         </tr>
