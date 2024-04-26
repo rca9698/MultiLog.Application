@@ -9,6 +9,7 @@
 
 .dashboard-content {
     /*background-color: #65a765 !important;*/
+    padding:0px
 }
 .dashboard-toolbar, .modal-dialog .modal-content, .modal-dialog .card {
     background-color: #070F1B !important;

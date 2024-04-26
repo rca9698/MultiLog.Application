@@ -18,8 +18,8 @@
                     <span class="">
                         <img class="siteIcon rounded-circle siteImageSize" src="" />
                     </span>
-                    <p class="pSiteURLFontSize">@Model.ReturnVal.SiteURL</p>
-                    <p class="pSiteNameFontSize">@Model.ReturnVal.SiteName</p>
+                    <p class="text-uppercase">@Model.ReturnVal.SiteName</p>
+                    <p class="">@Model.ReturnVal.SiteURL</p>
                 </div>
             </div> 
         </div>
@@ -34,21 +34,21 @@
     <div class="card sitebackground rounded-3 siteColor">
         <div class="card-body card-body-padding">
             <div class="row Col-12">
-                Details
+                <p class="text-uppercase>Details</p>
             </div>
             <div class="nav-item-divider" style="color:white"></div>
-            @if (@Model.ReturnVal.Coins == 0)
+            @if (@Model.ReturnVal.ActivityId != 1 || @Model.ReturnVal.ActivityId != 2)
             {
                 <div class="row Col-12">
                     <div class="col-6" style="text-align:left">
-                        Coins
+                        <p>Coins</p>
                     </div>
                     <div class="col-6" style="text-align:right">
-                        @Model.ReturnVal.Coins
+                        <p>@Model.ReturnVal.Coins</p>
                     </div>
                 </div>
             }
-            @if (@Model.ReturnVal.ActivityId == 3)
+            @if (@Model.ReturnVal.ActivityId == 3 || @Model.ReturnVal.ActivityId == 5)
             {
                 <div class="row Col-12">
                     <div class="col-6 activityType" style="text-align:left">
@@ -59,6 +59,18 @@
                     </div>
             </div>
             }
+            @if (@Model.ReturnVal.ActivityId == 4 || @Model.ReturnVal.ActivityId == 6)
+            {
+                <div class="row Col-12">
+                    <div class="col-6 activityType" style="text-align:left">
+                        <p>Paid To wallet</p>
+                    </div>
+                    <div class="col-6" style="text-align:right">
+                        <p>@Model.ReturnVal.Coins</p>
+                    </div>
+                </div>
+            }
+
             <div class="row Col-12">
                 <div class="col-6" style="text-align:left">
                     <p>Reference No</p>
