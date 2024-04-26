@@ -1,10 +1,23 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using MultiLogApplication;
 using MultiLogApplication.ActionFilter;
+using Serilog;
+using Serilog.Formatting.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
- 
+
+builder.Host.UseSerilog();
+// Get application base directory
+string basedir = AppDomain.CurrentDomain.BaseDirectory;
+Log.Logger = new LoggerConfiguration()
+                 .WriteTo.File(path: basedir + "/Logs/Debug_.txt",
+                               rollingInterval: RollingInterval.Day,
+                               rollOnFileSizeLimit: true,
+                               fileSizeLimitBytes: 123456,
+                               shared: true)
+                 .CreateLogger();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
