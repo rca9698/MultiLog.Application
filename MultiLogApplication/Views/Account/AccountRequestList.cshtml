@@ -4,8 +4,8 @@
 
 <div class='dashboard-content'>
     <div class="row mt-4">
-        <div class="col-6">
-             <h6 class="text-white">Account Requests</h6> 
+        <div class="col-12 text-center">
+            <p class="text-uppercase">Account Requests</p>
         </div>
     </div>
 
@@ -16,9 +16,9 @@
             <table class="table table-hover" id="userList">
                 <thead>
                     <tr class="tableHeaderClass">
-                        <th scope="col">User Number</th>
-                        <th scope="col">Application</th>
-                        <th scope="col">Action</th>
+                        <th scope="col"><p class="text-uppercase">User Number</p></th>
+                        <th scope="col"><p class="text-uppercase">Application</p></th>
+                        <th scope="col"><p class="text-uppercase">Action</p></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,8 +27,8 @@
                         @foreach (var account in Model.ReturnList)
                         {
                             <tr id="accountRequest_@account.AccountRequestID">
-                                <td scope="row" class="userNumber" userName="@account.UserNumber">@account.UserNumber</td>
-                                <td class="sitedetails" siteName="@account.SiteName" siteUrl="@account.SiteURL" iconPath="@Configuration["StoragePath:SiteIcon:Path"]\@account.DocumentDetailId.@account.FileExtenstion">@account.SiteName (@account.SiteURL)</td>
+                                <td scope="row" class="userNumber" userName="@account.UserNumber"><p>@account.UserNumber</p></td>
+                                <td class="sitedetails" siteName="@account.SiteName" siteUrl="@account.SiteURL" iconPath="@Configuration["StoragePath:SiteIcon:Path"]\@account.DocumentDetailId.@account.FileExtenstion"><p>@account.SiteName (@account.SiteURL)</p></td>
                                 <td>
                                     <div class="btn-group">
                                         <button type="button" data-toggle="modal" data-target="#CreateIDModal" accountRequestID="@account.AccountRequestID" id="CreateIDModalBtn"> <i class="bi bi-pencil-square"></i> </button>
@@ -40,7 +40,7 @@
                     }
                     else
                     {
-                        <tr><td colspan="4">No Data Found!!</td></tr>
+                        <tr class="text-center"><td colspan="4"><p>No Data Found!!</p></td></tr>
                     }
                 </tbody>
             </table>

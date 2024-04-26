@@ -3,8 +3,8 @@
 @model ReturnType<MultiLogApplication.Models.Dashboard.DashboardImages>
 
 <div class="row mt-4">
-    <div class="col-6">
-        <h6 class="text-white">Dashboard Images</h6>
+    <div class="col-12 text-center">
+        <p class="text-uppercase">Dashboard Images</p>
     </div>
 </div>
 
@@ -15,8 +15,8 @@
         <table class="table table-hover" id="userList">
             <thead>
                 <tr class="tableHeaderClass">
-                    <th scope="col" class="text-center">Display Date</th>
-                    <th scope="col" class="text-center">Action</th>
+                    <th scope="col" class="text-center"><p class="text-uppercase">Display Date</p></th>
+                    <th scope="col" class="text-center"><p class="text-uppercase">Action</p></th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +25,7 @@
                     @foreach (var image in Model.ReturnList)
                     {
                         <tr>
-                            <td scope="row" class="text-center">@image.DisplayDate</td>
+                            <td scope="row" class="text-center"><p>@image.DisplayDate</p></td>
                             <td class="text-center">
                                 <div class="btn-group">
                                     <button type="button" data-toggle="modal" data-target="#ViewCoinRequestProof" docId="@image.DocumentDetailId" dashboardPath="@Configuration["StoragePath:DashboardImages:Path"]\@image.DocumentDetailId.@image.FileExtenstion" id="ViewDashboardImgBtn"> <i class="bi bi-eye-fill"></i></button>
@@ -38,7 +38,7 @@
                 }
                 else
                 {
-                    <tr><td colspan="5">No Data Found!!</td></tr>
+                    <tr class="text-center"><td colspan="5"><p>No Data Found!!</p></td></tr>
                 }
             </tbody>
         </table>

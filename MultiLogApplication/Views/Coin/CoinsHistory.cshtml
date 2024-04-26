@@ -14,10 +14,10 @@
         <table class="table table-hover" id="coinList">
             <thead>
                 <tr>
-                    <th scope="col">Coins</th>
-                    <th scope="col">Coin Type</th>
-                    <th scope="col">Transaction By</th>
-                    <th scope="col">Transaction Date</th>
+                    <th scope="col"><p class="text-uppercase">Coins</p></th>
+                    <th scope="col"><p class="text-uppercase">Coin Type</p></th>
+                    <th scope="col"><p class="text-uppercase">Transaction By</p></th>
+                    <th scope="col"><p class="text-uppercase">Transaction Date</p></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,16 +26,16 @@
                     @foreach (var user in Model.ReturnList)
                     {
                         <tr class="@user.CoinTypeColor">
-                            <td>@user.Coins</td>
-                            <td>@user.CoinType</td>
-                            <td>@user.UpdatedBy</td>
-                            <td>@user.UpdatedDate</td>
+                            <td><p>@user.Coins</p></td>
+                            <td><p>@user.CoinType</p></td>
+                            <td><p>@user.UpdatedBy</p></td>
+                            <td><p>@user.UpdatedDate</p></td>
                         </tr>
                     }
                 }
                 else
                 {
-                    <tr><td colspan="5">No Data Found!!</td></tr>
+                    <tr class="text-center"><td colspan="5"><p>No Data Found!!</p></td></tr>
                 }
             </tbody>
         </table>

@@ -3,8 +3,8 @@
 
 
     <div class="row mt-4">
-        <div class="col-6">
-            <h6 class="text-white">User Listing</h6>
+    <div class="col-12 text-center">
+            <p class="text-uppercase">User Listing</p>
         </div>
     </div>
 
@@ -15,9 +15,9 @@
             <table class="table table-hover" id="userList">
                 <thead>
                 <tr class="tableHeaderClass">
-                        <th scope="col">User Number</th>
-                        <th scope="col">Created Date</th>
-                        <th scope="col">Action</th>
+                    <th scope="col"><p class="text-uppercase">User Number</p></th>
+                    <th scope="col"><p class="text-uppercase">Created Date</p></th>
+                    <th scope="col"><p class="text-uppercase">Action</p></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,8 +26,8 @@
                         @foreach (var user in Model.ReturnList)
                         {
                             <tr>
-                                <th scope="row">@user.UserNumber</th>
-                                <td>@user.CreatedDate</td>
+                            <th scope="row"><p>@user.UserNumber</p></th>
+                            <td><p>@user.CreatedDate</p></td>
                                 <td>
                                     <div class="btn-group">
                                     <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
