@@ -127,8 +127,8 @@
                     {
                         <div class="carousel-item active" data-bs-interval="20000">
                             <div class="card text-white rounded-3 sitebackground dashboardSite site_@SiteDetail.SiteId" style="padding: 30px;">
-                                <a class="row Col-12 bg-dark-1 p-2 rounded-3" href="@SiteDetail.SiteURL" target="_blank">
-                                    <div class="col-10">
+                                <div class="row Col-12 bg-dark-1 p-2 rounded-3" >
+                                    <a class="col-10" href="@SiteDetail.SiteURL" target="_blank" style="text-decoration: none;">
                                         <div class="row col-12">
                                             <div class="col-3">
                                                 <img src="@Configuration["StoragePath:SiteIcon:Path"]\@SiteDetail.DocumentDetailId.@SiteDetail.FileExtenstion" alt="" class="rounded-3 siteImageSize siteIcon">
@@ -139,14 +139,11 @@
                                             </div>
                                         </div>
 
-                                    </div>
-                                    <div class="col-2">
-                                        <a>
-                                            <i class="bi bi-arrow-up-right-square-fill" style="float: right;padding: 25px;"></i>
-                                        </a>
-
-                                    </div>
-                                </a>
+                                    </a>
+                                    <a class="col-2" href="@SiteDetail.SiteURL" target="_blank" style="text-decoration: none;">
+                                            <i class="bi bi-arrow-up-right-square-fill" style="float: right;"></i>
+                                    </a>
+                                </div>
                                 <div class="row Col-12 bg-dark-1 p-2">
                                     <div class="col-3 tempclass" data-toggle="modal" data-target="#DepositeToAccountRequestModal" siteid="@SiteDetail.SiteId" id="DepositeToAccountRequestCoinsBtn">
                                         <div class="card bg-dark p-2">
