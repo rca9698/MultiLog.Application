@@ -46,7 +46,6 @@ $(document).on('click', '#viewCoinRequestproofBtn', function () {
 });
 
 $(document).on('click', '#deleteCoinRequestBtn', function () {
-    debugger;
     let coinrequestid = $(this).attr('coinrequestid');
     $('#DeleteCoinsToWalletConfirmbtn').attr('coinrequestid', coinrequestid);
 });
@@ -68,6 +67,25 @@ $(document).on('click', '#withdrawCoinsBtn', function () {
 
 $(document).on('click', '#DepositCoinsRequestModalBtn', function () {
     AddCoinsRequestFormValidationSingleton.getInstance();
+});
+
+
+$(document).on('click', '#ViewCustWithdrawDetailsBtn', function () {
+    let bankId = $(this).attr('bankId');
+
+    $.ajax({
+        url: '/BankAccount/GetBankAccountById',
+        type: 'POST',
+        data: { BankDetailID: bankId },
+        success: function (result) {
+            if (result.returnStatus == 1) {
+                $('#ViewCustWithdrawDetails .bankName').html(result.returnVal.bankName);
+                $('#ViewCustWithdrawDetails .accountHolderName').html(result.returnVal.accountHolderName);
+                $('#ViewCustWithdrawDetails .accountNumber').html(result.returnVal.accountNumber);
+                $('#ViewCustWithdrawDetails .ifscCode').html(result.returnVal.ifscCode);
+            }
+        }
+    });
 });
 
 $(document).on('click', '#WithdrawCoinsRequestModalBtn', function () {
@@ -115,6 +133,8 @@ $(document).on('click', '#DesitCoins', function () {
 
 $(document).on('click', '#DepositeCoinsToAccountBtn', function () {
     let coinsRequestID = $(this).attr('coinRequestID');
+    let siteIcon = $(this).attr('siteIcon');
+
     $.ajax({
         url: '/Coin/GetCoinsFromAccountRequestById',
         type: 'POST',
@@ -126,7 +146,7 @@ $(document).on('click', '#DepositeCoinsToAccountBtn', function () {
                 $('#DepositeCoinsToAccountModal').attr('siteId', result.returnVal.siteId);
                 $('#DepositeCoinsToAccountModal .siteName').html(result.returnVal.siteName);
                 $('#DepositeCoinsToAccountModal .siteURL').html(result.returnVal.siteURL);
-                $('#DepositeCoinsToAccountModal .siteIcon').attr('siteIcon', '');
+                $('#DepositeCoinsToAccountModal .siteIcon').attr('siteIcon', siteIcon);
             }
             else {
                 toastr.warning(result.returnMessage);
@@ -139,6 +159,8 @@ $(document).on('click', '#DepositeCoinsToAccountBtn', function () {
 
 $(document).on('click', '#withdrawCoinsFromAccountBtn', function () {
     let coinsRequestID = $(this).attr('coinRequestID');
+    let siteIcon = $(this).attr('siteIcon');
+
     $.ajax({
         url: '/Coin/GetCoinsFromAccountRequestById',
         type: 'POST',
@@ -150,7 +172,7 @@ $(document).on('click', '#withdrawCoinsFromAccountBtn', function () {
                 $('#withdrawCoinsFromAccountModal').attr('siteId', result.returnVal.siteId);
                 $('#withdrawCoinsFromAccountModal .siteName').html(result.returnVal.siteName);
                 $('#withdrawCoinsFromAccountModal .siteURL').html(result.returnVal.siteURL);
-                $('#withdrawCoinsFromAccountModal .siteIcon').attr('siteIcon', '');
+                $('#withdrawCoinsFromAccountModal .siteIcon').attr('siteIcon', siteIcon);
             }
         }
     });

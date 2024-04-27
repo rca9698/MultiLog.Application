@@ -144,6 +144,20 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
 
+        public async Task<IActionResult> GetBankAccountById(long BankDetailID)
+        {
+            ReturnType<BankDetails> res = new ReturnType<BankDetails>();
+            try
+            {
+                res = await _bankAccountService.GetBankAccountById(BankDetailID);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at BankAccountController > GetBankAccountById");
+            }
+            return Json(res);
+        }
+
         public async Task<IActionResult> GetBankUPIDetails()
         {
             ReturnType<BankDetails> res = new ReturnType<BankDetails>();

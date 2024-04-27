@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     @* <link href="~/css/bootstrap.min.css" rel="stylesheet"/> *@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="~/css/style.css" rel="stylesheet" />
-    <link href="~/css/commonsite.css" rel="stylesheet" />
+    <link href="~/css/style.css?id=1" rel="stylesheet" />
+    <link href="~/css/commonsite.css?id=1" rel="stylesheet" />
 
 </head>
 <body>
@@ -239,7 +239,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Deposite Coins*</label>
+                                            <label>Deposite Coins(<i class="bi bi-currency-rupee"></i>)*</label>
                                             <input type="number" name="coins" class="form-control coins" placeholder="Enter Coins" autocomplete="off">
                                             <span>*Minimum deposite amount is 100 coins</span>
                                         </div>
@@ -392,7 +392,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Withdaw Coins*</label>
+                                            <label>Withdaw Coins(<i class="bi bi-currency-rupee"></i>)*</label>
                                             <input type="number" name="coins" class="form-control coins" placeholder="Enter Coins" autocomplete="off">
                                             <span>*Minimum withdaw amount is 100 coins</span>
                                         </div>
@@ -517,12 +517,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>User Number</label>
+                                            <label>Mobile Number*</label>
                                             <input disabled type="text" name="userNumber" class="form-control userNumber" placeholder="User Number" autocomplete="off">
                                         </div>
                                         <div class="form-group">
-                                            <label>Coins</label>
-                                            <input type="text" name="coins" class="form-control Coins" placeholder="Coins" autocomplete="off">
+                                            <label>Coins(<i class="bi bi-currency-rupee"></i>)*</label>
+                                            <input disabled type="text" name="coins" class="form-control Coins" placeholder="Coins" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -571,12 +571,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>User Number</label>
+                                            <label>Mobile Number*</label>
                                             <input disabled type="text" name="userNumber" class="form-control userNumber" placeholder="User Number" autocomplete="off">
                                         </div>
                                         <div class="form-group">
-                                            <label>Coins</label>
-                                            <input type="text" name="coins" class="form-control Coins" placeholder="Coins" autocomplete="off">
+                                            <label>Coins(<i class="bi bi-currency-rupee"></i>)*</label>
+                                            <input disabled type="text" name="coins" class="form-control Coins" placeholder="Coins" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -600,19 +600,19 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label>Bank Name</label>
+                                            <label>Bank Name*</label>
                                             <input name="BName" type="text" class="form-control BName" placeholder="Bank Name" autocomplete="off">
                                         </div>
                                         <div class="form-group">
-                                            <label>Account Holder Name</label>
+                                            <label>Account Holder Name*</label>
                                             <input name="AHName" type="text" class="form-control AHName" placeholder="Account Holder Name" autocomplete="off">
                                         </div>
                                         <div class="form-group">
-                                            <label>Account Number</label>
+                                            <label>Account Number*</label>
                                             <input name="ANumber" type="number" class="form-control ANumber" placeholder="Account Number" autocomplete="off">
                                         </div>
                                         <div class="form-group">
-                                            <label>IFSC Code</label>
+                                            <label>IFSC Code*</label>
                                             <input name="IFSCCode" type="text" class="form-control IFSCCode" placeholder="IFSC Code" autocomplete="off">
                                         </div>
                                     </div>
@@ -651,7 +651,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Coins*</label>
+                                            <label>Coins(<i class="bi bi-currency-rupee"></i>)*</label>
                                             <input type="number" name="depositeToAccountCoins" class="form-control Coins" placeholder="Coins" autocomplete="off">
                                             <span>Current Wallet Balance: @coins</span>
                                         </div>
@@ -691,7 +691,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Coins*</label>
+                                            <label>Coins(<i class="bi bi-currency-rupee"></i>)*</label>
                                             <input type="number" name="withdrawFromAccountCoins" class="form-control Coins" placeholder="Coins" autocomplete="off">
                                         </div>
                                     </div>
@@ -768,7 +768,7 @@
                                 <form id="MobileModalForm">
                                     <div class="mb-3 form-group">
                                         <label for="userNumber" class="form-label">Mobile Number *</label>
-                                        <input class="form-control userNumber" type="number" name="userNumber" placeholder="User Number" autocomplete="off">
+                                        <input class="form-control userNumber" type="number" name="userNumber" placeholder="Mobile Number" autocomplete="off">
                                     </div>
 
                                     <div class="col-12 mb-0 text-center">
@@ -778,25 +778,25 @@
                                 <form id="OtpPasswordModalForm">
 
                                     <div class="mb-3 form-group otpFormGroup">
-                                        <label for="otp" class="form-label">OTP</label>
+                                        <label for="otp" class="form-label">OTP*</label>
                                         <div class="input-group input-group-merge">
                                             <input type="text" name="otp" class="form-control otp" placeholder="Please Enter otp" autocomplete="off">
                                             <div class="input-group-text sitebackground siteColor viewotp" data-password="false">
                                                 <span><i class="bi bi-eye-fill"></i></span>
                                             </div>
                                         </div>
-                                        <a href="#" class="float-end" onclick="LoadPassword()"><small>User Password</small></a>
+                                        <a href="#" class="float-end" onclick="LoadPassword()"><small>Use Password</small></a>
                                     </div>
 
                                     <div class="mb-3 form-group passwordFromGroup">
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" name="password" class="form-control password" placeholder="Enter your password" autocomplete="off">
+                                            <input type="password" name="password" class="form-control password" placeholder="Please Enter password*" autocomplete="off">
                                             <div class="input-group-text sitebackground siteColor viewPassword" data-password="false">
                                                 <span><i class="bi bi-eye-fill"></i></span>
                                             </div>
                                         </div>
-                                        <a href="#" class="float-end" onclick="LoadOTP()"><small>User OTP</small></a>
+                                        <a href="#" class="float-end" onclick="LoadOTP()"><small>Use OTP</small></a>
                                     </div>
                                     
                                     <div class="col-12 mb-0 text-center">
@@ -843,7 +843,7 @@
 
                             <div class="card-body p-4">
                                 <div class="text-center w-75 m-auto">
-                                    <h4 class="text-dark-50 text-center pb-0 fw-bold">Logout Confirmation!</h4>
+                                    <p class="text-center pb-0 fw-bold text-uppercase">Logout Confirmation!</p>
                                 </div>
                                 <div class="text-center w-75 m-auto">
                                     <p class="text-dark-50 text-center pb-0">Are you sure you want to logout?</p>
@@ -1057,16 +1057,16 @@
     <script src="~/formvalidationio/js/formvalidation.min.js"></script>
     <script src="~/formvalidationio/js/plugins/bootstrap3.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/main.js"></script>
-    <script src="~/js/login.js"></script>
-    <script src="~/js/userlisting.js"></script>
-    <script src="~/js/coins/coins.js"></script>
-    <script src="~/js/site.js"></script>
-    <script src="~/js/accounts/accountlist.js"></script>
-    <script src="~/js/accounts/accountrequestlist.js"></script>
-    <script src="~/js/bankdetails.js"></script>
-    <script src="~/js/passbookhistory.js"></script>
-    <script src="~/js/Home.js"></script>
+    <script src="~/js/main.js?id=1"></script>
+    <script src="~/js/login.js?id=1"></script>
+    <script src="~/js/userlisting.js?id=1"></script>
+    <script src="~/js/coins/coins.js?id=1"></script>
+    <script src="~/js/site.js?id=1"></script>
+    <script src="~/js/accounts/accountlist.js?id=1"></script>
+    <script src="~/js/accounts/accountrequestlist.js?id=1"></script>
+    <script src="~/js/bankdetails.js?id=1"></script>
+    <script src="~/js/passbookhistory.js?id=1"></script>
+    <script src="~/js/Home.js?id=1"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

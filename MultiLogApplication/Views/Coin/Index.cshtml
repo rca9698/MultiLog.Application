@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Coins*</label>
+                        <label>Coins(<i class="bi bi-currency-rupee"></i>)*</label>
                         <input type="text" name="Coins" class="form-control Coins" placeholder="Coins" autocomplete="off">
                     </div>
                 </div>
@@ -96,7 +96,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <h5>Are you sure you want Delete Request?</h5>
+                    <p>Are you sure you want Delete Request?</p>
                 </div>
             </div>
             <div class="modal-footer">
@@ -118,7 +118,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <h5>Are you sure you want Delete Request?</h5>
+                    <p>Are you sure you want Delete Request?</p>
                 </div>
             </div>
             <div class="modal-footer">
@@ -128,3 +128,47 @@
     </div>
 </div>
 <!-- Delete  Coins To SIte Request Modal -->
+
+<!-- View withdraw Request details Modal -->
+<div class="modal fade" id="ViewCustWithdrawDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content siteColor">
+            <div class="modal-header">
+                <p class="modal-title" id="exampleModalLabel">Bank Account Details!!</p>
+                <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="bi bi-x-circle-fill"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="d-flex flex-column col-12">
+                        <div class="row col-12">
+                            <div class="col-6"> <p class="text-uppercase">Bank Name</p> </div>
+                            <div class="col-6" style="text-align: end;"> <p class="text-uppercase bankName">Bank Name</p> </div>
+                        </div>
+                        <div class="nav-item-divider-small"></div>
+                        <div class="row col-12">
+                            <div class="col-6"> <p class="text-uppercase">Account Holder Name</p> </div>
+                            <div class="col-6" style="text-align: end;"> <p class="text-uppercase accountHolderName">Holder Name</p> </div>
+                        </div>
+                        <div class="nav-item-divider-small"></div>
+                        <div class="row col-12">
+                            <div class="col-6"> <p class="text-uppercase">Account Number</p> </div>
+                            <div class="col-6" style="text-align: end;"> <p class="text-uppercase accountNumber">Account Number</p> </div>
+                        </div>
+                        <div class="nav-item-divider-small"></div>
+                        <div class="row col-12">
+                            <div class="col-6"> <p class ="text-uppercase">IFSC Code</p> </div>
+                            <div class="col-6" style="text-align: end;"> <p class="text-uppercase ifscCode">IFSC Code</p> </div>
+                        </div>
+                        <div class="nav-item-divider-small"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+               @*  <button type="button" class="btn siteBtnbackground" id="DeleteCoinsToWalletConfirmbtn">Delete Request</button> *@
+            </div>
+        </div>
+    </div>
+</div>
+<!-- View withdraw Request details Modal -->

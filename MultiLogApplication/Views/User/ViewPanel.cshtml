@@ -17,6 +17,7 @@
                 <tr class="tableHeaderClass">
                     <th scope="col"><p class="text-uppercase">User Number</p></th>
                     <th scope="col"><p class="text-uppercase">Created Date</p></th>
+                    <th scope="col"><p class="text-uppercase">Coins (<i class="bi bi-currency-rupee"></i>)</p></th>
                     <th scope="col"><p class="text-uppercase">Action</p></th>
                     </tr>
                 </thead>
@@ -28,12 +29,13 @@
                             <tr>
                             <th scope="row"><p>@user.UserNumber</p></th>
                             <td><p>@user.CreatedDate</p></td>
+                            <td><p>@user.Coins</p></td>
                                 <td>
                                     <div class="btn-group">
-                                    <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
-                                    <button type="button" data-toggle="modal" data-target="#DepositCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" id="depositeCoinsBtn"> <i class="bi bi-person-fill-up"></i></button>
-                                    <button type="button" data-toggle="modal" data-target="#WithdrawCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" id="withdrawCoinsBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                    @* <button type="button" data-toggle="modal" data-target="#DepositCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" id="depositeCoinsBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#WithdrawCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" id="withdrawCoinsBtn"> <i class="bi bi-person-fill-down"></i> </button> *@
                                     <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                    <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
                                     </div>
                                 </td>
                             </tr>

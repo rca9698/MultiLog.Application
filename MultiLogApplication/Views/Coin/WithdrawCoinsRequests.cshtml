@@ -16,7 +16,7 @@
             <thead>
                 <tr class="tableHeaderClass">
                     <th scope="col"><p class="text-uppercase">User Number</p></th>
-                    <th scope="col"><p class="text-uppercase">Coins</p></th>
+                    <th scope="col"><p class="text-uppercase">Coins(<i class="bi bi-currency-rupee"></i>)</p></th>
                     <th scope="col"><p class="text-uppercase">Request Date</p></th>
                     <th scope="col"><p class="text-uppercase">Action</p></th>
                 </tr>
@@ -32,6 +32,7 @@
                             <td><p>@user.CreatedDate</p></td>
                             <td>
                                 <div class="btn-group">
+                                    <button type="button" data-toggle="modal" data-target="#ViewCustWithdrawDetails" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" id="ViewCustWithdrawDetailsBtn" bankId="@user.BankDetailId"> <i class="bi bi-eye-fill"></i></button>
                                     <button type="button" data-toggle="modal" data-target="#WithdrawCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" Coins="@user.Coins" id="withdrawCoinsBtn"> <i class="bi bi-person-fill-down"></i></button>
                                     <button type="button" data-toggle="modal" data-target="#DeleteCoinRequest" userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" Coins="@user.Coins" id="deleteCoinRequestBtn"> <i class="bi bi-person-fill-slash"></i></button>
                                 </div>
