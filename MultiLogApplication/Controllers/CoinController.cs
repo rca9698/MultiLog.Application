@@ -18,8 +18,7 @@ namespace MultiLogApplication.Controllers
         private readonly IWebHostEnvironment _hostingEnvironment;
         public CoinController(ICoinService coinService, ILogger<CoinController> logger
             , IHttpContextAccessor httpContextAccessor, IConfiguration configuration,
-            IWebHostEnvironment hostingEnvironment)
-            : base(httpContextAccessor)
+            IWebHostEnvironment hostingEnvironment, ILoginServices loginServices) : base(httpContextAccessor, loginServices)
         {
             _coinService = coinService;
             _logger = logger;

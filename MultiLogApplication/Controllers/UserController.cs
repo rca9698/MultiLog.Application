@@ -13,7 +13,7 @@ namespace MultiLogApplication.Controllers
     {
         private readonly IUserService _userService;
         private readonly ILogger<UserController> _logger;
-        public UserController(IUserService userService, ILogger<UserController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+        public UserController(IUserService userService, ILogger<UserController> logger, IHttpContextAccessor httpContextAccessor, ILoginServices loginServices) : base(httpContextAccessor, loginServices)
         {
             _userService = userService;
             _logger = logger;

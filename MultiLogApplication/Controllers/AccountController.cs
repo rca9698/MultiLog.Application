@@ -10,7 +10,7 @@ namespace MultiLogApplication.Controllers
     {
         private readonly IAccountService _accountService;
         private readonly ILogger<AccountController> _logger;
-        public AccountController(IAccountService accountService,ILogger<AccountController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+        public AccountController(IAccountService accountService,ILogger<AccountController> logger, IHttpContextAccessor httpContextAccessor,ILoginServices loginServices) : base(httpContextAccessor,loginServices)
         {
             _accountService = accountService;
             _logger = logger;

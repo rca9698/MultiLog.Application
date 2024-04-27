@@ -11,7 +11,7 @@ namespace MultiLogApplication.Controllers
     {
         private readonly IPassbookService _passbookService;
         private readonly ILogger<PassbookController> _logger;
-        public PassbookController(IPassbookService passbookService, ILogger<PassbookController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+        public PassbookController(IPassbookService passbookService, ILogger<PassbookController> logger, IHttpContextAccessor httpContextAccessor, ILoginServices loginServices) : base(httpContextAccessor, loginServices)
         {
             _passbookService = passbookService;
             _logger = logger;

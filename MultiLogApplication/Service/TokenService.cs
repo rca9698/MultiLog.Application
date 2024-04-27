@@ -18,18 +18,6 @@ namespace MultiLogApplication.Service
             _configuration = configuration;
             _userId = httpContextAccessor.HttpContext.Session.Get<long>("UserId");
             _otp = httpContextAccessor.HttpContext.Session.Get<long>("OTPPass");
-
-            if(_userId == 0 || _otp == 0)
-            {
-                var userid = httpContextAccessor.HttpContext.User.Identities?.FirstOrDefault()?.Claims?.FirstOrDefault(x => x.Type == "Ben")?.Value;
-                var otp = httpContextAccessor.HttpContext.User?.Identities?.FirstOrDefault()?.Claims?.FirstOrDefault(x => x.Type == "Otp")?.Value;
-
-                 httpContextAccessor.HttpContext.Session.SetString("UserId", string.IsNullOrEmpty(userid) ? "0" : userid);
-                 httpContextAccessor.HttpContext.Session.SetString("OTPPass", string.IsNullOrEmpty(otp) ? "0" : otp);
-
-                _userId = httpContextAccessor.HttpContext.Session.Get<long>("UserId");
-                _otp = httpContextAccessor.HttpContext.Session.Get<long>("OTPPass");
-            }
         }
 
         public string GenerateJSONWebToken()

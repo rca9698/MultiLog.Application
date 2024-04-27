@@ -10,7 +10,7 @@ namespace MultiLogApplication.Controllers
     {
         private readonly IDropDownService _dropDownService;
         private readonly ILogger<DropDownController> _logger;
-        public DropDownController(IDropDownService coinService, ILogger<DropDownController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+        public DropDownController(IDropDownService coinService, ILogger<DropDownController> logger, IHttpContextAccessor httpContextAccessor, ILoginServices loginServices) : base(httpContextAccessor, loginServices)
         {
             _dropDownService = coinService;
             _logger = logger;

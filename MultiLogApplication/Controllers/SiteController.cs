@@ -15,8 +15,7 @@ namespace MultiLogApplication.Controllers
         private readonly IWebHostEnvironment _hostingEnvironment;
         public SiteController(ISiteService siteService, ILogger<SiteController> logger
             , IHttpContextAccessor httpContextAccessor, IConfiguration configuration
-            , IWebHostEnvironment hostingEnvironment) 
-            : base(httpContextAccessor)
+            , IWebHostEnvironment hostingEnvironment, ILoginServices loginServices) : base(httpContextAccessor, loginServices)
         {
             _siteService = siteService;
             _logger = logger;

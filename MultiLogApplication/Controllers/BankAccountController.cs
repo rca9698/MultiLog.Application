@@ -14,7 +14,7 @@ namespace MultiLogApplication.Controllers
         private readonly ILogger<BankAccountController> _logger;
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        public BankAccountController(IBankAccountService bankAccountService, ILogger<BankAccountController> logger, IHttpContextAccessor httpContextAccessor, IConfiguration configuration, IWebHostEnvironment hostingEnvironment) : base(httpContextAccessor)
+        public BankAccountController(IBankAccountService bankAccountService, ILogger<BankAccountController> logger, IHttpContextAccessor httpContextAccessor, IConfiguration configuration, IWebHostEnvironment hostingEnvironment, ILoginServices loginServices) : base(httpContextAccessor, loginServices)
         {
             _bankAccountService = bankAccountService;
             _logger = logger;

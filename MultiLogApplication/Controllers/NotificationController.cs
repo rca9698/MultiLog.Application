@@ -12,7 +12,7 @@ namespace MultiLogApplication.Controllers
 
         private readonly INotificationService _notificationService;
         private readonly ILogger<NotificationController> _logger;
-        public NotificationController(INotificationService notificationService, ILogger<NotificationController> logger, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+        public NotificationController(INotificationService notificationService, ILogger<NotificationController> logger, IHttpContextAccessor httpContextAccessor, ILoginServices loginServices) : base(httpContextAccessor, loginServices)
         {
             _notificationService = notificationService;
             _logger = logger;

@@ -19,7 +19,7 @@ namespace MultiLogApplication.Controllers
         private readonly IHomeService _homeService;
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor httpContextAccessor, ISiteService siteService, IHomeService homeService, IWebHostEnvironment hostingEnvironment, IConfiguration configuration) : base(httpContextAccessor)
+        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor httpContextAccessor, ISiteService siteService, IHomeService homeService, IWebHostEnvironment hostingEnvironment, IConfiguration configuration, ILoginServices loginServices) : base(httpContextAccessor, loginServices)
         {
             _logger = logger;
             _siteService = siteService;
