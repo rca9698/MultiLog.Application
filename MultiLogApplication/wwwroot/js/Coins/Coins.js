@@ -146,6 +146,7 @@ $(document).on('click', '#DepositeCoinsToAccountBtn', function () {
                 $('#DepositeCoinsToAccountModal').attr('siteId', result.returnVal.siteId);
                 $('#DepositeCoinsToAccountModal .siteName').html(result.returnVal.siteName);
                 $('#DepositeCoinsToAccountModal .siteURL').html(result.returnVal.siteURL);
+                $('#DepositeCoinsToAccountModal .Coins').val(result.returnVal.coins);
                 $('#DepositeCoinsToAccountModal .siteIcon').attr('src', siteIcon);
             }
             else {
@@ -172,6 +173,7 @@ $(document).on('click', '#withdrawCoinsFromAccountBtn', function () {
                 $('#withdrawCoinsFromAccountModal').attr('siteId', result.returnVal.siteId);
                 $('#withdrawCoinsFromAccountModal .siteName').html(result.returnVal.siteName);
                 $('#withdrawCoinsFromAccountModal .siteURL').html(result.returnVal.siteURL);
+                $('#withdrawCoinsFromAccountModal .Coins').val(result.returnVal.coins);
                 $('#withdrawCoinsFromAccountModal .siteIcon').attr('src', siteIcon);
             }
         }

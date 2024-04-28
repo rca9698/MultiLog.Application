@@ -141,11 +141,19 @@
 }
 
 .bgclrred {
-    background-color: red
+    /*background-color: red;*/
+    background: transparent;
+    border: solid red;
+    margin: 4px;
+    box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.632);
 }
 
 .bgclrGreen {
-    background-color: green
+    /*background-color: green*/ 
+    background: transparent;
+    border: solid green;
+    margin: 4px;
+    box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.632);
 }
 
 .backbtnNavDesign {
@@ -195,7 +203,7 @@
     text-align: left;
 }
 
-#CreateIDRequestModalBtn, {
+#CreateIDRequestModalBtn, #AddBankDetailModalBtn1 {
     background: transparent;
     margin: 4px;
     box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.632);
