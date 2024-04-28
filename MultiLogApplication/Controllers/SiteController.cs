@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MultiLogApplication.ActionFilter;
 using MultiLogApplication.Interfaces;
 using MultiLogApplication.Models.Account;
 using MultiLogApplication.Models.Common;
@@ -43,6 +44,7 @@ namespace MultiLogApplication.Controllers
             return PartialView("~/Views/Site/ListSites.cshtml", res);
         }
 
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> AddSite(AddSite obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -77,7 +79,8 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+       
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> UpdateSite(UpdateSite obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -119,7 +122,8 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
-
+       
+        [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> DeleteSite(DeleteSite obj)
         {
             ReturnType<string> res = new ReturnType<string>();
@@ -151,6 +155,7 @@ namespace MultiLogApplication.Controllers
             return PartialView("~/Views/Site/UserListSites.cshtml", res);
         }
 
+        [ServiceFilter(typeof(SesionActiveFilter))]
         public async Task<IActionResult> GetUserListSiteById()
         {
             ReturnType<SiteDetail> res = new ReturnType<SiteDetail>();

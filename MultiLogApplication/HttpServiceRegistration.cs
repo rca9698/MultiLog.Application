@@ -10,6 +10,7 @@ namespace MultiLogApplication
         {
             services.AddScoped<AdminActionFilter>();
             services.AddScoped<UserActionFilter>();
+            services.AddScoped<SesionActiveFilter>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<ITokenService, TokenService>();
             services.AddHttpClient<ILoginServices, LoginServices>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));

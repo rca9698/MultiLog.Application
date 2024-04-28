@@ -2,13 +2,13 @@
 
 namespace MultiLogApplication.ActionFilter
 {
-    public class SeesionActiveFilter
+    public class SesionActiveFilter : IAsyncActionFilter
     {
         public async Task OnActionExecutionAsync(ActionExecutingContext context,
             ActionExecutionDelegate next)
         {
-            var adminClaim = context.HttpContext.User.Claims.FirstOrDefault(x => x.Type.Contains("Admin"))?.Type;
-            if (adminClaim != null)
+            var identified = context.HttpContext.User.Identity.IsAuthenticated;
+            if (identified)
             {
                 //To do : before the action executes
                 await next();
