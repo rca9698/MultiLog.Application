@@ -203,11 +203,11 @@
     text-align: left;
 }
 
-#CreateIDRequestModalBtn, #AddBankDetailModalBtn1 {
+/*#CreateIDRequestModalBtn, #AddBankDetailModalBtn1, #AddAdminUpiDetailModalBtn {
     background: transparent;
     margin: 4px;
     box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.632);
-}
+}*/
 
 .divstyle {
     margin-bottom: 5px;
