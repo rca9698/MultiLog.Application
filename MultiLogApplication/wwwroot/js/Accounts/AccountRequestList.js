@@ -47,6 +47,7 @@ $(document).on('click', '#AddAccount', function () {
 });
 
 $(document).on('click', '.DeleteAccountRequestBtn', function () {
+    $(':input[type="submit"]').prop('disabled', true);
     var accountrequestid = $(this).attr('accountrequestid');
     var account = {
         AccountrequestId: accountrequestid
@@ -133,6 +134,7 @@ var CreateIDRequestFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
             AddAccountRequest();
         });
         return fv1;
@@ -182,6 +184,7 @@ var CreateIDFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
             AddAccount();
         });
         return fv2;

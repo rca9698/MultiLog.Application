@@ -187,6 +187,7 @@ var AddBankDetailFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
             AddBankAccount();
         });
         return bkfv1;
@@ -251,6 +252,7 @@ var AddAdminBankDetailFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
             AddAdminBankAccount();
         });
         return bkfv2;
@@ -300,6 +302,7 @@ var AddAdminUpiFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
             AddAdminUpiAccount();
         });
         return upifv;
@@ -354,6 +357,7 @@ var AddAdminQRFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
             AddAdminQRAccount();
         });
         return QRfv;

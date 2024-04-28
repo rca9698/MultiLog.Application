@@ -11,6 +11,7 @@ $(document).on('click', '#deleteUserBtn', function () {
 });
 
 $(document).on('click', '#DeleteUserButton', function () {
+    $(':input[type="submit"]').prop('disabled', true);
     DeleteUser($('#DeleteUserNumber').attr('userid'));
 });
 
@@ -74,6 +75,7 @@ var UserCreationFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
             AddUser();
         });
         return fv3;

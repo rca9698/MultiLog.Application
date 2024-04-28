@@ -61,6 +61,7 @@ $(document).on('click', '#deleteSiteBtn', function () {
 });
 
 $(document).on('click', '#DeleteSiteConfirmbtn', function () {
+    $(':input[type="submit"]').prop('disabled', true);
     DeleteSite($(this).attr('siteId'));
 });
 
@@ -291,6 +292,7 @@ var AddSiteFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
             AddSite();
         });
         return fv1;
@@ -353,6 +355,7 @@ var UpdateSiteFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
             UpdateSite();
         });
         return fv2;
@@ -383,9 +386,9 @@ var DepositeCoinsToAccountRequestFormValidationSingleton = (function () {
                             message: 'Coins required'
                         },
                         callback: {
-                            message: 'Requested coins should be more then 100 less then or equal to account coins',
+                            message: 'Requested coins should be more then 100 and less then or equal to account coins',
                             callback: function (value, validator, $field) {
-                                if ($('#DepositeToAccountRequestModalForm .Coins').val() != '' && $('#DepositeToAccountRequestModalForm .Coins').val() > 100 && $('#DepositeToAccountRequestModalForm .Coins').val() > accountCoins)
+                                if ($('#DepositeToAccountRequestModalForm .Coins').val() != '' && ($('#DepositeToAccountRequestModalForm .Coins').val() < 100 || $('#DepositeToAccountRequestModalForm .Coins').val() > accountCoins))
                                     return false;
                                 return true;
                             }
@@ -404,6 +407,7 @@ var DepositeCoinsToAccountRequestFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
             DepositeCoinsToAccountRequest();
         });
         return fv3;
@@ -447,6 +451,7 @@ var WithDrawFromAccountRequestFormValidationSingleton = (function () {
                 }),
             }
         }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
             WithdrawCoinsToAccountRequest();
         });
         return fv4;

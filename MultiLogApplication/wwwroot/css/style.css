@@ -52,10 +52,10 @@ body {
         text-transform: uppercase;
     }
 
-#AddBankDetailModalBtn1, #AddAdminQRDetailModalBtn, #AddAdminUpiDetailModalBtn, #AddAdminBankDetailModalBtn {
+#AddBankDetailModalBtn1, #AddAdminQRDetailModalBtn, #AddAdminUpiDetailModalBtn, #AddAdminBankDetailModalBtn, #CreateIDRequestModalBtn {
     float: right;
     background: transparent;
-    padding:5px;
+    padding: 5px;
     margin: 4px;
     box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.632);
 }

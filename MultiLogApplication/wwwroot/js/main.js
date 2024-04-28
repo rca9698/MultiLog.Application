@@ -48,6 +48,10 @@ $(document).ready(function () {
 
 $(document).on('click', '.CopyToClipboard', function () {
     var copyText = $(this).attr('copyData');
+
+    if (copyText == undefined)
+        copyText = $(this).attr('copydata');
+
     //const el = document.createElement('textarea');
     //el.value = copyText;
     //document.body.appendChild(el);
@@ -99,14 +103,15 @@ function LoadSessionData() {
     });
 }
 
-function ToasteRMessage(result,id) {
+function ToasteRMessage(result, id) {
     if (result.returnStatus == 1) {
         toastr.success(result.returnMessage);
         $(id + ' .close').trigger('click');
         setTimeout(function () {
             location.reload();
-        }, 300);
+        }, 500);
     } else {
         toastr.warning(result.returnMessage);
+        $(':input[type="submit"]').prop('disabled', false);
     }
 }
