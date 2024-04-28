@@ -383,9 +383,9 @@ var DepositeCoinsToAccountRequestFormValidationSingleton = (function () {
                             message: 'Coins required'
                         },
                         callback: {
-                            message: 'Requested coins should be less then or equal to account coins',
+                            message: 'Requested coins should be more then 100 less then or equal to account coins',
                             callback: function (value, validator, $field) {
-                                if ($('#DepositeToAccountRequestModalForm .Coins').val() != '' && $('#DepositeToAccountRequestModalForm .Coins').val() > accountCoins)
+                                if ($('#DepositeToAccountRequestModalForm .Coins').val() != '' && $('#DepositeToAccountRequestModalForm .Coins').val() > 100 && $('#DepositeToAccountRequestModalForm .Coins').val() > accountCoins)
                                     return false;
                                 return true;
                             }

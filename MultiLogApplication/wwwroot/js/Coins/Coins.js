@@ -327,23 +327,23 @@ function SetBankdetails(result) {
         $('#WithDrawCoinsBankDetail').html(
             `<div class="d-flex flex-column col-12">
           <div class="row col-12">
-              <div class="col-6"> Bank Name </div>
-              <div class="col-6" style="text-align: end;"> ${result.returnVal.bankName} </div>
+              <p class="col-6"> Bank Name </p>
+              <p class="col-6" style="text-align: end;"> ${result.returnVal.bankName} </p>
           </div>
           <div class="nav-item-divider-small"></div>
           <div class="row col-12">
-              <div class="col-6"> Account Holder Name </div>
-              <div class="col-6" style="text-align: end;"> ${result.returnVal.accountHolderName} </div>
+              <p class="col-6"> Account Holder Name </p>
+              <p class="col-6" style="text-align: end;"> ${result.returnVal.accountHolderName} </p>
           </div>
           <div class="nav-item-divider-small"></div>
           <div class="row col-12">
-              <div class="col-6"> Account Number </div>
-              <div class="col-6" style="text-align: end;"> ${result.returnVal.accountNumber} </div>
+              <p class="col-6"> Account Number </p>
+              <p class="col-6" style="text-align: end;"> ${result.returnVal.accountNumber} </p>
           </div>
           <div class="nav-item-divider-small"></div>
           <div class="row col-12">
-              <div class="col-6"> IFSC Code </div>
-              <div class="col-6" style="text-align: end;"> ${result.returnVal.ifscCode}  </div>
+              <p class="col-6"> IFSC Code </p>
+              <p class="col-6" style="text-align: end;"> ${result.returnVal.ifscCode} </p>
           </div>
           <div class="nav-item-divider-small"></div>
       </div>`)
@@ -606,9 +606,9 @@ var WithDrawCoinsRequestFormValidationSingleton = (function () {
                             message: 'Coins Details are required'
                         },
                         callback: {
-                            message: 'Requested coins should be less then or equal to account coins',
+                            message: 'Requested coins should be more then 100 and less then or equal to account coins',
                             callback: function (value, validator, $field) {
-                                if ($('#WithdrawCoinsRequestModalForm .coins').val() != '' && $('#WithdrawCoinsRequestModalForm .coins').val() > accountCoins)
+                                if ($('#WithdrawCoinsRequestModalForm .coins').val() != '' && $('#WithdrawCoinsRequestModalForm .coins').val() > 100 && $('#WithdrawCoinsRequestModalForm .coins').val() > accountCoins)
                                     return false;
                                 return true;
                             }
