@@ -134,11 +134,15 @@
     overflow: scroll;
 }
 
-.userlistingCircle {
-    width: 6vw;
-    height: 6vw;
-    border-radius: 50%;
-}
+    .customtable thead p {
+        text-transform: uppercase;
+    }
+
+    .userlistingCircle {
+        width: 6vw;
+        height: 6vw;
+        border-radius: 50%;
+    }
 
 .bgclrred {
     /*background-color: red;*/

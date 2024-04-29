@@ -14,10 +14,11 @@
         <table class="table table-hover" id="coinList">
             <thead>
                 <tr>
-                    <th scope="col"><p class="text-uppercase">Coins</p></th>
-                    <th scope="col"><p class="text-uppercase">Total Coins</p></th>
-                    <th scope="col"><p class="text-uppercase">Transaction By</p></th>
-                    <th scope="col"><p class="text-uppercase">Transaction Date</p></th>
+                    <th scope="col"><p class="">Txn By</p></th>
+                    <th scope="col"><p class="">Txn Date</p></th>
+                    <th scope="col"><p class="">Txn Type</p></th>
+                    <th scope="col"><p class="">Txn Coins</p></th>
+                    <th scope="col"><p class="">Total Coins</p></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,10 +27,11 @@
                     @foreach (var user in Model.ReturnList)
                     {
                         <tr class="@user.CoinTypeColor">
-                            <td><p>@user.Coins</p></td>
-                            <td><p>@user.TotalCoins</p></td>
                             <td><p>@user.CreatedBy</p></td>
                             <td><p>@user.CreatedDate</p></td>
+                            <td><p>@user.TransactionType</p></td>
+                            <td><p>@user.Coins</p></td>
+                            <td><p>@user.TotalCoins</p></td>
                         </tr>
                     }
                 }

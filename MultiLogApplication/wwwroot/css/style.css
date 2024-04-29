@@ -694,8 +694,7 @@ body {
 }
 
 .DepositeCoinClass {
-    /*background-color: green;*/
-    border: solid green;
+    border-bottom: solid green;
 }
 
     .DepositeCoinClass p {
@@ -703,8 +702,7 @@ body {
     }
 
 .WithdrawCoinClass {
-    /*background-color: red;*/
-    /*border: solid red;*/
+    border-bottom: solid red;
 }
 
     .WithdrawCoinClass p {
