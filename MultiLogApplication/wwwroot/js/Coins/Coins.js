@@ -145,6 +145,7 @@ $(document).on('click', '#DepositeCoinsToAccountBtn', function () {
                 $('#DepositeCoinsToAccountModal').attr('userId', result.returnVal.userId);
                 $('#DepositeCoinsToAccountModal').attr('siteId', result.returnVal.siteId);
                 $('#DepositeCoinsToAccountModal .siteName').html(result.returnVal.siteName);
+                $('#DepositeCoinsToAccountModal .siteUserName').html('UserName : ' + result.returnVal.userName);
                 $('#DepositeCoinsToAccountModal .siteURL').html(result.returnVal.siteURL);
                 $('#DepositeCoinsToAccountModal .Coins').val(result.returnVal.coins);
                 $('#DepositeCoinsToAccountModal .siteIcon').attr('src', siteIcon);
@@ -172,6 +173,7 @@ $(document).on('click', '#withdrawCoinsFromAccountBtn', function () {
                 $('#withdrawCoinsFromAccountModal').attr('userId', result.returnVal.userId);
                 $('#withdrawCoinsFromAccountModal').attr('siteId', result.returnVal.siteId);
                 $('#withdrawCoinsFromAccountModal .siteName').html(result.returnVal.siteName);
+                $('#withdrawCoinsFromAccountModal .siteUserName').html('UserName : ' + result.returnVal.userName);
                 $('#withdrawCoinsFromAccountModal .siteURL').html(result.returnVal.siteURL);
                 $('#withdrawCoinsFromAccountModal .Coins').val(result.returnVal.coins);
                 $('#withdrawCoinsFromAccountModal .siteIcon').attr('src', siteIcon);
@@ -246,16 +248,24 @@ function DepositCoins() {
 }
 
 function WithdrawCoins() {
-    var obj = {
-        UserId: $('#WithdrawCoinsForm').attr('userId'),
-        Coins: $('#WithdrawCoinsForm .Coins').val(),
-        CoinsRequestId: $('#WithdrawCoinsForm').attr('coinRequestID')
-    }
+    //var obj = {
+    //    UserId: $('#WithdrawCoinsForm').attr('userId'),
+    //    Coins: $('#WithdrawCoinsForm .Coins').val(),
+    //    CoinsRequestId: $('#WithdrawCoinsForm').attr('coinRequestID')
+    //}
+
+    var formData = new FormData();
+    formData.append("Coins", $('#WithdrawCoinsForm .Coins').val());
+    formData.append("File", $("#WithdrawCoinsForm .files")[0].files[0]);
+    formData.append("UserId", $('#WithdrawCoinsForm').attr('userId'));
+    formData.append("CoinsRequestId", $('#WithdrawCoinsForm').attr('coinRequestID'));
 
     $.ajax({
         url: '/Coin/DeleteCoins',
         type: 'POST',
-        data: obj,
+        data: formData,
+        contentType: false, // Not to set any content header  
+        processData: false, // Not to process data
         success: function (result) {
             ToasteRMessage(result,'#WithdrawCoinsForm');
         }
@@ -518,6 +528,18 @@ var WithdrawCoinsFormValidationSingleton = (function () {
                     validators: {
                         notEmpty: {
                             message: 'Coins Details are required'
+                        }
+                    }
+                },
+                files: {
+                    validators: {
+                        callback: {
+                            message: 'Please upload Proof',
+                            callback: function (value, validator, $field) {
+                                if ($("#WithdrawCoinsForm .files")[0].files[0] == undefined)
+                                    return false;
+                                return true;
+                            }
                         }
                     }
                 }

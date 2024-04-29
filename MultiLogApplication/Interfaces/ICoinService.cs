@@ -11,6 +11,7 @@ namespace MultiLogApplication.Interfaces
         Task<ReturnType<string>> AddCoinsRequest(InsertCoinRequest details);
         Task<ReturnType<string>> WithDrawCoinsRequest(WithdrawCoinRequest details);
         Task<ReturnType<string>> UpdateCoins(UpdateCoinDetails details);
+        Task<ReturnType<string>> DeleteCoins(DeleteCoinsModel details);
         Task<ReturnType<string>> UpdateCoinsToAccountRequest(UpdateCoinsToAccountRequestModel details);
         Task<ReturnType<string>> UpdateCoinsToAccount(UpdateCoinsToAccountModel details);
 

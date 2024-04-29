@@ -148,15 +148,34 @@ namespace MultiLogApplication.Controllers
             return Json(res);
         }
         [ServiceFilter(typeof(AdminActionFilter))]
-        public async Task<IActionResult> DeleteCoins(UpdateCoinDetails obj)
+        public async Task<IActionResult> DeleteCoins(DeleteCoinsModel obj)
         {
             ReturnType<string> res = new ReturnType<string>();
             try
             {
-                obj.SessionUser = _sessionUser;
+                string BasePath = _hostingEnvironment.WebRootPath;
+                //string wwwPath = _configuration["StoragePath:BasePath:Path"];
+                string contentPath = _configuration["StoragePath:paymentProof:Path"];
+                string fileName = Guid.NewGuid().ToString();
+                string iconContentPath = BasePath + contentPath;
+                if (!Directory.Exists(iconContentPath))
+                {
+                    Directory.CreateDirectory(iconContentPath);
+                }
+                var extenstion = obj.File.FileName.Split(".").LastOrDefault();
+                string docName = iconContentPath + "\\" + Path.GetFileName(fileName + "." + extenstion);
+                using (FileStream stream = new FileStream(docName, FileMode.Create))
+                {
+                    obj.File.CopyTo(stream);
+                }
+
                 obj.CoinType = 0;
-                res = await _coinService.UpdateCoins(obj);
-                //HttpContext.Session.SetString("Coins", res.ReturnVal);
+                obj.SessionUser = _sessionUser;
+                obj.ImageName = obj.File.FileName;
+                obj.DocumentDetailId = fileName;
+                obj.FileExtenstion = extenstion;
+                obj.ImageSize = obj.File.Length.ToString();
+                res = await _coinService.DeleteCoins(obj);
             }
             catch (Exception ex)
             {

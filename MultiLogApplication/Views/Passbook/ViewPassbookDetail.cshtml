@@ -97,4 +97,12 @@
             </div>
         </div>
     </div>
+    if (@Model.ReturnVal.ProofDocumentDetailID != null)
+    {
+        <div class="rounded-3">
+            <div class="col-4">
+                <img src="@Configuration["StoragePath:paymentProof:Path"]\@Model.ReturnVal.ProofDocumentDetailID.@Model.ReturnVal.ProofFileExtenstion" class="rounded-3 paymentProof">
+            </div>
+        </div>
+    } 
 }

@@ -88,10 +88,12 @@ $(document).on('click', '.BackBtnMyIds', function () {
 
 $(document).on('click', '#DepositeToAccountRequestCoinsBtn', function () {
     let siteId = $(this).attr('siteId');
+    let accountId = $(this).attr('accountId');
     let Name = $('.site_' + siteId + ' .siteName').html();
     let URL = $('.site_' + siteId + ' .siteURL').html();
     let iconSrc = $('.site_' + siteId + ' .siteIcon').attr('src');
 
+    $('#DepositeToAccountRequestModal').attr('accountId', accountId);
     $('#DepositeToAccountRequestModal').attr('siteId', siteId);
     $('#DepositeToAccountRequestModal .siteName').html(Name);
     $('#DepositeToAccountRequestModal .siteURL').html(URL);
@@ -102,10 +104,12 @@ $(document).on('click', '#DepositeToAccountRequestCoinsBtn', function () {
 
 $(document).on('click', '#withdrawFromAccountRequestCoinsBtn', function () {
     let siteId = $(this).attr('siteId');
+    let accountId = $(this).attr('accountId');
     let Name = $('.site_' + siteId + ' .siteName').html();
     let URL = $('.site_' + siteId + ' .siteURL').html();
     let iconSrc = $('.site_' + siteId + ' .siteIcon').attr('src');
 
+    $('#WithDrawToAccountRequestModal').attr('accountId', accountId);
     $('#WithDrawToAccountRequestModal').attr('siteId', siteId);
     $('#WithDrawToAccountRequestModal .siteName').html(Name);
     $('#WithDrawToAccountRequestModal .siteURL').html(URL);
@@ -161,6 +165,7 @@ function DepositeCoinsToAccountRequest() {
     
     var obj = {};
     obj.SiteId = $('#DepositeToAccountRequestModal').attr('siteId');
+    obj.AccountId = $('#DepositeToAccountRequestModal').attr('accountId');
     obj.Coins = $('#DepositeToAccountRequestModal .Coins').val();
 
     $.ajax({
@@ -176,6 +181,7 @@ function DepositeCoinsToAccountRequest() {
 function WithdrawCoinsToAccountRequest() {
     var obj = {};
     obj.SiteId = $('#WithDrawToAccountRequestModal').attr('siteId');
+    obj.AccountId = $('#WithDrawToAccountRequestModal').attr('accountId');
     obj.Coins = $('#WithDrawToAccountRequestModal .Coins').val();
 
     $.ajax({
@@ -436,6 +442,14 @@ var WithDrawFromAccountRequestFormValidationSingleton = (function () {
                     validators: {
                         notEmpty: {
                             message: 'Coins required'
+                        },
+                        callback: {
+                            message: 'Requested coins should be more then 100 coins',
+                            callback: function (value, validator, $field) {
+                                if ($('#WithDrawToAccountRequestModalForm .Coins').val() != '' && $('#WithDrawToAccountRequestModalForm .Coins').val() < 100)
+                                    return false;
+                                return true;
+                            }
                         }
                     }
                 }

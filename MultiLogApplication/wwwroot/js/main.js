@@ -98,6 +98,7 @@ function LoadSessionData() {
             if (result.returnStatus == 1) {
                 $('.coinsValidation').attr('data-coins', result.returnVal.coins);
                 accountCoins = parseInt($('.coinsValidation').attr('data-coins'));
+                $('.mainWalletBalance').html(accountCoins);
             }
         }
     });

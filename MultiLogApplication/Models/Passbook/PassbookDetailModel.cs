@@ -13,6 +13,8 @@
         public string SiteUserName { get; set; }
         public string DocumentDetailId { get; set; }
         public string FileExtenstion { get; set; }
+        public string ProofDocumentDetailID { get; set; }
+        public string ProofFileExtenstion { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public int Coins { get; set; }

@@ -32,7 +32,7 @@
                             <td><p>@user.CreatedDate</p></td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" data-toggle="modal" data-target="#withdrawCoinsFromAccountModal" siteId=@user.SiteId userId=@user.UserId UserNumber="@user.UserNumber" coinRequestID="@user.CoinsRequestId" id="withdrawCoinsFromAccountBtn" siteIcon="@Configuration["StoragePath:SiteIcon:Path"]\@user.DocumentDetailId.@user.FileExtenstion"> <i class="bi bi-person-fill-up"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#withdrawCoinsFromAccountModal" siteId=@user.SiteId userId=@user.UserId siteUserName="@user.UserName" UserNumber="@user.UserNumber" coinRequestID="@user.CoinsRequestId" id="withdrawCoinsFromAccountBtn" siteIcon="@Configuration["StoragePath:SiteIcon:Path"]\@user.DocumentDetailId.@user.FileExtenstion"> <i class="bi bi-person-fill-up"></i></button>
                                     <button type="button" data-toggle="modal" data-target="#DeleteCoinsToAccountRequest" siteId=@user.SiteId userId=@user.UserId UserNumber="@user.UserNumber" coinRequestId="@user.CoinsRequestId" id="DeleteCoinsToAccountRequestBtn"> <i class="bi bi-person-fill-slash"></i></button>
                                 </div>
                             </td>
