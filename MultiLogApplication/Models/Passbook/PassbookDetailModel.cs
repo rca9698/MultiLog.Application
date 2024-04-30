@@ -21,5 +21,9 @@
         public string CreatedDate { get; set; }
         public string ApprovedDate { get; set; }
 
+        public string TrxStatus { get; set; }
+        public string TrxColor { get; set; }
+        public string DisplayCoins { get; set; }
+
     }
 }

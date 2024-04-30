@@ -6,7 +6,7 @@
 {
     @foreach (var passbookDetail in Model.ReturnList)
     {
-        <div class="card rounded-3 siteColor" style="margin: 0px 0px 10px 0px;">
+        <div class="card rounded-3 siteColor">
             <div class="card-body">
                 <div class="row Col-12">
                     <div class="col-9">
@@ -18,19 +18,21 @@
                                 <div class="Col-3">
                                     <p class="activityClass text-uppercase">@passbookDetail.ActivityDescription</p>
                                 </div>
-                                <div class="Col-3" style="margin: -10px 0px 0px 2px;">
+                                <div class="Col-3" style="margin: -5px 0px 0px 2px;">
                                     <p class="siteUrl">@passbookDetail.SiteURL</p>
                                 </div>
-                                <div class="Col-3" style="margin: -10px 0px 0px 2px;">
+                                <div class="Col-3" style="margin: -5px 0px 0px 2px;">
                                     <p class="siteUserName">@passbookDetail.SiteUserName</p>
                                 </div>
-                                <div class="Col-3" style="margin: -10px 0px 0px 2px;">
+                                <div class="Col-3" style="margin: -5px 0px 0px 2px;">
                                     <p class="createdOn">@passbookDetail.CreatedDate</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-3">
+                        <p>@passbookDetail.DisplayCoins</p>
+                        <p class="@passbookDetail.TrxColor">@passbookDetail.TrxStatus</p>
                         @* <button class="rounded siteBtnbackground" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" style="float: right"><i class="bi bi-plus-square-fill"></i>Create</button> *@
                     </div>
                 </div>

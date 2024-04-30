@@ -583,6 +583,14 @@ var AddCoinsRequestFormValidationSingleton = (function () {
                     validators: {
                         notEmpty: {
                             message: 'Coins Details are required'
+                        },
+                        callback: {
+                            message: 'Requested coins should be more then 100',
+                            callback: function (value, validator, $field) {
+                                if ($('#DepositCoinsRequestModalForm .coins').val() != '' && $('#DepositCoinsRequestModalForm .coins').val() < parseInt(100))
+                                    return false;
+                                return true;
+                            }
                         }
                     }
                 }

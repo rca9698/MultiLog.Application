@@ -54,6 +54,7 @@
 .modal-title {
     font-size: 20px;
     text-transform: uppercase;
+    margin-left: 20px;
 }
 
 .modal-content .close {
@@ -64,7 +65,6 @@
 .modal-header {
     border-bottom: 0 none;
     padding: 0px;
-    margin-left: 20px;
 }
 
 .modal-footer {
@@ -138,11 +138,11 @@
         text-transform: uppercase;
     }
 
-    .userlistingCircle {
-        width: 6vw;
-        height: 6vw;
-        border-radius: 50%;
-    }
+.userlistingCircle {
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+}
 
 .bgclrred {
     /*background-color: red;*/
@@ -153,7 +153,7 @@
 }
 
 .bgclrGreen {
-    /*background-color: green*/ 
+    /*background-color: green*/
     background: transparent;
     border: solid green;
     margin: 4px;
@@ -170,16 +170,19 @@
 }
 
 
-#listSites .card {
-    border-radius: 15px;
-    margin-top: 15px;
+#listSites .card, #listPassbookHistory .card {
+    margin-top: 5px;
+}
+
+#listSites .card-body, #listPassbookHistory .card-body {
+    padding: 15px;
 }
 
 .btn-sm {
     font-size: 7px;
 }
 
-.dashboardSite .card .card-body p {
+.dashboardSite .card .card-body p, .dashboardSite .card-body p {
     font-size: 15px
 }
 
@@ -218,7 +221,7 @@
     box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.632);
 }
 
-.createIdBtn{
+.createIdBtn {
     padding: 10px;
     background: transparent;
     border: solid #070F1B;
@@ -229,15 +232,28 @@
     box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.632);
     color: #ffffff8c;
 }
+
     .cardDisabled p {
         color: #ffffff8c;
     }
 
-.paymentProof { 
+.paymentProof {
     height: 25vw;
     width: 25vw;
     margin-top: 10px;
     box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.632);
+}
+
+.modal-body {
+    padding: 0.5rem;
+}
+
+.RejectedColor{
+    color:red;
+}
+
+.approvedColor {
+    color:green;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -247,9 +263,9 @@
         height: 14vw;
     }
 
-    .dashboardSite .card .card-body p {
+    .dashboardSite .card .card-body p, .dashboardSite .card-body p {
         font-size: 6px
-    }
+    }  
 
     .p {
         font-size: 10px
@@ -263,10 +279,10 @@
         height: 14vw;
     }
 
-    .dashboardSite .card .card-body p {
+    .dashboardSite .card .card-body p, .dashboardSite .card-body p {
         font-size: 6px
     }
-
+     
     .p {
         font-size: 10px
     }
