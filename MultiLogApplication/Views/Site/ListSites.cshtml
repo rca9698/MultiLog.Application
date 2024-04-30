@@ -19,7 +19,7 @@
         <div class="card rounded-3 siteColor site_@siteDetail.SiteId">
             <div class="card-body">
                 <div class="row Col-12">
-                    <div class="col-8">
+                    <div class="col-9">
                         <div class="row col-12">
                             <div class="col-3 text-center">
                                 <img class="siteImageSize rounded-circle siteIcon" imageName="@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
@@ -32,7 +32,7 @@
 
                     </div>
 
-                    <div class="col-4 d-grid gap-2 mx-auto">
+                    <div class="col-3 d-grid gap-2 mx-auto" style="padding:0px">
                         <div class="col-12 row text-center">
                             <button class="rounded-3 btn-primary text-nowrap btn-sm col-6" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#UpdateSiteModal" id="updateSiteBtn" type="button">Update</button>
                             <button class="btn btn-danger btn-sm col-6 ml-2" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#DeleteSiteModal" id="deleteSiteBtn" type="button">Delete</button>
