@@ -475,7 +475,7 @@ h1, .h1 {
 
 @media (min-width: 992px) {
     .dashboard-toolbar {
-        left: 200px;
+        left: 220px;
     }
 
     .dashboard-compact .dashboard-toolbar {

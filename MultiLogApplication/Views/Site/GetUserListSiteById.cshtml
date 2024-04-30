@@ -14,7 +14,7 @@
         <div class="card rounded-3 siteColor site_@siteDetail.SiteId">
             <div class="card-body cursorPointer">
                 <div class="row Col-12">
-                    <div class="col-8 viewThisSiteDetails" siteId ="@siteDetail.SiteId">
+                    <div class="col-9 viewThisSiteDetails" siteId ="@siteDetail.SiteId">
                         <div class="row col-12">
                             <div class="col-3 text-center">
                                 <img class="siteImageSize rounded-circle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
@@ -26,7 +26,7 @@
                         </div>
 
                     </div>
-                    <div class="col-4 contentAlignType">
+                    <div class="col-3 contentAlignType">
                         <div class="row col-12">
                             <div class="col-4">
                                 <div class="rounded-circle userlistingCircle bgclrGreen contentAlignType" data-toggle="modal" data-target="#DepositeToAccountRequestModal" accountId="@siteDetail.AccountId" siteid="@siteDetail.SiteId" id="DepositeToAccountRequestCoinsBtn">
