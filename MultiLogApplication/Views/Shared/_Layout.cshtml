@@ -71,7 +71,7 @@
                         </header>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <nav class="dashboard-nav-list">
+                            <nav class="dashboard-nav-list" style="font-size: 10px;font-weight: 900;">
                                 @if (!User.Claims.Any(x => x.Type.Contains("Admin")))
                                 {
                                     <a href="#" class="dashboard-nav-item "><i class="bi bi-person"></i> Profile </a>
