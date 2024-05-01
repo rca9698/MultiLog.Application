@@ -74,7 +74,7 @@
                             <nav class="dashboard-nav-list" style="font-size: 10px;font-weight: 900;">
                                 @if (!User.Claims.Any(x => x.Type.Contains("Admin")))
                                 {
-                                    <a href="#" class="dashboard-nav-item "><i class="bi bi-person"></i> Profile </a>
+                                    <a href="/Profile/Index" class="dashboard-nav-item "><i class="bi bi-person"></i> Profile </a>
                                     <a href="/BankAccount/Index?viewType=beneficiary" class="dashboard-nav-item "><i class="bi bi-bank2"></i> Withdraw Details </a>
                                     <a href="#" class="dashboard-nav-item  IDsList"><i class="bi bi-plus-circle-fill"></i> Create Id </a>
                                     <a href="#" class="dashboard-nav-item "><i class="bi bi-star-fill"></i> Bonus </a>
@@ -1087,6 +1087,7 @@
     <script src="~/js/bankdetails.js?id=2"></script>
     <script src="~/js/passbookhistory.js?id=2"></script>
     <script src="~/js/Home.js?id=1"></script>
+    <script src="~/js/Profile.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

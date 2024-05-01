@@ -1,0 +1,61 @@
+﻿@inject IConfiguration Configuration
+@inject IHttpContextAccessor Accessor;
+
+@{
+    var userNumber = Accessor.HttpContext.Session.GetString("UserNumber");
+    var userName = Accessor.HttpContext.Session.GetString("UserName");
+}
+
+<div class="card rounded sitebackground">
+    <div class="card-body card-body-padding">
+        <div class="row Col-12 text-center">
+            <p class="pSiteNameFontSize">@userNumber</p>
+            <p class="pSiteNameFontSize">
+                <button class="btn-primary col-4 rounded-3" style="align-self: center;" data-toggle="modal" data-target="#PasswordChangeModal" id="PasswordChangeModalBtn">
+                    Change Password
+                </button>
+            </p>
+        </div>
+        <div class="row Col-12">
+            <div class="container">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Change Password Modal -->
+<div class="modal fade" id="PasswordChangeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content siteColor">
+            <form id="PasswordChangeForm">
+                <div class="modal-header">
+                    <p class="modal-title" id="exampleModalLabel">Change Password</p>
+                    <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Current Password*</label>
+                        <input name="CPassword" type="text" class="form-control CPassword" placeholder="Enter Current Password" autocomplete="off">
+                        <p>*Please add mobile number, if you are adding password for the first time</p>
+                    </div>
+                    <div class="form-group">
+                        <label>New Password*</label>
+                        <input name="NPassword" type="password" class="form-control NPassword" placeholder="Enter New Password" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password*</label>
+                        <input name="CNPassword" type="text" class="form-control CNPassword" placeholder="Enter Confirm Password" autocomplete="off">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn siteBtnbackground col-12">Change Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Change Password Modal-->

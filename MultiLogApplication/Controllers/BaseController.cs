@@ -9,17 +9,18 @@ namespace MultiLogApplication.Controllers
     public class BaseController : Controller
     {
         protected readonly long _sessionUser;
+        protected readonly string _userNumber;
         public BaseController(IHttpContextAccessor httpContextAccessor, ILoginServices loginServices)
         {
             _sessionUser = httpContextAccessor.HttpContext.Session.Get<long>("UserId");
-            var userNumber = httpContextAccessor.HttpContext.User.Identities?.FirstOrDefault()?.Claims?.FirstOrDefault(x => x.Type == "UserNumber")?.Value;
-            if (_sessionUser == 0 && userNumber != null)
+            _userNumber = httpContextAccessor.HttpContext.User.Identities?.FirstOrDefault()?.Claims?.FirstOrDefault(x => x.Type == "UserNumber")?.Value;
+            if (_sessionUser == 0 && _userNumber != null)
             { 
                 var otp = httpContextAccessor.HttpContext.User?.Identities?.FirstOrDefault()?.Claims?.FirstOrDefault(x => x.Type == "Otp")?.Value;
 
                 LoginDetails details = new LoginDetails()
                 {
-                    UserNumber = userNumber,
+                    UserNumber = _userNumber,
                     OTP = otp
                 };
                 var returnType = loginServices.LoginCred(details).Result;
