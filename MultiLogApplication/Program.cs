@@ -64,11 +64,10 @@ app.UseAuthorization();
 
 app.UseSession();
 
-app.UseRewriter(new RewriteOptions()
-   .AddRedirectToNonWww()
-   .AddRedirect("Dashboard", "Home")
-   .AddRedirectToHttps()
-);
+var options = new RewriteOptions();
+options.AddRedirectToHttps();
+options.Rules.Add(new RedirectToWwwRule());
+app.UseRewriter(options);
 
 app.MapControllerRoute(
     name: "default",
