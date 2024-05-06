@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Rewrite;
 using MultiLogApplication;
 using MultiLogApplication.ActionFilter;
 using Serilog;
@@ -62,6 +63,12 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseSession();
+
+app.UseRewriter(new RewriteOptions()
+   .AddRedirectToNonWww()
+   .AddRedirect("Dashboard", "Home")
+   .AddRedirectToHttps()
+);
 
 app.MapControllerRoute(
     name: "default",
