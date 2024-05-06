@@ -55,6 +55,7 @@
     font-size: 20px;
     text-transform: uppercase;
     margin-left: 20px;
+    font-size: 10px;
 }
 
 .modal-content .close {
@@ -139,8 +140,8 @@
     }
 
 .userlistingCircle {
-    width: 6vw;
-    height: 6vw;
+    width: 3vw;
+    height: 3vw;
     border-radius: 50%;
 }
 
