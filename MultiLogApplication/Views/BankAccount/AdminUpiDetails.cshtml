@@ -65,17 +65,16 @@
                                                         <i class="bi bi-patch-check-fill"></i>
                                                     }
                                             </p>
-                                                <span type="button" data-toggle="collapse" data-target="#collapse_@bankDetail.BankAccountDetailID" aria-expanded="true" aria-controls="collapse_@bankDetail.BankAccountDetailID" class="btn btn-link font-weight-bold text-uppercase crick-accordion-sub col-6" title="">
-                                                    <p>@bankDetail.AccountDisplayName <i class="bi bi-arrow-down-up"> </i></p>
-                                                </span>
+                                                <p type="button" data-toggle="collapse" data-target="#collapse_@bankDetail.BankAccountDetailID" aria-expanded="true" aria-controls="collapse_@bankDetail.BankAccountDetailID" class="col-6" title="">
+                                                    @bankDetail.AccountDisplayName <i class="bi bi-arrow-down-up"> </i>
+                                                </p>
                                             @if (!@bankDetail.IsDefault)
                                             {
                                                 <p class="col-2 MakeAdminUpiDefault" upiId="@bankDetail.BankAccountDetailID" data-toggle="modal" data-target="#MakeAdminUpiDetailDefaultModal">
-                                                    
                                                         <i class="bi bi-patch-plus-fill" title="Make Default"></i>
                                                 </p>
                                             }
-                                                <p class="col-2p DeleteAdminUpiAccount" upiId="@bankDetail.BankAccountDetailID" data-toggle="modal" data-target="#DeleteAdminUpiDetailsModal">
+                                                <p class="col-2 DeleteAdminUpiAccount" upiId="@bankDetail.BankAccountDetailID" data-toggle="modal" data-target="#DeleteAdminUpiDetailsModal">
                                                     <i class="bi bi-trash3-fill" title="Delete Account"> </i>
                                                 </p>
                                         </div>
