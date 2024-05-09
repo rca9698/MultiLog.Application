@@ -32,8 +32,8 @@
                             <td><p>@user.Coins</p></td>
                                 <td>
                                     <div class="btn-group">
-                                    @* <button type="button" data-toggle="modal" data-target="#DepositCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" id="depositeCoinsBtn"> <i class="bi bi-person-fill-up"></i></button>
-                                    <button type="button" data-toggle="modal" data-target="#WithdrawCoinsModal" userId=@user.UserId UserNumber="@user.UserNumber" id="withdrawCoinsBtn"> <i class="bi bi-person-fill-down"></i> </button> *@
+                                    <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
                                     <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
                                     <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
                                     </div>
@@ -46,4 +46,78 @@
             <!-- End Table with hoverable rows -->
         </div>
     </div>
+
+
+<!-- Deposit Coins Modal -->
+<div class="modal fade" id="DepositCoinsByUserIdModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content siteColor">
+            <form id="DepositCoinsByUserIdForm">
+                <div class="modal-header">
+                    <p class="modal-title" id="exampleModalLabel">Deposit</p>
+                    <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-12">
+                        <div class="d-flex flex-column text-center col-12">
+                            <span class="business">WALLET BALANCE</span>
+                            <span><i class="bi bi-currency-rupee"></i><span class="existingCoins"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile Number*</label>
+                        <input disabled type="text" name="userNumber" class="form-control userNumber" placeholder="User Number" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label>Coins(<i class="bi bi-currency-rupee"></i>)*</label>
+                        <input type="text" name="coins" class="form-control Coins" placeholder="Coins" autocomplete="off">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn siteBtnbackground">Deposit Coins</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Deposit Coins Modal -->
+
+<!-- Withdraw Coins Modal -->
+<div class="modal fade" id="WithdrawCoinsUserIdModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content siteColor">
+            <form id="WithdrawCoinsUserIdForm">
+                <div class="modal-header">
+                    <p class="modal-title" id="exampleModalLabel">Withdraw Coins</p>
+                    <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-12">
+                        <div class="d-flex flex-column text-center col-12">
+                            <span class="business">WALLET BALANCE</span>
+                            <span><i class="bi bi-currency-rupee"></i><span class="existingCoins"></span></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile Number*</label>
+                        <input disabled type="text" name="userNumber" class="form-control userNumber" placeholder="User Number" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label>Coins(<i class="bi bi-currency-rupee"></i>)*</label>
+                        <input type="text" name="coins" class="form-control Coins" placeholder="Coins" autocomplete="off">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn siteBtnbackground">Withdraw Coins</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Withdraw Coins Modal -->
+
 

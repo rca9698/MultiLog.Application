@@ -22,13 +22,15 @@
 
                     </div>
 
-                    <div class="align-items-center row col-3">
-                        <button type="button" class="rounded btn-primary text-nowrap" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn">Create</button>
-                    </div>
-
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="align-items-center row col-3">
+                            <button type="button" class="rounded btn-primary text-nowrap" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn">Create</button>
+                        </div>
+                    }
                     @* <div class="col-3 contentAlignType cursorPointer">
-                        <div class="rounded siteBtnbackground BtnFontSize" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" ><i class="bi bi-plus-square-fill"></i>Create</div>
-                    </div> *@
+            <div class="rounded siteBtnbackground BtnFontSize" data-toggle="modal" siteId="@siteDetail.SiteId" data-target="#CreateIDRequestModal" id="CreateIDRequestModalBtn" ><i class="bi bi-plus-square-fill"></i>Create</div>
+            </div> *@
                 </div>
             </div>
         </div>

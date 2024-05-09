@@ -17,5 +17,7 @@ namespace MultiLogApplication.Interfaces
 
         Task<ReturnType<string>> DeleteAccountRequestCoins(DeleteRequestCoinsModel details);
         Task<ReturnType<string>> DeleteRequestCoins(DeleteRequestCoinsModel details);
+        Task<ReturnType<string>> DepositeCoinsByUserid(UpdateCoinDetails details);
+        Task<ReturnType<string>> WithdrawCoinsByuserId(DeleteCoinsModel details);
     }
 }

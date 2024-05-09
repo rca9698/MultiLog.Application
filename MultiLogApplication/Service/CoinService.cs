@@ -80,5 +80,18 @@ namespace MultiLogApplication.Service
             var response = await _client.PostAsJsonAsync($"api/Coin/DeleteRequestCoins", details);
             return await response.ReadContentAs<ReturnType<string>>();
         }
+
+        public async Task<ReturnType<string>> DepositeCoinsByUserid(UpdateCoinDetails details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/Coin/DepositeCoinsByUserid", details);
+            return await response.ReadContentAs<ReturnType<string>>();
+        }
+
+        public async Task<ReturnType<string>> WithdrawCoinsByuserId(DeleteCoinsModel details)
+        {
+            var response = await _client.PostAsJsonAsync($"api/Coin/WithdrawCoinsByuserId", details);
+            return await response.ReadContentAs<ReturnType<string>>();
+        }
+
     }
 }

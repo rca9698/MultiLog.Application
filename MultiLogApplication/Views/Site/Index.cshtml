@@ -1,6 +1,6 @@
 ﻿@model string;
 
-@if (@Model != "Admin")
+@if (@Model != "Admin" && User.Identity.IsAuthenticated)
 {
     <div class="row col-12 idSwitch rounded-3 text-white" style="">
         <div class="col-6 tabSelection rounded-3 myIdsClass text-center" idType="myIds">

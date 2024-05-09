@@ -30,6 +30,7 @@ namespace MultiLogApplication.Controllers
         {
             return View("/Views/Coin/Index.cshtml", viewType);
         }
+
         [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> GetDepositCoinsRequest(DepositWithdrawCoinsRequest obj)
         {
@@ -47,6 +48,7 @@ namespace MultiLogApplication.Controllers
             }
             return PartialView("~/Views/Coin/DepositCoinsRequests.cshtml", res);
         }
+        
         [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> GetWithdrawCoinsRequest(DepositWithdrawCoinsRequest obj)
         {
@@ -64,6 +66,7 @@ namespace MultiLogApplication.Controllers
             }
             return PartialView("~/Views/Coin/WithdrawCoinsRequests.cshtml", res);
         }
+        
         [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> GetTransaction(ListCoinModel obj)
         {
@@ -131,6 +134,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
+        
         [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> AddCoins(UpdateCoinDetails obj)
         {
@@ -147,6 +151,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
+        
         [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> DeleteCoins(DeleteCoinsModel obj)
         {
@@ -217,6 +222,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
+        
         [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> GetDepositCoinsToAccountRequest()
         {
@@ -231,6 +237,7 @@ namespace MultiLogApplication.Controllers
             }
             return PartialView("~/Views/Coin/GetDepositCoinsToAccountRequest.cshtml", res);
         }
+        
         [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> GetWithdrawCoinsFromAccountRequest()
         {
@@ -260,6 +267,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
+        
         [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> UpdateCoinsToAccount(UpdateCoinsToAccountModel obj)
         {
@@ -275,6 +283,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
+        
         [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> WithdrawCoinsFromAccount(UpdateCoinsToAccountModel obj)
         {
@@ -291,6 +300,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
+        
         [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> DeleteAccountRequestCoins(DeleteRequestCoinsModel obj)
         {
@@ -306,6 +316,7 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
+        
         [ServiceFilter(typeof(AdminActionFilter))]
         public async Task<IActionResult> DeleteRequestCoins(DeleteRequestCoinsModel obj)
         {
@@ -321,6 +332,43 @@ namespace MultiLogApplication.Controllers
             }
             return Json(res);
         }
+
+
+        [ServiceFilter(typeof(AdminActionFilter))]
+        public async Task<IActionResult> DepositeCoinsByUserid(UpdateCoinDetails obj)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                obj.SessionUser = _sessionUser;
+                obj.CoinType = 1;
+                res = await _coinService.DepositeCoinsByUserid(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > DepositeCoinsByUserid");
+            }
+            return Json(res);
+        }
+
+        [ServiceFilter(typeof(AdminActionFilter))]
+        public async Task<IActionResult> WithdrawCoinsByuserId(DeleteCoinsModel obj)
+        {
+            ReturnType<string> res = new ReturnType<string>();
+            try
+            {
+                 
+                obj.CoinType = 0;
+                obj.SessionUser = _sessionUser; 
+                res = await _coinService.WithdrawCoinsByuserId(obj);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Occured at CoinController > WithdrawCoinsByuserId");
+            }
+            return Json(res);
+        }
+
 
     }
 }
