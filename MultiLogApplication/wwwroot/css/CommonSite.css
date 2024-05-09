@@ -250,53 +250,57 @@
     padding: 0.5rem;
 }
 
-.RejectedColor{
-    color:red;
+.RejectedColor {
+    color: red;
 }
 
 .approvedColor {
-    color:green;
+    color: green;
 }
- 
-    .row > * {
-        padding-right: 0px;
+
+.row > * {
+    padding-right: 0px;
+}
+
+.row {
+    margin-right: 0px;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .siteImageSize {
+        width: 14vw;
+        height: 14vw;
     }
-        /* Extra small devices (phones, 600px and down) */
-        @media only screen and (max-width: 600px) {
-            .siteImageSize {
-                width: 14vw;
-                height: 14vw;
-            }
 
-            .dashboardSite .card .card-body p, .dashboardSite .card-body p {
-                font-size: 6px
-            }
+    .dashboardSite .card .card-body p, .dashboardSite .card-body p {
+        font-size: 6px
+    }
 
-            .p {
-                font-size: 9px
-            }
-        }
-        /* Small devices (portrait tablets and large phones, 600px and up) */
-        @media only screen and (max-width: 750px) {
-            .siteImageSize {
-                width: 14vw;
-                height: 14vw;
-            }
+    .p {
+        font-size: 9px
+    }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 750px) {
+    .siteImageSize {
+        width: 14vw;
+        height: 14vw;
+    }
 
-            .dashboardSite .card .card-body p, .dashboardSite .card-body p {
-                font-size: 6px
-            }
+    .dashboardSite .card .card-body p, .dashboardSite .card-body p {
+        font-size: 6px
+    }
 
-            .p {
-                font-size: 10px
-            }
-        }
-        /* Medium devices (landscape tablets, 768px and up) */
-        @media only screen and (max-width: 768px) {
-        }
-        /* Large devices (laptops/desktops, 992px and up) */
-        @media only screen and (max-width: 992px) {
-        }
-        /* Extra large devices (large laptops and desktops, 1200px and up) */
-        @media only screen and (max-width: 1200px) {
-        }
+    .p {
+        font-size: 10px
+    }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px) {
+}
