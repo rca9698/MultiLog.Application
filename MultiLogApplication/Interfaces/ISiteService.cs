@@ -12,6 +12,6 @@ namespace MultiLogApplication.Interfaces
         Task<ReturnType<string>> UpdateSite(UpdateSite details);
         Task<ReturnType<SiteDetail>> GetUserListSites();
         Task<ReturnType<SiteDetail>> GetUserListSiteById(long userId);
-        Task<ReturnType<AccountDetail>> ViewThisSiteDetails(ViewThisSiteDetailModel details);
+        Task<ReturnType<IDDetail>> ViewThisSiteDetails(ViewThisSiteDetailModel details);
     }
 }

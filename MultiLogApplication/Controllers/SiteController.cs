@@ -172,7 +172,7 @@ namespace MultiLogApplication.Controllers
 
         public async Task<IActionResult> ViewThisSiteDetailsPV(long siteId)
         {
-            ReturnType<AccountDetail> res = new ReturnType<AccountDetail>();
+            ReturnType<IDDetail> res = new ReturnType<IDDetail>();
             try
             {
                 ViewThisSiteDetailModel obj = new ViewThisSiteDetailModel()

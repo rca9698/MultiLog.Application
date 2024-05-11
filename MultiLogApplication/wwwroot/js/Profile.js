@@ -4,7 +4,7 @@ $(document).on('click', '#PasswordChangeModalBtn', function () {
     ChangePasswordFormValidationSingleton.getInstance();
 });
 
-var ChangePasswordFormfv;
+var ChangeIDPasswordFormfv;
 var CPfv1;
 var ChangePasswordFormValidationSingleton = (function () {
     function createInstance() {
@@ -59,11 +59,11 @@ var ChangePasswordFormValidationSingleton = (function () {
     }
     return {
         getInstance: function () {
-            if (ChangePasswordFormfv) {
-                ChangePasswordFormfv.destroy();
+            if (ChangeIDPasswordFormfv) {
+                ChangeIDPasswordFormfv.destroy();
             }
-            ChangePasswordFormfv = createInstance();
-            return ChangePasswordFormfv;
+            ChangeIDPasswordFormfv = createInstance();
+            return ChangeIDPasswordFormfv;
         }
     };
 })();

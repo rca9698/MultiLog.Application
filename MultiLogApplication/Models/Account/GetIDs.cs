@@ -1,9 +1,8 @@
 ﻿namespace MultiLogApplication.Models.Account
 {
-    public class DeleteAccount
+    public class GetIDs
     {
         public long UserId { get; set; }
-        public int SiteID { get; set; }
         public long SessionUser { get; set; }
     }
 }

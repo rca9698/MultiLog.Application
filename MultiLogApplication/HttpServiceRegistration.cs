@@ -14,7 +14,7 @@ namespace MultiLogApplication
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<ITokenService, TokenService>();
             services.AddHttpClient<ILoginServices, LoginServices>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));
-            services.AddHttpClient<IAccountService, AccountService>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));
+            services.AddHttpClient<IIDService, IDService>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));
             services.AddHttpClient<IBankAccountService, BankAccountService>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));
             services.AddHttpClient<ICoinService, CoinService>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));
             services.AddHttpClient<INotificationService, NotificationService>(c => c.BaseAddress = new Uri(config["ApiConfigs:MultilogAPI:Uri"]));

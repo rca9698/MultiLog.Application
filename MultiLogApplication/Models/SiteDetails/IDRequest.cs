@@ -1,6 +1,6 @@
 ﻿namespace MultiLogApplication.Models.SiteDetails
 {
-    public class AccountRequest
+    public class IDRequest
     {
         public long AccountRequestID { get; set; }
         public long UserId { get; set; }

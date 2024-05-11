@@ -9,6 +9,12 @@ $(document).ready(function () {
     else if ($('#accountListing').attr('ViewType') == 'AcRequest') {
         AccountRequestList();
     }
+    else if ($('#accountListing').attr('ViewType') == 'CloseIdRequest') {
+        ListCloseIDRequest();
+    }
+    else if ($('#accountListing').attr('ViewType') == 'ChangePassRequest') {
+        ListChangeIDPassword();
+    }
 });
 
 //Start Click event
@@ -104,16 +110,90 @@ $(document).on('click', '#CreateIDModalBtn', function () {
     //});
 });
 
+$(document).on('click', '#ChangeIDPasswordBtn', function () {
+    let accountRequestId = $(this).attr('changeIDPassReqId');
+    let userNumber = $('#request_' + accountRequestId).find('.userNumber').attr('userNumber');
+    let userName = $('#request_' + accountRequestId).find('.userNumber').attr('userName');
+    let password = $('#request_' + accountRequestId).find('.userNumber').attr('password');
+    let accountId = $('#request_' + accountRequestId).find('.userNumber').attr('accountId');
+    let siteName = $('#request_' + accountRequestId).find('.sitedetails').attr('siteName');
+    let siteUrl = $('#request_' + accountRequestId).find('.sitedetails').attr('siteUrl');
+    let iconPath = $('#request_' + accountRequestId).find('.sitedetails').attr('iconPath');
+
+    ConfirmChangeIDPasswordFormValidationSingleton.getInstance();
+
+    $('#ChangeIDPasswordModal .siteIcon').attr('src', iconPath);
+    $('#ChangeIDPasswordModal .siteName').html(siteName);
+    $('#ChangeIDPasswordModal .siteURL').html(siteUrl);
+    $('#ChangeIDPasswordModal .userName').html(userName);
+    $('#ChangeIDPasswordModal .password').val(password);
+    $('#ChangeIDPasswordModal').attr('accountRequestId', accountRequestId);
+    $('#ChangeIDPasswordModal').attr('accountId', accountId);
+
+});
+
+$(document).on('click', '#DeleteIDpasswordChangeRequestModelBtn', function () {
+    let accountRequestId = $(this).attr('changeIDPassReqId');
+    let userNumber = $('#request_' + accountRequestId).find('.userNumber').attr('userNumber');
+    let userName = $('#request_' + accountRequestId).find('.userNumber').attr('userName');
+    let accountId = $('#request_' + accountRequestId).find('.userNumber').attr('accountId');
+    let siteName = $('#request_' + accountRequestId).find('.sitedetails').attr('siteName');
+    let siteUrl = $('#request_' + accountRequestId).find('.sitedetails').attr('siteUrl');
+    let iconPath = $('#request_' + accountRequestId).find('.sitedetails').attr('iconPath');
+
+    $('#DeleteIDRequestModel .siteIcon').attr('src', iconPath);
+    $('#DeleteIDRequestModel .siteName').html(siteName);
+    $('#DeleteIDRequestModel .siteURL').html(siteUrl);
+    $('#DeleteIDRequestModel .Username').val(userName);
+    $('#DeleteIDRequestModel').attr('closeAccReqId', accountRequestId);
+    $('#DeleteIDRequestModel').attr('accountId', accountId);
+});
+
+$(document).on('click', '#CloseIDRequestBtn', function () {
+    let accountRequestId = $(this).attr('closeAccReqId');
+    let userNumber = $('#request_' + accountRequestId).find('.userNumber').attr('userNumber');
+    let userName = $('#request_' + accountRequestId).find('.userNumber').attr('userName');
+    let accountId = $('#request_' + accountRequestId).find('.userNumber').attr('accountId');
+    let siteName = $('#request_' + accountRequestId).find('.sitedetails').attr('siteName');
+    let siteUrl = $('#request_' + accountRequestId).find('.sitedetails').attr('siteUrl');
+    let iconPath = $('#request_' + accountRequestId).find('.sitedetails').attr('iconPath');
+
+    $('#CloseIDRequestModal .siteIcon').attr('src', iconPath);
+    $('#CloseIDRequestModal .siteName').html(siteName);
+    $('#CloseIDRequestModal .siteURL').html(siteUrl);
+    $('#CloseIDRequestModal .userName').html(userName);
+    $('#CloseIDRequestModal').attr('accountRequestId', accountRequestId);
+    $('#CloseIDRequestModal').attr('accountId', accountId);
+});
+
+$(document).on('click', '#DeleteIDRequestBtn', function () {
+    let accountRequestId = $(this).attr('closeAccReqId');
+    let userNumber = $('#request_' + accountRequestId).find('.userNumber').attr('userNumber');
+    let userName = $('#request_' + accountRequestId).find('.userNumber').attr('userName');
+    let accountId = $('#request_' + accountRequestId).find('.userNumber').attr('accountId');
+    let siteName = $('#request_' + accountRequestId).find('.sitedetails').attr('siteName');
+    let siteUrl = $('#request_' + accountRequestId).find('.sitedetails').attr('siteUrl');
+    let iconPath = $('#request_' + accountRequestId).find('.sitedetails').attr('iconPath');
+
+    $('#DeleteIDRequestModel .siteIcon').attr('src', iconPath);
+    $('#DeleteIDRequestModel .siteName').html(siteName);
+    $('#DeleteIDRequestModel .siteURL').html(siteUrl);
+    $('#DeleteIDRequestModel .userName').html(userName);
+    $('#DeleteIDRequestModel').attr('closeAccReqId', accountRequestId);
+    $('#DeleteIDRequestModel').attr('accountId', accountId);
+});
+
+
 // End Click Event
 
 //Start Form
 var CreateIDRequestFormfv;
-var fv1;
+var CRfv1;
 var CreateIDRequestFormValidationSingleton = (function () {
     function createInstance() {
 
         let form = document.getElementById('CreateIDRequestModalForm');
-        fv1 = FormValidation.formValidation(form, {
+        CRfv1 = FormValidation.formValidation(form, {
             fields: {
                 Username: {
                     validators: {
@@ -137,7 +217,7 @@ var CreateIDRequestFormValidationSingleton = (function () {
             $(':input[type="submit"]').prop('disabled', true);
             AddAccountRequest();
         });
-        return fv1;
+        return CRfv1;
     }
     return {
         getInstance: function () {
@@ -151,12 +231,12 @@ var CreateIDRequestFormValidationSingleton = (function () {
 })();
 
 var CreateIDFormfv;
-var fv2;
+var CIfv2;
 var CreateIDFormValidationSingleton = (function () {
     function createInstance() {
 
         let form = document.getElementById('CreateIDModalForm');
-        fv2 = FormValidation.formValidation(form, {
+        CIfv2 = FormValidation.formValidation(form, {
             fields: {
                 Username: {
                     validators: {
@@ -187,7 +267,7 @@ var CreateIDFormValidationSingleton = (function () {
             $(':input[type="submit"]').prop('disabled', true);
             AddAccount();
         });
-        return fv2;
+        return CIfv2;
     }
     return {
         getInstance: function () {
@@ -199,6 +279,56 @@ var CreateIDFormValidationSingleton = (function () {
         }
     };
 })();
+
+
+
+var ConfirmChangeIDPasswordFormfv;
+var CCPfv2;
+var ConfirmChangeIDPasswordFormValidationSingleton = (function () {
+    function createInstance() {
+
+        let form = document.getElementById('ChangeIDPasswordForm');
+        CCPfv2 = FormValidation.formValidation(form, {
+            fields: {
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Password is required'
+                        }
+                    }
+                }
+            },
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                bootstrap3: new FormValidation.plugins.Bootstrap3(),
+                submitButton: new FormValidation.plugins.SubmitButton(),
+                icon: new FormValidation.plugins.Icon({
+                    valid: 'fas fa-check',
+                    invalid: 'fa fa-times',
+                    validating: 'fa fa-refresh'
+                }),
+            }
+        }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
+            let obj = {};
+            obj.AccountId = $('#ChangeIDPasswordModal').attr('accountId');
+            obj.Password = $('#ChangeIDPasswordForm .password').val();
+            ConfirmChangeIDPassword(obj);
+        });
+        return CCPfv2;
+    }
+    return {
+        getInstance: function () {
+            if (ConfirmChangeIDPasswordFormfv) {
+                ConfirmChangeIDPasswordFormfv.destroy();
+            }
+            ConfirmChangeIDPasswordFormfv = createInstance();
+            return ConfirmChangeIDPasswordFormfv;
+        }
+    };
+})();
+
+
 
 // End Form
 
@@ -265,6 +395,53 @@ function RejectedRequestLists() {
         data: '',
         success: function (result) {
             $('#accountListing').html(result);
+        }
+    });
+}
+
+
+function ListChangeIDPassword() {
+    $.ajax({
+        url: '/Account/ListChangeIDPassword',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#accountListing').html(result);
+        }
+    });
+}
+
+function ListCloseIDRequest() {
+    $.ajax({
+        url: '/Account/ListCloseIDRequest',
+        type: 'POST',
+        data: '',
+        success: function (result) {
+            $('#accountListing').html(result);
+        }
+    });
+}
+
+function ConfirmCloseID() {
+    var obj = {};
+    obj.AccountId = $('#CloseIDRequestModal').attr('accountid');
+    $.ajax({
+        url: '/Account/ConfirmCloseID',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            ToasteRMessage(result, '#CloseIDRequestModal');
+        }
+    });
+}
+
+function ConfirmChangeIDPassword(obj) {
+    $.ajax({
+        url: '/Account/ConfirmChangeIDPassword',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            ToasteRMessage(result, '#ChangeIDPasswordModal');
         }
     });
 }

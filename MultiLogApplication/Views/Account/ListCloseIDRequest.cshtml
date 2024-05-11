@@ -1,6 +1,6 @@
 ﻿@using MultiLogApplication.Models.Common
 @inject IConfiguration Configuration
-@model ReturnType<MultiLogApplication.Models.SiteDetails.IDRequest>
+@model ReturnType<MultiLogApplication.Models.Account.IDDetail>
 
 <div class='dashboard-content'>
     <div class="row mt-4">
@@ -21,18 +21,21 @@
                         <th scope="col"><p class="">Action</p></th>
                     </tr>
                 </thead>
+
                 <tbody>
                     @if (Model != null && Model.ReturnList != null && Model.ReturnList.Count != 0)
                     {
                         @foreach (var account in Model.ReturnList)
                         {
-                            <tr id="accountRequest_@account.AccountRequestID">
-                                <td scope="row" class="userNumber" userName="@account.UserName" userNumber="@account.UserNumber"><p>@account.UserNumber</p></td>
-                                <td class="sitedetails" siteName="@account.SiteName" siteUrl="@account.SiteURL" iconPath="@Configuration["StoragePath:SiteIcon:Path"]\@account.DocumentDetailId.@account.FileExtenstion"><p>@account.SiteName (@account.SiteURL)</p></td>
+                            <tr id="request_@account.ReqId">
+                                <td scope="row" class="userNumber" userName="@account.UserName" userNumber="@account.UserNumber" accountId="@account.AccountId"><p>@account.UserNumber</p></td>
+                                <td class="sitedetails" siteName="@account.SiteName" siteUrl="@account.SiteURL" iconPath="@Configuration["StoragePath:SiteIcon:Path"]\@account.DocumentDetailId.@account.FileExtenstion">
+                                    <p>@account.SiteName (@account.SiteURL)</p>
+                                </td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" data-toggle="modal" data-target="#CreateIDModal" accountRequestID="@account.AccountRequestID" id="CreateIDModalBtn"> <i class="bi bi-pencil-square"></i> </button>
-                                        <button type="button" data-toggle="modal" data-target="#DeleteAccountRequestModel" accountRequestID="@account.AccountRequestID" id="DeleteAccountRequestList"> <i class="bi bi-trash-fill"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#CloseIDRequestModal" id="CloseIDRequestBtn" closeAccReqId="@account.ReqId"> <i class="bi bi-pencil-square"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#DeleteIDRequestModel" id="DeleteIDRequestBtn" closeAccReqId="@account.ReqId"> <i class="bi bi-trash-fill"></i> </button>
                                     </div>
                                 </td>
                             </tr>
@@ -40,7 +43,11 @@
                     }
                     else
                     {
-                        <tr class="text-center"><td colspan="4"><p>No Data Found!!</p></td></tr>
+                        <tr class="text-center">
+                            <td colspan="3">
+                                <p>No Data Found!!</p>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -49,9 +56,8 @@
     </div>
 </div>
 
-
-<!-- Create ID Modal -->
-<div class="modal fade" id="CreateIDModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Close ID Modal -->
+<div class="modal fade" id="CloseIDRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <style>
             .nav-item-divider {
@@ -59,9 +65,9 @@
             }
         </style>
         <div class="modal-content siteColor">
-            <form id="CreateIDModalForm">
+            <div>
                 <div class="modal-header">
-                    <p class="modal-title" id="exampleModalLabel">CREATE ID</p>
+                    <p class="modal-title" id="exampleModalLabel">CLOSE ID</p>
                     <div type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <i class="bi bi-x-circle-fill"></i>
                     </div>
@@ -74,28 +80,22 @@
                             </span>
                             <p class="text-uppercase siteName">Name</p>
                             <p class="siteURL">URL</p>
+                            <p class="userName">User Name</p>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Username*</label>
-                        <input type="text" name="Username" class="form-control Username" placeholder="User Name" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label>Password*</label>
-                        <input type="text" name="password" class="form-control password" placeholder="Password" autocomplete="off">
-                    </div>
+                    </div> 
                     <div class="nav-item-divider"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn siteBtnbackground col-12">Create ID</button>
+                    <button type="submit" class="btn siteBtnbackground col-12" onclick="ConfirmCloseID()">CLOSE ID</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
-<!-- Create ID Modal-->
-<!-- Modal -->
-<div class="modal fade" id="DeleteAccountRequestModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Close ID Modal-->
+
+<!-- Delete ID Modal -->
+<div class="modal fade" id="DeleteIDRequestModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content siteColor">
             <div class="modal-header">
@@ -106,7 +106,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <p>Are you sure, want to delete Account Request?</p>
+                    <p>Are you sure, want to delete close ID Request?</p>
                 </div>
             </div>
             <div class="modal-footer">
@@ -115,4 +115,4 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!-- Delete ID Modal -->

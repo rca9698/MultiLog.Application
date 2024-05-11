@@ -8,7 +8,6 @@
 }
 <style>
     .row {
-
     }
 </style>
 
@@ -19,7 +18,7 @@
         <div class="card rounded-3 siteColor site_@siteDetail.SiteId">
             <div class="card-body cursorPointer">
                 <div class="row Col-12">
-                    <div class="col-8 viewThisSiteDetails" siteId ="@siteDetail.SiteId">
+                    <div class="col-8 viewThisSiteDetails" siteId="@siteDetail.SiteId">
                         <div class="row col-12">
                             <div class="col-3 text-center">
                                 <img class="siteImageSize rounded-circle siteIcon" src="@Configuration["StoragePath:SiteIcon:Path"]\@siteDetail.DocumentDetailId.@siteDetail.FileExtenstion" />
@@ -27,6 +26,7 @@
                             <div class="col-9 align-self-center">
                                 <p class="text-uppercase siteName">@siteDetail.SiteName</p>
                                 <p class="siteURL">@siteDetail.SiteURL</p>
+                                <p class="userName">@siteDetail.UserName</p>
                             </div>
                         </div>
 
@@ -49,11 +49,11 @@
                                         ...
                                     </div>
                                     <ul class="dropdown-menu" aria-labelledby="">
-                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#DepositeToAccountRequestModal" siteid="@siteDetail.SiteId" id="DepositeToAccountRequestCoinsBtn">Deposit</a></li>
-                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#WithDrawToAccountRequestModal" siteid="@siteDetail.SiteId" id="withdrawFromAccountRequestCoinsBtn">Withdraw</a></li>
+                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#DepositeToAccountRequestModal" accountId="@siteDetail.AccountId" siteid="@siteDetail.SiteId" id="DepositeToAccountRequestCoinsBtn">Deposit</a></li>
+                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#WithDrawToAccountRequestModal" accountId="@siteDetail.AccountId" siteid="@siteDetail.SiteId" id="withdrawFromAccountRequestCoinsBtn">Withdraw</a></li>
                                         <li><a class="dropdown-item" href="/Passbook/Index?viewType=account_@siteDetail.SiteId">View Transaction</a></li>
-                                        <li><a class="dropdown-item" href="#">Change Password</a></li>
-                                        <li><a class="dropdown-item" href="#">Close ID</a></li>
+                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#ChangeIDPasswordRequestModal" accountId="@siteDetail.AccountId" siteid="@siteDetail.SiteId" id="ChangeIDPasswordRequestBtn">Change Password</a></li>
+                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#CloseIDRequestModal" accountId="@siteDetail.AccountId" siteid="@siteDetail.SiteId" id="CloseIDRequestBtn">Close ID</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -71,3 +71,84 @@ else
     </span>
 }
 
+
+
+<!-- Change ID Password Request Modal -->
+<div class="modal fade" id="ChangeIDPasswordRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <style>
+            .nav-item-divider {
+                background-color: rgb(20 24 25 / 30%);
+            }
+        </style>
+        <div class="modal-content sitebackground siteColor">
+            <form id="ChangeIDPasswordRequestForm">
+                <div class="modal-header">
+                    <p class="modal-title" id="exampleModalLabel">Change ID Password</p>
+                    <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-12">
+                        <div class="d-flex flex-column text-center col-12">
+                            <span class="">
+                                <img class="siteIcon rounded-circle siteImageSize" src="" />
+                            </span>
+                            <p class="text-uppercase siteName">Site Name</p>
+                            <p class="siteURL">Site URL</p>
+                            <p class="userName">User Name</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password*</label>
+                        <input type="text" name="Password" class="form-control Password" placeholder="Password" autocomplete="off">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn siteBtnbackground col-12">CHANGE ID PASSWORD</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Change ID Password Request Modal-->
+<!-- Close ID Request Modal -->
+<div class="modal fade" id="CloseIDRequestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <style>
+            .nav-item-divider {
+                background-color: rgb(20 24 25 / 30%);
+            }
+        </style>
+        <div class="modal-content sitebackground siteColor">
+            <div id="">
+                <div class="modal-header">
+                    <p class="modal-title" id="exampleModalLabel">Close ID</p>
+                    <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-12">
+                        <div class="d-flex flex-column text-center col-12">
+                            <span class="">
+                                <img class="siteIcon rounded-circle siteImageSize" src="" />
+                            </span>
+                            <p class="text-uppercase siteName">Site Name</p>
+                            <p class="siteURL">Site URL</p>
+                            <p class="userName">User Name</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p>Are you sure, want to Close ID?</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn siteBtnbackground col-12" onclick="CloseIDPasswordRequest()">CLOSE ID</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Close ID Request Modal-->

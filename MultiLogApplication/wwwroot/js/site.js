@@ -91,12 +91,14 @@ $(document).on('click', '#DepositeToAccountRequestCoinsBtn', function () {
     let accountId = $(this).attr('accountId');
     let Name = $('.site_' + siteId + ' .siteName').html();
     let URL = $('.site_' + siteId + ' .siteURL').html();
+    let userName = $('.site_' + siteId + ' .userName').html();
     let iconSrc = $('.site_' + siteId + ' .siteIcon').attr('src');
 
     $('#DepositeToAccountRequestModal').attr('accountId', accountId);
     $('#DepositeToAccountRequestModal').attr('siteId', siteId);
     $('#DepositeToAccountRequestModal .siteName').html(Name);
     $('#DepositeToAccountRequestModal .siteURL').html(URL);
+    $('#DepositeToAccountRequestModal .userName').html(userName);
     $('#DepositeToAccountRequestModal .siteIcon').attr('src', iconSrc);
     DepositeCoinsToAccountRequestFormValidationSingleton.getInstance();
 
@@ -107,16 +109,57 @@ $(document).on('click', '#withdrawFromAccountRequestCoinsBtn', function () {
     let accountId = $(this).attr('accountId');
     let Name = $('.site_' + siteId + ' .siteName').html();
     let URL = $('.site_' + siteId + ' .siteURL').html();
+    let userName = $('.site_' + siteId + ' .userName').html();
     let iconSrc = $('.site_' + siteId + ' .siteIcon').attr('src');
 
     $('#WithDrawToAccountRequestModal').attr('accountId', accountId);
     $('#WithDrawToAccountRequestModal').attr('siteId', siteId);
     $('#WithDrawToAccountRequestModal .siteName').html(Name);
     $('#WithDrawToAccountRequestModal .siteURL').html(URL);
+    $('#WithDrawToAccountRequestModal .userName').html(userName);
     $('#WithDrawToAccountRequestModal .siteIcon').attr('src', iconSrc);
     WithDrawFromAccountRequestFormValidationSingleton.getInstance();
 })
 
+
+$(document).on('click', '#ChangeIDPasswordRequestBtn', function () {
+    let siteId = $(this).attr('siteId');
+    let accountId = $(this).attr('accountId');
+
+    let Name = $('.site_' + siteId + ' .siteName').html();
+    let URL = $('.site_' + siteId + ' .siteURL').html();
+    let userName = $('.site_' + siteId + ' .userName').html();
+    let iconSrc = $('.site_' + siteId + ' .siteIcon').attr('src');
+
+    $('#ChangeIDPasswordRequestModal').attr('accountId', accountId);
+    $('#ChangeIDPasswordRequestModal').attr('siteId', siteId);
+    $('#ChangeIDPasswordRequestModal .siteName').html(Name);
+    $('#ChangeIDPasswordRequestModal .siteURL').html(URL);
+    $('#ChangeIDPasswordRequestModal .userName').html(userName);
+    $('#ChangeIDPasswordRequestModal .siteIcon').attr('src', iconSrc);
+
+
+    $('#ChangeIDPasswordRequestModal .Username').val(userName);
+
+    ChangeIDPasswordFormValidationSingleton.getInstance();
+});
+
+$(document).on('click', '#CloseIDRequestBtn', function () {
+    let siteId = $(this).attr('siteId');
+    let accountId = $(this).attr('accountId');
+
+    let Name = $('.site_' + siteId + ' .siteName').html();
+    let URL = $('.site_' + siteId + ' .siteURL').html();
+    let userName = $('.site_' + siteId + ' .userName').html();
+    let iconSrc = $('.site_' + siteId + ' .siteIcon').attr('src');
+
+    $('#CloseIDRequestModal').attr('accountId', accountId);
+    $('#CloseIDRequestModal').attr('siteId', siteId);
+    $('#CloseIDRequestModal .siteName').html(Name);
+    $('#CloseIDRequestModal .siteURL').html(URL);
+    $('#CloseIDRequestModal .userName').html(userName);
+    $('#CloseIDRequestModal .siteIcon').attr('src', iconSrc);
+});
 
 //End Click Events
 
@@ -245,6 +288,35 @@ function LoadMySites() {
         }
     });
     
+}
+
+function ChangeIDPasswordRequest() {
+    var obj = {};
+    obj.AccountId = $('#ChangeIDPasswordRequestModal').attr('accountId');
+    obj.Password = $('#ChangeIDPasswordRequestModal .Password').val();
+
+    $.ajax({
+        url: '/Account/AddChangeIDPassword',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            ToasteRMessage(result, '#ChangeIDPasswordRequestModal');
+        }
+    });
+}
+
+function CloseIDPasswordRequest() {
+    var obj = {};
+    obj.AccountId = $('#CloseIDRequestModal').attr('accountId');
+
+    $.ajax({
+        url: '/Account/AddCloseID',
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            ToasteRMessage(result, '#CloseIDRequestModal');
+        }
+    });
 }
 
 //End function area
@@ -480,6 +552,51 @@ var WithDrawFromAccountRequestFormValidationSingleton = (function () {
         }
     };
 })();
+
+
+var ChangeIDPasswordFormfv;
+var CPfv2;
+var ChangeIDPasswordFormValidationSingleton = (function () {
+    function createInstance() {
+
+        let form = document.getElementById('ChangeIDPasswordRequestForm');
+        CPfv2 = FormValidation.formValidation(form, {
+            fields: {
+                Password: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Password is required'
+                        }
+                    }
+                }
+            },
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                bootstrap3: new FormValidation.plugins.Bootstrap3(),
+                submitButton: new FormValidation.plugins.SubmitButton(),
+                icon: new FormValidation.plugins.Icon({
+                    valid: 'fas fa-check',
+                    invalid: 'fa fa-times',
+                    validating: 'fa fa-refresh'
+                }),
+            }
+        }).on('core.form.valid', function () {
+            $(':input[type="submit"]').prop('disabled', true);
+            ChangeIDPasswordRequest();
+        });
+        return CPfv2;
+    }
+    return {
+        getInstance: function () {
+            if (ChangeIDPasswordFormfv) {
+                ChangeIDPasswordFormfv.destroy();
+            }
+            ChangeIDPasswordFormfv = createInstance();
+            return ChangeIDPasswordFormfv;
+        }
+    };
+})();
+
 
 
 //End Form Validation
