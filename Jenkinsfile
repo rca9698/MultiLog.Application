@@ -48,13 +48,13 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'CICDTest', passwordVariable: 'Rakesh@9698', usernameVariable: 'rakesh')]) {
                     powershell '''
                     
-                    $credentials = New-Object System.Management.Automation.PSCredential($env:rakesh, (ConvertTo-SecureString $env:Rakesh@9698 -AsPlainText -Force))
+                    $credentials = New-Object System.Management.Automation.PSCredential($env:rakesh, (ConvertTo-SecureString $env:Jagadevi@321 -AsPlainText -Force))
 
                     
-                    New-PSDrive -Name X -PSProvider FileSystem -Root "\\\\98.70.9.229\\Hosting_Path\\CICDTest" -Persist -Credential $credentials
+                    New-PSDrive -Name D -PSProvider FileSystem -Root "\\\\98.70.9.229\\Hosting_Path\\CICDTest" -Persist -Credential $credentials
 
                     
-                    Copy-Item -Path '.\\publish\\*' -Destination 'X:\' -Force
+                    Copy-Item -Path '.\\publish\\*' -Destination 'D:\' -Force
 
                     
                     Remove-PSDrive -Name X
