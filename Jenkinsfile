@@ -51,13 +51,13 @@ pipeline {
                     $credentials = New-Object System.Management.Automation.PSCredential($env:rakesh, (ConvertTo-SecureString $env:Rakesh@9698 -AsPlainText -Force))
 
                     
-                    New-PSDrive -Name C -PSProvider FileSystem -Root "\\\\98.70.9.229\\Hosting_Path\\CICDTest" -Persist -Credential $credentials
+                    New-PSDrive -Name X -PSProvider FileSystem -Root "\\\\98.70.9.229\\Hosting_Path\\CICDTest" -Persist -Credential $credentials
 
                     
-                    Copy-Item -Path '.\\publish\\*' -Destination 'C:\' -Force
+                    Copy-Item -Path '.\\publish\\*' -Destination 'X:\' -Force
 
                     
-                    Remove-PSDrive -Name C
+                    Remove-PSDrive -Name X
                     '''
                 }
                 }
